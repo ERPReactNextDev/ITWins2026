@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin · Department Wins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Bricolage+Grotesque:wght@500;700;800&family=Poppins:wght@600&family=Montserrat:wght@600&family=Playfair+Display:wght@600&family=Space+Grotesk:wght@500&family=Sora:wght@500&family=Outfit:wght@500&family=Inter:wght@500&family=Nunito+Sans:wght@500&family=Source+Sans+3:wght@500&family=Work+Sans:wght@500&family=JetBrains+Mono:wght@500&family=IBM+Plex+Mono:wght@500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f1b2d;--mute:#5d6b82;--faint:#8b97ab;--line:#dde4ee;--line2:#eaeff6;--bg:#f1f4f8;--panel:#fff;
+  --acc:#08886b;--accd:#066b54;--accs:#e3f5ef;--amber:#b86608;--ambers:#fdf1e0;--sky:#1a6cc4;--skys:#e6f0fb;--rose:#cc2f59;--roses:#fde8ee;
+  --r:10px;--sh:0 1px 2px rgba(15,27,45,.06),0 10px 28px -14px rgba(15,27,45,.22);
+  --f:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font:14px/1.45 var(--f);color:var(--ink);background:var(--bg);display:flex;flex-direction:column;overflow:hidden}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+svg{display:block}
+[hidden]{display:none!important}
+.ic{display:inline-grid;place-items:center;width:18px;height:18px;flex:none}.ic svg{width:100%;height:100%}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 12px;font-weight:500;white-space:nowrap;text-decoration:none;color:var(--ink);transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--acc);background:#fbfdfc}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}.btn.pri:hover{background:var(--accd)}
+.btn.pri[disabled]{opacity:.55;cursor:default}
+.btn.danger{color:var(--rose)}.btn.danger:hover{border-color:var(--rose);background:var(--roses)}
+.btn.sm{padding:4px 9px;font-size:13px;border-radius:8px}
+.btn.ghost{border-color:transparent;background:transparent}.btn.ghost:hover{background:var(--line2);border-color:transparent}
+.ib{width:30px;height:30px;display:inline-grid;place-items:center;border:1px solid transparent;background:transparent;border-radius:8px;color:var(--mute);padding:0}
+.ib:hover{background:var(--line2);color:var(--ink)}.ib.danger:hover{background:var(--roses);color:var(--rose)}.ib[disabled]{opacity:.35;cursor:default;pointer-events:none}
+.ib .ic{width:17px;height:17px}
+.muted{color:var(--mute)}.small{font-size:12.5px}
+
+/* top bar */
+header{height:58px;flex:none;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 16px;z-index:5}
+.brand{display:flex;align-items:center;gap:10px;margin-right:6px}
+.brand .lg{width:30px;height:30px;border-radius:9px;background:var(--ink);color:#3df0c1;display:grid;place-items:center}.brand .lg svg{width:18px;height:18px}
+.brand b{font-size:15px;line-height:1.1;display:block}.brand small{display:block;color:var(--mute);font-size:12px}
+.deptsel{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:10px;padding:3px 4px 3px 10px;background:#fff}
+.deptsel span{font-size:12px;color:var(--mute)}
+.deptsel select{border:0;background:transparent;font-weight:700;padding:5px 4px;max-width:220px;cursor:pointer}
+.sp{flex:1}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;padding:5px 11px;border-radius:99px;background:var(--line2);color:var(--mute);font-weight:500}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--faint)}
+.chip.ok{background:var(--accs);color:var(--accd)}.chip.ok i{background:var(--acc)}
+.chip.dirty{background:var(--ambers);color:var(--amber);font-weight:700}.chip.dirty i{background:var(--amber)}
+.chip.warn{background:var(--roses);color:var(--rose)}.chip.warn i{background:var(--rose)}
+.sep{width:1px;height:24px;background:var(--line)}
+
+/* layout */
+main{flex:1;min-height:0;display:grid;grid-template-columns:340px minmax(0,1fr) 440px;position:relative}
+aside{background:var(--panel);min-height:0;min-width:0;display:flex;flex-direction:column}
+#left{border-right:1px solid var(--line)}#right{border-left:1px solid var(--line)}
+.scroll{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:10px;border-bottom:1px solid var(--line);flex:none}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px 7px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--mute);font-size:12.5px;font-weight:500;position:relative}
+.tab .ic{width:19px;height:19px}.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.on{background:var(--accs);color:var(--accd);border-color:#bfe6da;font-weight:700}
+.tab .bd{position:absolute;top:3px;right:8px;min-width:17px;height:17px;border-radius:9px;background:var(--rose);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.lhead{padding:10px 12px 0;flex:none}
+.lhead .search{width:100%}
+.search{border:1px solid var(--line);border-radius:9px;padding:7px 10px 7px 32px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b97ab' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E") no-repeat 9px center/16px}
+.pad{padding:12px}
+.grp{font-weight:700;font-size:12.5px;color:var(--mute);margin:14px 2px 6px;display:flex;align-items:center;gap:8px}
+.grp::after{content:"";flex:1;height:1px;background:var(--line2)}
+.grp .dot{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.help{background:var(--skys);color:#164b86;border-radius:var(--r);padding:10px 12px;font-size:13px;line-height:1.45;margin-bottom:10px}
+.help b{font-weight:700}
+
+/* lists */
+.row{display:grid;grid-template-columns:auto 34px minmax(0,1fr) auto;align-items:center;gap:9px;padding:7px 8px 7px 6px;border:1px solid var(--line);border-radius:11px;margin-bottom:6px;background:#fff;cursor:pointer;position:relative}
+.row:hover{border-color:#b9c7d9}.row.on{border-color:var(--acc);background:var(--accs);box-shadow:0 0 0 1px var(--acc) inset}
+.row.hid .t,.row.hid .ti{opacity:.45}.row.over{box-shadow:0 -3px 0 var(--acc)}
+.row .gr{color:var(--faint);cursor:grab;display:grid;place-items:center;width:14px}.row .gr .ic{width:14px}
+.row .ti{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--line2);color:var(--ink)}
+.row .ti svg{width:19px;height:19px}.row .ti.sys{background:var(--accs);color:var(--acc)}.row .ti.web{background:var(--ambers);color:var(--amber)}.row .ti.infra{background:var(--skys);color:var(--sky)}.row .ti.fun{background:var(--roses);color:var(--rose)}
+.row .ti img{width:100%;height:100%;object-fit:cover;border-radius:9px}
+.row .t{min-width:0}.row .t b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.row .t small{display:block;color:var(--mute);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .ac{display:flex;gap:0}.row .ac .ib{width:26px;height:26px}.row:not(:hover) .ac .ib:not(.keep){display:none}
+.row .no{font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums;position:absolute;left:3px;top:2px}
+.foot{flex:none;border-top:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;align-items:center;background:#fafbfd}
+.foot .btn{flex:1;justify-content:center}
+
+/* center */
+#center{display:flex;flex-direction:column;min-width:0;min-height:0}
+.pvbar{display:flex;align-items:center;gap:8px;padding:10px 18px 0;flex:none}
+.pvbar .cnt{font-variant-numeric:tabular-nums;font-weight:700;min-width:84px;text-align:center}
+.pvwrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:12px 18px}
+.pv{width:100%;max-width:calc((100vh - 58px - 190px)*16/9);aspect-ratio:16/9;background:#fff;border-radius:12px;box-shadow:var(--sh);overflow:hidden;border:1px solid var(--line)}
+.pv iframe{width:100%;height:100%;border:0;display:block}
+.say{flex:none;margin:0 18px 14px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px 13px;display:flex;gap:10px;align-items:flex-start;min-height:56px}
+.say .ic{color:var(--acc);margin-top:2px}.say p{margin:0;font-size:13px;color:var(--mute);line-height:1.45;max-height:58px;overflow:auto}.say b{color:var(--ink);font-weight:600}
+
+/* inspector */
+.ihead{display:flex;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line);flex:none}
+.ihead .ti{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:var(--accs);color:var(--acc);flex:none}.ihead .ti svg{width:23px;height:23px}
+.ihead .tx{min-width:0;flex:1}.ihead b{display:block;font-size:16px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ihead small{color:var(--mute);font-size:12.5px}
+.ibody{padding:12px 14px 40px}
+.f{display:flex;flex-direction:column;gap:10px;min-width:0}
+details.sec{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:10px;min-width:0}
+details.sec>summary{list-style:none;cursor:pointer;padding:11px 13px;display:flex;flex-direction:column;gap:1px;position:relative;user-select:none}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::after{content:"";position:absolute;right:14px;top:17px;width:8px;height:8px;border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);transform:rotate(45deg);transition:transform .15s}
+details.sec[open]>summary::after{transform:rotate(225deg);top:20px}
+details.sec .st{font-weight:700;font-size:14.5px}details.sec small{color:var(--mute);font-size:12.5px;padding-right:24px}
+details.sec>.sb{padding:2px 13px 14px;display:flex;flex-direction:column;gap:13px;min-width:0}
+.fl{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fl>.lbl{font-weight:600;font-size:13px}.fl>.hint{font-size:12.5px;color:var(--mute);margin-top:-2px;line-height:1.4}
+.fl.inline{flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+input[type=text],input:not([type]),input[type=number],textarea,select{width:100%;max-width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#fff}
+input:focus,textarea:focus,select:focus{border-color:var(--acc);outline:2px solid rgba(8,136,107,.18);outline-offset:0}
+input[disabled]{background:var(--line2);color:var(--mute)}
+textarea{resize:vertical;line-height:1.45}
+.cnt2{font-size:12px;color:var(--faint);text-align:right;margin-top:-3px}
+.sw{position:relative;width:46px;height:26px;flex:none}.sw input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;width:100%;height:100%}
+.sw i{position:absolute;inset:0;background:#cfd8e4;border-radius:99px;transition:background .15s;pointer-events:none}.sw i::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .15s}
+.sw input:checked+i{background:var(--acc)}.sw input:checked+i::after{transform:translateX(20px)}.sw input:focus-visible+i{outline:2px solid var(--acc);outline-offset:2px}
+.chips2{display:flex;flex-wrap:wrap;gap:7px}
+.cc{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:#fff;font-weight:500}
+.cc i{width:10px;height:10px;border-radius:50%}.cc:hover{border-color:#aab9cc}.cc.on{border-color:currentColor;background:var(--accs);font-weight:700;box-shadow:0 0 0 1px currentColor inset}
+.cc.sys{color:var(--acc)}.cc.sys i{background:var(--acc)}.cc.web{color:var(--amber)}.cc.web i{background:var(--amber)}.cc.web.on{background:var(--ambers)}.cc.infra{color:var(--sky)}.cc.infra i{background:var(--sky)}.cc.infra.on{background:var(--skys)}.cc.fun{color:var(--rose)}.cc.fun i{background:var(--rose)}.cc.fun.on{background:var(--roses)}
+.cc span{color:var(--ink)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.oc{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 8px 10px;color:var(--ink)}
+.oc:hover{border-color:#aab9cc}.oc.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset;background:#f6fcfa}
+.oc b{font-size:13.5px;display:flex;align-items:center;justify-content:space-between;gap:6px}.oc small{color:var(--mute);font-size:12px;line-height:1.35}
+.oc .tk{width:18px;height:18px;border-radius:50%;background:var(--acc);color:#fff;display:none;place-items:center;flex:none}.oc.on .tk{display:grid}.oc .tk svg{width:11px;height:11px}
+.wf{width:100%;aspect-ratio:120/72;background:var(--bg);border-radius:8px;color:#4b5b73}
+.wf rect,.wf circle,.wf path{fill:#fff;stroke:currentColor;stroke-width:1.2;stroke-linejoin:round}
+.wf .s{fill:currentColor;stroke:none}.wf .a{fill:var(--acc);stroke:none}.wf .m{fill:#aab6c8;stroke:none}.wf .n{fill:none}.wf line{stroke:currentColor;stroke-width:1;opacity:.5}
+.wf .c1{fill:#e4a24a;stroke:none}.wf .c2{fill:#5a9be0;stroke:none}.wf .c3{fill:#3dbb98;stroke:none}.wf .ln{fill:none;stroke:var(--acc);stroke-width:1.2;opacity:.7}
+.pick{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;padding:6px 10px 6px 6px}
+.pick:hover{border-color:var(--acc)}.pick .pi{width:34px;height:34px;border-radius:8px;background:var(--accs);color:var(--acc);display:grid;place-items:center;flex:none}.pick .pi svg{width:20px;height:20px}
+.pick .pt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pick .pt small{display:block;color:var(--mute);font-size:12px}
+.pick .th{width:58px;height:38px;border-radius:7px;object-fit:cover;border:1px solid var(--line);background:var(--line2);flex:none}.pick .th.empty{display:grid;place-items:center;color:var(--faint)}
+.pick.compact{padding:4px 8px 4px 4px;width:auto;flex:none}.pick.compact .pi{width:28px;height:28px}
+.le{display:flex;flex-direction:column;gap:7px;min-width:0}
+.lr{display:flex;gap:6px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:8px;background:#fafbfd;min-width:0}
+.lr .lc{flex:1;min-width:0}.lr .lb{display:flex;flex-direction:column}.lr .lb .ib{width:24px;height:24px}
+.lr details>summary{font-weight:600;cursor:pointer;margin-bottom:8px}
+.tup{display:grid;gap:6px}.tup.withimg{grid-template-columns:auto minmax(0,1fr);align-items:center}
+.tup .col{display:grid;gap:6px;min-width:0}
+.empty{border:1px dashed var(--line);border-radius:11px;padding:12px;color:var(--mute);font-size:13px;text-align:center;background:#fafbfd}
+.addb{align-self:flex-start}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:7px}
+.tn{position:relative;aspect-ratio:4/3;border-radius:9px;overflow:hidden;border:1px solid var(--line);background:var(--line2)}
+.tn img{width:100%;height:100%;object-fit:cover;display:block}.tn .no{position:absolute;left:4px;top:4px;background:rgba(15,27,45,.72);color:#fff;border-radius:6px;font-size:11px;padding:0 5px;font-weight:700}
+.tn .bar{position:absolute;inset:auto 0 0 0;display:none;justify-content:space-between;background:rgba(15,27,45,.78);padding:2px}.tn:hover .bar{display:flex}
+.tn .bar button{border:0;background:transparent;color:#fff;width:22px;height:20px;padding:0;display:grid;place-items:center}.tn .bar button:hover{color:#ff9db4}.tn .bar .ic{width:14px;height:14px}
+.tn.add{border-style:dashed;background:#fafbfd;display:grid;place-items:center;color:var(--acc);cursor:pointer;font-weight:600;font-size:12px}
+.nar{border:1px solid #bfe6da;background:#f2fbf8;border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.nar b{font-size:13px;display:flex;align-items:center;gap:7px}.nar p{margin:5px 0 0;font-size:13px;color:#33564c;max-height:96px;overflow:auto}
+.nar details summary{cursor:pointer;font-weight:700;font-size:13px;display:flex;gap:7px;align-items:center;color:var(--accd)}
+.colr{display:flex;align-items:center;gap:10px}.colr input[type=color]{width:42px;height:34px;padding:2px;border-radius:8px;border:1px solid var(--line);background:#fff;flex:none}.colr input[type=text]{width:100px}
+.pal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pl{border:1px solid var(--line);background:#fff;border-radius:11px;padding:8px;text-align:left;display:flex;flex-direction:column;gap:7px}.pl:hover{border-color:#aab9cc}.pl.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+.pl .sws{display:flex;height:22px;border-radius:6px;overflow:hidden}.pl .sws i{flex:1}.pl span{font-size:12.5px;font-weight:600}
+.fonts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fc{border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 10px;text-align:left;min-width:0}.fc:hover{border-color:#aab9cc}.fc.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset;background:#f6fcfa}
+.fc b{display:block;font-size:20px;line-height:1.15;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fc small{color:var(--mute);font-size:11.5px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mc{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px;text-align:left}.mc:hover{border-color:#aab9cc}.mc.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+.mc .pvw{height:64px;border-radius:8px;margin-bottom:7px;display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:-.02em}
+.mc.light .pvw{background:#fff;color:#0b1424;border:1px solid var(--line)}.mc.dark .pvw{background:#07101e;color:#eaf2fc}
+.mc b{display:block}.mc small{color:var(--mute);font-size:12px}
+.mini{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
+.mini .h{font-size:24px;font-weight:800;line-height:1.1}.mini .p{font-size:13px;color:var(--mute);margin-top:4px}.mini .dots{display:flex;gap:6px;margin-top:10px}.mini .dots i{width:22px;height:22px;border-radius:50%}
+
+/* media */
+.up{border:2px dashed #c4d0df;border-radius:13px;padding:16px;text-align:center;color:var(--mute);margin-bottom:10px;background:#fafbfd;transition:background .15s,border-color .15s}
+.up.drag{background:var(--accs);border-color:var(--acc)}
+.up b{display:block;color:var(--ink);margin-bottom:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin:2px 0 10px}.seg button{border:0;background:#fff;padding:5px 12px;font-size:13px;font-weight:500}.seg button.on{background:var(--accs);color:var(--accd);font-weight:700}
+.mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.gi{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;position:relative}
+.gi img{width:100%;height:84px;object-fit:cover;display:block;background:var(--line2)}
+.gi .nm{padding:5px 8px 6px;font-size:12px;word-break:break-all;line-height:1.25}.gi .nm small{display:block;color:var(--mute)}.gi .nm small.un{color:var(--amber);font-weight:700}
+.gi .ib{position:absolute;top:4px;right:4px;background:rgba(255,255,255,.92);width:26px;height:26px}
+
+/* modal + toast */
+.mback{position:fixed;inset:0;background:rgba(15,27,45,.45);display:grid;place-items:center;z-index:100;padding:20px;animation:fade .15s}
+@keyframes fade{from{opacity:0}}
+.modal{background:#fff;border-radius:16px;box-shadow:0 30px 80px -20px rgba(15,27,45,.5);width:min(520px,100%);max-height:calc(100vh - 40px);display:flex;flex-direction:column}
+.modal.wide{width:min(860px,100%)}
+.mh{display:flex;justify-content:space-between;gap:12px;padding:16px 18px 10px}.mh b{font-size:17px}.mh p{margin:3px 0 0;color:var(--mute);font-size:13px}
+.mb{padding:4px 18px 16px;overflow:auto;min-height:0}
+.mf{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px;border-top:1px solid var(--line);background:#fafbfd;border-radius:0 0 16px 16px}
+.stg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.st2{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px;text-align:left}.st2:hover{border-color:var(--acc);box-shadow:var(--sh)}.st2 b{display:block;margin:6px 0 1px}.st2 small{color:var(--mute);font-size:12px;line-height:1.35;display:block}
+.icg{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:7px;margin-top:10px}
+.icg button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 4px 6px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:var(--mute)}
+.icg button svg{width:26px;height:26px;color:var(--ink)}.icg button:hover{border-color:var(--acc)}.icg button.on{border-color:var(--acc);background:var(--accs)}
+.ipg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:9px;margin-top:10px}
+.ipg .it{border:2px solid transparent;border-radius:11px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line) inset;position:relative;padding:0;text-align:left}
+.ipg .it img{width:100%;height:84px;object-fit:cover;display:block;background:var(--line2)}.ipg .it span{display:block;padding:4px 7px 5px;font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ipg .it:hover{border-color:#9fb4cc}.ipg .it.on{border-color:var(--acc)}.ipg .it .ck{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--acc);color:#fff;display:none;place-items:center;font-size:12px;font-weight:700}.ipg .it.on .ck{display:grid}
+.toasts{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:200;align-items:center}
+.toast{background:var(--ink);color:#fff;border-radius:11px;padding:10px 16px;box-shadow:var(--sh);font-weight:500;display:flex;gap:9px;align-items:center;animation:rise .2s}
+.toast.ok .ic{color:#3df0c1}.toast.bad{background:#7d1633}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.banner{position:absolute;left:340px;right:440px;top:0;z-index:6;background:var(--ambers);color:#7a4306;border-bottom:1px solid #f0d3a8;padding:9px 16px;display:flex;align-items:center;gap:10px;font-size:13px}
+.banner .btn{margin-left:auto}
+
+/* checks */
+.ck{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:10px 11px;margin-bottom:7px;background:#fff}
+.ck .dotl{width:10px;height:10px;border-radius:50%;margin-top:5px;background:var(--rose)}.ck.warn .dotl{background:var(--amber)}.ck.info .dotl{background:var(--sky)}
+.ck p{margin:0;font-size:13px}.ck b{display:block;font-weight:600;margin-bottom:1px}.ck small{color:var(--mute);font-size:12.5px}
+.good{text-align:center;padding:26px 12px;color:var(--accd);font-weight:600;background:var(--accs);border-radius:12px}
+
+/* playlist view */
+#playlist{position:absolute;inset:0;background:var(--bg);z-index:7;overflow:auto;display:none}
+.plw{max-width:1120px;margin:0 auto;padding:26px 24px 60px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px}
+.plw h2{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}.plw .lead{margin:0 0 18px;color:var(--mute);max-width:70ch}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:16px}
+.card h3{margin:0 0 4px;font-size:15.5px}.card>p{margin:0 0 12px;color:var(--mute);font-size:13px}
+.dc{display:grid;grid-template-columns:auto 34px minmax(0,1fr) auto;gap:11px;align-items:center;padding:10px 10px 10px 8px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:#fff}
+.dc.off{background:#f7f9fc}.dc.off .dt{opacity:.5}.dc.over{box-shadow:0 -3px 0 var(--acc)}
+.dc .no{width:30px;height:30px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.dc.off .no{background:#aab6c8}
+.dc .dt b{display:block}.dc .dt small{color:var(--mute);font-size:12.5px}
+.dc .gr{color:var(--faint);cursor:grab;width:18px;display:grid;place-items:center}
+.linkbox{display:flex;gap:8px}.linkbox input{flex:1;font-family:ui-monospace,Consolas,monospace;font-size:13px;background:#f7f9fc}
+.tl{display:flex;height:34px;border-radius:9px;overflow:hidden;gap:2px;margin:6px 0 4px}.tl div{display:flex;align-items:center;padding:0 9px;color:#fff;font-weight:600;font-size:12.5px;overflow:hidden;white-space:nowrap;min-width:20px}
+.opt{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line2)}.opt:first-of-type{border-top:0}.opt b{display:block;font-weight:600}.opt small{color:var(--mute);font-size:12.5px}
+.ll{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--line2);font-size:13px}.ll code{background:#f1f4f8;border-radius:6px;padding:2px 7px}.ll:first-of-type{border-top:0}
+@media (max-width:1320px){main{grid-template-columns:300px minmax(0,1fr) 390px}.banner{left:300px;right:390px}}
+@media (max-width:1100px){.plw{grid-template-columns:1fr}.brand small{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header>
+  <div class="brand"><div class="lg" id="logo"></div><div><b>Department Wins</b><small>Admin</small></div></div>
+  <div class="deptsel"><span>Department</span><select id="dept" aria-label="Department"></select></div>
+  <button class="btn sm" id="bNew"></button>
+  <span class="sp"></span>
+  <span class="chip" id="st"><i></i><span id="stt"></span></span>
+  <button class="ib" id="bUndo" title="Undo (Ctrl+Z)" aria-label="Undo"></button>
+  <button class="ib" id="bRedo" title="Redo (Ctrl+Y)" aria-label="Redo"></button>
+  <span class="sep"></span>
+  <button class="btn" id="bPl" title="Order the departments and get one link for all of them"></button>
+  <a class="btn" id="view" target="_blank" rel="noopener"></a>
+  <button class="btn" id="bDl"></button>
+  <button class="btn pri" id="bSave"></button>
+</header>
+<main>
+  <div class="banner" id="banner" hidden></div>
+  <aside id="left"><div class="tabs" id="tabs"></div><div class="lhead" id="lhead"></div><div class="scroll pad" id="lbody"></div><div class="foot" id="lfoot"></div></aside>
+  <section id="center">
+    <div class="pvbar"><button class="ib" id="pPrev" title="Previous slide" aria-label="Previous slide"></button><span class="cnt" id="pCnt">–</span><button class="ib" id="pNext" title="Next slide" aria-label="Next slide"></button><span class="muted small" id="pInfo" style="margin-left:8px"></span><span class="sp"></span><a class="btn sm ghost" id="pOpen" target="_blank" rel="noopener"></a></div>
+    <div class="pvwrap"><div class="pv"><iframe id="frame" title="Live preview"></iframe></div></div>
+    <div class="say"><span class="ic" id="sayIc"></span><p id="sayTx" class="muted">Navigate in the preview with the arrow keys or by clicking it. The voice text for each slide shows here.</p></div>
+  </section>
+  <aside id="right"><div id="ihead"></div><div class="scroll" id="insp"></div></aside>
+  <section id="playlist"></section>
+</main>
+<div class="toasts" id="toasts"></div>
+<script src="/icons.js"></script>
+<script>
+/* ============ helpers ============ */
+const $=s=>document.querySelector(s);
+const h=(tag,a={},...k)=>{const e=document.createElement(tag);for(const n in a){const v=a[n];if(n==="class")e.className=v;else if(n==="html")e.innerHTML=v;else if(n.startsWith("on"))e[n]=v;else if(v!==false&&v!=null)e.setAttribute(n,v)}k.flat().forEach(c=>{if(c!=null&&c!==false)e.append(c)});return e};
+const slug=s=>String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")||"item";
+const idOf=f=>f.replace(/\.webp$/i,"");
+const esc=t=>String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const words=t=>String(t||"").trim().split(/\s+/).filter(Boolean).length;
+const clone=o=>JSON.parse(JSON.stringify(o));
+const UI={
+ undo:'<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 010 12h-3"/>',redo:'<path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 000 12h3"/>',
+ eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+ eyeoff:'<path d="M3 3l18 18"/><path d="M6.5 6.6A17 17 0 002 12s4 7 10 7c1.8 0 3.4-.5 4.8-1.2M10.6 5.1A9.7 9.7 0 0112 5c6 0 10 7 10 7a17 17 0 01-3.2 4"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/>',
+ dup:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 012-2h10"/>',trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',grip:'<circle cx="9" cy="6" r="1.4"/><circle cx="15" cy="6" r="1.4"/><circle cx="9" cy="12" r="1.4"/><circle cx="15" cy="12" r="1.4"/><circle cx="9" cy="18" r="1.4"/><circle cx="15" cy="18" r="1.4"/>',
+ x:'<path d="M18 6L6 18M6 6l12 12"/>',up:'<path d="M6 15l6-6 6 6"/>',down:'<path d="M6 9l6 6 6-6"/>',left:'<path d="M15 6l-6 6 6 6"/>',right:'<path d="M9 6l6 6-6 6"/>',
+ layers:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',folder:'<path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>',
+ image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/>',
+ palette:'<path d="M12 3a9 9 0 000 18c1.5 0 2-1 1.5-2.2-.5-1.2.2-2.3 1.5-2.3H17a4 4 0 004-4c0-5-4-9.5-9-9.5z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',checkc:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',
+ play:'<path d="M8 5v14l11-7z"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',
+ ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',save:'<path d="M5 3h11l4 4v13a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M8 3v5h7V3M8 21v-7h8v7"/>',
+ dl:'<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>',upload:'<path d="M12 16V5M7 9l5-5 5 5M5 20h14"/>',mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/>',
+ stack:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>',
+ list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',copy:'<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/>'
+};
+const ico=(n,w=2)=>`<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${UI[n]||""}</svg></span>`;
+const I=(n,w)=>{const t=document.createElement("span");t.innerHTML=ico(n,w);return t.firstChild};
+
+/* ============ state ============ */
+let D=null,dept="it",DEPTS=[],PL={skipEnds:true,loop:false,autoplay:false},online=false,canWrite=false,adminKey=sessionStorage.getItem("dwKey")||"";
+let view="edit",tab="slides",sel=0,psel=0,IMGS=[],dirty=false,plDirty=false,starts=[],jumpMap={},SAYS=[],PROJS=[],curAt=0,pvAt=0,pt=null;
+let filterQ="",secState={},STAT={},quiet=0;
+const frame=$("#frame");
+
+/* ============ toast + modal ============ */
+function toast(msg,kind=""){const t=h("div",{class:"toast "+kind},kind==="ok"?I("checkc"):null,msg);$("#toasts").append(t);setTimeout(()=>t.remove(),kind==="bad"?5200:2600)}
+function modal({title,sub,body,actions=[],wide=false}){
+  const back=h("div",{class:"mback"});let closed=false;
+  const close=()=>{if(closed)return;closed=true;back.remove();removeEventListener("keydown",esc_,true)};
+  const esc_=e=>{if(e.key==="Escape"){e.stopPropagation();close()}};addEventListener("keydown",esc_,true);
+  const box=h("div",{class:"modal"+(wide?" wide":""),role:"dialog","aria-modal":"true"},
+    h("div",{class:"mh"},h("div",{},h("b",{},title),sub?h("p",{},sub):null),h("button",{class:"ib",onclick:close,"aria-label":"Close"},I("x"))),
+    h("div",{class:"mb"},body),actions.length?h("div",{class:"mf"},actions):null);
+  back.append(box);back.addEventListener("mousedown",e=>{if(e.target===back)close()});document.body.append(back);
+  return {close,box};
+}
+function ask(title,msg,ok="OK",danger=false){
+  return new Promise(res=>{const m=modal({title,body:h("p",{style:"margin:0;color:var(--mute)"},msg),actions:[
+    h("button",{class:"btn",onclick:()=>{m.close();res(false)}},"Cancel"),
+    h("button",{class:"btn "+(danger?"danger":"pri"),onclick:()=>{m.close();res(true)}},ok)]});
+    const o=new MutationObserver(()=>{if(!document.body.contains(m.box)){o.disconnect();res(false)}});o.observe(document.body,{childList:true})})}
+function typeToConfirm(title,msg,word,ok){
+  return new Promise(res=>{const inp=h("input",{placeholder:'Type "'+word+'" to confirm'}),b=h("button",{class:"btn danger",disabled:"",onclick:()=>{m.close();res(true)}},ok);
+    inp.oninput=()=>{inp.value.trim()===word?b.removeAttribute("disabled"):b.setAttribute("disabled","")};
+    const m=modal({title,body:h("div",{class:"f"},h("p",{style:"margin:0;color:var(--mute)"},msg),inp),actions:[h("button",{class:"btn",onclick:()=>{m.close();res(false)}},"Cancel"),b]});setTimeout(()=>inp.focus(),30)})}
+
+/* ============ api ============ */
+async function api(p,o={}){const hd={...(o.headers||{})};if(adminKey)hd["x-admin-key"]=adminKey;
+  const r=await fetch("/api/"+p,{...o,headers:hd});if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.error||r.status)}return r.json()}
+const imgUrl=id=>`/img/${dept}/${/\.[a-z0-9]{3,4}$/i.test(id)?id:id+".webp"}`;
+const putJson=(p,body)=>api(p,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+
+/* ============ status ============ */
+function isDirty(){return view==="playlist"?plDirty:dirty}
+function status(){
+  const st=$("#st"),tx=$("#stt");let c="chip",t;
+  if(isDirty()){c+=" dirty";t="Unsaved changes"}
+  else if(!online){c+=" warn";t="Offline: download to save"}
+  else if(!canWrite){c+=" warn";t="Read-only"}
+  else{c+=" ok";t="All changes saved"}
+  st.className=c;tx.textContent=t;
+  $("#bSave").innerHTML=(online&&canWrite?ico("save"):ico("dl"))+(view==="playlist"?"Save playlist":"Save");
+  $("#bUndo").disabled=view==="playlist"||HI<=0;$("#bRedo").disabled=view==="playlist"||HI>=HIST.length-1;
+  $("#bUndo").toggleAttribute("disabled",$("#bUndo").disabled);$("#bRedo").toggleAttribute("disabled",$("#bRedo").disabled);
+  $("#bPl").classList.toggle("pri",false);
+  const b=$("#banner");
+  if(!online){b.hidden=false;b.innerHTML="No server found, so changes can't be saved here. Run <b>node server.js</b>, or use Download JSON and put the file in <b>data/"+dept+"/deck.json</b>."}
+  else if(!canWrite){b.hidden=false;b.innerHTML="This server is read-only for you. Open the admin from the same computer or set the admin key."}
+  else if(!b.dataset.draft)b.hidden=true;
+}
+
+/* ============ history (undo/redo) + local draft ============ */
+let HIST=[],HI=-1,histT=null;
+function snap(){const j=JSON.stringify(D);if(HIST[HI]===j)return;HIST=HIST.slice(0,HI+1);HIST.push(j);if(HIST.length>80)HIST.shift();HI=HIST.length-1;saveDraft();status();refreshBadge()}
+function snapSoon(){clearTimeout(histT);histT=setTimeout(snap,450)}
+function restore(j){D=JSON.parse(j);normalize();dirty=true;clampSel();renderAll();push();goto();status();saveDraft()}
+function undo(){if(view!=="edit")return;clearTimeout(histT);snap();if(HI<=0)return;HI--;restore(HIST[HI])}
+function redo(){if(view!=="edit")return;if(HI>=HIST.length-1)return;HI++;restore(HIST[HI])}
+function clampSel(){sel=Math.max(0,Math.min(sel,D.slides.length-1));psel=Math.max(0,Math.min(psel,D.projects.length-1))}
+const dkey=()=>"dwDraft:"+dept;
+function saveDraft(){try{if(dirty)localStorage.setItem(dkey(),JSON.stringify(D))}catch(e){}}
+function clearDraft(){try{localStorage.removeItem(dkey())}catch(e){}}
+
+/* ============ preview sync ============ */
+const projAtSlide=i=>PROJS[i]||"";
+function target(){return tab==="slides"?starts[sel]:tab==="projects"?jumpMap[(D.projects[psel]||{}).id]:undefined}
+function push(){clearTimeout(pt);pt=setTimeout(()=>{quiet=Date.now()+900;frame.contentWindow&&frame.contentWindow.postMessage({type:"deck",deck:D,at:curAt},"*")},250)}
+function goto(){const t=target();if(t!==undefined&&frame.contentWindow){quiet=Date.now()+700;curAt=t;frame.contentWindow.postMessage({type:"go",at:t},"*")}}
+function pvGo(i){if(frame.contentWindow)frame.contentWindow.postMessage({type:"go",at:Math.max(0,Math.min(SAYS.length-1,i))},"*")}
+const dwellSec=t=>Math.min(22,Math.max(6,4+words(t)/3));
+function paintPv(){
+  $("#pCnt").textContent=SAYS.length?`${pvAt+1} / ${SAYS.length}`:"–";
+  const tot=SAYS.reduce((a,t)=>a+dwellSec(t),0);
+  $("#pInfo").textContent=SAYS.length?`About ${Math.max(1,Math.round(tot/60))} min on autoplay`:"";
+  $("#sayTx").innerHTML=SAYS[pvAt]?`<b>Voice says:</b> ${esc(SAYS[pvAt])}`:"This slide has no narration.";
+  $("#pOpen").href=`/?d=${dept}#s${pvAt+1}`;
+}
+addEventListener("message",e=>{if(e.source!==frame.contentWindow)return;const m=e.data||{};
+  if(m.type==="ready"){quiet=Date.now()+900;frame.contentWindow.postMessage({type:"deck",deck:D,at:curAt},"*")}
+  if(m.type==="built"){starts=m.starts;jumpMap=m.jump;SAYS=m.says||[];PROJS=m.projs||[];paintPv();if(tab==="slides"||tab==="projects")renderList();renderInsp(true);goto()}
+  if(m.type==="at"){pvAt=m.i;curAt=m.i;paintPv();if(Date.now()>quiet)syncSelection(m.i)}});
+function syncSelection(i){
+  if(tab==="slides"&&starts.length){let b=0;for(let k=0;k<starts.length;k++)if(starts[k]<=i)b=k;if(b!==sel){sel=b;renderList();renderInsp()}}
+  else if(tab==="projects"){const pid=projAtSlide(i),k=D.projects.findIndex(p=>p.id===pid);if(k>=0&&k!==psel){psel=k;renderList();renderInsp()}}
+}
+
+/* ============ load / save ============ */
+function normalize(){
+  D.ar=D.ar||{};D.theme=D.theme||{};D.theme.colors=D.theme.colors||{};D.theme.fonts=D.theme.fonts||{};D.theme.mode=D.theme.mode||"light";D.slides=D.slides||[];D.projects=D.projects||[];D.meta=D.meta||{};
+  const def={sys:["Systems","cpu","wins"],web:["Websites","globe","wins"],infra:["Infrastructure","shield","wins"],fun:["Bloopers","smile","photos"]};
+  D.categories=D.categories||{};for(const c in def)D.categories[c]=D.categories[c]||{title:def[c][0],desc:"",icon:def[c][1],unit:def[c][2]};
+}
+async function loadImgs(){
+  if(online){try{IMGS=(await api("img/"+dept)).map(idOf)}catch{IMGS=[]}}else IMGS=Object.keys(D.ar);
+  IMGS.sort();
+  await Promise.all(IMGS.filter(id=>!D.ar[id]).map(id=>new Promise(r=>{const i=new Image();i.onload=()=>{D.ar[id]=+(i.naturalWidth/i.naturalHeight).toFixed(4);dirty=true;r()};i.onerror=r;i.src=imgUrl(id)})));
+}
+async function loadDept(id){
+  dept=id;D=await (await fetch(`/data/${id}/deck.json`,{cache:"no-cache"})).json();normalize();
+  dirty=false;sel=0;psel=0;curAt=0;pvAt=0;starts=[];jumpMap={};SAYS=[];PROJS=[];filterQ="";await loadImgs();
+  HIST=[];HI=-1;snap();
+  $("#dept").value=id;$("#view").href=`/?d=${id}`;
+  const b=$("#banner");delete b.dataset.draft;b.hidden=true;
+  try{const dr=localStorage.getItem(dkey());if(dr&&dr!==JSON.stringify(D)){b.dataset.draft="1";b.hidden=false;
+    b.innerHTML="You have unsaved edits from an earlier session on this computer.";
+    b.append(h("button",{class:"btn sm",onclick:()=>{D=JSON.parse(dr);normalize();dirty=true;delete b.dataset.draft;b.hidden=true;HIST=[];HI=-1;snap();clampSel();renderAll();push();status();toast("Draft restored","ok")}},"Restore them"),
+      h("button",{class:"btn sm ghost",onclick:()=>{clearDraft();delete b.dataset.draft;b.hidden=true;status()}},"Discard"))}}catch(e){}
+  renderAll();frame.src=`/?d=${id}&preview=1`;status();
+}
+async function saveDeck(){
+  if(!online||!canWrite){download();return}
+  try{await putJson("deck/"+dept,D);dirty=false;clearDraft();const e=DEPTS.find(d=>d.id===dept);if(e){e.name=D.meta.dept||e.name;e.company=D.meta.company||e.company;fillDepts()}
+    status();toast("Saved","ok")}
+  catch(err){toast("Couldn't save: "+err.message,"bad")}
+}
+function save(){view==="playlist"?savePlaylist():saveDeck()}
+function dl(name,obj){const a=h("a",{href:URL.createObjectURL(new Blob([JSON.stringify(obj,null,1)],{type:"application/json"})),download:name});a.click()}
+function download(){
+  if(view==="playlist"){dl("departments.json",DEPTS.map(d=>({id:d.id,name:d.name,company:d.company,include:d.include!==false})));setTimeout(()=>dl("playlist.json",PL),300);toast("Downloaded departments.json and playlist.json. Put both in the data folder.","ok");return}
+  dl("deck.json",D);toast("Downloaded deck.json. Put it in data/"+dept+"/deck.json","ok");
+}
+function fillDepts(){const s=$("#dept");s.innerHTML="";DEPTS.forEach(d=>s.append(h("option",{value:d.id},d.name)));s.value=dept}
+function starter(name,company,copyLook){
+  const y=String(new Date().getFullYear());
+  const dk={version:1,meta:{dept:name,company,title:"Department Wins",year:y},
+   theme:copyLook&&D?clone(D.theme):{mode:"light",colors:{},fonts:{display:"Bricolage Grotesque",body:"DM Sans",mono:"JetBrains Mono"}},
+   categories:{sys:{title:"Systems",desc:"Internal platforms and tools we delivered.",icon:"cpu",unit:"wins"},web:{title:"Websites",desc:"Websites designed and launched.",icon:"globe",unit:"wins"},infra:{title:"Infrastructure",desc:"Networks, security and on-site rollouts.",icon:"shield",unit:"wins"},fun:{title:"Bloopers",desc:"Behind the scenes.",icon:"smile",unit:"photos"}},
+   ar:{},projects:[],slides:[
+    {type:"title",badge:"Department Achievements",l1:"Department",l2:"Wins",year:y,sub:`${name} highlights for **${company||"our company"}**.`,images:[],say:""},
+    {type:"overview",h:"Wins at a glance"},{type:"summary",h:"The year in numbers",departments:[],highlights:[]},
+    {type:"end",eyebrow:"The end",h:"Thank You!",text:"Thank you for being part of our success!",say:""}]};
+  return dk}
+function newDept(){
+  if(!online||!canWrite)return toast("Creating a department needs the local server (node server.js).","bad");
+  const nm=h("input",{placeholder:"e.g. Accounting Department"}),co=h("input",{value:(D&&D.meta.company)||""}),cp=h("input",{type:"checkbox",checked:""});
+  const sw=h("label",{class:"sw"},cp,h("i"));
+  const go=async()=>{
+    const name=nm.value.trim();if(!name){nm.focus();return}
+    const id=slug(name.replace(/department/i,""))||slug(name);
+    if(DEPTS.some(d=>d.id===id)){toast("A department with the id “"+id+"” already exists.","bad");return}
+    try{await api("dept",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,deck:starter(name,co.value.trim(),cp.checked)})});
+      DEPTS.push({id,name,company:co.value.trim(),include:true});m.close();fillDepts();if(view==="playlist")closePlaylist(true);await loadDept(id);toast("Department created","ok")}catch(e){toast(e.message,"bad")}};
+  const m=modal({title:"New department",sub:"It gets its own link and joins the all-departments playlist.",body:h("div",{class:"f"},
+    h("div",{class:"fl"},h("span",{class:"lbl"},"Department name"),nm),h("div",{class:"fl"},h("span",{class:"lbl"},"Company"),co),
+    h("div",{class:"fl inline"},h("div",{},h("span",{class:"lbl"},"Use the same colors and fonts as "+(D?D.meta.dept:"this department")),h("div",{class:"hint"},"You can change the look later in the Look tab.")),sw)),
+    actions:[h("button",{class:"btn",onclick:()=>m.close()},"Cancel"),h("button",{class:"btn pri",onclick:go},"Create department")]});
+  nm.onkeydown=e=>{if(e.key==="Enter")go()};setTimeout(()=>nm.focus(),30);
+}
+async function guard(){return !isDirty()||await ask("Leave without saving?","You have unsaved changes in this view.","Leave without saving",true)}
+
+/* ============ wireframes (small pictures that show what each option looks like) ============ */
+const rc=(x,y,w,hh,c="",r=2,ex="")=>`<rect x="${x}" y="${y}" width="${w}" height="${hh}" rx="${r}" class="${c}" ${ex}/>`;
+const cir=(x,y,r,c="")=>`<circle cx="${x}" cy="${y}" r="${r}" class="${c}"/>`;
+const fan=()=>rc(64,8,42,22,"",3,'transform="rotate(4 85 19)"')+rc(60,25,42,22,"",3,'transform="rotate(-3 81 36)"')+rc(66,42,42,22,"",3,'transform="rotate(2 87 53)"');
+const WF={
+ title:()=>rc(10,16,48,9,"s")+rc(10,29,32,9,"a")+rc(10,44,40,3,"m",1.5)+fan(),
+ overview:()=>rc(10,9,40,8,"s")+rc(78,9,8,8,"a")+rc(90,9,8,8,"m")+rc(102,9,8,8,"m")+[0,1].map(r=>[0,1,2,3,4,5].map(c=>rc(10+c*17,28+r*20,15,17,"",3)).join("")).join(""),
+ summary:()=>[0,1,2,3].map(i=>rc(10+i*26,10,23,20,i?"":"a",3)).join("")+rc(10,38,46,4,"s",2)+rc(10,46,46,3,"m",1.5)+rc(10,53,36,3,"m",1.5)+rc(64,38,46,4,"s",2)+rc(64,46,40,3,"m",1.5)+rc(64,53,44,3,"m",1.5),
+ section:()=>rc(10,12,28,38,"m",3)+rc(44,16,38,9,"s")+rc(44,29,24,2,"a",1)+rc(44,36,34,3,"m",1.5)+rc(88,12,22,10,"",5)+rc(88,26,22,10,"",5)+rc(88,40,22,10,"",5),
+ project:()=>rc(10,10,44,8,"s")+rc(10,22,40,3,"m",1.5)+rc(10,28,36,3,"m",1.5)+rc(10,38,20,12,"",3)+rc(34,38,20,12,"",3)+rc(10,53,20,12,"",3)+rc(34,53,20,12,"",3)+fan(),
+ photos:()=>rc(10,10,44,28,"",3)+rc(60,10,50,28,"",3)+rc(10,44,30,20,"",3)+rc(46,44,34,20,"",3)+rc(86,44,24,20,"",3),
+ map:()=>`<path class="ln" d="M60 36L20 14M60 36L100 14M60 36L18 58M60 36L102 58M60 36L60 66"/>`+cir(60,36,9,"a")+rc(8,8,24,12,"",3)+rc(88,8,24,12,"",3)+rc(6,52,24,12,"",3)+rc(90,52,24,12,"",3)+rc(48,60,24,9,"",3),
+ challenges:()=>[0,1,2].map(i=>rc(10+i*35,10,32,52,"",3)+rc(14+i*35,16,18,4,"s",2)+rc(14+i*35,26,24,8,"c1",2)+rc(14+i*35,37,24,8,"c2",2)+rc(14+i*35,48,24,8,"c3",2)).join(""),
+ lesson:()=>rc(10,14,52,10,"s")+rc(10,28,38,10,"a")+rc(10,46,46,3,"m",1.5)+rc(10,52,40,3,"m",1.5)+[0,1,2].map(i=>rc(72,10+i*19,38,16,"",3)+cir(81,18+i*19,3.5,"a")).join(""),
+ roadmap:()=>[0,1,2].map(i=>rc(8,12+i*19,22,13,"",3)).join("")+`<path class="ln" d="M30 18L52 36M30 37L52 36M30 56L52 36"/>`+cir(58,36,7,"a")+[0,1,2].map(i=>rc(72,10+i*19,40,15,"",3)).join(""),
+ end:()=>rc(24,26,72,12,"s")+rc(40,44,40,4,"m",2)+rc(14,10,5,5,"c1",1)+rc(98,14,5,5,"c2",1)+rc(26,56,5,5,"c3",1)+rc(90,52,5,5,"c1",1)+rc(60,10,5,5,"c2",1)+rc(8,40,5,5,"c2",1)
+};
+const WFM={
+ fan:()=>fan()+rc(10,14,40,6,"s")+rc(10,24,34,3,"m",1.5)+rc(10,30,30,3,"m",1.5),
+ hero:()=>rc(14,8,92,56,"",4)+rc(14,8,92,9,"m",4)+cir(21,12.5,1.6,"s")+cir(27,12.5,1.6,"s")+rc(20,22,30,4,"s",2)+rc(20,30,80,12,"m",2)+rc(20,46,38,12,"m",2)+rc(62,46,38,12,"m",2),
+ phone:()=>[0,1,2].map(i=>rc(14+i*35,8,28,56,"",5)+rc(23+i*35,11,10,2,"s",1)+rc(18+i*35,18,20,8,"m",2)+rc(18+i*35,30,20,26,"m",2)).join(""),
+ orb:()=>cir(60,34,28)+cir(60,34,19)+cir(60,34,10,"a")+rc(8,62,34,5,"m",2.5)+rc(78,62,34,5,"m",2.5)
+};
+const wf=(fnc,cls="")=>`<svg class="wf ${cls}" viewBox="0 0 120 72" aria-hidden="true">${fnc()}</svg>`;
+
+/* ============ slide types + project layouts ============ */
+const TY={
+ title:["Title","Opening slide with the big headline, a subtitle and three floating screenshots."],
+ overview:["Overview","Tiles for every project with counts per section. Built automatically."],
+ summary:["Summary","The year in numbers, the departments supported and key highlights."],
+ section:["Section divider","Opens a section such as Systems or Websites and lists its projects."],
+ project:["Project","One project: an intro slide plus one slide for each screenshot."],
+ photos:["Images only","Pictures and nothing else. Add as many as you like; they are split across slides."],
+ map:["Integration map","A hub with connected systems around it. Click a node to open its slides."],
+ challenges:["Challenges","Cards that pair a challenge with its solution and outcome."],
+ lesson:["Core lesson","One big statement with supporting points."],
+ roadmap:["Roadmap","Systems merging into one hub, plus cards about what comes next."],
+ end:["Closing","The thank-you slide, with confetti."]
+};
+const TL=Object.fromEntries(Object.entries(TY).map(([k,v])=>[k,v[0]]));
+const TICON={title:"flame",overview:"chart",summary:"check",section:"box",project:"cpu",map:"split",photos:"cam",challenges:"shield",lesson:"life",roadmap:"refresh",end:"smile"};
+const MODES=[["fan","Screenshot fan","Three overlapping screens on the intro, then one slide per screenshot."],["hero","One big screenshot","A single large screenshot next to the text."],["phone","Phone screens","App screens side by side on one gallery slide."],["orb","No screenshots","An icon with rings and short taglines. Good for infrastructure."]];
+const MODE_NAME=Object.fromEntries(MODES.map(m=>[m[0],m[1]]));
+const CATS=[["sys","System"],["web","Website"],["infra","Infrastructure"],["fun","Bonus / fun"]];
+const pOf=id=>D.projects.find(p=>p.id===id);
+const pids=()=>D.projects.map(p=>[p.id,p.short||p.id]);
+const lbl=b=>b.type==="section"?"Section: "+((D.categories[b.cat]||{}).title||b.cat):b.type==="project"?((pOf(b.id)||{}).short||b.id||"Project"):TL[b.type]||b.type;
+
+/* ============ pickers ============ */
+function iconBtn(val,set,compact){
+  const btn=h("button",{class:"pick"+(compact?" compact":""),type:"button"});
+  const paint=()=>{btn.innerHTML=`<span class="pi">${val&&ICONS[val]?svg(val,1.7):ico("plus")}</span>`+(compact?"":`<span class="pt">${val?esc(val):"Choose an icon"}<small>Click to change</small></span>`)};
+  paint();btn.onclick=()=>openIcons(val,v=>{val=v;set(v);paint()});return btn}
+function openIcons(cur,pick){
+  const q=h("input",{class:"search",placeholder:"Search icons"}),grid=h("div",{class:"icg"});
+  const draw=()=>{grid.innerHTML="";Object.keys(ICONS).filter(k=>k.includes(q.value.trim().toLowerCase())).forEach(k=>grid.append(h("button",{class:k===cur?"on":"",title:k,onclick:()=>{pick(k);m.close()},html:svg(k,1.6)+"<span>"+k+"</span>"})))};
+  q.oninput=draw;draw();const m=modal({title:"Choose an icon",body:h("div",{},q,grid)});setTimeout(()=>q.focus(),30);
+}
+function imgThumb(val,cls="th"){return val?h("img",{class:cls,src:imgUrl(val),alt:"",onerror:function(){this.style.opacity=.2}}):h("span",{class:cls+" empty",html:ico("image")})}
+function imgField(val,set,compact){
+  const btn=h("button",{class:"pick"+(compact?" compact":""),type:"button"});
+  const paint=()=>{btn.innerHTML="";btn.append(imgThumb(val));if(!compact)btn.append(h("span",{class:"pt"},val||"Choose an image",h("small",{},val?"Click to change":"Pick from the images you uploaded")))};
+  paint();btn.onclick=()=>openImgPicker({cur:val,onDone:ids=>{val=ids[0]||"";set(val);paint()}});return btn}
+function openImgPicker({multi=false,cur="",onDone}){
+  let chosen=[];const q=h("input",{class:"search",placeholder:"Search images",style:"flex:1"}),grid=h("div",{class:"ipg"}),cnt=h("button",{class:"btn pri",disabled:""},"Add images");
+  const file=h("input",{type:"file",accept:"image/*",multiple:"",style:"display:none",onchange:async e=>{await upload([...e.target.files]);draw()}});
+  const draw=()=>{grid.innerHTML="";const L=IMGS.filter(id=>id.includes(q.value.trim().toLowerCase()));
+    if(!L.length)grid.append(h("div",{class:"empty",style:"grid-column:1/-1"},IMGS.length?"No image matches your search.":"No images yet. Upload some to use them in slides."));
+    L.forEach(id=>{const on=multi?chosen.includes(id):id===cur;
+      grid.append(h("button",{class:"it"+(on?" on":""),type:"button",onclick:()=>{if(!multi){m.close();onDone([id]);return}
+        const k=chosen.indexOf(id);k>=0?chosen.splice(k,1):chosen.push(id);cnt.textContent=chosen.length?`Add ${chosen.length} image${chosen.length>1?"s":""}`:"Add images";chosen.length?cnt.removeAttribute("disabled"):cnt.setAttribute("disabled","");draw()}},
+        h("img",{src:imgUrl(id),loading:"lazy",alt:""}),h("span",{},id),h("i",{class:"ck"},multi&&chosen.includes(id)?String(chosen.indexOf(id)+1):"✓")))})};
+  q.oninput=draw;cnt.onclick=()=>{m.close();onDone(chosen)};draw();
+  const acts=[];if(!multi&&cur)acts.push(h("button",{class:"btn",onclick:()=>{m.close();onDone([])}},"No image"));
+  acts.push(h("button",{class:"btn",onclick:()=>m.close()},"Cancel"));if(multi)acts.push(cnt);
+  const m=modal({title:multi?"Add images":"Choose an image",sub:multi?"Click several, in the order you want them.":"Images come from this department's img folder.",wide:true,
+    body:h("div",{},h("div",{style:"display:flex;gap:8px"},q,h("button",{class:"btn",onclick:()=>file.click()},I("upload"),"Upload new"),file),grid),actions:acts});
+  setTimeout(()=>q.focus(),30);
+}
+
+/* ============ form engine ============ */
+const T=(k,l,t="text",x={})=>({k,l,t,...x});
+const G=(g,d,x={})=>({g,d,...x});
+function sel_(opts,val,set){const s=h("select",{},opts.map(o=>{const[v,l]=Array.isArray(o)?o:[o,o];return h("option",{value:v},l)}));s.value=val??"";s.onchange=()=>set(s.value);return s}
+function listEd(a,rowFn,mk,o={}){
+  const w=h("div",{class:"le"});
+  const draw=()=>{w.innerHTML="";
+    if(!a.length&&o.empty)w.append(h("div",{class:"empty"},o.empty));
+    a.forEach((it,i)=>w.append(h("div",{class:"lr"},h("div",{class:"lc"},rowFn(it,i)),h("div",{class:"lb"},
+      h("button",{class:"ib",title:"Move up",disabled:i?false:"",onclick:()=>{if(i){[a[i-1],a[i]]=[a[i],a[i-1]];changed();draw()}}},I("up")),
+      h("button",{class:"ib",title:"Move down",disabled:i<a.length-1?false:"",onclick:()=>{if(i<a.length-1){[a[i+1],a[i]]=[a[i],a[i+1]];changed();draw()}}},I("down")),
+      h("button",{class:"ib danger",title:"Remove",onclick:()=>{a.splice(i,1);changed();draw()}},I("x"))))));
+    if(!o.max||a.length<o.max)w.append(h("button",{class:"btn sm addb",onclick:()=>{a.push(mk());changed();draw()}},I("plus"),o.add||"Add"))};
+  draw();return w}
+function cell(col,it,j){
+  const[ty,lab]=col.includes(":")?col.split(":"):["text",col],set=v=>{it[j]=v;changed()};
+  if(ty==="img")return imgField(it[j],set,true);
+  if(ty==="icon")return iconBtn(it[j],set,true);
+  if(ty==="pid")return sel_([["","Choose a project"],...pids()],it[j],set);
+  if(ty==="cso")return sel_([["c","Challenge (amber)"],["s","Solution (blue)"],["o","Outcome (green)"]],it[j],set);
+  if(ty==="area")return h("textarea",{rows:3,placeholder:lab,oninput:e=>set(e.target.value)},it[j]??"");
+  return h("input",{placeholder:lab,title:lab,value:it[j]??"",oninput:e=>set(e.target.value)})}
+function thumbs(a,max){
+  const w=h("div",{class:"tgrid"});
+  const draw=()=>{w.innerHTML="";
+    a.forEach((id,i)=>w.append(h("div",{class:"tn"},imgThumb(id,""),h("span",{class:"no"},String(i+1)),h("div",{class:"bar"},
+      h("button",{title:"Move earlier",onclick:()=>{if(i){[a[i-1],a[i]]=[a[i],a[i-1]];changed();draw()}}},I("left")),
+      h("button",{title:"Remove",onclick:()=>{a.splice(i,1);changed();draw()}},I("x")),
+      h("button",{title:"Move later",onclick:()=>{if(i<a.length-1){[a[i+1],a[i]]=[a[i],a[i+1]];changed();draw()}}},I("right"))))));
+    if(!max||a.length<max)w.append(h("div",{class:"tn add",onclick:()=>openImgPicker({multi:true,onDone:ids=>{ids.forEach(x=>{if(!max||a.length<max)a.push(x)});changed();draw()}})},"+ Add")) };
+  draw();return w}
+const secKey=(k,g)=>k+"/"+g;
+function form(o,schema,fk=""){
+  const root=h("div",{class:"f"});let cur=root;
+  for(const s of schema){
+    if(s.g!==undefined){
+      const key=secKey(fk,s.g),open=secState[key]!==undefined?secState[key]:!s.closed;
+      const det=h("details",{class:"sec",open:open?"":false},h("summary",{},h("span",{class:"st"},s.g),s.d?h("small",{},s.d):null));
+      det.ontoggle=()=>{secState[key]=det.open};const body=h("div",{class:"sb"});det.append(body);root.append(det);cur=body;continue}
+    if(s.show&&!s.show(o))continue;
+    const set=v=>{o[s.k]=v;if(s.after)s.after(o,v);changed()};let c,inline=false;
+    switch(s.t){
+      case"text":c=h("input",{value:o[s.k]??"",disabled:s.ro?"":false,oninput:e=>set(e.target.value)});break;
+      case"num":c=h("input",{type:"number",value:o[s.k]??0,oninput:e=>set(+e.target.value)});break;
+      case"area":{const cnt=t=>words(t)?`${words(t)} words, about ${Math.round(words(t)/2.6)} sec spoken`:"";
+        const cn=s.say?h("div",{class:"cnt2"},cnt(o[s.k])):null;
+        c=h("textarea",{rows:s.r||3,oninput:e=>{set(e.target.value);if(cn)cn.textContent=cnt(e.target.value)}},o[s.k]??"");
+        if(cn)c=h("div",{style:"display:flex;flex-direction:column;gap:4px"},c,cn);break}
+      case"sel":c=sel_(s.o,o[s.k],set);break;
+      case"pid":c=sel_([["","Choose a project"],...pids()],o[s.k],set);break;
+      case"icon":c=iconBtn(o[s.k],set);break;
+      case"img":c=imgField(o[s.k],set);break;
+      case"bool":inline=true;c=h("label",{class:"sw"},h("input",{type:"checkbox",checked:o[s.k]?"":false,onchange:e=>set(e.target.checked?1:0)}),h("i"));break;
+      case"cat":c=h("div",{class:"chips2",role:"radiogroup"},CATS.map(([k,n])=>h("button",{type:"button",class:"cc "+k+(o[s.k]===k?" on":""),role:"radio","aria-checked":o[s.k]===k?"true":"false",onclick:()=>set(k)},h("i"),h("span",{},(D.categories[k]||{}).title||n))));break;
+      case"mode":c=h("div",{class:"cards"},MODES.map(([k,n,d])=>h("button",{type:"button",class:"oc"+(o[s.k]===k?" on":""),onclick:()=>set(k)},h("div",{html:wf(WFM[k])}),h("b",{},n,h("span",{class:"tk",html:ico("check",3)})),h("small",{},d))));break;
+      case"lines":c=h("textarea",{rows:s.r||4,placeholder:s.ph||"",oninput:e=>set(e.target.value.split("\n").map(x=>x.trim()).filter(Boolean))},(o[s.k]||[]).join("\n"));break;
+      case"imgs":{const a=o[s.k]=o[s.k]||[];c=thumbs(a,s.max);break}
+      case"tuples":{const a=o[s.k]=o[s.k]||[],img0=s.cols[0].startsWith("img");
+        c=listEd(a,it=>img0?h("div",{class:"tup withimg"},cell(s.cols[0],it,0),h("div",{class:"col"},s.cols.slice(1).map((col,j)=>cell(col,it,j+1)))):h("div",{class:"tup"},s.cols.map((col,j)=>cell(col,it,j))),()=>s.cols.map(()=>""),{max:s.max,empty:s.empty,add:s.add});break}
+      case"list":{const a=o[s.k]=o[s.k]||[];c=listEd(a,(it,i)=>h("details",{open:""},h("summary",{},(s.name||"Item")+" "+(i+1)+(it[s.tk]?": "+it[s.tk]:"")),form(it,s.s,fk+"/"+s.k)),()=>s.mk(),{add:s.add||("Add "+(s.name||"item").toLowerCase()),empty:s.empty});break}
+    }
+    cur.append(h("div",{class:"fl"+(inline?" inline":"")},inline?h("div",{},h("span",{class:"lbl"},s.l),s.hint?h("div",{class:"hint"},s.hint):null):h("span",{class:"lbl"},s.l),inline?c:null,(!inline&&s.hint)?h("div",{class:"hint"},s.hint):null,inline?null:c));
+  }
+  return root}
+
+/* ============ schemas ============ */
+function moveProj(p){D.slides=D.slides.filter(b=>!(b.type==="project"&&b.id===p.id));placeProject(p);renderInsp(true)}
+function placeProject(p){
+  let si=D.slides.findIndex(b=>b.type==="section"&&b.cat===p.cat);
+  if(si<0){const e=D.slides.findIndex(b=>b.type==="end");si=e<0?D.slides.length:e;D.slides.splice(si,0,{type:"section",cat:p.cat})}
+  let at=si+1;while(at<D.slides.length&&D.slides[at].type==="project")at++;
+  D.slides.splice(at,0,{type:"project",id:p.id})}
+const SAY=T("say","Voice text","area",{r:4,say:1,hint:"What the AI voice reads. Leave blank and it reads an automatic summary."});
+const hasPhotos=o=>o.cat==="fun"||(o.photos&&o.photos.length)||(o.groups&&o.groups.length);
+const needShots=o=>o.mode!=="orb"&&!((o.photos&&o.photos.length)||(o.groups&&o.groups.length))||(o.shots&&o.shots.length);
+const PROJ=[
+ G("Basics","The name, section and label of this project."),
+ T("title","Full title","text",{hint:"The big headline on the project's first slide."}),
+ T("short","Short name","text",{hint:"Used on tiles, the table of contents and the ticker."}),
+ T("cat","Section","cat",{after:moveProj,hint:"Decides which section the project is listed under."}),
+ T("tag","Tag","text",{hint:"A small label next to the number, such as ERP System."}),
+ T("icon","Icon","icon"),
+ T("status","Status label","text",{hint:"Shows a green pill with a progress bar. Leave blank to hide it."}),
+ T("id","ID","text",{ro:1,hint:"Fixed. Used internally to connect slides to this project."}),
+ G("Story","The words on the first slide."),
+ T("lead","Description","area",{r:4}),
+ T("prob","Before: the problem","area",{r:2,hint:"Optional. One line on how things worked before this project."}),
+ T("caps","Capabilities","lines",{r:4,ph:"One capability per line",hint:"Shown as a checklist. One per line."}),
+ T("chips","Highlight chips","tuples",{cols:["Value (e.g. 100%)","Label (e.g. Deployment complete)"],max:4,add:"Add chip",empty:"No chips yet. Chips are big numbers shown under the text, up to 4."}),
+ G("Visuals","How this project looks on screen."),
+ T("mode","Layout","mode",{after:()=>renderInsp(true)}),
+ T("shots","Screenshots","tuples",{cols:["img:Screenshot","Caption"],show:o=>o.mode!=="orb"&&needShots(o),add:"Add screenshot",empty:"No screenshots yet. Each one gets its own slide with the caption as its title."}),
+ T("tagline","Taglines","lines",{show:o=>o.mode==="orb",hint:"Short lines shown beside the icon. One per line."}),
+ T("photos","Photo pages","imgs",{show:hasPhotos,hint:"Photos shown four to a slide."}),
+ T("photoTitle","Photo page title","text",{show:hasPhotos}),
+ T("groups","Captioned photo groups","list",{show:o=>(o.groups&&o.groups.length)||o.cat==="fun",name:"Group",tk:"h",add:"Add group",mk:()=>({h:"",p:"",ids:[]}),s:[T("h","Heading"),T("p","Text","area"),T("ids","Images","imgs")]}),
+ G("Advanced","Rarely needed.",{closed:true}),
+ T("fanIds","Intro images override","imgs",{max:3,show:o=>o.mode==="fan"||o.mode==="phone",hint:"By default the intro uses the first three screenshots."}),
+ T("galleryTitle","Phone gallery title","text",{show:o=>o.mode==="phone"}),T("gallerySay","Phone gallery voice text","area",{show:o=>o.mode==="phone"}),
+ T("photoSay","Photo page voice text","lines",{show:hasPhotos,hint:"Up to three lines: first page, middle pages, last page."})
+];
+const EY=[T("eyebrow","Small label"),T("eyebrow2","Second label")];
+const BS={
+ title:[G("Headline"),T("badge","Badge","text",{hint:"The small pill above the title."}),T("l1","Title line 1"),T("l2","Title line 2 (accent color)"),T("year","Year"),T("sub","Subtitle","area",{hint:"Wrap words in **double asterisks** to make them bold."}),
+   G("Floating screenshots","Three images drift beside the title."),T("images","Screenshots","imgs",{max:3}),G("Narration"),SAY],
+ overview:[G("Heading","Tiles and counts are built from your projects automatically."),T("h","Heading")],
+ summary:[G("Heading"),T("h","Heading"),G("Lists","Counts are calculated for you. These two lists are typed."),T("departments","Departments supported","lines",{hint:"One per line."}),T("highlights","Highlights","lines",{hint:"One per line."})],
+ section:[G("Section","Lists every project in the chosen section."),T("cat","Section","cat")],
+ project:[G("Project","The words and screenshots are edited in the Projects tab."),T("id","Project shown here","pid")],
+ photos:[G("Images","Pick as many as you want. They fill the whole slide with no other text.",{}),T("images","Images","imgs",{hint:"Order matters: they appear left to right, top to bottom."}),T("per","Images per slide","sel",{o:[["1","1 (full size)"],["2","2"],["3","3"],["4","4"],["6","6"],["8","8"]],hint:"More images than this continue on the next slide automatically."}),T("tilt","Slight tilt","bool"),G("Heading (optional)","Leave blank for pictures only.",{closed:true}),T("eyebrow","Small label"),T("h","Heading"),G("Narration"),SAY],
+ map:[G("Heading"),...EY,T("h","Heading"),G("Center hub"),T("hubId","Hub project","pid"),T("hubT","Hub title"),T("hubS","Hub subtitle"),T("hubIc","Hub icon","icon"),
+   G("Connected systems","Place each node on the map: x from 190 to 1550, y from 60 to 640."),
+   T("nodes","Nodes","list",{name:"Node",tk:"t",add:"Add node",mk:()=>({id:"",ic:"box",t:"New node",d:"",s:"",x:870,y:350}),
+     s:[T("id","Project","pid"),T("t","Title"),T("d","Department"),T("s","Short note"),T("ic","Icon","icon"),T("x","X","num"),T("y","Y","num"),T("infra","Use infrastructure color","bool"),T("via","Connect via (optional)","pid")]}),G("Narration"),SAY],
+ challenges:[G("Heading"),...EY,T("h","Heading"),G("Cards","Each card pairs a challenge with a solution and outcome."),
+   T("items","Cards","list",{name:"Card",tk:"t",add:"Add card",mk:()=>({k:"Challenge",t:"",rows:[["c","Challenge",""],["s","Solution",""],["o","Outcome",""]]}),
+     s:[T("k","Label"),T("t","Title"),T("rows","Rows","tuples",{cols:["cso:Type","Heading","area:Text"]})]}),G("Narration"),SAY],
+ lesson:[G("Headline"),...EY,T("h","Big headline"),T("lead","Lead text","area"),G("Supporting points"),T("items","Points","tuples",{cols:["icon:Icon","Title","area:Text"],add:"Add point"}),G("Narration"),SAY],
+ roadmap:[G("Heading"),...EY,T("h","Heading"),G("Left side","Systems that merge into one hub."),T("lk","Left label"),T("lh","Left heading"),
+   T("systems","Systems merging","tuples",{cols:["pid:Project","icon:Icon","Label"],add:"Add system"}),T("hub","Hub label"),T("hubSub","Hub sub-label"),T("noteK","Note label"),T("noteT","Note text"),
+   G("Right cards","Up to four cards."),T("cards","Cards","list",{name:"Card",tk:"k",add:"Add card",mk:()=>({kind:"text",k:"New",h:"",p:""}),
+     s:[T("kind","Type","sel",{o:[["pills","Pills"],["text","Heading and text"],["flow","Flow A to B"]]}),T("k","Label"),T("h","Heading"),T("p","Text","area"),T("items","Pills (one per line)","lines"),T("from","Flow from"),T("to","Flow to")]}),G("Narration"),SAY],
+ end:[G("Closing message"),T("eyebrow","Small label"),T("h","Heading"),T("text","Text","area"),G("Narration"),SAY]};
+const NEW={
+ title:()=>({type:"title",badge:"Department Achievements",l1:"Department",l2:"Wins",year:D.meta.year,sub:"",images:[],say:""}),
+ overview:()=>({type:"overview",h:"Wins at a glance"}),summary:()=>({type:"summary",h:"The year in numbers",departments:[],highlights:[]}),
+ section:()=>({type:"section",cat:"sys"}),
+ project:()=>{const used=new Set(D.slides.filter(b=>b.type==="project").map(b=>b.id));const p=D.projects.find(p=>!used.has(p.id));return{type:"project",id:p?p.id:""}},
+ photos:()=>({type:"photos",eyebrow:"",h:"",images:[],per:4,tilt:0,say:""}),
+ map:()=>({type:"map",eyebrow:"Ecosystem",eyebrow2:"Integration map",h:"How it all connects",hubId:"",hubT:"Core",hubS:"Main system",hubIc:"chart",nodes:[],say:""}),
+ challenges:()=>({type:"challenges",eyebrow:"Challenges",eyebrow2:"and lessons",h:"What we faced, what we learned",items:[],say:""}),
+ lesson:()=>({type:"lesson",eyebrow:"Core lesson",eyebrow2:"",h:"Headline.",lead:"",items:[],say:""}),
+ roadmap:()=>({type:"roadmap",eyebrow:"What's next",eyebrow2:"Roadmap",h:"Next year",lk:"Plan",lh:"",systems:[],hub:"Goal",hubSub:"",noteK:"",noteT:"",cards:[],say:""}),
+ end:()=>({type:"end",eyebrow:"The end",h:"Thank You!",text:"",say:""})};
+
+/* ============ usage + checks ============ */
+function usage(){
+  const u={},add=id=>{if(id)u[id]=(u[id]||0)+1};
+  D.slides.forEach(b=>{if(b.type==="title"||b.type==="photos")(b.images||[]).forEach(add)});
+  D.projects.forEach(p=>{(p.shots||[]).forEach(s=>add(s[0]));(p.fanIds||[]).forEach(add);(p.photos||[]).forEach(add);(p.groups||[]).forEach(g=>(g.ids||[]).forEach(add))});
+  return u}
+function whereUsed(id){
+  const r=[];D.slides.forEach(b=>{if(b.type==="title"&&(b.images||[]).includes(id))r.push("Title slide");if(b.type==="photos"&&(b.images||[]).includes(id))r.push("Images-only slide")});
+  D.projects.forEach(p=>{const n=p.short||p.id;
+    if((p.shots||[]).some(s=>s[0]===id))r.push(n+" (screenshot)");if((p.fanIds||[]).includes(id))r.push(n+" (intro)");
+    if((p.photos||[]).includes(id)||(p.groups||[]).some(g=>(g.ids||[]).includes(id)))r.push(n+" (photos)")});
+  return r}
+function computeChecks(){
+  const out=[],U=usage(),have=new Set(IMGS),pset=new Set(D.projects.map(p=>p.id)),placed=new Set(D.slides.filter(b=>b.type==="project").map(b=>b.id));
+  const openP=i=>()=>{tab="projects";psel=i;renderAll();goto()};
+  D.slides.forEach((b,i)=>{if(b.type==="project"&&!pset.has(b.id))out.push({lv:"bad",t:"A slide points to a project that no longer exists",d:`Block ${i+1} will show nothing. Pick another project or delete the block.`,btn:"Show block",go:()=>{tab="slides";sel=i;renderAll();goto()}})});
+  D.projects.forEach((p,i)=>{const nm=p.short||p.id;
+    if(!placed.has(p.id))out.push({lv:"warn",t:nm+" isn't in the slide order",d:"It won't appear in the presentation until you add it.",btn:"Add to slides",go:()=>{placeProject(p);changed();toast("Added to Slides","ok");renderAll()}});
+    if(!(p.title||"").trim())out.push({lv:"bad",t:nm+" has no title",btn:"Open",go:openP(i)});
+    if(!(p.lead||"").trim())out.push({lv:"warn",t:nm+" has no description",d:"The first slide will look empty.",btn:"Open",go:openP(i)});
+    const hasShots=(p.shots||[]).some(s=>s[0]),hasPh=(p.photos||[]).length||(p.groups||[]).length;
+    if(p.mode!=="orb"&&!hasShots&&!hasPh)out.push({lv:"warn",t:nm+" has no screenshots",d:"Its layout expects screenshots. Add some, or switch to “No screenshots”.",btn:"Open",go:openP(i)});
+    const miss=new Set();[...(p.shots||[]).map(s=>s[0]),...(p.fanIds||[]),...(p.photos||[]),...(p.groups||[]).flatMap(g=>g.ids||[])].forEach(id=>{if(id&&!have.has(id))miss.add(id)});
+    if(miss.size)out.push({lv:"bad",t:nm+": "+miss.size+" image"+(miss.size>1?"s":"")+" not found",d:[...miss].slice(0,3).join(", ")+(miss.size>3?"…":"")+" is not in the img folder.",btn:"Open",go:openP(i)});
+    if((p.shots||[]).some(s=>!s[0]))out.push({lv:"warn",t:nm+" has a screenshot row without an image",btn:"Open",go:openP(i)});
+  });
+  D.slides.forEach((t,ti)=>{if(t.type==="title"||t.type==="photos")(t.images||[]).forEach(id=>{if(id&&!have.has(id))out.push({lv:"bad",t:TL[t.type]+" slide uses a missing image",d:id,btn:"Show",go:()=>{tab="slides";sel=ti;renderAll();goto()}})})});
+  if(!D.slides.some(b=>b.type==="title"))out.push({lv:"info",t:"There is no title slide",d:"Add one so the department has an opening."});
+  if(!D.slides.some(b=>b.type==="end"))out.push({lv:"info",t:"There is no closing slide",d:"Add one so the presentation ends cleanly."});
+  const un=IMGS.filter(id=>!U[id]);if(un.length)out.push({lv:"info",t:un.length+" uploaded image"+(un.length>1?"s aren't":" isn't")+" used anywhere",d:"Harmless, but you can delete them in the Images tab.",btn:"See images",go:()=>{tab="media";mfilter="unused";renderAll()}});
+  const hid=D.slides.filter(b=>b.hidden).length;if(hid)out.push({lv:"info",t:hid+" slide block"+(hid>1?"s are":" is")+" hidden",d:"Hidden blocks are skipped when presenting.",btn:"Show in Slides",go:()=>{tab="slides";renderAll()}});
+  return out}
+let CHK=[];
+function refreshBadge(){if(!D)return;CHK=computeChecks();const n=CHK.filter(c=>c.lv!=="info").length;const b=document.querySelector("#tabs .tab[data-t=checks] .bd");
+  if(b){b.textContent=n;b.hidden=!n}else if(n)renderTabs();if(tab==="checks")renderList()}
+
+/* ============ tabs ============ */
+const TABS=[["slides","Slides","layers"],["projects","Projects","folder"],["media","Images","image"],["look","Look","palette"],["details","Details","info"],["checks","Checks","checkc"]];
+function setTab(t){tab=t;renderAll();goto()}
+function renderTabs(){const t=$("#tabs");t.innerHTML="";const n=CHK.filter(c=>c.lv!=="info").length;
+  TABS.forEach(([k,l,i])=>t.append(h("button",{class:"tab"+(tab===k?" on":""),"data-t":k,onclick:()=>setTab(k)},I(i),l,k==="checks"&&n?h("span",{class:"bd"},String(n)):null)))}
+function renderAll(){if(!D)return;renderTabs();renderList();renderInsp()}
+
+/* ============ left panel ============ */
+let mfilter="all",isel="";
+function searchBox(ph){const s=h("input",{class:"search",placeholder:ph,value:filterQ,oninput:e=>{filterQ=e.target.value;renderList()}});return s}
+const nOf=i=>{if(!starts.length||starts[i]===undefined)return null;const end=i+1<starts.length?starts[i+1]:SAYS.length;return Math.max(0,end-starts[i])};
+function blockInfo(b,i){
+  const n=nOf(i),cnt=n===null?"":(n===1?"1 slide":n+" slides");
+  if(b.type==="project"){const p=pOf(b.id);return{t:p?(p.short||p.id):"Missing project",s:(p?MODE_NAME[p.mode]||"Project":"Choose a project")+(cnt?", "+cnt:""),ic:p?p.icon:"cpu",cls:p?p.cat:"",bad:!p}}
+  if(b.type==="section"){const c=D.categories[b.cat]||{};return{t:c.title||b.cat,s:"Section divider",ic:c.icon||"box",cls:b.cat}}
+  const sub=b.type==="title"?[b.l1,b.l2].filter(Boolean).join(" "):b.type==="photos"?(b.h||(b.images||[]).length+" images"):(b.h||"");
+  return{t:TL[b.type]||b.type,s:sub,ic:TICON[b.type]||"box",cls:""}}
+function renderList(){
+  const b=$("#lbody"),hd=$("#lhead"),ft=$("#lfoot"),keep=b.scrollTop;b.innerHTML="";
+  if(hd.dataset.tab!==tab){hd.innerHTML="";hd.dataset.tab=tab;filterQ="";if(tab==="slides")hd.append(searchBox("Search slides"));else if(tab==="projects")hd.append(searchBox("Search projects"));else if(tab==="media")hd.append(searchBox("Search images"))}
+  hd.style.display=(tab==="slides"||tab==="projects"||tab==="media")?"":"none";
+  ft.innerHTML="";ft.style.display="none";const q=filterQ.trim().toLowerCase();
+  if(tab==="slides"){
+    ft.style.display="flex";ft.append(h("button",{class:"btn pri",onclick:openAddSlide},I("plus"),"Add slide"));
+    b.append(h("div",{class:"help"},"This is the order of the presentation. Drag to reorder, click to edit. Use the eye to hide a block without deleting it."));
+    D.slides.forEach((s,i)=>{const bi=blockInfo(s,i);if(q&&!(bi.t+" "+bi.s).toLowerCase().includes(q))return;
+      const r=h("div",{class:"row"+(i===sel?" on":"")+(s.hidden?" hid":""),draggable:"true",onclick:()=>{sel=i;renderList();renderInsp();goto()}},
+        h("span",{class:"gr",title:"Drag to reorder",html:ico("grip")}),h("span",{class:"ti "+bi.cls,html:svg(bi.ic,1.6)}),
+        h("div",{class:"t"},h("b",{},bi.t),h("small",{},(s.hidden?"Hidden. ":"")+bi.s)),
+        h("div",{class:"ac"},
+          h("button",{class:"ib keep",title:s.hidden?"Show in presentation":"Hide from presentation",onclick:e=>{e.stopPropagation();toggleHide(i)}},I(s.hidden?"eyeoff":"eye")),
+          h("button",{class:"ib",title:"Duplicate",onclick:e=>{e.stopPropagation();dupBlock(i)}},I("dup")),
+          h("button",{class:"ib danger",title:"Delete",onclick:e=>{e.stopPropagation();delBlock(i)}},I("trash"))));
+      r.ondragstart=e=>{e.dataTransfer.setData("text/plain",String(i));r.style.opacity=.5};r.ondragend=()=>{r.style.opacity=1};
+      r.ondragover=e=>{e.preventDefault();r.classList.add("over")};r.ondragleave=()=>r.classList.remove("over");
+      r.ondrop=e=>{e.preventDefault();const f=+e.dataTransfer.getData("text/plain");if(isNaN(f)||f===i)return;const[x]=D.slides.splice(f,1);D.slides.splice(i,0,x);sel=i;changed();renderInsp();goto()};
+      b.append(r)});
+  }else if(tab==="projects"){
+    ft.style.display="flex";ft.append(h("button",{class:"btn pri",onclick:newProject},I("plus"),"New project"));
+    if(!D.projects.length)b.append(h("div",{class:"empty"},"No projects yet. A project is one win: it gets an intro slide and a slide for each screenshot."));
+    CATS.forEach(([c,name])=>{const L=D.projects.map((p,i)=>[p,i]).filter(([p,i])=>p.cat===c&&(!q||((p.short||"")+" "+(p.title||"")).toLowerCase().includes(q)));if(!L.length)return;
+      b.append(h("div",{class:"grp"},h("span",{class:"dot",style:"background:var(--"+({sys:"acc",web:"amber",infra:"sky",fun:"rose"})[c]+")"}),((D.categories[c]||{}).title||name)+" ("+L.length+")"));
+      L.forEach(([p,i])=>{const first=(p.shots&&p.shots[0]&&p.shots[0][0])||(p.photos&&p.photos[0])||"";
+        b.append(h("div",{class:"row"+(i===psel?" on":""),onclick:()=>{psel=i;renderList();renderInsp();goto()},style:"grid-template-columns:auto 34px minmax(0,1fr) auto"},
+          h("span",{class:"gr",style:"visibility:hidden",html:ico("grip")}),h("span",{class:"ti "+p.cat},first&&IMGS.includes(first)?h("img",{src:imgUrl(first),alt:"",loading:"lazy"}):h("span",{html:svg(p.icon,1.6)})),
+          h("div",{class:"t"},h("b",{},p.short||p.id),h("small",{},MODE_NAME[p.mode]||p.mode)),h("span")))})});
+  }else if(tab==="media"){
+    ft.style.display="flex";const inp=h("input",{type:"file",accept:"image/*",multiple:"",style:"display:none",onchange:e=>upload([...e.target.files])});
+    ft.append(h("button",{class:"btn pri",onclick:()=>inp.click()},I("upload"),"Upload images"),inp);
+    const U=usage(),drop=h("div",{class:"up"},h("b",{},"Drop images here"),"or use Upload images below. They are converted to WebP and saved in ",h("code",{},"img/"+dept+"/"));
+    drop.ondragover=e=>{e.preventDefault();drop.classList.add("drag")};drop.ondragleave=()=>drop.classList.remove("drag");
+    drop.ondrop=e=>{e.preventDefault();drop.classList.remove("drag");upload([...e.dataTransfer.files].filter(f=>f.type.startsWith("image/")))};
+    const unused=IMGS.filter(id=>!U[id]).length;
+    b.append(drop,h("div",{class:"seg"},[["all","All ("+IMGS.length+")"],["unused","Not used ("+unused+")"]].map(([k,l])=>h("button",{class:mfilter===k?"on":"",onclick:()=>{mfilter=k;renderList()}},l))));
+    const L=IMGS.filter(id=>(!q||id.includes(q))&&(mfilter==="all"||!U[id]));
+    if(!L.length)b.append(h("div",{class:"empty"},IMGS.length?"Nothing to show for this filter.":"No images yet."));
+    b.append(h("div",{class:"mgrid"},L.map(id=>h("div",{class:"gi",style:id===isel?"outline:2px solid var(--acc)":"",onclick:()=>{isel=id;renderList();renderInsp()}},h("img",{src:imgUrl(id),loading:"lazy",alt:""}),
+      h("div",{class:"nm"},id,h("small",{class:U[id]?"":"un"},U[id]?"Used "+U[id]+"x":"Not used")),
+      h("button",{class:"ib danger",title:"Delete image",onclick:e=>{e.stopPropagation();delImg(id)}},I("trash"))))));
+  }else if(tab==="look"){
+    const F={...{display:"Bricolage Grotesque",body:"DM Sans",mono:"JetBrains Mono"},...D.theme.fonts},C={...baseCols(),...D.theme.colors};
+    b.append(h("div",{class:"help"},"The look is saved per department. Layouts and animations stay the same; only colors, fonts and light or dark change. The preview updates as you click."),
+      h("div",{class:"mini",style:"background:"+(D.theme.mode==="dark"?"#07101e":"#fff")+";color:"+(D.theme.mode==="dark"?"#eaf2fc":"#0b1424")},
+        h("div",{class:"h",style:"font-family:'"+F.display+"',sans-serif"},"Department Wins"),h("div",{class:"p",style:"font-family:'"+F.body+"',sans-serif;color:"+(D.theme.mode==="dark"?"#93a6c2":"#5a6b85")},"How your slides will read."),
+        h("div",{class:"dots"},["mint","amber","sky","rose"].map(k=>h("i",{style:"background:"+C[k]})))));
+  }else if(tab==="details"){
+    const by=c=>D.projects.filter(p=>p.cat===c).length,tot=SAYS.reduce((a,t)=>a+dwellSec(t),0);
+    b.append(h("div",{class:"help"},"Basic facts about this department's deck. The department name and company appear on every slide footer."),
+      h("div",{class:"card",style:"box-shadow:none"},h("h3",{},"At a glance"),
+        ...[["Projects",D.projects.length],["Systems",by("sys")],["Websites",by("web")],["Infrastructure",by("infra")],["Slides on screen",SAYS.length||"..."],["Autoplay length",SAYS.length?"about "+Math.max(1,Math.round(tot/60))+" min":"..."]].map(([k,v])=>h("div",{class:"ll"},h("span",{class:"muted"},k),h("b",{},String(v))))));
+  }else if(tab==="checks"){
+    b.append(h("div",{class:"help"},"A quick scan for things that would look broken or empty when presenting."));
+    const bad=CHK.filter(c=>c.lv!=="info");
+    if(!CHK.length)b.append(h("div",{class:"good"},"Everything looks good."));
+    else if(!bad.length)b.append(h("div",{class:"good"},"No problems found. A few notes below."));
+    CHK.forEach(c=>b.append(h("div",{class:"ck "+c.lv},h("span",{class:"dotl"}),h("p",{},h("b",{},c.t),c.d?h("small",{},c.d):null),c.btn?h("button",{class:"btn sm",onclick:c.go},c.btn):null)));
+  }
+  b.scrollTop=keep;
+}
+function toggleHide(i){const s=D.slides[i];if(s.hidden)delete s.hidden;else s.hidden=true;changed();renderInsp()}
+function dupBlock(i){const s=D.slides[i];if(s.type==="project")return toast("Project blocks are made from the Projects tab.","bad");D.slides.splice(i+1,0,clone(s));sel=i+1;changed();renderInsp();goto()}
+async function delBlock(i){if(!await ask("Delete this slide block?","You can undo this with Ctrl+Z.","Delete",true))return;D.slides.splice(i,1);sel=Math.max(0,Math.min(sel,D.slides.length-1));changed();renderInsp();goto()}
+function newProject(){
+  const id=slug("project-"+(D.projects.length+1));let n=id,k=2;while(D.projects.some(p=>p.id===n))n=id+"-"+k++;
+  const p={id:n,short:"New project",title:"New project",cat:"sys",tag:"System",icon:"cpu",status:"Complete",lead:"",prob:"",caps:[],chips:[],mode:"fan",shots:[]};
+  D.projects.push(p);placeProject(p);psel=D.projects.length-1;filterQ="";$("#lhead").dataset.tab="";changed();renderAll();goto();toast("Project added. Fill in its details on the right.","ok")}
+function openAddSlide(){
+  const m=modal({title:"Add a slide",sub:"It's added after the slide you have selected.",wide:true,body:h("div",{class:"stg"},Object.keys(TY).map(k=>h("button",{class:"st2",onclick:()=>{m.close();const n=NEW[k]();D.slides.splice(sel+1,0,n);sel=sel+1;changed();renderAll();goto()}},h("div",{html:wf(WF[k])}),h("b",{},TY[k][0]),h("small",{},TY[k][1]))))})}
+
+/* ============ right panel ============ */
+const baseCols=()=>D.theme.mode==="dark"?{mint:"#3df0c1",amber:"#ffb454",sky:"#4da8ff",rose:"#ff7a9c"}:{mint:"#08886b",amber:"#b86608",sky:"#1a6cc4",rose:"#cc2f59"};
+function narrationBox(from,to){
+  if(!SAYS.length||from===undefined||to<=from)return null;
+  const list=SAYS.slice(from,to).map((t,i)=>({n:from+i+1,t})).filter(x=>x.t);if(!list.length)return h("div",{class:"nar"},h("b",{html:ico("mic")+"This block has no voice text."}));
+  return h("div",{class:"nar"},h("details",{},h("summary",{html:ico("mic")+"What the voice says ("+list.length+(list.length>1?" slides":" slide")+")"}),...list.map(x=>h("p",{},h("b",{},"Slide "+x.n+": "),x.t))))}
+function ihead(ic,cls,title,sub,acts){
+  const e=h("div",{class:"ihead"},h("span",{class:"ti",html:svg(ic,1.6)}),h("div",{class:"tx"},h("b",{},title),h("small",{},sub)),h("div",{style:"display:flex;gap:2px"},acts||[]));
+  const t=e.querySelector(".ti");if(cls)t.className="ti "+cls;return e}
+function renderInsp(soft){
+  const r=$("#insp"),hd=$("#ihead"),keep=r.scrollTop;r.innerHTML="";hd.innerHTML="";const body=h("div",{class:"ibody"});r.append(body);
+  if(tab==="slides"){
+    const s=D.slides[sel];if(!s){body.append(h("div",{class:"empty"},"There are no slides yet. Use Add slide on the left."));return}
+    const bi=blockInfo(s,sel),n=nOf(sel);
+    hd.append(ihead(bi.ic,bi.cls,bi.t,"Block "+(sel+1)+" of "+D.slides.length+(n!==null?", "+n+(n===1?" slide":" slides")+" on screen":""),[
+      h("button",{class:"ib",title:s.hidden?"Show in presentation":"Hide from presentation",onclick:()=>toggleHide(sel)},I(s.hidden?"eyeoff":"eye")),
+      h("button",{class:"ib",title:"Duplicate",onclick:()=>dupBlock(sel)},I("dup")),h("button",{class:"ib danger",title:"Delete",onclick:()=>delBlock(sel)},I("trash"))]));
+    if(s.hidden)body.append(h("div",{class:"help",style:"background:var(--ambers);color:#7a4306"},h("b",{},"Hidden. "),"This block is skipped when presenting. Click the eye to bring it back."));
+    const nb=narrationBox(starts[sel],sel+1<starts.length?starts[sel+1]:SAYS.length);if(nb)body.append(nb);
+    body.append(form(s,BS[s.type]||[],"slide:"+s.type));
+    if(s.type==="project"){const i=D.projects.findIndex(p=>p.id===s.id);if(i>=0)body.append(h("button",{class:"btn",onclick:()=>{tab="projects";psel=i;renderAll();goto()}},"Edit this project's content"))}
+  }else if(tab==="projects"){
+    const p=D.projects[psel];if(!p){body.append(h("div",{class:"empty"},"No project selected."));return}
+    hd.append(ihead(p.icon,p.cat,p.title||p.id,((D.categories[p.cat]||{}).title||p.cat)+", "+(MODE_NAME[p.mode]||p.mode),[
+      h("button",{class:"ib danger",title:"Delete project",onclick:async()=>{if(!await ask("Delete “"+(p.short||p.id)+"”?","The project and all of its slides will be removed. You can undo this with Ctrl+Z.","Delete project",true))return;
+        D.slides=D.slides.filter(b=>!(b.type==="project"&&b.id===p.id));D.projects.splice(psel,1);psel=Math.max(0,psel-1);changed();renderAll()}},I("trash"))]));
+    const idx=SAYS.map((t,i)=>PROJS[i]===p.id?i:-1).filter(i=>i>=0);
+    if(idx.length){const nb=h("div",{class:"nar"},h("details",{},h("summary",{html:ico("mic")+"What the voice says ("+idx.length+(idx.length>1?" slides":" slide")+")"}),...idx.filter(i=>SAYS[i]).map(i=>h("p",{},h("b",{},"Slide "+(i+1)+": "),SAYS[i]))));body.append(nb)}
+    body.append(form(p,PROJ,"proj"));
+  }else if(tab==="media"){
+    hd.append(ihead("image","","Images","Pictures used in this department's slides",[]));
+    if(isel&&IMGS.includes(isel)){const w=whereUsed(isel),ar=D.ar[isel];
+      body.append(h("div",{class:"card",style:"box-shadow:none"},h("img",{src:imgUrl(isel),alt:"",style:"width:100%;border-radius:10px;border:1px solid var(--line);background:var(--line2)"}),
+        h("h3",{style:"margin-top:10px;word-break:break-all"},isel),h("p",{},ar?"Aspect ratio "+ar+":1":""),
+        h("div",{style:"display:flex;gap:8px;flex-wrap:wrap"},h("button",{class:"btn sm",onclick:()=>{navigator.clipboard&&navigator.clipboard.writeText(isel);toast("ID copied","ok")}},I("copy"),"Copy ID"),h("button",{class:"btn sm danger",onclick:()=>delImg(isel)},I("trash"),"Delete")),
+        h("div",{class:"grp"},"Used in"),w.length?h("div",{},w.map(x=>h("div",{class:"ll"},x))):h("p",{class:"muted"},"Not used anywhere yet.")))}
+    else body.append(h("div",{class:"help"},h("b",{},"How images work. "),"Upload pictures here once. Then, in a slide or project, click an image field and pick from this library. Click any picture on the left to see where it's used."));
+  }else if(tab==="look"){
+    hd.append(ihead("globe","","Look","Colors, fonts and light or dark for "+(D.meta.dept||dept),[]));
+    body.append(lookPanel());
+  }else if(tab==="details"){
+    hd.append(ihead("check","","Details","Names, year and section texts",[]));
+    body.append(form(D.meta,[G("Deck details","Shown in the footer of every slide and in the browser tab."),T("dept","Department name"),T("company","Company"),T("title","Deck title"),T("year","Year")],"meta"),
+      ...["sys","web","infra","fun"].map(c=>form(D.categories[c],[G((D.categories[c].title||c)+" section","Text on the section divider slide.",{closed:true}),T("title","Title"),T("desc","Description","area"),T("icon","Icon","icon"),T("unit","Count label","text",{hint:"The word after the number, such as wins or photos."}),...(c==="fun"?[T("say","Voice text","area",{say:1})]:[])],"cat:"+c)));
+  }else{
+    hd.append(ihead("checkc","","Checks","Problems found in this deck",[]));
+    body.append(h("div",{class:"help"},"Click a button next to a finding to jump straight to the place that needs attention. Red ones will look broken on screen; amber ones look empty; blue ones are just notes."));
+  }
+  r.scrollTop=soft?keep:0;
+}
+const PALS=[["Emerald",null],["Ocean",["#0a7ea4","#c77d0a","#3b5bdb","#c2255c"]],["Violet",["#6741d9","#e67700","#1971c2","#c2255c"]],["Forest",["#2b8a3e","#b8860b","#1864ab","#a61e4d"]],["Crimson",["#c92a2a","#d9730d","#364fc7","#862e9c"]],["Graphite",["#343a40","#b8860b","#1c7ed6","#c2255c"]]];
+function lighten(hex,k){const n=parseInt(hex.slice(1),16),f=c=>Math.round(c+(255-c)*k);return"#"+[f(n>>16&255),f(n>>8&255),f(n&255)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+function lookPanel(){
+  const th=D.theme,w=h("div",{class:"f"}),dark=()=>th.mode==="dark";
+  const apply=()=>{changed();renderList();renderInsp(true)};
+  w.append(h("details",{class:"sec",open:""},h("summary",{},h("span",{class:"st"},"Light or dark"),h("small",{},"The overall mood of the slides.")),
+    h("div",{class:"sb"},h("div",{class:"modes"},[["light","Light","White background, dark text"],["dark","Dark","Control-room navy, glowing accents"]].map(([k,n,d])=>
+      h("button",{class:"mc "+k+(th.mode===k?" on":""),onclick:()=>{th.mode=k;apply()}},h("div",{class:"pvw"},"Aa"),h("b",{},n),h("small",{},d)))))));
+  const cur=()=>JSON.stringify(th.colors||{});
+  const names={mint:"Main color (Systems)",amber:"Accent 2 (Websites)",sky:"Accent 3 (Infrastructure)",rose:"Accent 4 (Bonus)"};
+  const cols=h("div",{class:"sb"});
+  cols.append(h("div",{class:"pal"},PALS.map(([n,c])=>{const val=c?Object.fromEntries(["mint","amber","sky","rose"].map((k,i)=>[k,dark()?lighten(c[i],.35):c[i]])):{};const on=c?cur()===JSON.stringify(val):!Object.keys(th.colors||{}).length;const sh=c?Object.values(val):Object.values(baseCols());
+    return h("button",{class:"pl"+(on?" on":""),onclick:()=>{th.colors=val;apply()}},h("div",{class:"sws"},sh.map(x=>h("i",{style:"background:"+x}))),h("span",{},n))})));
+  ["mint","amber","sky","rose"].map(k=>{const v=(th.colors&&th.colors[k])||baseCols()[k];
+    const hex=h("input",{value:v,maxlength:7,oninput:e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value)){th.colors[k]=e.target.value;cp.value=e.target.value;changed();renderList()}}}),cp=h("input",{type:"color",value:v,oninput:e=>{th.colors[k]=e.target.value;hex.value=e.target.value;changed();renderList()}});
+    cols.append(h("div",{class:"fl"},h("span",{class:"lbl"},names[k]),h("div",{class:"colr"},cp,hex,h("button",{class:"btn sm ghost",onclick:()=>{delete th.colors[k];apply()}},"Reset"))))});
+  w.append(h("details",{class:"sec",open:""},h("summary",{},h("span",{class:"st"},"Colors"),h("small",{},"Pick a ready-made palette or set each color.")),cols));
+  const fonts=(key,label,list)=>h("div",{class:"fl"},h("span",{class:"lbl"},label),h("div",{class:"fonts"},list.map(f=>h("button",{class:"fc"+((th.fonts[key]||list[0])===f?" on":""),onclick:()=>{th.fonts[key]=f;apply()}},h("b",{style:"font-family:'"+f+"',sans-serif"},"Aa Wins 2026"),h("small",{},f)))));
+  w.append(h("details",{class:"sec",open:""},h("summary",{},h("span",{class:"st"},"Fonts"),h("small",{},"Headings, body text and small labels.")),
+    h("div",{class:"sb"},fonts("display","Headings",["Bricolage Grotesque","Poppins","Montserrat","Playfair Display","Space Grotesk","Sora","Outfit"]),fonts("body","Body text",["DM Sans","Inter","Nunito Sans","Source Sans 3","Work Sans"]),fonts("mono","Small labels",["JetBrains Mono","IBM Plex Mono","Space Mono"]))));
+  return w}
+
+/* ============ media actions ============ */
+async function upload(files){
+  if(!online||!canWrite)return toast("Uploading needs the local server (node server.js).","bad");
+  let ok=0;
+  for(const f of files){
+    try{
+      const bmp=await createImageBitmap(f),sc=Math.min(1,2400/bmp.width),w=Math.round(bmp.width*sc),hh=Math.round(bmp.height*sc);
+      const cv=h("canvas");cv.width=w;cv.height=hh;cv.getContext("2d").drawImage(bmp,0,0,w,hh);
+      const blob=await new Promise(r=>cv.toBlob(r,"image/webp",.86));
+      let base=slug(f.name.replace(/\.[^.]+$/,"")),id=base,k=2;while(IMGS.includes(id))id=base+"-"+k++;
+      await api(`img/${dept}/${id}.webp`,{method:"POST",body:blob});
+      D.ar[id]=+(w/hh).toFixed(4);IMGS.push(id);dirty=true;ok++;
+    }catch(e){toast(f.name+": "+e.message,"bad")}
+  }
+  IMGS.sort();if(ok){toast(ok+" image"+(ok>1?"s":"")+" uploaded","ok");changed()}renderList();push();
+}
+async function delImg(id){
+  const w=whereUsed(id);
+  if(!await ask("Delete "+id+"?",w.length?"It is still used in: "+w.slice(0,4).join(", ")+(w.length>4?"…":"")+". Those spots will show a missing image.":"This can't be undone.","Delete image",true))return;
+  if(!online||!canWrite)return toast("Deleting needs the local server.","bad");
+  try{await api(`img/${dept}/${id}.webp`,{method:"DELETE"});IMGS=IMGS.filter(x=>x!==id);delete D.ar[id];if(isel===id)isel="";changed();renderAll();toast("Image deleted","ok")}catch(e){toast(e.message,"bad")}
+}
+
+/* ============ changed ============ */
+function changed(){dirty=true;status();if(tab==="slides"||tab==="projects"||tab==="look")renderList();push();snapSoon()}
+
+/* ============ all-departments playlist ============ */
+async function loadStats(){
+  await Promise.all(DEPTS.map(async d=>{
+    try{const k=d.id===dept?D:await (await fetch(`/data/${d.id}/deck.json`,{cache:"no-cache"})).json(),pr=k.projects||[],bl=(k.slides||[]);
+      STAT[d.id]={wins:bl.filter(b=>b.type==="project"&&!b.hidden&&(pr.find(p=>p.id===b.id)||{}).cat!=="fun"&&pr.some(p=>p.id===b.id)).length,blocks:bl.length,color:((k.theme||{}).colors||{}).mint||"#08886b"}}
+    catch(e){STAT[d.id]={wins:0,blocks:0,color:"#08886b"}}}));
+}
+function updateTop(){
+  $("#bPl").innerHTML=view==="playlist"?ico("left")+"Back to editor":ico("stack")+"All departments";
+  $("#view").innerHTML=ico("ext")+(view==="playlist"?"Open combined link":"View this department");
+  $("#view").href=view==="playlist"?"/":`/?d=${dept}`;
+  $("#bDl").innerHTML=ico("dl")+(view==="playlist"?"Download files":"Download JSON");
+  status();
+}
+async function openPlaylist(){
+  if(view==="playlist")return closePlaylist();
+  view="playlist";$("#playlist").style.display="block";updateTop();renderPlaylist();await loadStats();if(view==="playlist")renderPlaylist();
+}
+function closePlaylist(){view="edit";$("#playlist").style.display="none";updateTop()}
+function copyText(t){
+  const done=()=>toast("Copied","ok");
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,()=>fallback());else fallback();
+  function fallback(){const a=h("textarea",{style:"position:fixed;opacity:0"},t);document.body.append(a);a.select();try{document.execCommand("copy");done()}catch(e){toast("Copy failed. Select the link and press Ctrl+C.","bad")}a.remove()}
+}
+async function deleteDept(d){
+  if(!online||!canWrite)return toast("Deleting a department needs the local server.","bad");
+  if(DEPTS.length<2)return toast("You can't delete the only department.","bad");
+  if(!await typeToConfirm("Delete “"+d.name+"”?","This permanently removes data/"+d.id+" and img/"+d.id+" from the server, including all of its slides and images. It can't be undone.",d.id,"Delete department"))return;
+  try{await api("dept/"+d.id,{method:"DELETE"});DEPTS=DEPTS.filter(x=>x.id!==d.id);delete STAT[d.id];
+    try{localStorage.removeItem("dwDraft:"+d.id)}catch(e){}
+    if(d.id===dept){fillDepts();await loadDept(DEPTS[0].id)}else fillDepts();
+    renderPlaylist();toast("Department deleted","ok")}catch(e){toast(e.message,"bad")}
+}
+async function savePlaylist(){
+  if(!online||!canWrite){download();return}
+  if(!DEPTS.some(d=>d.include!==false)){toast("Turn on at least one department.","bad");return}
+  try{await putJson("departments",{list:DEPTS.map(d=>({id:d.id,include:d.include!==false})),options:PL});plDirty=false;status();toast("Playlist saved","ok")}
+  catch(e){toast("Couldn't save: "+e.message,"bad")}
+}
+function renderPlaylist(){
+  const el=$("#playlist"),keep=el.scrollTop;el.innerHTML="";
+  const inc=DEPTS.filter(d=>d.include!==false),origin=location.origin;
+  const list=h("div",{});
+  DEPTS.forEach((d,i)=>{
+    const st=STAT[d.id]||{},on=d.include!==false,pos=on?String(inc.indexOf(d)+1):"–";
+    const row=h("div",{class:"dc"+(on?"":" off"),draggable:"true"},
+      h("span",{class:"gr",title:"Drag to reorder",html:ico("grip")}),h("span",{class:"no"},pos),
+      h("div",{class:"dt"},h("b",{},d.name),h("small",{},(d.company||"")+(st.blocks!==undefined?(d.company?", ":"")+st.wins+" wins, "+st.blocks+" slide blocks":""))),
+      h("div",{style:"display:flex;align-items:center;gap:6px"},
+        h("label",{class:"sw",title:on?"Included in the combined link":"Left out of the combined link"},h("input",{type:"checkbox","aria-label":"Include "+d.name,checked:on?"":false,onchange:e=>{d.include=e.target.checked;plDirty=true;status();renderPlaylist()}}),h("i")),
+        h("button",{class:"ib",title:"Edit this department",onclick:async()=>{closePlaylist();if(d.id!==dept)await loadDept(d.id)}},I("layers")),
+        h("a",{class:"ib",href:"/"+d.id,target:"_blank",rel:"noopener",title:"Open only this department"},I("ext")),
+        h("button",{class:"ib danger",title:"Delete department",onclick:()=>deleteDept(d)},I("trash"))));
+    row.ondragstart=e=>{e.dataTransfer.setData("text/plain",String(i));row.style.opacity=.5};row.ondragend=()=>{row.style.opacity=1};
+    row.ondragover=e=>{e.preventDefault();row.classList.add("over")};row.ondragleave=()=>row.classList.remove("over");
+    row.ondrop=e=>{e.preventDefault();const f=+e.dataTransfer.getData("text/plain");if(isNaN(f)||f===i)return;const[x]=DEPTS.splice(f,1);DEPTS.splice(i,0,x);plDirty=true;status();renderPlaylist()};
+    list.append(row)});
+  const tl=inc.length?h("div",{},h("div",{class:"tl"},inc.map(d=>h("div",{style:"flex:"+Math.max(1,(STAT[d.id]||{}).blocks||1)+";background:"+((STAT[d.id]||{}).color||"#08886b"),title:d.name},d.name))),h("small",{class:"muted"},"Playing order of the combined link. Bar width follows the number of slide blocks.")):h("div",{class:"empty"},"Turn on at least one department.");
+  const left=h("div",{},h("h2",{},"All departments, one link"),
+    h("p",{class:"lead"},"Show every department as one presentation. People open a single link and it plays one department after another. Autoplay and the AI voice carry on across all of them, so you never have to switch links."),
+    h("div",{class:"card"},h("h3",{},"Playing order"),h("p",{},"Drag to reorder. Switch a department off to leave it out of the combined link; it keeps its own link."),list,
+      h("div",{style:"margin-top:12px"},tl),h("div",{style:"margin-top:12px"},h("button",{class:"btn",onclick:newDept},I("plus"),"New department"))));
+  const mk=(k,t,d)=>h("div",{class:"opt"},h("div",{},h("b",{},t),h("small",{},d)),h("label",{class:"sw"},h("input",{type:"checkbox","aria-label":t,checked:PL[k]?"":false,onchange:e=>{PL[k]=e.target.checked;plDirty=true;status()}}),h("i")));
+  const url=origin+"/",lb=h("input",{readonly:"",value:url,onfocus:e=>e.target.select(),"aria-label":"Combined link"});
+  const right=h("div",{},
+    h("div",{class:"card"},h("h3",{},"One link for everything"),h("p",{},"Share this. It plays the "+inc.length+" department"+(inc.length===1?"":"s")+" above, in that order."),
+      h("div",{class:"linkbox"},lb,h("button",{class:"btn",onclick:()=>copyText(url)},I("copy"),"Copy"),h("a",{class:"btn",href:"/",target:"_blank",rel:"noopener"},I("ext"),"Open")),
+      h("p",{class:"small muted",style:"margin:10px 0 0"},"While viewing: press ",h("b",{},"T")," for the table of contents grouped by department, ",h("b",{},"[ ]")," to jump between departments, ",h("b",{},"A")," for autoplay.")),
+    h("div",{class:"card"},h("h3",{},"Playback"),h("p",{},"How the combined link behaves."),
+      mk("skipEnds","Skip each “Thank you” slide except the last","Otherwise every department ends with confetti before the next one begins."),
+      mk("loop","Loop forever","After the last slide, start again from the first. Good for a TV or lobby screen."),
+      mk("autoplay","Start autoplay by itself","Slides advance without anyone pressing play.")),
+    h("div",{class:"card"},h("h3",{},"Links for each department"),h("p",{},"Use these when you want just one department, or to start at one and keep going."),
+      ...DEPTS.map(d=>h("div",{class:"ll"},h("span",{},d.name),h("span",{style:"display:flex;gap:6px"},h("button",{class:"btn sm",title:origin+"/"+d.id,onclick:()=>copyText(origin+"/"+d.id)},"Only this"),h("button",{class:"btn sm",title:origin+"/#d-"+d.id,onclick:()=>copyText(origin+"/#d-"+d.id)},"Start here, keep going"))))),
+    h("div",{class:"help"},h("b",{},"Tip. "),"Need a company-wide opening or closing? Create a department called “Company” with just a title slide and a closing slide, then drag it to the top or bottom."));
+  el.append(h("div",{class:"plw"},left,right));el.scrollTop=keep;
+}
+
+/* ============ boot ============ */
+$("#logo").innerHTML=svg("chart",2);
+$("#bNew").innerHTML=ico("plus")+"New department";
+$("#bUndo").innerHTML=ico("undo");$("#bRedo").innerHTML=ico("redo");
+$("#pPrev").innerHTML=ico("left");$("#pNext").innerHTML=ico("right");$("#sayIc").innerHTML=ico("mic");$("#pOpen").innerHTML=ico("ext")+"Open this slide";
+$("#bSave").onclick=save;$("#bDl").onclick=download;$("#bNew").onclick=newDept;$("#bPl").onclick=openPlaylist;$("#bUndo").onclick=undo;$("#bRedo").onclick=redo;
+$("#pPrev").onclick=()=>pvGo(pvAt-1);$("#pNext").onclick=()=>pvGo(pvAt+1);
+$("#dept").onchange=async e=>{
+  const id=e.target.value;if(id===dept&&view==="edit")return;
+  if(dirty&&id!==dept&&!await ask("Switch department?","You have unsaved changes in "+(D.meta.dept||dept)+". They are kept as a local draft, but not saved to the server.","Switch anyway",true)){e.target.value=dept;return}
+  if(view==="playlist")closePlaylist();if(id!==dept)await loadDept(id);else renderAll()};
+const typing=t=>/^(INPUT|TEXTAREA|SELECT)$/.test((t||{}).tagName||"");
+addEventListener("keydown",e=>{
+  const mod=e.ctrlKey||e.metaKey,k=(e.key||"").toLowerCase();
+  if(mod&&k==="s"){e.preventDefault();save()}
+  else if(mod&&k==="z"&&!e.shiftKey&&!typing(e.target)){e.preventDefault();undo()}
+  else if(mod&&(k==="y"||(k==="z"&&e.shiftKey))&&!typing(e.target)){e.preventDefault();redo()}
+});
+addEventListener("beforeunload",e=>{if(dirty||plDirty){e.preventDefault();e.returnValue=""}});
+(async()=>{
+  try{DEPTS=await (await fetch("/data/departments.json",{cache:"no-cache"})).json()}catch{DEPTS=[]}
+  if(!DEPTS.length)DEPTS=[{id:"it",name:"IT Department",company:""}];
+  DEPTS=DEPTS.map(d=>({...d,include:d.include!==false}));
+  try{const r=await fetch("/data/playlist.json",{cache:"no-cache"});if(r.ok)PL={...PL,...await r.json()}}catch{}
+  try{let p=await api("ping");online=true;
+    if(p.key&&!p.canWrite){adminKey=prompt("Admin key:")||"";sessionStorage.setItem("dwKey",adminKey);p=await api("ping")}
+    canWrite=p.canWrite}catch{online=false}
+  const q=new URLSearchParams(location.search).get("d"),first=DEPTS.some(d=>d.id===q)?q:DEPTS[0].id;
+  dept=first;fillDepts();updateTop();await loadDept(first);refreshBadge();status();
+  if(new URLSearchParams(location.search).get("view")==="playlist")openPlaylist();
+})();
+
+</script></body></html>

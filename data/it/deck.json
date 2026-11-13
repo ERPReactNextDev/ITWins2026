@@ -1,0 +1,1692 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "IT Department",
+  "company": "Disruptive Solutions Inc",
+  "title": "Department Wins",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {},
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms we built for HR, Sales, Engineering, Customer Service, Product Development and the IT Department.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Company websites designed and launched together with the Marketing Department and our IT OJTs.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Telephony, email servers, firewalls, failover and on-site rollouts that keep the company connected and secure.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes: the funny moments, challenges and memorable instances along the way.",
+   "icon": "smile",
+   "unit": "photos",
+   "say": "And now, for a little fun. Here are the bloopers, the funny moments behind the scenes."
+  }
+ },
+ "ar": {
+  "3cx-3cx": 1.827,
+  "bcs-aboutus": 1.8204,
+  "bcs-homepage": 1.8315,
+  "bcs-homepage1": 1.8473,
+  "biolog-calendar": 0.4473,
+  "biolog-camera": 0.4473,
+  "biolog-camera1": 0.4473,
+  "biolog-dashboard": 0.4473,
+  "biolog-reports": 0.4473,
+  "bloopers-b16-02-23-306": 0.75,
+  "bloopers-b16-02-23-321": 0.7505,
+  "bloopers-b16-02-23-440": 0.4473,
+  "bloopers-b16-02-23-473": 0.7491,
+  "bloopers-b16-02-23-534": 1.3333,
+  "bloopers-b16-02-23-564": 1.3325,
+  "bloopers-b16-02-23-626": 1.3333,
+  "bloopers-b16-02-23-655": 1.3333,
+  "bloopers-b16-02-25-915": 1.3333,
+  "bloopers-b16-02-25-949": 1.3333,
+  "bloopers-b16-02-25-996": 1.3333,
+  "bloopers-b16-02-26-130": 0.4473,
+  "bloopers-b16-02-26-199": 1.3333,
+  "bloopers-b16-02-26-235": 1.3333,
+  "bloopers-b16-02-26-275": 1,
+  "bloopers-b16-02-26-320": 1.3186,
+  "bloopers-b16-04-41-259": 1.3333,
+  "bloopers-b16-04-41-551": 1.3333,
+  "bloopers-b16-04-41-812": 1.3333,
+  "bloopers-b16-04-41-893": 1.3333,
+  "bloopers-b16-04-41-983": 1.3333,
+  "bloopers-b16-04-42-065": 1.3333,
+  "bloopers-b16-04-42-266": 0.75,
+  "bloopers-b16-04-42-373": 0.75,
+  "buildchem-projectinfo": 2.1645,
+  "buildchem-projects": 2.1645,
+  "buildchem-quotation": 2.1802,
+  "buildchem-tpc": 2.1676,
+  "carmona-1": 0.5621,
+  "carmona-10": 1.3285,
+  "carmona-2": 0.7494,
+  "carmona-3": 0.7494,
+  "carmona-4": 0.7494,
+  "carmona-5": 1.3344,
+  "carmona-6": 1.3344,
+  "carmona-7": 1.3344,
+  "carmona-8": 0.5627,
+  "carmona-9": 1.3333,
+  "dsi-contact": 1.8315,
+  "dsi-homepage": 1.8315,
+  "dsi-products": 1.8293,
+  "eco-about": 1.836,
+  "eco-homepage": 1.8293,
+  "eco-homepage1": 1.827,
+  "ecodesk-dashboard": 1.8587,
+  "ecodesk-email": 1.8428,
+  "ecodesk-inquiries": 1.8587,
+  "engiconnect-dashboard": 2.0107,
+  "engiconnect-dialux": 2.038,
+  "engiconnect-jobrequest": 2.027,
+  "engiconnect-shopdrawing": 1.9868,
+  "engiconnect-sitevist": 1.943,
+  "espiron-dashboard": 2.027,
+  "espiron-productinfo": 2.0216,
+  "espiron-products": 2.0298,
+  "helpdesk-dashboard": 1.8496,
+  "helpdesk-ticketinfo": 1.8473,
+  "helpdesk-tickets": 1.8382,
+  "hris-hr": 1.8337,
+  "jaries-inventory": 1.8315,
+  "jaries-product": 1.836,
+  "jaries-tds": 1.8473,
+  "stash-assets": 1.827,
+  "stash-dashboard": 1.827,
+  "stash-inventory": 1.845,
+  "taskflow-kpi": 1.8564,
+  "taskflow-products": 1.8564,
+  "taskflow-quotations": 1.773,
+  "vah-about": 1.8564,
+  "vah-contact": 1.8657,
+  "vah-homepage": 1.8587,
+  "bloopers-team-01": 1.3317,
+  "bloopers-team-02": 1.3317,
+  "bloopers-team-03": 0.75,
+  "bloopers-team-04": 1.3333,
+  "bloopers-team-05": 1.3333,
+  "bloopers-team-06": 1.3323,
+  "bloopers-team-07": 1.3323,
+  "bloopers-team-08": 1.3317,
+  "bloopers-team-09": 1.3317,
+  "bloopers-team-10": 1.3317
+ },
+ "projects": [
+  {
+   "id": "hris",
+   "short": "HRIS",
+   "title": "Human Resources Management System",
+   "cat": "sys",
+   "tag": "ERP System",
+   "icon": "users",
+   "status": "Live & Active",
+   "lead": "Powering our workforce with an advanced, unified platform built for enterprise efficiency. Fully completed and deployed as the central employee data and workforce management system of the new ERP platform.",
+   "caps": [
+    "Centralized employee database & records",
+    "Secure, compliant data management",
+    "Seamless ERP platform integration",
+    "Streamlined HR workflows & operations"
+   ],
+   "chips": [
+    [
+     "100%",
+     "Deployment complete"
+    ],
+    [
+     "Active",
+     "HR Department use"
+    ],
+    [
+     "Unified",
+     "ERP platform core"
+    ],
+    [
+     "Ready",
+     "Future modules"
+    ]
+   ],
+   "mode": "hero",
+   "shots": [
+    [
+     "hris-hr",
+     "HRIS Interface"
+    ]
+   ],
+   "prob": "Employee records lived in separate files, with no single source of truth."
+  },
+  {
+   "id": "taskflow",
+   "short": "Taskflow",
+   "title": "Taskflow Enhancement",
+   "cat": "sys",
+   "tag": "Sales System",
+   "icon": "chart",
+   "status": "Complete",
+   "lead": "Automated quotations, reports and KPIs, empowering sales with intelligent automation. Fully integrated with Product Development entries.",
+   "caps": [
+    "Automated quotations with PDF export",
+    "Product selections from Product Development entries",
+    "Custom dashboards for director-aligned reporting",
+    "Standard office-based KPI tracking",
+    "Full taskflow automation"
+   ],
+   "chips": [
+    [
+     "100%",
+     "Automation complete"
+    ],
+    [
+     "PDF",
+     "Export ready"
+    ],
+    [
+     "Live",
+     "Sales Department"
+    ],
+    [
+     "Synced",
+     "Product database"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "taskflow-kpi",
+     "KPI Dashboard"
+    ],
+    [
+     "taskflow-products",
+     "Product Selection"
+    ],
+    [
+     "taskflow-quotations",
+     "Quotation PDF Export"
+    ]
+   ],
+   "prob": "Quotations and sales reports were prepared by hand, with no standard KPI tracking."
+  },
+  {
+   "id": "jaries",
+   "short": "Jaries Inventory",
+   "title": "Jaries Product Inventory System",
+   "cat": "sys",
+   "tag": "Product System",
+   "icon": "box",
+   "status": "Live & Active",
+   "lead": "Developed for Product Development to track standard and promo products and support Taskflow quotations, with dynamically generated branded TDS built per department specifications.",
+   "caps": [
+    "Track standard and promo products",
+    "Dynamically generated branded TDS",
+    "Support Taskflow quotations",
+    "Built per department specifications"
+   ],
+   "chips": [
+    [
+     "100%",
+     "Deployment complete"
+    ],
+    [
+     "Active",
+     "Product Development"
+    ],
+    [
+     "Dynamic",
+     "TDS generation"
+    ],
+    [
+     "Integrated",
+     "Taskflow support"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "jaries-inventory",
+     "Inventory System"
+    ],
+    [
+     "jaries-product",
+     "Product Management"
+    ],
+    [
+     "jaries-tds",
+     "TDS Generation"
+    ]
+   ],
+   "prob": "Product details and branded datasheets were rebuilt manually for every request."
+  },
+  {
+   "id": "ecodesk",
+   "short": "Ecodesk",
+   "title": "Ecodesk Enhancement",
+   "cat": "sys",
+   "tag": "Customer Service",
+   "icon": "headset",
+   "status": "Complete",
+   "lead": "Improvements to ticket creation, dashboards, email, company switcher and UI in support of the Customer Service Department.",
+   "caps": [
+    "Improved ticket creation workflow",
+    "Enhanced dashboards",
+    "Optimized email integration",
+    "Company switcher improvements",
+    "UI/UX enhancements"
+   ],
+   "chips": [
+    [
+     "Tickets",
+     "Faster creation"
+    ],
+    [
+     "Dashboards",
+     "Enhanced"
+    ],
+    [
+     "Email",
+     "Integrated"
+    ],
+    [
+     "UI",
+     "Improved"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "ecodesk-dashboard",
+     "Dashboard"
+    ],
+    [
+     "ecodesk-email",
+     "Email"
+    ],
+    [
+     "ecodesk-inquiries",
+     "Inquiries"
+    ]
+   ],
+   "prob": "Ticket creation was slow and the Customer Service team lacked a clear overview."
+  },
+  {
+   "id": "espiron",
+   "short": "Espiron",
+   "title": "Espiron",
+   "cat": "sys",
+   "tag": "Technical System",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Developed for the Technical Department and integrated with Procurement and Taskflow. Handles Special Request (SPF) item creation, defined processes and costing aligned with both departments' specifications.",
+   "caps": [
+    "Special Request (SPF) item creation",
+    "Defined process workflows",
+    "Costing aligned with specifications",
+    "Procurement integration",
+    "Taskflow integration"
+   ],
+   "chips": [
+    [
+     "SPF",
+     "Item creation"
+    ],
+    [
+     "Procurement",
+     "Integrated"
+    ],
+    [
+     "Taskflow",
+     "Integrated"
+    ],
+    [
+     "Technical",
+     "Department"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "espiron-dashboard",
+     "Dashboard"
+    ],
+    [
+     "espiron-products",
+     "Products"
+    ],
+    [
+     "espiron-productinfo",
+     "Product Info"
+    ]
+   ],
+   "prob": "SPF item requests and costing passed between Technical and Procurement by hand."
+  },
+  {
+   "id": "engi",
+   "short": "Engi-Connect",
+   "title": "Engi-Connect",
+   "cat": "sys",
+   "tag": "Engineering System",
+   "icon": "draft",
+   "status": "Complete",
+   "lead": "Purpose-built for the Engineering Department, covering site visitation, job orders, Dialux, shop drawings and booking management. Aligned with all department specifications and connected to Taskflow.",
+   "caps": [
+    "Site visitation management",
+    "Job order processing",
+    "Dialux integration",
+    "Shop drawings management",
+    "Booking management system",
+    "Taskflow integration"
+   ],
+   "chips": [
+    [
+     "Site visits",
+     "Managed"
+    ],
+    [
+     "Job orders",
+     "Processed"
+    ],
+    [
+     "Drawings",
+     "Organized"
+    ],
+    [
+     "Bookings",
+     "Managed"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "engiconnect-dashboard",
+     "Dashboard"
+    ],
+    [
+     "engiconnect-jobrequest",
+     "Job Request"
+    ],
+    [
+     "engiconnect-dialux",
+     "Dialux"
+    ],
+    [
+     "engiconnect-shopdrawing",
+     "Shop Drawing"
+    ],
+    [
+     "engiconnect-sitevist",
+     "Site Visit"
+    ]
+   ],
+   "prob": "Site visits, job orders and shop drawings were requested and tracked separately."
+  },
+  {
+   "id": "stash",
+   "short": "Stash IT Inventory",
+   "title": "Stash IT Inventory System",
+   "cat": "sys",
+   "tag": "IT System",
+   "icon": "db",
+   "status": "Complete",
+   "lead": "Built for the IT Department to manage and track all IT assets, equipment, tools, licenses and subscriptions.",
+   "caps": [
+    "IT assets management",
+    "Equipment tracking",
+    "Tools inventory",
+    "License management",
+    "Subscription tracking"
+   ],
+   "chips": [
+    [
+     "Assets",
+     "Tracked"
+    ],
+    [
+     "Equipment",
+     "Managed"
+    ],
+    [
+     "Licenses",
+     "Controlled"
+    ],
+    [
+     "Subscriptions",
+     "Tracked"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "stash-dashboard",
+     "Dashboard"
+    ],
+    [
+     "stash-inventory",
+     "Inventory"
+    ],
+    [
+     "stash-assets",
+     "Assets"
+    ]
+   ],
+   "prob": "IT assets, licenses and subscriptions had no single, reliable record."
+  },
+  {
+   "id": "helpdesk",
+   "short": "Help Desk",
+   "title": "Help Desk IT Ticketing System",
+   "cat": "sys",
+   "tag": "IT System",
+   "icon": "life",
+   "status": "Complete",
+   "lead": "Developed to track all IT support requests, maintenance activities, scheduled device repairs and issue resolution logs.",
+   "caps": [
+    "IT support request tracking",
+    "Maintenance activity monitoring",
+    "Scheduled device repairs",
+    "Issue resolution logs",
+    "Comprehensive help desk support"
+   ],
+   "chips": [
+    [
+     "Support",
+     "Requests"
+    ],
+    [
+     "Maintenance",
+     "Activities"
+    ],
+    [
+     "Repairs",
+     "Scheduled"
+    ],
+    [
+     "Resolution",
+     "Logs"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "helpdesk-dashboard",
+     "Dashboard"
+    ],
+    [
+     "helpdesk-tickets",
+     "Tickets"
+    ],
+    [
+     "helpdesk-ticketinfo",
+     "Ticket Info"
+    ]
+   ],
+   "prob": "IT requests and repairs had no central ticket trail."
+  },
+  {
+   "id": "bc-taskflow",
+   "short": "Buildchem Taskflow",
+   "title": "Taskflow for Buildchem Solutions",
+   "cat": "sys",
+   "tag": "Sales System",
+   "icon": "flask",
+   "status": "Complete",
+   "lead": "Customized system aligned with Buildchem Solutions' sales processes for solution and chemical products, including automated forms and quotation generation.",
+   "caps": [
+    "Solution products management",
+    "Chemical products tracking",
+    "Automated forms",
+    "Quotation generation",
+    "Customized sales processes"
+   ],
+   "chips": [
+    [
+     "Solution",
+     "Products"
+    ],
+    [
+     "Chemical",
+     "Products"
+    ],
+    [
+     "Automated",
+     "Forms"
+    ],
+    [
+     "Quotation",
+     "Generation"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "buildchem-projects",
+     "Projects"
+    ],
+    [
+     "buildchem-projectinfo",
+     "Project Info"
+    ],
+    [
+     "buildchem-quotation",
+     "Quotation"
+    ],
+    [
+     "buildchem-tpc",
+     "TPC"
+    ]
+   ],
+   "prob": "Buildchem's solution and chemical sales relied on hand-made forms and quotes."
+  },
+  {
+   "id": "biolog",
+   "short": "Biolog",
+   "title": "Biolog",
+   "cat": "sys",
+   "tag": "Mobile System",
+   "icon": "mobile",
+   "status": "Complete",
+   "lead": "Developed for the HR Department to track attendance of employees and agents during client site visits. Also used by Sales to monitor client visits, with data reflected in KPI reports within Taskflow.",
+   "caps": [
+    "Employee attendance tracking",
+    "Agent site visit monitoring",
+    "Client visit tracking",
+    "KPI reports in Taskflow",
+    "Mobile-optimized design"
+   ],
+   "chips": [
+    [
+     "HR",
+     "Department"
+    ],
+    [
+     "Sales",
+     "Department"
+    ],
+    [
+     "KPI",
+     "Reports"
+    ],
+    [
+     "Mobile",
+     "Ready"
+    ]
+   ],
+   "mode": "phone",
+   "shots": [
+    [
+     "biolog-dashboard",
+     "Dashboard"
+    ],
+    [
+     "biolog-calendar",
+     "Calendar"
+    ],
+    [
+     "biolog-camera",
+     "Camera"
+    ],
+    [
+     "biolog-camera1",
+     "Camera View"
+    ],
+    [
+     "biolog-reports",
+     "Reports"
+    ]
+   ],
+   "prob": "Attendance and client-site visits could not be verified or tied to KPI reports.",
+   "galleryTitle": "Mobile app screens",
+   "gallerySay": "Biolog is a mobile app. Here are its dashboard, calendar, camera, camera view, and reports screens."
+  },
+  {
+   "id": "bc-web",
+   "short": "Buildchem Website",
+   "title": "Buildchem Solutions Website",
+   "cat": "web",
+   "tag": "Website",
+   "icon": "globe",
+   "status": "Launched",
+   "lead": "Successfully completed and launched this year. Built in alignment with Marketing Department requirements, with key contributions from our IT OJTs.",
+   "caps": [
+    "Successfully completed and launched",
+    "Aligned with Marketing Department requirements",
+    "Key contributions from IT OJTs",
+    "Full deployment and launch"
+   ],
+   "chips": [
+    [
+     "2026",
+     "Year launched"
+    ],
+    [
+     "Live",
+     "Production"
+    ],
+    [
+     "IT OJT",
+     "Team"
+    ],
+    [
+     "Done",
+     "Complete"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "bcs-homepage",
+     "Homepage"
+    ],
+    [
+     "bcs-homepage1",
+     "Homepage Section"
+    ],
+    [
+     "bcs-aboutus",
+     "About Us"
+    ]
+   ],
+   "prob": "Buildchem Solutions needed an online presence that fit Marketing's requirements."
+  },
+  {
+   "id": "ecoshift",
+   "short": "Ecoshift Website",
+   "title": "Ecoshift Website Enhancement",
+   "cat": "web",
+   "tag": "Website",
+   "icon": "globe",
+   "status": "Complete",
+   "lead": "Enhancements covering website features, additional pages and updated forms to improve overall functionality and user experience.",
+   "caps": [
+    "Enhanced website features",
+    "Additional pages added",
+    "Updated forms implementation",
+    "Improved functionality"
+   ],
+   "chips": [
+    [
+     "Features",
+     "Enhanced"
+    ],
+    [
+     "Pages",
+     "Added"
+    ],
+    [
+     "Forms",
+     "Updated"
+    ],
+    [
+     "Done",
+     "Complete"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "eco-homepage",
+     "Homepage"
+    ],
+    [
+     "eco-homepage1",
+     "Homepage Section"
+    ],
+    [
+     "eco-about",
+     "About Page"
+    ]
+   ],
+   "prob": "The website lacked features, pages and up-to-date forms."
+  },
+  {
+   "id": "dsi",
+   "short": "DSI Website",
+   "title": "Disruptive Solutions Website Enhancement",
+   "cat": "web",
+   "tag": "Website",
+   "icon": "globe",
+   "status": "Launched",
+   "lead": "Successfully developed and launched by our IT OJTs, built to meet all Marketing Department specifications.",
+   "caps": [
+    "Developed by IT OJTs",
+    "Meets Marketing Department specifications",
+    "Successfully launched",
+    "Complete website enhancement"
+   ],
+   "chips": [
+    [
+     "OJT",
+     "Developed"
+    ],
+    [
+     "Live",
+     "Production"
+    ],
+    [
+     "Spec",
+     "Compliant"
+    ],
+    [
+     "Done",
+     "Complete"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "dsi-homepage",
+     "Homepage"
+    ],
+    [
+     "dsi-products",
+     "Products Page"
+    ],
+    [
+     "dsi-contact",
+     "Contact Page"
+    ]
+   ],
+   "prob": "The company website needed an update to meet Marketing's specifications."
+  },
+  {
+   "id": "vah",
+   "short": "VAH Website",
+   "title": "Value Acquisition Holdings Website",
+   "cat": "web",
+   "tag": "Website",
+   "icon": "globe",
+   "status": "Launched",
+   "lead": "Completed and launched as specified by the Marketing Department. Meets all requirements and is now live in production.",
+   "caps": [
+    "Completed and launched",
+    "Specified by Marketing Department",
+    "Successfully deployed",
+    "Full website implementation"
+   ],
+   "chips": [
+    [
+     "Live",
+     "Production"
+    ],
+    [
+     "Spec",
+     "Compliant"
+    ],
+    [
+     "Marketing",
+     "Approved"
+    ],
+    [
+     "Done",
+     "Complete"
+    ]
+   ],
+   "mode": "fan",
+   "shots": [
+    [
+     "vah-homepage",
+     "Homepage"
+    ],
+    [
+     "vah-about",
+     "About Page"
+    ],
+    [
+     "vah-contact",
+     "Contact Page"
+    ]
+   ],
+   "prob": "Value Acquisition Holdings needed a website built to Marketing's requirements."
+  },
+  {
+   "id": "3cx",
+   "short": "3CX VOIP",
+   "title": "3CX VOIP Integration",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "phone",
+   "status": "Complete",
+   "lead": "Implemented to manage department-level call routing and enable seamless connectivity between 3CX VOIP, websites, Ecodesk CSR ticketing, Taskflow and other relevant departments.",
+   "caps": [
+    "Department-level call routing",
+    "Website connectivity",
+    "Ecodesk CSR ticketing integration",
+    "Taskflow integration",
+    "Seamless department connectivity"
+   ],
+   "chips": [
+    [
+     "Calls",
+     "Routed"
+    ],
+    [
+     "Websites",
+     "Connected"
+    ],
+    [
+     "CSR tickets",
+     "Integrated"
+    ],
+    [
+     "Taskflow",
+     "Integrated"
+    ]
+   ],
+   "mode": "hero",
+   "shots": [
+    [
+     "3cx-3cx",
+     "3CX VOIP Interface"
+    ]
+   ],
+   "prob": "Calls were not routed by department or connected to tickets and sales records."
+  },
+  {
+   "id": "email-server",
+   "short": "Email Server Security",
+   "title": "Email Server Security",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "shield",
+   "status": "Complete",
+   "lead": "Immediate detection and defense against unauthorized attack. Deployed to provide real-time monitoring, rapid detection and proactive protection against threats targeting the email server.",
+   "caps": [
+    "Real-time monitoring",
+    "Rapid detection",
+    "Proactive protection",
+    "Unauthorized attempt prevention",
+    "Security threat defense"
+   ],
+   "chips": [
+    [
+     "Real-time",
+     "Monitoring"
+    ],
+    [
+     "Rapid",
+     "Detection"
+    ],
+    [
+     "Proactive",
+     "Protection"
+    ],
+    [
+     "Secure",
+     "Email server"
+    ]
+   ],
+   "mode": "orb",
+   "tagline": [
+    "Protected",
+    "Monitored",
+    "Secured"
+   ],
+   "prob": "The email server was open to unauthorized access attempts."
+  },
+  {
+   "id": "email-storage",
+   "short": "Email Server Storage",
+   "title": "Email Server Storage Management",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "drive",
+   "status": "Complete",
+   "lead": "Storage management and optimization. Deployed to monitor, regulate and maximize email server storage efficiency, ensuring streamlined capacity usage and system performance.",
+   "caps": [
+    "Storage monitoring",
+    "Capacity regulation",
+    "Efficiency maximization",
+    "Streamlined capacity usage",
+    "System performance optimization"
+   ],
+   "chips": [
+    [
+     "Storage",
+     "Monitored"
+    ],
+    [
+     "Capacity",
+     "Regulated"
+    ],
+    [
+     "Efficiency",
+     "Maximized"
+    ],
+    [
+     "Performance",
+     "Boosted"
+    ]
+   ],
+   "mode": "orb",
+   "tagline": [
+    "Optimized",
+    "Efficient",
+    "Streamlined"
+   ],
+   "prob": "Mailbox storage kept growing with no monitoring or limits."
+  },
+  {
+   "id": "email-accounts",
+   "short": "Email Server Accounts",
+   "title": "Email Server Account Management",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "usercheck",
+   "status": "Complete",
+   "lead": "Former employee account management, backup and deletion. Implemented to preserve data via backup, regulate access and securely delete accounts of former personnel as required.",
+   "caps": [
+    "Systematic data backup",
+    "Access regulation",
+    "Secure account deletion",
+    "Former personnel management",
+    "Compliance with requirements"
+   ],
+   "chips": [
+    [
+     "Data",
+     "Backed up"
+    ],
+    [
+     "Access",
+     "Regulated"
+    ],
+    [
+     "Accounts",
+     "Securely deleted"
+    ],
+    [
+     "Process",
+     "Compliant"
+    ]
+   ],
+   "mode": "orb",
+   "tagline": [
+    "Backup",
+    "Secure",
+    "Compliant"
+   ],
+   "prob": "Former employees' mailboxes lingered without backup or secure removal."
+  },
+  {
+   "id": "carmona",
+   "short": "Carmona Projects",
+   "title": "Carmona Infrastructure Projects",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "cam",
+   "status": "Complete",
+   "lead": "Deployed CCTV security system and full network infrastructure rollout in Carmona, Cavite, ensuring comprehensive surveillance and stable, site-wide connectivity.",
+   "caps": [
+    "CCTV surveillance system",
+    "Camera setup and cabling",
+    "Structured cabling",
+    "Hardware installation",
+    "Configuration and testing"
+   ],
+   "chips": [
+    [
+     "CCTV",
+     "Security"
+    ],
+    [
+     "Network",
+     "Infrastructure"
+    ],
+    [
+     "Stable",
+     "Connectivity"
+    ],
+    [
+     "Site-wide",
+     "Coverage"
+    ]
+   ],
+   "mode": "fan",
+   "fanIds": [
+    "carmona-2",
+    "carmona-9",
+    "carmona-6"
+   ],
+   "groups": [
+    {
+     "h": "CCTV Installation",
+     "p": "Deployed CCTV security system across the facility in Carmona, Cavite, covering surveillance, camera setup, cabling, recording configuration and on-site testing.",
+     "ids": [
+      "carmona-1",
+      "carmona-2",
+      "carmona-3"
+     ]
+    },
+    {
+     "h": "CCTV Installation",
+     "p": "Deployed CCTV security system across the facility in Carmona, Cavite, covering surveillance, camera setup, cabling, recording configuration and on-site testing.",
+     "ids": [
+      "carmona-4",
+      "carmona-5"
+     ]
+    },
+    {
+     "h": "Network Infrastructure Implementation",
+     "p": "Full network infrastructure rollout in Carmona, Cavite, covering structured cabling, hardware installation, configuration and testing for stable, site-wide connectivity.",
+     "ids": [
+      "carmona-6",
+      "carmona-7",
+      "carmona-8"
+     ]
+    },
+    {
+     "h": "Network Infrastructure Implementation",
+     "p": "Full network infrastructure rollout in Carmona, Cavite, covering structured cabling, hardware installation, configuration and testing for stable, site-wide connectivity.",
+     "ids": [
+      "carmona-9",
+      "carmona-10"
+     ]
+    }
+   ],
+   "prob": "The Carmona site needed surveillance and a reliable, site-wide network."
+  },
+  {
+   "id": "primex",
+   "short": "Primex Firewall",
+   "title": "Primex Sophos Firewall",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "flame",
+   "status": "Complete",
+   "lead": "Successfully activated and configured the Sophos Firewall at the Primex site, establishing a secure network perimeter, access controls and threat protection.",
+   "caps": [
+    "Secure network perimeter",
+    "Access controls",
+    "Threat protection",
+    "Firewall configuration",
+    "Site-wide security"
+   ],
+   "chips": [
+    [
+     "Secure",
+     "Perimeter"
+    ],
+    [
+     "Access",
+     "Controls"
+    ],
+    [
+     "Threat",
+     "Protection"
+    ],
+    [
+     "Site-wide",
+     "Security"
+    ]
+   ],
+   "mode": "orb",
+   "tagline": [
+    "Secure",
+    "Protected",
+    "Defended"
+   ],
+   "prob": "The Primex site needed a secured network perimeter and access control."
+  },
+  {
+   "id": "reconfig",
+   "short": "Reconfiguration",
+   "title": "Reconfiguration and Restoration",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "refresh",
+   "status": "Complete",
+   "lead": "System and network reconfiguration, followed by full service restoration to ensure stable, reliable operations.",
+   "caps": [
+    "System reconfiguration",
+    "Network reconfiguration",
+    "Full service restoration",
+    "Stable operations",
+    "Reliable service delivery"
+   ],
+   "chips": [
+    [
+     "System",
+     "Reconfigured"
+    ],
+    [
+     "Network",
+     "Reconfigured"
+    ],
+    [
+     "Services",
+     "Fully restored"
+    ],
+    [
+     "Operations",
+     "Stable"
+    ]
+   ],
+   "mode": "orb",
+   "tagline": [
+    "Reconfigured",
+    "Restored",
+    "Reliable"
+   ],
+   "prob": "Network and system changes risked downtime and unstable services."
+  },
+  {
+   "id": "failover",
+   "short": "Fail Over Setup",
+   "title": "Fail Over Setup",
+   "cat": "infra",
+   "tag": "Infrastructure",
+   "icon": "split",
+   "status": "Complete",
+   "lead": "Dual internet failover: PDLT with Radius, and Converge with Eastern. Automatic, seamless switching keeps connectivity running if one link goes down.",
+   "caps": [
+    "Automatic seamless switching",
+    "Dual internet connections",
+    "PDLT with Radius link",
+    "Converge with Eastern link",
+    "Continuous connectivity"
+   ],
+   "chips": [
+    [
+     "Dual",
+     "Internet links"
+    ],
+    [
+     "Auto",
+     "Switching"
+    ],
+    [
+     "PDLT",
+     "+ Radius"
+    ],
+    [
+     "Converge",
+     "+ Eastern"
+    ]
+   ],
+   "mode": "orb",
+   "tagline": [
+    "PDLT",
+    "Converge",
+    "Seamless Switch"
+   ],
+   "prob": "One internet link meant any outage could stop the whole company."
+  },
+  {
+   "id": "bloopers",
+   "short": "Bloopers",
+   "title": "Bloopers",
+   "cat": "fun",
+   "tag": "Behind the Scenes",
+   "icon": "smile",
+   "status": null,
+   "lead": "Behind the scenes: the funny moments, challenges and memorable instances during our journey.",
+   "caps": null,
+   "chips": [
+    [
+     "{n}",
+     "Photos"
+    ],
+    [
+     "1",
+     "Team"
+    ],
+    [
+     "∞",
+     "Memories"
+    ],
+    [
+     "100%",
+     "Fun"
+    ]
+   ],
+   "mode": "fan",
+   "fanIds": [
+    "bloopers-b16-02-23-626",
+    "bloopers-b16-02-23-534",
+    "bloopers-b16-04-41-259"
+   ],
+   "prob": null,
+   "photos": [
+    "bloopers-b16-02-23-306",
+    "bloopers-b16-02-23-321",
+    "bloopers-b16-02-23-440",
+    "bloopers-b16-02-23-473",
+    "bloopers-b16-02-23-534",
+    "bloopers-b16-02-23-564",
+    "bloopers-b16-02-23-626",
+    "bloopers-b16-02-23-655",
+    "bloopers-b16-02-25-915",
+    "bloopers-b16-02-25-949",
+    "bloopers-b16-02-25-996",
+    "bloopers-b16-02-26-130",
+    "bloopers-b16-02-26-199",
+    "bloopers-b16-02-26-235",
+    "bloopers-b16-02-26-275",
+    "bloopers-b16-02-26-320",
+    "bloopers-b16-04-41-259",
+    "bloopers-b16-04-41-551",
+    "bloopers-b16-04-41-812",
+    "bloopers-b16-04-41-893",
+    "bloopers-b16-04-41-983",
+    "bloopers-b16-04-42-065",
+    "bloopers-b16-04-42-266",
+    "bloopers-b16-04-42-373",
+    "bloopers-team-01",
+    "bloopers-team-02",
+    "bloopers-team-03",
+    "bloopers-team-04",
+    "bloopers-team-05",
+    "bloopers-team-06",
+    "bloopers-team-07",
+    "bloopers-team-08",
+    "bloopers-team-09",
+    "bloopers-team-10"
+   ],
+   "photoTitle": "Behind the scenes",
+   "photoSay": [
+    "Now the fun part. Here are the bloopers, the funny moments behind the scenes.",
+    "More memorable moments from the team.",
+    "And that is our team. Thank you for the laughs."
+   ]
+  }
+ ],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "IT Department highlights: **systems built, websites launched and infrastructure delivered** for Disruptive Solutions Inc and its partners.",
+   "images": [
+    "taskflow-kpi",
+    "helpdesk-dashboard",
+    "stash-dashboard"
+   ],
+   "say": "Welcome to Department Wins 2026. These are the highlights of the IT Department: systems built, websites launched, and infrastructure delivered for Disruptive Solutions Inc and its partners."
+  },
+  {
+   "type": "overview",
+   "h": "Wins at a glance"
+  },
+  {
+   "type": "summary",
+   "h": "The year in numbers",
+   "departments": [
+    "HR",
+    "Sales",
+    "Engineering",
+    "Customer Service",
+    "Product Development",
+    "Technical",
+    "Procurement",
+    "Marketing",
+    "IT"
+   ],
+   "highlights": [
+    "Taskflow now connects Sales with Product Development, Technical, Engineering, Telephony and field tracking",
+    "HRIS is live as the core of the new ERP platform",
+    "Dual-internet failover keeps the company online if one link goes down",
+    "Four websites delivered with Marketing and our IT OJTs",
+    "CCTV and a full network rollout in Carmona, plus a Sophos firewall at Primex"
+   ]
+  },
+  {
+   "type": "section",
+   "cat": "sys"
+  },
+  {
+   "type": "project",
+   "id": "hris"
+  },
+  {
+   "type": "project",
+   "id": "taskflow"
+  },
+  {
+   "type": "project",
+   "id": "jaries"
+  },
+  {
+   "type": "project",
+   "id": "ecodesk"
+  },
+  {
+   "type": "project",
+   "id": "espiron"
+  },
+  {
+   "type": "project",
+   "id": "engi"
+  },
+  {
+   "type": "project",
+   "id": "stash"
+  },
+  {
+   "type": "project",
+   "id": "helpdesk"
+  },
+  {
+   "type": "project",
+   "id": "bc-taskflow"
+  },
+  {
+   "type": "project",
+   "id": "biolog"
+  },
+  {
+   "type": "section",
+   "cat": "web"
+  },
+  {
+   "type": "project",
+   "id": "bc-web"
+  },
+  {
+   "type": "project",
+   "id": "ecoshift"
+  },
+  {
+   "type": "project",
+   "id": "dsi"
+  },
+  {
+   "type": "project",
+   "id": "vah"
+  },
+  {
+   "type": "section",
+   "cat": "infra"
+  },
+  {
+   "type": "project",
+   "id": "3cx"
+  },
+  {
+   "type": "project",
+   "id": "email-server"
+  },
+  {
+   "type": "project",
+   "id": "email-storage"
+  },
+  {
+   "type": "project",
+   "id": "email-accounts"
+  },
+  {
+   "type": "project",
+   "id": "carmona"
+  },
+  {
+   "type": "project",
+   "id": "primex"
+  },
+  {
+   "type": "project",
+   "id": "reconfig"
+  },
+  {
+   "type": "project",
+   "id": "failover"
+  },
+  {
+   "type": "map",
+   "eyebrow": "Ecosystem",
+   "eyebrow2": "Integration map",
+   "h": "How it all connects",
+   "hubId": "taskflow",
+   "hubT": "Taskflow",
+   "hubS": "Sales core",
+   "hubIc": "chart",
+   "nodes": [
+    {
+     "id": "jaries",
+     "ic": "box",
+     "t": "Jaries Inventory",
+     "d": "Product Development",
+     "x": 190,
+     "y": 110,
+     "s": "Product entries feed quotations"
+    },
+    {
+     "id": "espiron",
+     "ic": "cpu",
+     "t": "Espiron",
+     "d": "Technical + Procurement",
+     "x": 190,
+     "y": 350,
+     "s": "SPF items and costing"
+    },
+    {
+     "id": "engi",
+     "ic": "draft",
+     "t": "Engi-Connect",
+     "d": "Engineering",
+     "x": 190,
+     "y": 590,
+     "s": "Job orders and site visits"
+    },
+    {
+     "id": "bc-taskflow",
+     "ic": "flask",
+     "t": "Buildchem Taskflow",
+     "d": "Buildchem Solutions",
+     "x": 870,
+     "y": 60,
+     "s": "Customized sales flow"
+    },
+    {
+     "id": "biolog",
+     "ic": "mobile",
+     "t": "Biolog",
+     "d": "HR + Sales",
+     "x": 870,
+     "y": 640,
+     "s": "Client visits become KPI reports"
+    },
+    {
+     "id": "3cx",
+     "ic": "phone",
+     "t": "3CX VOIP",
+     "d": "Telephony",
+     "x": 1550,
+     "y": 200,
+     "s": "Department call routing",
+     "infra": 1
+    },
+    {
+     "id": "ecodesk",
+     "ic": "headset",
+     "t": "Ecodesk",
+     "d": "Customer Service",
+     "x": 1550,
+     "y": 500,
+     "s": "CSR tickets from calls",
+     "via": "3cx"
+    }
+   ],
+   "say": "Here is how it all connects. Taskflow sits at the center of our ecosystem, linked to Jaries product inventory, Espiron, Engi-Connect, Biolog, 3CX VOIP and the customized Buildchem Taskflow. Ecodesk joins through 3CX call routing and CSR ticketing. These are not separate tools. They are one connected platform."
+  },
+  {
+   "type": "challenges",
+   "eyebrow": "Challenges",
+   "eyebrow2": "and lessons",
+   "h": "What we faced, what we learned",
+   "items": [
+    {
+     "k": "Challenge 1",
+     "t": "Budget and subscription cost management",
+     "rows": [
+      [
+       "c",
+       "Challenge",
+       "Controlling budgeted expenses, especially recurring software and service subscriptions spread across multiple platforms."
+      ],
+      [
+       "s",
+       "Solution",
+       "Strategic platform consolidation: gradually migrating all systems onto one unified ERP platform to cut redundant services, remove overlapping costs and use resources better."
+      ],
+      [
+       "o",
+       "Outcome",
+       "Costs are being reduced step by step. Consolidation is ongoing and already delivering measurable efficiency gains."
+      ]
+     ]
+    },
+    {
+     "k": "Challenge 2",
+     "t": "Firewall failure after a firmware update",
+     "rows": [
+      [
+       "c",
+       "Challenge",
+       "The firewall went down right after an automated firmware update, disrupting network connectivity and the security perimeter."
+      ],
+      [
+       "s",
+       "Resolution",
+       "We traced the update-induced configuration conflict, rolled back, reapplied validated settings and restored full network operations."
+      ],
+      [
+       "o",
+       "Lesson learned",
+       "Critical infrastructure changes need cross-team validation and scheduled maintenance windows. No one pushes a critical update alone; we verify together first."
+      ]
+     ]
+    }
+   ],
+   "say": "Challenges and lessons. Challenge one: budget and subscription cost management. We are consolidating all systems onto one unified ERP platform, which reduces redundant services and overlapping costs. Consolidation is ongoing and already delivering measurable efficiency gains. Challenge two: a firewall failure after an automated firmware update. We rolled back, reapplied validated settings and restored the network. The lesson: critical changes need cross-team validation and scheduled maintenance windows. No one pushes a critical update alone."
+  },
+  {
+   "type": "lesson",
+   "eyebrow": "Core lesson",
+   "eyebrow2": "Team collaboration and validation",
+   "h": "No system stands alone.",
+   "lead": "The most valuable takeaway across every incident: no system or decision stands alone. Shared accountability builds stronger systems, fewer surprises and faster recovery when issues do arise.",
+   "items": [
+    [
+     "users",
+     "Mutual review",
+     "Every change, update and deployment is checked by the team before it goes live."
+    ],
+    [
+     "shield",
+     "Shared accountability",
+     "Nobody carries a critical decision alone, so the whole team owns the result."
+    ],
+    [
+     "refresh",
+     "Faster recovery",
+     "When something does break, more people understand the system and can fix it sooner."
+    ]
+   ],
+   "say": "The core lesson: team collaboration and validation. No system or decision stands alone. Every change, update and deployment now benefits from mutual review across the team. Shared accountability builds stronger systems, fewer surprises, and faster recovery when issues do arise."
+  },
+  {
+   "type": "roadmap",
+   "eyebrow": "What's next",
+   "eyebrow2": "2027 roadmap",
+   "h": "One platform, smarter every year",
+   "lk": "Consolidation",
+   "lh": "Four systems move into one ERP",
+   "systems": [
+    [
+     "taskflow",
+     "chart",
+     "Taskflow"
+    ],
+    [
+     "ecodesk",
+     "headset",
+     "Ecodesk"
+    ],
+    [
+     "espiron",
+     "cpu",
+     "Espiron"
+    ],
+    [
+     "engi",
+     "draft",
+     "Engi-Connect"
+    ]
+   ],
+   "hub": "ERP",
+   "hubSub": "One system",
+   "noteK": "Already live",
+   "noteT": "HRIS is the core of the new ERP platform",
+   "cards": [
+    {
+     "kind": "pills",
+     "k": "New Ecodesk modules",
+     "items": [
+      "After Sales",
+      "RMA",
+      "Warranty Claims",
+      "Knowledge Base",
+      "CSAT"
+     ]
+    },
+    {
+     "kind": "text",
+     "k": "New system",
+     "h": "Admin department system",
+     "p": "Built for the Admin department and designed to fit the ERP platform."
+    },
+    {
+     "kind": "flow",
+     "k": "Websites",
+     "h": "Ecoshift and Disruptive sites",
+     "from": "WordPress",
+     "to": "Next.js",
+     "p": "For better integration with our ERP platform."
+    },
+    {
+     "kind": "text",
+     "k": "Intelligence",
+     "h": "AI integration and automation",
+     "p": "Bringing AI and workflow automation into the ERP system."
+    }
+   ],
+   "say": "Looking ahead to 2027. First, we will migrate Taskflow, Ecodesk, Espiron and Engi-Connect into one ERP system, building on HRIS, which is already live as the ERP core. Ecodesk gets new modules: after sales, RMA, warranty claims, a knowledge base, and CSAT. We will build a new system for the Admin department. The Ecoshift and Disruptive websites will move from WordPress to Next.js for tighter integration with our ERP platform. And we will bring AI integration and automation into the ERP system."
+  },
+  {
+   "type": "section",
+   "cat": "fun"
+  },
+  {
+   "type": "project",
+   "id": "bloopers"
+  },
+  {
+   "type": "end",
+   "eyebrow": "The end",
+   "h": "Thank You!",
+   "text": "These moments make our journey even more memorable. Thank you for being part of our success!",
+   "say": "These moments make our journey even more memorable. Thank you for being part of our success!"
+  }
+ ]
+}
