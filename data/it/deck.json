@@ -1323,7 +1323,8 @@
     "helpdesk-dashboard",
     "stash-dashboard"
    ],
-   "say": "Welcome to Department Wins 2026. These are the highlights of the IT Department: systems built, websites launched, and infrastructure delivered for Disruptive Solutions Inc and its partners."
+   "say": "Welcome to Department Wins 2026. These are the highlights of the IT Department: systems built, websites launched, and infrastructure delivered for Disruptive Solutions Inc and its partners.",
+   "fx": {}
   },
   {
    "type": "overview",

@@ -13,5 +13,10 @@
   "id": "product-development",
   "name": "Product Development",
   "company": "Disruptive Solutions Inc"
+ },
+ {
+  "id": "customer-service",
+  "name": "Customer Service",
+  "company": "Disruptive Solutions Inc"
  }
 ]

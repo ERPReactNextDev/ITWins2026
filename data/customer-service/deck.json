@@ -1,0 +1,196 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "Customer Service",
+  "company": "Disruptive Solutions Inc",
+  "title": "Department Wins",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {
+   "mint": "#2b8a3e",
+   "amber": "#b8860b",
+   "sky": "#1864ab",
+   "rose": "#a61e4d"
+  },
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {
+  "01-process-planning-and-development": 1.3323,
+  "02-official-memo-release": 1.3323,
+  "04-sales-department-alignment": 0.7497,
+  "03-process-roll-out-and-implementation": 1
+ },
+ "projects": [
+  {
+   "id": "project-1",
+   "short": "AFTERSALES PROCESS INTEGRATION",
+   "title": "AFTERSALES PROCESS INTEGRATION",
+   "cat": "sys",
+   "tag": "Standardized Workflow — Now Fully Implemented",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "We have successfully designed, developed, and rolled out our integrated aftersales workflow. Every step has been mapped, responsibilities clarified, and handoffs refined — creating a unified process that ensures consistency, efficiency, and a smoother experience for both our teams and our customers.",
+   "prob": "",
+   "caps": [
+    "Successfully mapped and streamlined the complete workflow",
+    "Defined clear steps from inquiry through to resolution"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "01-process-planning-and-development",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-2",
+   "short": "OFFICIAL MEMO RELEASE",
+   "title": "OFFICIAL MEMO RELEASE",
+   "cat": "sys",
+   "tag": "Clear Guidelines, Consistent Standards",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "We formally released and circulated key operational documents to all relevant teams: our updated process flow, the 7-Day Replacement Policy for items received damaged, guidelines for Out-of-Warranty cases, and the Change Item policy. These official memos establish clear, consistent procedures, ensure everyone follows the same standards, and serve as a reliable reference for daily operations.",
+   "prob": "",
+   "caps": [
+    "Released updated process flow as an official addendum",
+    "Issued 7-Day Replacement Policy for Damaged Items Upon Delivery",
+    "Published Out-of-Warranty Cases handling guidelines",
+    "Distributed Change Item policy to all concerned teams"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "02-official-memo-release",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-3",
+   "short": "PROCESS ROLLOUT & IMPLEMENTATION",
+   "title": "PROCESS ROLLOUT & IMPLEMENTATION",
+   "cat": "sys",
+   "tag": "From Guidelines to Daily Practice",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "We successfully rolled out and implemented our updated process across the organization. Through team sessions and collaborative discussions, everyone was aligned on the new standards and workflows — turning our plans into consistent action and unified service delivery.",
+   "prob": "",
+   "caps": [
+    "Conducted sessions to ensure full understanding",
+    "Guided everyone through the new workflows",
+    "Transitioned smoothly to our improved standards",
+    "Building Better Service Together"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "03-process-roll-out-and-implementation",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-4",
+   "short": "SALES DEPARTMENT ALIGNMENT",
+   "title": "SALES DEPARTMENT ALIGNMENT",
+   "cat": "sys",
+   "tag": "One Team, One Direction",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "We successfully gathered the sales department — both in-person and through virtual attendance — to ensure everyone is fully aligned. This session helped clarify expectations, share important updates, and make sure every team member works toward the same goals with consistent standards.",
+   "prob": "",
+   "caps": [
+    "Brought the sales team together — both in-person and online",
+    "Shared updates, clarified goals, and aligned on standards",
+    "Connected across locations for one clear direction",
+    "Strengthened teamwork toward shared success"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "04-sales-department-alignment",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  }
+ ],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "Customer Service highlights for **Disruptive Solutions Inc**.",
+   "images": [
+    "01-process-planning-and-development",
+    "02-official-memo-release",
+    "03-process-roll-out-and-implementation"
+   ],
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-1"
+  },
+  {
+   "type": "project",
+   "id": "project-2"
+  },
+  {
+   "type": "project",
+   "id": "project-3"
+  },
+  {
+   "type": "project",
+   "id": "project-4"
+  }
+ ]
+}
