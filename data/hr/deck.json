@@ -453,6 +453,23 @@
     "speed": "fast"
    },
    "fanIds": []
+  },
+  {
+   "id": "project-10",
+   "short": "COMPBEN ",
+   "title": "COMPBEN ",
+   "cat": "sys",
+   "tag": "System",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "fan",
+   "shots": [],
+   "fx": {},
+   "fanIds": []
   }
  ],
  "slides": [
@@ -788,6 +805,10 @@
    "tilt": 0,
    "say": "",
    "fx": {}
+  },
+  {
+   "type": "section",
+   "cat": "sys"
   }
  ]
 }

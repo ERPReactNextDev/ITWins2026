@@ -48,6 +48,8 @@
  },
  "ar": {
   "0": 1.4146,
+  "1": 1.4144,
+  "2": 1.4144,
   "cms": 2.0397,
   "screenshot-2026-11-19-142635": 1.8374,
   "screenshot-2026-11-19-142609": 1.8519,
@@ -59,7 +61,16 @@
   "switches-and-sockets-ps-mark": 1.779,
   "switches-and-sockets-ps-mark-core": 1.792,
   "switches-and-sockets-1": 1.7652,
-  "bulb": 0.5673
+  "bulb": 0.5673,
+  "1-1": 1.1665,
+  "1-2": 1.1665,
+  "2-1": 1.1665,
+  "2-2": 1.1665,
+  "2-3": 1.4144,
+  "product-manual-csl": 1.4144,
+  "product-manual-ssr": 1.4144,
+  "product-manual-uhb": 1.4144,
+  "img-0530": 1.3333
  },
  "projects": [
   {
@@ -161,6 +172,50 @@
    "shots": [
     [
      "bulb",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-6",
+   "short": "Standard format of product manuals ",
+   "title": "Standard format of product manuals ",
+   "cat": "sys",
+   "tag": "Improvements",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Successfully developed a standardized Product Manual template to improve documentation consistency, streamline manual preparation, and enhance the accessibility of product information.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "1",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-7",
+   "short": "Wiring Devices Product Training",
+   "title": "Wiring Devices Product Training",
+   "cat": "sys",
+   "tag": "Improvements",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Successfully conducted comprehensive Wiring Devices Product Training for the Engineering Department to strengthen product knowledge, technical understanding,\n\nand familiarity with product specifications and\n\napplications.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "img-0530",
      ""
     ]
    ],
@@ -361,6 +416,34 @@
   {
    "type": "project",
    "id": "project-5"
+  },
+  {
+   "type": "project",
+   "id": "project-6"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "1-1",
+    "1-2",
+    "2",
+    "2-1",
+    "2-2",
+    "2-3",
+    "product-manual-csl",
+    "product-manual-ssr",
+    "product-manual-uhb"
+   ],
+   "per": "3",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-7"
   }
  ]
 }
