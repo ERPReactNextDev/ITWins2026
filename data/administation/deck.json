@@ -1,0 +1,362 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "Admin",
+  "company": "Disruptive Solutions Inc",
+  "title": "Department Wins",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {},
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {
+  "candid-pictures": 1.3333,
+  "candid-pictures-2": 1.3333,
+  "energy-label-progressive-dynamics-inc": 0.5455,
+  "energy-label-ecoshift": 0.5455,
+  "energy-label-disruptive-solutions-inc": 0.5455,
+  "ps-safety-license-certificate-page-2-pdi": 0.7521,
+  "ps-safety-license-certificate-page-2-pdi-switches": 0.7675,
+  "ps-safety-license-certificate-page-2-pdi-sockets": 0.7224,
+  "ps-safety-license-certificate-page-2-dsi": 0.7358,
+  "ps-safety-license-certificate-page-1-pdi-switches": 0.8231,
+  "ps-safety-license-certificate-page-1-pdi-sockets": 0.6963,
+  "ps-safetty-license-certificate-page-1-pdi": 0.764,
+  "ps-safetty-license-certificate-page-1-dsi": 0.7465,
+  "ps-quality-certification-mark-license-renewal-ecoshift": 0.6971,
+  "pdi-oko-certificate-of-registration": 0.8847,
+  "ecoshift-certificate-of-registration": 0.8454,
+  "dsi-lit-certificate-of-registration": 0.7587,
+  "warehouse-cebu": 1.3333,
+  "warehouse-cdo": 1.3333,
+  "warehouse-area-davao": 1.3333,
+  "warehouse-area-cdo": 1.3333,
+  "office-area-davao": 1.3333,
+  "front-pic-of-warehouse-cdo": 1.3333,
+  "back-office-cebu": 1.3333,
+  "back-office-cdo": 1.3333,
+  "warehouse-cebu-2": 1.3333,
+  "warehouse-cdo-2": 1.3333,
+  "warehouse-area-davao-2": 1.3333,
+  "warehouse-area-cdo-2": 1.3333,
+  "office-area-davao-2": 1.3333,
+  "front-pic-of-warehouse-cdo-2": 1.3333,
+  "back-office-cebu-2": 1.3333,
+  "back-office-cdo-2": 1.3333,
+  "penthouse-office": 1.7755,
+  "it-primex-area": 0.7506,
+  "engineering-area-room-211": 1.7778,
+  "viber-image-2026-11-03-15-59-58-027": 1.3323
+ },
+ "projects": [
+  {
+   "id": "project-1",
+   "short": "ENERGY LABEL",
+   "title": "ENERGY LABEL",
+   "cat": "sys",
+   "tag": "ACCOMPLISHMENTS ",
+   "icon": "check",
+   "status": "Complete",
+   "lead": "Successfully secured the official Energy Labels from the Department of Energy (DOE) for the following companies and products.\n",
+   "prob": "\n",
+   "caps": [
+    "Ecoshift Corporation – ECOSHIFT Brand  - LED Lights",
+    "Disruptive Solutions Inc. – LIT Brand  - LED Lights",
+    "Progressive Dynamics Inc. – OKO Brand - LED Lights"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "energy-label-disruptive-solutions-inc",
+     ""
+    ],
+    [
+     "energy-label-ecoshift",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": [],
+   "photos": [],
+   "groups": []
+  },
+  {
+   "id": "project-2",
+   "short": "PS Safety Certification Mark Licenses",
+   "title": "PS Safety Certification Mark Licenses",
+   "cat": "sys",
+   "tag": "ACCOMPLISHMENTS ",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Successfully secured the PS Safety Certification Mark Licenses from the DTI–Bureau of Philippine Standards (BPS), authorizing the legal distribution and sale of Self-Ballasted LED Lamps, Switches, and Socket-Outlets in the Philippine market for  Disruptive Solutions Inc. and Progressive Dynamics Inc",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "ps-safetty-license-certificate-page-1-dsi",
+     ""
+    ],
+    [
+     "ps-safetty-license-certificate-page-1-pdi",
+     ""
+    ],
+    [
+     "ps-safety-license-certificate-page-1-pdi-switches",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-3",
+   "short": "PS Quality Certification Mark License renewal For ECOSHIFT",
+   "title": "PS Quality Certification Mark License renewal For ECOSHIFT",
+   "cat": "sys",
+   "tag": "ACCOMPLISHMENTS ",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Successfully secured DTI–Bureau of Philippine Standards (BPS) approval for the continued use of the PS Quality Certification Mark License covering Self-Ballasted LED Lamps for Ecoshift Corporation – Surveillance.  This ensured continued compliance, prevented the lapse of the certification, and supported uninterrupted product distribution in the Philippine market.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "ps-quality-certification-mark-license-renewal-ecoshift",
+     ""
+    ]
+   ],
+   "fx": {
+    "in": "pop",
+    "kb": 1
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-4",
+   "short": "Official Trademark Registration",
+   "title": "Official Trademark Registration",
+   "cat": "sys",
+   "tag": "ACCOMPLISHMENTS ",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Successfully obtained official Trademark Registration Numbers from the Intellectual Property Office of the Philippines (IPOPHL) for the following brand names and logos\n\n(Securing 10 years of exclusive trademark protection. FACILITY AND OPERATIONAL IMPROVEMENTS.)\n\n",
+   "prob": "",
+   "caps": [
+    "OKO",
+    "LIT",
+    "ECOSHIFT"
+   ],
+   "chips": [
+    [
+     "",
+     ""
+    ]
+   ],
+   "mode": "hero",
+   "shots": [
+    [
+     "dsi-lit-certificate-of-registration",
+     ""
+    ],
+    [
+     "ecoshift-certificate-of-registration",
+     ""
+    ],
+    [
+     "pdi-oko-certificate-of-registration",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  }
+ ],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "Admin highlights for **Disruptive Solutions Inc**.",
+   "images": [
+    "candid-pictures-2",
+    "candid-pictures"
+   ],
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-1"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "energy-label-disruptive-solutions-inc",
+    "energy-label-ecoshift",
+    "energy-label-progressive-dynamics-inc"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-2"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "ps-safetty-license-certificate-page-1-dsi",
+    "ps-safetty-license-certificate-page-1-pdi",
+    "ps-safety-license-certificate-page-1-pdi-sockets",
+    "ps-safety-license-certificate-page-1-pdi-switches",
+    "ps-safety-license-certificate-page-2-dsi",
+    "ps-safety-license-certificate-page-2-pdi",
+    "ps-safety-license-certificate-page-2-pdi-sockets",
+    "ps-safety-license-certificate-page-2-pdi-switches"
+   ],
+   "per": "3",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-3"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "ps-quality-certification-mark-license-renewal-ecoshift"
+   ],
+   "per": "1",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-4"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "dsi-lit-certificate-of-registration",
+    "ecoshift-certificate-of-registration",
+    "pdi-oko-certificate-of-registration"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "photos",
+   "eyebrow": "ACCOMPLISHMENTS ",
+   "h": "Successfully completed the transfer of Ecoshift Corporation’s Cebu and Cagayan de Oro operations from the previous warehouses to new warehouse facilities.",
+   "images": [
+    "back-office-cebu",
+    "back-office-cdo",
+    "office-area-davao",
+    "warehouse-cdo",
+    "warehouse-area-cdo",
+    "warehouse-area-davao",
+    "warehouse-cebu"
+   ],
+   "per": "8",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "photos",
+   "eyebrow": "ACCOMPLISHMENTS ",
+   "h": "Successfully established and opened DSI branches in Davao, Cagayan de Oro, and Cebu, including the corresponding office and warehouse facilities.",
+   "images": [
+    "office-area-davao-2",
+    "warehouse-area-davao-2",
+    "warehouse-area-cdo-2",
+    "warehouse-cdo-2",
+    "warehouse-cebu-2"
+   ],
+   "per": "6",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "photos",
+   "eyebrow": "ACCOMPLISHMENTS ",
+   "h": "Successfully relocated all Sales personnel from Room 405 to the Penthouse (5th Floor) to optimize office space utilization and improve team coordination.",
+   "images": [
+    "penthouse-office"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "photos",
+   "eyebrow": "ACCOMPLISHMENTS ",
+   "h": "Successfully relocated the Engineering Team from Warehouse Pasig and Granville Carmona to Room 211 and transferred the IT Team from Room 213 to Primex, ensuring better utilization and allocation of office facilities.",
+   "images": [
+    "engineering-area-room-211",
+    "it-primex-area",
+    "viber-image-2026-11-03-15-59-58-027"
+   ],
+   "per": "4",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  }
+ ]
+}
