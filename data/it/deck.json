@@ -180,7 +180,10 @@
      "HRIS Interface"
     ]
    ],
-   "prob": "Employee records lived in separate files, with no single source of truth."
+   "prob": "Employee records lived in separate files, with no single source of truth.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "taskflow",
@@ -231,7 +234,10 @@
      "Quotation PDF Export"
     ]
    ],
-   "prob": "Quotations and sales reports were prepared by hand, with no standard KPI tracking."
+   "prob": "Quotations and sales reports were prepared by hand, with no standard KPI tracking.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "jaries",
@@ -281,7 +287,10 @@
      "TDS Generation"
     ]
    ],
-   "prob": "Product details and branded datasheets were rebuilt manually for every request."
+   "prob": "Product details and branded datasheets were rebuilt manually for every request.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "ecodesk",
@@ -332,7 +341,10 @@
      "Inquiries"
     ]
    ],
-   "prob": "Ticket creation was slow and the Customer Service team lacked a clear overview."
+   "prob": "Ticket creation was slow and the Customer Service team lacked a clear overview.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "espiron",
@@ -383,7 +395,10 @@
      "Product Info"
     ]
    ],
-   "prob": "SPF item requests and costing passed between Technical and Procurement by hand."
+   "prob": "SPF item requests and costing passed between Technical and Procurement by hand.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "engi",
@@ -443,7 +458,10 @@
      "Site Visit"
     ]
    ],
-   "prob": "Site visits, job orders and shop drawings were requested and tracked separately."
+   "prob": "Site visits, job orders and shop drawings were requested and tracked separately.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "stash",
@@ -494,7 +512,10 @@
      "Assets"
     ]
    ],
-   "prob": "IT assets, licenses and subscriptions had no single, reliable record."
+   "prob": "IT assets, licenses and subscriptions had no single, reliable record.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "helpdesk",
@@ -545,7 +566,10 @@
      "Ticket Info"
     ]
    ],
-   "prob": "IT requests and repairs had no central ticket trail."
+   "prob": "IT requests and repairs had no central ticket trail.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "bc-taskflow",
@@ -600,7 +624,10 @@
      "TPC"
     ]
    ],
-   "prob": "Buildchem's solution and chemical sales relied on hand-made forms and quotes."
+   "prob": "Buildchem's solution and chemical sales relied on hand-made forms and quotes.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "biolog",
@@ -661,7 +688,10 @@
    ],
    "prob": "Attendance and client-site visits could not be verified or tied to KPI reports.",
    "galleryTitle": "Mobile app screens",
-   "gallerySay": "Biolog is a mobile app. Here are its dashboard, calendar, camera, camera view, and reports screens."
+   "gallerySay": "Biolog is a mobile app. Here are its dashboard, calendar, camera, camera view, and reports screens.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "bc-web",
@@ -711,7 +741,10 @@
      "About Us"
     ]
    ],
-   "prob": "Buildchem Solutions needed an online presence that fit Marketing's requirements."
+   "prob": "Buildchem Solutions needed an online presence that fit Marketing's requirements.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "ecoshift",
@@ -761,7 +794,10 @@
      "About Page"
     ]
    ],
-   "prob": "The website lacked features, pages and up-to-date forms."
+   "prob": "The website lacked features, pages and up-to-date forms.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "dsi",
@@ -811,7 +847,10 @@
      "Contact Page"
     ]
    ],
-   "prob": "The company website needed an update to meet Marketing's specifications."
+   "prob": "The company website needed an update to meet Marketing's specifications.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "vah",
@@ -861,7 +900,10 @@
      "Contact Page"
     ]
    ],
-   "prob": "Value Acquisition Holdings needed a website built to Marketing's requirements."
+   "prob": "Value Acquisition Holdings needed a website built to Marketing's requirements.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "3cx",
@@ -904,7 +946,10 @@
      "3CX VOIP Interface"
     ]
    ],
-   "prob": "Calls were not routed by department or connected to tickets and sales records."
+   "prob": "Calls were not routed by department or connected to tickets and sales records.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "email-server",
@@ -946,7 +991,10 @@
     "Monitored",
     "Secured"
    ],
-   "prob": "The email server was open to unauthorized access attempts."
+   "prob": "The email server was open to unauthorized access attempts.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "email-storage",
@@ -988,7 +1036,10 @@
     "Efficient",
     "Streamlined"
    ],
-   "prob": "Mailbox storage kept growing with no monitoring or limits."
+   "prob": "Mailbox storage kept growing with no monitoring or limits.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "email-accounts",
@@ -1030,7 +1081,10 @@
     "Secure",
     "Compliant"
    ],
-   "prob": "Former employees' mailboxes lingered without backup or secure removal."
+   "prob": "Former employees' mailboxes lingered without backup or secure removal.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "carmona",
@@ -1108,7 +1162,10 @@
      ]
     }
    ],
-   "prob": "The Carmona site needed surveillance and a reliable, site-wide network."
+   "prob": "The Carmona site needed surveillance and a reliable, site-wide network.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "primex",
@@ -1150,7 +1207,10 @@
     "Protected",
     "Defended"
    ],
-   "prob": "The Primex site needed a secured network perimeter and access control."
+   "prob": "The Primex site needed a secured network perimeter and access control.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "reconfig",
@@ -1192,7 +1252,10 @@
     "Restored",
     "Reliable"
    ],
-   "prob": "Network and system changes risked downtime and unstable services."
+   "prob": "Network and system changes risked downtime and unstable services.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "failover",
@@ -1234,7 +1297,10 @@
     "Converge",
     "Seamless Switch"
    ],
-   "prob": "One internet link meant any outage could stop the whole company."
+   "prob": "One internet link meant any outage could stop the whole company.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "id": "bloopers",
@@ -1312,7 +1378,10 @@
     "Now the fun part. Here are the bloopers, the funny moments behind the scenes.",
     "More memorable moments from the team.",
     "And that is our team. Thank you for the laughs."
-   ]
+   ],
+   "fx": {
+    "speed": "fast"
+   }
   }
  ],
  "slides": [
@@ -1329,11 +1398,16 @@
     "stash-dashboard"
    ],
    "say": "Welcome to Department Wins 2026. These are the highlights of the IT Department: systems built, websites launched, and infrastructure delivered for Disruptive Solutions Inc and its partners.",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "overview",
-   "h": "Wins at a glance"
+   "h": "Wins at a glance",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "summary",
@@ -1355,11 +1429,17 @@
     "Dual-internet failover keeps the company online if one link goes down",
     "Four websites delivered with Marketing and our IT OJTs",
     "CCTV and a full network rollout in Carmona, plus a Sophos firewall at Primex"
-   ]
+   ],
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "section",
-   "cat": "sys"
+   "cat": "sys",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -1403,7 +1483,10 @@
   },
   {
    "type": "section",
-   "cat": "web"
+   "cat": "web",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -1423,7 +1506,10 @@
   },
   {
    "type": "section",
-   "cat": "infra"
+   "cat": "infra",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -1533,7 +1619,10 @@
      "via": "3cx"
     }
    ],
-   "say": "Here is how it all connects. Taskflow sits at the center of our ecosystem, linked to Jaries product inventory, Espiron, Engi-Connect, Biolog, 3CX VOIP and the customized Buildchem Taskflow. Ecodesk joins through 3CX call routing and CSR ticketing. These are not separate tools. They are one connected platform."
+   "say": "Here is how it all connects. Taskflow sits at the center of our ecosystem, linked to Jaries product inventory, Espiron, Engi-Connect, Biolog, 3CX VOIP and the customized Buildchem Taskflow. Ecodesk joins through 3CX call routing and CSR ticketing. These are not separate tools. They are one connected platform.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "challenges",
@@ -1584,7 +1673,10 @@
      ]
     }
    ],
-   "say": "Challenges and lessons. Challenge one: budget and subscription cost management. We are consolidating all systems onto one unified ERP platform, which reduces redundant services and overlapping costs. Consolidation is ongoing and already delivering measurable efficiency gains. Challenge two: a firewall failure after an automated firmware update. We rolled back, reapplied validated settings and restored the network. The lesson: critical changes need cross-team validation and scheduled maintenance windows. No one pushes a critical update alone."
+   "say": "Challenges and lessons. Challenge one: budget and subscription cost management. We are consolidating all systems onto one unified ERP platform, which reduces redundant services and overlapping costs. Consolidation is ongoing and already delivering measurable efficiency gains. Challenge two: a firewall failure after an automated firmware update. We rolled back, reapplied validated settings and restored the network. The lesson: critical changes need cross-team validation and scheduled maintenance windows. No one pushes a critical update alone.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "lesson",
@@ -1609,7 +1701,10 @@
      "When something does break, more people understand the system and can fix it sooner."
     ]
    ],
-   "say": "The core lesson: team collaboration and validation. No system or decision stands alone. Every change, update and deployment now benefits from mutual review across the team. Shared accountability builds stronger systems, fewer surprises, and faster recovery when issues do arise."
+   "say": "The core lesson: team collaboration and validation. No system or decision stands alone. Every change, update and deployment now benefits from mutual review across the team. Shared accountability builds stronger systems, fewer surprises, and faster recovery when issues do arise.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "roadmap",
@@ -1677,11 +1772,17 @@
      "p": "Bringing AI and workflow automation into the ERP system."
     }
    ],
-   "say": "Looking ahead to 2027. First, we will migrate Taskflow, Ecodesk, Espiron and Engi-Connect into one ERP system, building on HRIS, which is already live as the ERP core. Ecodesk gets new modules: after sales, RMA, warranty claims, a knowledge base, and CSAT. We will build a new system for the Admin department. The Ecoshift and Disruptive websites will move from WordPress to Next.js for tighter integration with our ERP platform. And we will bring AI integration and automation into the ERP system."
+   "say": "Looking ahead to 2027. First, we will migrate Taskflow, Ecodesk, Espiron and Engi-Connect into one ERP system, building on HRIS, which is already live as the ERP core. Ecodesk gets new modules: after sales, RMA, warranty claims, a knowledge base, and CSAT. We will build a new system for the Admin department. The Ecoshift and Disruptive websites will move from WordPress to Next.js for tighter integration with our ERP platform. And we will bring AI integration and automation into the ERP system.",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "section",
-   "cat": "fun"
+   "cat": "fun",
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -1692,7 +1793,10 @@
    "eyebrow": "The end",
    "h": "Thank You!",
    "text": "These moments make our journey even more memorable. Thank you for being part of our success!",
-   "say": "These moments make our journey even more memorable. Thank you for being part of our success!"
+   "say": "These moments make our journey even more memorable. Thank you for being part of our success!",
+   "fx": {
+    "speed": "fast"
+   }
   }
  ]
 }

@@ -55,17 +55,16 @@
  "projects": [
   {
    "id": "project-1",
-   "short": "AFTERSALES PROCESS INTEGRATION",
-   "title": "AFTERSALES PROCESS INTEGRATION",
+   "short": "AFTER-SALES PROCESS INTEGRATION & STANDARDIZATION",
+   "title": "AFTER-SALES PROCESS INTEGRATION & STANDARDIZATION",
    "cat": "sys",
-   "tag": "Standardized Workflow — Now Fully Implemented",
+   "tag": "One Standard, Clear Responsibilities. Better Customer Experience.",
    "icon": "cpu",
    "status": "Complete",
-   "lead": "We have successfully designed, developed, and rolled out our integrated aftersales workflow. Every step has been mapped, responsibilities clarified, and handoffs refined — creating a unified process that ensures consistency, efficiency, and a smoother experience for both our teams and our customers.",
+   "lead": "Successfully spearheaded the development and integration of a structured After-Sales Process,\ncovering the entire implementation journey — from initial planning and workflow development,\nofficial memorandum issuance, process rollout, and coordination with the Sales Department.\nThis initiative aims to establish standardized endorsement procedures, define departmental\nresponsibilities, strengthen interdepartmental coordination, and ensure a more systematic\n\napproach to handling customer complaints, change-item requests, replacements, and other After-\nSales concerns.",
    "prob": "",
    "caps": [
-    "Successfully mapped and streamlined the complete workflow",
-    "Defined clear steps from inquiry through to resolution"
+    "Moving from a fragmented process toward a more structured, transparent, and accountable After-Sales operation."
    ],
    "chips": [],
    "mode": "hero",
@@ -75,7 +74,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -102,7 +103,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -129,7 +132,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -156,7 +161,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   }
  ],
@@ -174,7 +181,9 @@
     "03-process-roll-out-and-implementation"
    ],
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",

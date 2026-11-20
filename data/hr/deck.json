@@ -468,7 +468,9 @@
    "chips": [],
    "mode": "fan",
    "shots": [],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   }
  ],
@@ -804,7 +806,9 @@
    "per": "8",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   }
  ]
 }

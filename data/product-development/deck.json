@@ -92,7 +92,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -109,7 +111,9 @@
    "chips": [],
    "mode": "orb",
    "shots": [],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -131,7 +135,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -153,7 +159,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -175,7 +183,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -197,7 +207,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -219,7 +231,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   }
  ],
@@ -256,7 +270,9 @@
    "per": 4,
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -314,7 +330,9 @@
     }
    ],
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "challenges",
@@ -368,7 +386,9 @@
     }
    ],
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -387,7 +407,9 @@
    "per": "2",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -406,7 +428,9 @@
    "per": 4,
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -434,7 +458,9 @@
    "per": "3",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",

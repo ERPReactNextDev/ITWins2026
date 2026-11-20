@@ -108,7 +108,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": [],
    "photos": [],
    "groups": []
@@ -140,7 +142,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   },
   {
@@ -163,8 +167,7 @@
     ]
    ],
    "fx": {
-    "in": "pop",
-    "kb": 1
+    "speed": "fast"
    },
    "fanIds": []
   },
@@ -204,7 +207,9 @@
      ""
     ]
    ],
-   "fx": {},
+   "fx": {
+    "speed": "fast"
+   },
    "fanIds": []
   }
  ],
@@ -221,7 +226,9 @@
     "candid-pictures"
    ],
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -239,7 +246,9 @@
    "per": 4,
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -262,7 +271,9 @@
    "per": "3",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -278,7 +289,9 @@
    "per": "1",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "project",
@@ -296,7 +309,9 @@
    "per": 4,
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "photos",
@@ -314,7 +329,9 @@
    "per": "8",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "photos",
@@ -330,7 +347,9 @@
    "per": "6",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "photos",
@@ -342,7 +361,9 @@
    "per": 4,
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   },
   {
    "type": "photos",
@@ -356,7 +377,9 @@
    "per": "4",
    "tilt": 0,
    "say": "",
-   "fx": {}
+   "fx": {
+    "speed": "fast"
+   }
   }
  ]
 }

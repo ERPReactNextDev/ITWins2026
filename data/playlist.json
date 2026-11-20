@@ -1,5 +1,5 @@
 {
- "skipEnds": true,
+ "skipEnds": false,
  "loop": false,
- "autoplay": false
+ "autoplay": true
 }
