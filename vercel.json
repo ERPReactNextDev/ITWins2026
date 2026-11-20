@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "functions": {
+    "api/[...slug].js": { "maxDuration": 60 }
+  },
   "rewrites": [
     { "source": "/:dept([a-z0-9-]+)", "destination": "/index.html" }
   ],

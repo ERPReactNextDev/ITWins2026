@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin · Department Wins</title>
+<title>Admin · StoriDeck</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Bricolage+Grotesque:wght@500;700;800&family=Poppins:wght@600&family=Montserrat:wght@600&family=Playfair+Display:wght@600&family=Space+Grotesk:wght@500&family=Sora:wght@500&family=Outfit:wght@500&family=Inter:wght@500&family=Nunito+Sans:wght@500&family=Source+Sans+3:wght@500&family=Work+Sans:wght@500&family=JetBrains+Mono:wght@500&family=IBM+Plex+Mono:wght@500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
@@ -206,8 +206,37 @@ textarea{resize:vertical;line-height:1.45}
 .ck p{margin:0;font-size:13px}.ck b{display:block;font-weight:600;margin-bottom:1px}.ck small{color:var(--mute);font-size:12.5px}
 .good{text-align:center;padding:26px 12px;color:var(--accd);font-weight:600;background:var(--accs);border-radius:12px}
 
-/* playlist view */
-#playlist{position:absolute;inset:0;background:var(--bg);z-index:7;overflow:auto;display:none}
+/* playlist + directory views */
+#playlist,#directory{position:absolute;inset:0;background:var(--bg);z-index:7;overflow:auto;display:none}
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media(max-width:1100px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.pgrid{grid-template-columns:1fr}}
+.pc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px}
+.pc .ph{display:flex;align-items:center;gap:12px}.pc .ph .ti{width:40px;height:40px;border-radius:10px;background:var(--accs);color:var(--acc);display:grid;place-items:center;flex:none}.pc .ph .ti svg{width:22px;height:22px}
+.pc b{display:block;font-size:15.5px}.pc small{color:var(--mute);font-size:12.5px}
+.pc .acts{display:flex;gap:8px;margin-top:auto;align-items:center}.pc .acts .btn{flex:1;justify-content:center}.pc .acts .ib{flex:none;width:32px;height:32px}
+.pc .actwrap{margin-top:auto;display:flex;flex-direction:column;gap:6px}
+.dirtbl .actwrap{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.dirtbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh)}
+.dirtbl th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);padding:10px 14px;border-bottom:1px solid var(--line);background:#f7f9fc}
+.dirtbl td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:14px}
+.dirtbl tr:last-child td{border-bottom:none}
+.dirtbl tr:hover td{background:#fafcff}
+.dirtbl .nm{display:flex;align-items:center;gap:10px;font-weight:600}.dirtbl .nm .ti{width:32px;height:32px;border-radius:8px;background:var(--accs);color:var(--acc);display:grid;place-items:center;flex:none}.dirtbl .nm .ti svg{width:18px;height:18px}
+.dirtbl small{color:var(--mute)}
+.dirtbl .acts{display:flex;gap:6px;justify-content:flex-end;white-space:nowrap}
+.dirtbl .acts .btn{padding:6px 10px;font-size:12.5px}
+.dirtbl .newrow td{padding:0}
+.dirtbl .newrow button{width:100%;border:none;background:transparent;padding:12px 14px;color:var(--mute);font:inherit;cursor:pointer;text-align:left}
+.dirtbl .newrow button:hover{color:var(--acc);background:#f7f9fc}
+.dirhead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:14px}
+.dirhead h2{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.dirhead .lead{margin:0;color:var(--mute);max-width:70ch}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;flex:none}
+.seg button{border:none;background:transparent;padding:7px 10px;color:var(--mute);cursor:pointer;display:grid;place-items:center}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button.on{background:var(--accs);color:var(--acc)}
+.seg button svg{width:16px;height:16px}
 .plw{max-width:1120px;margin:0 auto;padding:26px 24px 60px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px}
 .plw h2{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}.plw .lead{margin:0 0 18px;color:var(--mute);max-width:70ch}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:16px}
@@ -227,15 +256,16 @@ textarea{resize:vertical;line-height:1.45}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <header>
-  <div class="brand"><div class="lg" id="logo"></div><div><b>Department Wins</b><small>Admin</small></div></div>
-  <div class="deptsel"><span>Department</span><select id="dept" aria-label="Department"></select></div>
+  <div class="brand"><div class="lg" id="logo"></div><div><b>StoriDeck</b><small>Admin</small></div></div>
+  <div class="deptsel"><span id="deptLbl">Deck</span><select id="dept" aria-label="Deck"></select></div>
   <button class="btn sm" id="bNew"></button>
   <span class="sp"></span>
   <span class="chip" id="st"><i></i><span id="stt"></span></span>
   <button class="ib" id="bUndo" title="Undo (Ctrl+Z)" aria-label="Undo"></button>
   <button class="ib" id="bRedo" title="Redo (Ctrl+Y)" aria-label="Redo"></button>
   <span class="sep"></span>
-  <button class="btn" id="bPl" title="Order the departments and get one link for all of them"></button>
+  <button class="btn" id="bDir" title="Back to the project directory"></button>
+  <button class="btn" id="bPl" title="Order the decks in this project"></button>
   <a class="btn" id="view" target="_blank" rel="noopener"></a>
   <button class="btn" id="bDl"></button>
   <button class="btn pri" id="bSave"></button>
@@ -250,6 +280,7 @@ textarea{resize:vertical;line-height:1.45}
   </section>
   <aside id="right"><div id="ihead"></div><div class="scroll" id="insp"></div></aside>
   <section id="playlist"></section>
+  <section id="directory"></section>
 </main>
 <div class="toasts" id="toasts"></div>
 <script src="/icons.js"></script>
@@ -283,9 +314,10 @@ const ico=(n,w=2)=>`<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke
 const I=(n,w)=>{const t=document.createElement("span");t.innerHTML=ico(n,w);return t.firstChild};
 
 /* ============ state ============ */
-let D=null,dept="it",DEPTS=[],PL={skipEnds:true,loop:false,autoplay:false},online=false,canWrite=false,adminKey=sessionStorage.getItem("dwKey")||"";
+let D=null,dept="it",DEPTS=[],PROJECTS=[],CUR=null,PL={skipEnds:true,loop:false,autoplay:false},online=false,canWrite=false,adminKey=sessionStorage.getItem("dwKey")||"";
 let view="edit",tab="slides",sel=0,psel=0,IMGS=[],dirty=false,plDirty=false,starts=[],jumpMap={},SAYS=[],PROJS=[],curAt=0,pvAt=0,pt=null;
 let filterQ="",secState={},STAT={},quiet=0;
+let dirView="grid",dirQ="";try{dirView=localStorage.getItem("dwDirView")||"grid"}catch(e){}
 const frame=$("#frame");
 
 /* ============ toast + modal ============ */
@@ -313,11 +345,12 @@ function typeToConfirm(title,msg,word,ok){
 /* ============ api ============ */
 async function api(p,o={}){const hd={...(o.headers||{})};if(adminKey)hd["x-admin-key"]=adminKey;
   const r=await fetch("/api/"+p,{...o,headers:hd});if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.error||r.status)}return r.json()}
+const jfresh=p=>fetch(`/api/file/${p}`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}).catch(()=>fetch(`/${p}`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}));
 const imgUrl=id=>`/img/${dept}/${/\.[a-z0-9]{3,4}$/i.test(id)?id:id+".webp"}`;
 const putJson=(p,body)=>api(p,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
 
 /* ============ status ============ */
-function isDirty(){return view==="playlist"?plDirty:dirty}
+function isDirty(){return view==="playlist"?plDirty:view==="directory"?false:dirty}
 function status(){
   const st=$("#st"),tx=$("#stt");let c="chip",t;
   if(isDirty()){c+=" dirty";t="Unsaved changes"}
@@ -325,8 +358,8 @@ function status(){
   else if(!canWrite){c+=" warn";t="Read-only"}
   else{c+=" ok";t="All changes saved"}
   st.className=c;tx.textContent=t;
-  $("#bSave").innerHTML=(online&&canWrite?ico("save"):ico("dl"))+(view==="playlist"?"Save playlist":"Save");
-  $("#bUndo").disabled=view==="playlist"||HI<=0;$("#bRedo").disabled=view==="playlist"||HI>=HIST.length-1;
+  $("#bSave").innerHTML=(online&&canWrite?ico("save"):ico("dl"))+(view==="playlist"?"Save playlist":view==="directory"?"Download":"Save");
+  $("#bUndo").disabled=view!=="edit"||HI<=0;$("#bRedo").disabled=view!=="edit"||HI>=HIST.length-1;
   $("#bUndo").toggleAttribute("disabled",$("#bUndo").disabled);$("#bRedo").toggleAttribute("disabled",$("#bRedo").disabled);
   $("#bPl").classList.toggle("pri",false);
   const b=$("#banner");
@@ -378,11 +411,11 @@ function normalize(){
 }
 async function loadImgs(){
   if(online){try{IMGS=(await api("img/"+dept)).map(idOf)}catch{IMGS=[]}}else IMGS=Object.keys(D.ar);
-  IMGS.sort();
+  if(!online)IMGS.sort(); // online list comes pre-sorted by upload date (oldest first)
   await Promise.all(IMGS.filter(id=>!D.ar[id]).map(id=>new Promise(r=>{const i=new Image();i.onload=()=>{D.ar[id]=+(i.naturalWidth/i.naturalHeight).toFixed(4);dirty=true;r()};i.onerror=r;i.src=imgUrl(id)})));
 }
 async function loadDept(id){
-  dept=id;D=await (await fetch(`/data/${id}/deck.json`,{cache:"no-cache"})).json();normalize();
+  dept=id;D=await jfresh(`data/${id}/deck.json`);normalize();
   dirty=false;sel=0;psel=0;curAt=0;pvAt=0;starts=[];jumpMap={};SAYS=[];PROJS=[];filterQ="";await loadImgs();
   HIST=[];HI=-1;snap();
   $("#dept").value=id;$("#view").href=`/?d=${id}`;
@@ -399,37 +432,59 @@ async function saveDeck(){
     status();toast("Saved","ok")}
   catch(err){toast("Couldn't save: "+err.message,"bad")}
 }
-function save(){view==="playlist"?savePlaylist():saveDeck()}
+function save(){view==="playlist"?savePlaylist():view==="directory"?downloadProjects():saveDeck()}
+function downloadProjects(){dl("projects.json",PROJECTS);toast("Downloaded projects.json. Put it in the data folder.","ok")}
 function dl(name,obj){const a=h("a",{href:URL.createObjectURL(new Blob([JSON.stringify(obj,null,1)],{type:"application/json"})),download:name});a.click()}
 function download(){
-  if(view==="playlist"){dl("departments.json",DEPTS.map(d=>({id:d.id,name:d.name,company:d.company,include:d.include!==false})));setTimeout(()=>dl("playlist.json",PL),300);toast("Downloaded departments.json and playlist.json. Put both in the data folder.","ok");return}
+  if(view==="playlist"||view==="directory"){dl("projects.json",PROJECTS);setTimeout(()=>dl("playlist.json",PL),300);toast("Downloaded projects.json and playlist.json. Put both in the data folder.","ok");return}
   dl("deck.json",D);toast("Downloaded deck.json. Put it in data/"+dept+"/deck.json","ok");
 }
 function fillDepts(){const s=$("#dept");s.innerHTML="";DEPTS.forEach(d=>s.append(h("option",{value:d.id},d.name)));s.value=dept}
-function starter(name,company,copyLook){
+function starter(name,company,copyLook,generic){
   const y=String(new Date().getFullYear());
-  const dk={version:1,meta:{dept:name,company,title:"Department Wins",year:y},
+  const dk={version:1,meta:{dept:name,company,title:generic?name:"StoriDeck",year:y},
    theme:copyLook&&D?clone(D.theme):{mode:"light",colors:{},fonts:{display:"Bricolage Grotesque",body:"DM Sans",mono:"JetBrains Mono"}},
    categories:{sys:{title:"Systems",desc:"Internal platforms and tools we delivered.",icon:"cpu",unit:"wins"},web:{title:"Websites",desc:"Websites designed and launched.",icon:"globe",unit:"wins"},infra:{title:"Infrastructure",desc:"Networks, security and on-site rollouts.",icon:"shield",unit:"wins"},fun:{title:"Bloopers",desc:"Behind the scenes.",icon:"smile",unit:"photos"}},
    ar:{},projects:[],slides:[
-    {type:"title",badge:"Department Achievements",l1:"Department",l2:"Wins",year:y,sub:`${name} highlights for **${company||"our company"}**.`,images:[],say:""},
+    generic
+     ?{type:"title",badge:"Project Highlights",l1:name,l2:y,year:y,sub:`${name} highlights for **${company||"our company"}**.`,images:[],say:""}
+     :{type:"title",badge:"Department Achievements",l1:"Department",l2:"Wins",year:y,sub:`${name} highlights for **${company||"our company"}**.`,images:[],say:""},
     {type:"overview",h:"Wins at a glance"},{type:"summary",h:"The year in numbers",departments:[],highlights:[]},
     {type:"end",eyebrow:"The end",h:"Thank You!",text:"Thank you for being part of our success!",say:""}]};
   return dk}
-function newDept(){
-  if(!online||!canWrite)return toast("Creating a department needs the local server (node server.js).","bad");
-  const nm=h("input",{placeholder:"e.g. Accounting Department"}),co=h("input",{value:(D&&D.meta.company)||""}),cp=h("input",{type:"checkbox",checked:""});
+async function saveProjects(){if(!online||!canWrite)return;try{await putJson("projects",{projects:PROJECTS,options:PL})}catch(e){toast("Couldn't save projects.json: "+e.message,"bad")}}
+function syncCurDecks(){if(!CUR)return;const by={};DEPTS.forEach(d=>by[d.id]=d);CUR.decks=DEPTS.map(d=>({id:d.id,name:d.name,company:d.company,include:d.include!==false}));const p=PROJECTS.find(x=>x.id===CUR.id);if(p){p.name=CUR.name;p.company=CUR.company;p.decks=CUR.decks;p.updated=new Date().toISOString().slice(0,10)}}
+function newDeck(){
+  if(!online||!canWrite||!CUR)return toast("Creating a deck needs the local server (node server.js) inside a project.","bad");
+  const isDW=CUR.id==="department-wins";
+  const nm=h("input",{placeholder:isDW?"e.g. Accounting Department":"e.g. Q4 Campaign"}),co=h("input",{value:CUR.company||""}),cp=h("input",{type:"checkbox",checked:""});
   const sw=h("label",{class:"sw"},cp,h("i"));
   const go=async()=>{
     const name=nm.value.trim();if(!name){nm.focus();return}
     const id=slug(name.replace(/department/i,""))||slug(name);
-    if(DEPTS.some(d=>d.id===id)){toast("A department with the id “"+id+"” already exists.","bad");return}
-    try{await api("dept",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,deck:starter(name,co.value.trim(),cp.checked)})});
-      DEPTS.push({id,name,company:co.value.trim(),include:true});m.close();fillDepts();if(view==="playlist")closePlaylist(true);await loadDept(id);toast("Department created","ok")}catch(e){toast(e.message,"bad")}};
-  const m=modal({title:"New department",sub:"It gets its own link and joins the all-departments playlist.",body:h("div",{class:"f"},
-    h("div",{class:"fl"},h("span",{class:"lbl"},"Department name"),nm),h("div",{class:"fl"},h("span",{class:"lbl"},"Company"),co),
-    h("div",{class:"fl inline"},h("div",{},h("span",{class:"lbl"},"Use the same colors and fonts as "+(D?D.meta.dept:"this department")),h("div",{class:"hint"},"You can change the look later in the Look tab.")),sw)),
-    actions:[h("button",{class:"btn",onclick:()=>m.close()},"Cancel"),h("button",{class:"btn pri",onclick:go},"Create department")]});
+    if(DEPTS.some(d=>d.id===id)){toast("A deck with the id “"+id+"” already exists in this project.","bad");return}
+    try{
+      if(isDW)await api("dept",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,deck:starter(name,co.value.trim(),cp.checked)})});
+      else await api("deck",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,deck:starter(name,co.value.trim(),cp.checked,true)})});
+      DEPTS.push({id,name,company:co.value.trim(),include:true});syncCurDecks();m.close();fillDepts();await saveProjects();if(view==="playlist")closePlaylist();await loadDept(id);toast("Deck created","ok")}catch(e){toast(e.message,"bad")}};
+  const m=modal({title:isDW?"New department":"New deck",sub:"It is added to "+CUR.name+".",body:h("div",{class:"f"},
+    h("div",{class:"fl"},h("span",{class:"lbl"},isDW?"Department name":"Deck name"),nm),h("div",{class:"fl"},h("span",{class:"lbl"},"Company"),co),
+    h("div",{class:"fl inline"},h("div",{},h("span",{class:"lbl"},"Use the same colors and fonts as "+(D?D.meta.dept:"this deck")),h("div",{class:"hint"},"You can change the look later in the Look tab.")),sw)),
+    actions:[h("button",{class:"btn",onclick:()=>m.close()},"Cancel"),h("button",{class:"btn pri",onclick:go},isDW?"Create department":"Create deck")]});
+  nm.onkeydown=e=>{if(e.key==="Enter")go()};setTimeout(()=>nm.focus(),30);
+}
+function newTopProject(){
+  if(!online||!canWrite)return toast("Creating a project needs the local server (node server.js).","bad");
+  const nm=h("input",{placeholder:"e.g. Sales Pitch 2026"}),co=h("input",{placeholder:"e.g. Disruptive Solutions Inc"});
+  const go=async()=>{
+    const name=nm.value.trim();if(!name){nm.focus();return}
+    const id=slug(name);if(!id||id==="item"){toast("Give the project a longer name.","bad");return}
+    if(PROJECTS.some(p=>p.id===id)){toast("A project with the id “"+id+"” already exists.","bad");return}
+    try{await api("project",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,name,company:co.value.trim(),deck:starter(name,co.value.trim(),false,true)})});
+      const p={id,name,company:co.value.trim(),decks:[{id,name,company:co.value.trim(),include:true}]};PROJECTS.push(p);m.close();await openProject(p);toast("Project created","ok")}catch(e){toast(e.message,"bad")}};
+  const m=modal({title:"New project",sub:"A project can hold one or more decks. Department Wins is one project; this is for anything else.",body:h("div",{class:"f"},
+    h("div",{class:"fl"},h("span",{class:"lbl"},"Project name"),nm),h("div",{class:"fl"},h("span",{class:"lbl"},"Company (optional)"),co)),
+    actions:[h("button",{class:"btn",onclick:()=>m.close()},"Cancel"),h("button",{class:"btn pri",onclick:go},"Create project")]});
   nm.onkeydown=e=>{if(e.key==="Enter")go()};setTimeout(()=>nm.focus(),30);
 }
 async function guard(){return !isDirty()||await ask("Leave without saving?","You have unsaved changes in this view.","Leave without saving",true)}
@@ -449,13 +504,28 @@ const WF={
  challenges:()=>[0,1,2].map(i=>rc(10+i*35,10,32,52,"",3)+rc(14+i*35,16,18,4,"s",2)+rc(14+i*35,26,24,8,"c1",2)+rc(14+i*35,37,24,8,"c2",2)+rc(14+i*35,48,24,8,"c3",2)).join(""),
  lesson:()=>rc(10,14,52,10,"s")+rc(10,28,38,10,"a")+rc(10,46,46,3,"m",1.5)+rc(10,52,40,3,"m",1.5)+[0,1,2].map(i=>rc(72,10+i*19,38,16,"",3)+cir(81,18+i*19,3.5,"a")).join(""),
  roadmap:()=>[0,1,2].map(i=>rc(8,12+i*19,22,13,"",3)).join("")+`<path class="ln" d="M30 18L52 36M30 37L52 36M30 56L52 36"/>`+cir(58,36,7,"a")+[0,1,2].map(i=>rc(72,10+i*19,40,15,"",3)).join(""),
- end:()=>rc(24,26,72,12,"s")+rc(40,44,40,4,"m",2)+rc(14,10,5,5,"c1",1)+rc(98,14,5,5,"c2",1)+rc(26,56,5,5,"c3",1)+rc(90,52,5,5,"c1",1)+rc(60,10,5,5,"c2",1)+rc(8,40,5,5,"c2",1)
+ end:()=>rc(24,26,72,12,"s")+rc(40,44,40,4,"m",2)+rc(14,10,5,5,"c1",1)+rc(98,14,5,5,"c2",1)+rc(26,56,5,5,"c3",1)+rc(90,52,5,5,"c1",1)+rc(60,10,5,5,"c2",1)+rc(8,40,5,5,"c2",1),
+ video:()=>rc(10,12,100,48,"",4)+'<path class="a" d="M54 24l20 12-20 12z"/>',
+ quote:()=>'<text x="12" y="48" font-size="36" class="s" font-family="Georgia,serif">“</text>'+rc(44,16,60,7,"s",3.5)+rc(44,30,44,7,"m",3.5)+rc(44,44,52,7,"m",3.5)+rc(44,58,32,3,"c1",1.5),
+ stats:()=>[0,1,2].map(i=>rc(10+i*36,10,32,34,i?"":"a",4)+rc(14+i*36,50,24,3,"m",1.5)).join(""),
+ timeline:()=>'<path class="ln" d="M26 10V62"/>'+[0,1,2].map(i=>cir(26,18+i*22,4,i?"":"a")+rc(40,10+i*22,66,16,"",3)+rc(46,14+i*22,40,4,"m",2)).join(""),
+ beforeafter:()=>rc(10,12,46,48,"",4)+rc(64,12,46,48,"",4)+rc(16,20,20,5,"c1",2.5)+rc(16,32,30,4,"m",2)+rc(16,42,26,4,"m",2)+rc(70,20,20,5,"c3",2.5)+rc(70,32,30,4,"m",2)+rc(70,42,26,4,"m",2),
+ team:()=>[0,1,2].map(i=>cir(24+i*36,24,10)+rc(10+i*36,42,28,4,"m",2)+rc(16+i*36,51,16,3,"m",1.5)).join(""),
+ faq:()=>[0,1,2].map(i=>rc(10,9+i*18,100,13,"",3)+cir(20,15.5+i*18,3,"a")+rc(32,13+i*18,58,4,"m",2)).join(""),
+ table:()=>rc(10,10,100,52,"",3)+'<path class="n" d="M10 24h100M10 38h100M10 52h100M38 10v52M66 10v52M94 10v52"/>',
+ cta:()=>rc(30,24,60,16,"a",8)+rc(42,54,36,4,"m",2)+rc(14,12,8,8,"s",4)+rc(98,12,8,8,"c2",4)+rc(48,30,24,4,"m",2),
+ agenda:()=>[0,1,2].map(i=>rc(10,9+i*18,100,13,"",3)+cir(19,15.5+i*18,3.5,"a")+rc(30,12.5+i*18,52,5,"m",2.5)+rc(96,12+i*18,8,7,"",2)).join(""),
+ split:()=>rc(10,14,44,44,"",4)+rc(62,14,48,44,"c1",4)+rc(14,22,36,6,"s",3)+rc(14,36,30,4,"m",2)+rc(14,46,34,4,"m",2)
 };
 const WFM={
  fan:()=>fan()+rc(10,14,40,6,"s")+rc(10,24,34,3,"m",1.5)+rc(10,30,30,3,"m",1.5),
  hero:()=>rc(14,8,92,56,"",4)+rc(14,8,92,9,"m",4)+cir(21,12.5,1.6,"s")+cir(27,12.5,1.6,"s")+rc(20,22,30,4,"s",2)+rc(20,30,80,12,"m",2)+rc(20,46,38,12,"m",2)+rc(62,46,38,12,"m",2),
  phone:()=>[0,1,2].map(i=>rc(14+i*35,8,28,56,"",5)+rc(23+i*35,11,10,2,"s",1)+rc(18+i*35,18,20,8,"m",2)+rc(18+i*35,30,20,26,"m",2)).join(""),
- orb:()=>cir(60,34,28)+cir(60,34,19)+cir(60,34,10,"a")+rc(8,62,34,5,"m",2.5)+rc(78,62,34,5,"m",2.5)
+ orb:()=>cir(60,34,28)+cir(60,34,19)+cir(60,34,10,"a")+rc(8,62,34,5,"m",2.5)+rc(78,62,34,5,"m",2.5),
+ grid:()=>[0,1,2,3].map(i=>rc(14+(i%2)*46,10+Math.floor(i/2)*24,42,20,"",3)).join(""),
+ duo:()=>rc(14,16,44,40,"",4)+rc(62,16,44,40,"",4),
+ minimal:()=>rc(10,18,60,10,"s")+rc(10,34,44,10,"a")+rc(10,50,70,3,"m",1.5)+rc(10,58,56,3,"m",1.5),
+ collage:()=>rc(16,14,36,30,"",3,'transform="rotate(-6 34 29)"')+rc(48,6,36,30,"",3,'transform="rotate(4 66 21)"')+rc(80,16,30,26,"",3,'transform="rotate(-3 95 29)"')+rc(30,42,34,22,"",3,'transform="rotate(5 47 53)"')
 };
 const wf=(fnc,cls="")=>`<svg class="wf ${cls}" viewBox="0 0 120 72" aria-hidden="true">${fnc()}</svg>`;
 
@@ -471,11 +541,22 @@ const TY={
  challenges:["Challenges","Cards that pair a challenge with its solution and outcome."],
  lesson:["Core lesson","One big statement with supporting points."],
  roadmap:["Roadmap","Systems merging into one hub, plus cards about what comes next."],
+ video:["Video","Embed a YouTube, Vimeo or direct video file with a heading."],
+ quote:["Quote","A big testimonial or quote with the person's name and role."],
+ stats:["Stats","Big numbers in a row, such as hours saved or tickets closed."],
+ timeline:["Timeline","Milestones and dates shown in order along a line."],
+ beforeafter:["Before & after","Two columns that contrast the old way with the new."],
+ team:["Team","People cards with names, roles and short notes."],
+ faq:["FAQ","Questions with answers, two per row."],
+ table:["Table","A simple data table with up to four columns."],
+ cta:["Call to action","A bold slide with a message and an optional button."],
+ agenda:["Agenda","A numbered outline of what the presentation covers."],
+ split:["Text + image","Words and bullet points on one side, a picture on the other."],
  end:["Closing","The thank-you slide, with confetti."]
 };
 const TL=Object.fromEntries(Object.entries(TY).map(([k,v])=>[k,v[0]]));
-const TICON={title:"flame",overview:"chart",summary:"check",section:"box",project:"cpu",map:"split",photos:"cam",challenges:"shield",lesson:"life",roadmap:"refresh",end:"smile"};
-const MODES=[["fan","Screenshot fan","Three overlapping screens on the intro, then one slide per screenshot."],["hero","One big screenshot","A single large screenshot next to the text."],["phone","Phone screens","App screens side by side on one gallery slide."],["orb","No screenshots","An icon with rings and short taglines. Good for infrastructure."]];
+const TICON={title:"flame",overview:"chart",summary:"check",section:"box",project:"cpu",map:"split",photos:"cam",challenges:"shield",lesson:"life",roadmap:"refresh",video:"cam",quote:"draft",stats:"chart",timeline:"drive",beforeafter:"split",team:"users",faq:"headset",table:"db",cta:"flame",agenda:"box",split:"mobile",end:"smile"};
+const MODES=[["fan","Screenshot fan","Three overlapping screens on the intro, then one slide per screenshot."],["hero","One big screenshot","A single large screenshot next to the text."],["phone","Phone screens","App screens side by side on one gallery slide."],["orb","No screenshots","An icon with rings and short taglines. Good for infrastructure."],["grid","Screenshot grid","A 2×2 grid on the intro, then four screenshots per slide."],["duo","Two-up","Two screenshots side by side on the intro and in pairs."],["minimal","Text only","Big headline and capabilities, no screenshots needed."],["collage","Polaroid collage","Scattered tilted photos on the intro, then one big screenshot per slide."]];
 const MODE_NAME=Object.fromEntries(MODES.map(m=>[m[0],m[1]]));
 const CATS=[["sys","System"],["web","Website"],["infra","Infrastructure"],["fun","Bonus / fun"]];
 const pOf=id=>D.projects.find(p=>p.id===id);
@@ -515,8 +596,8 @@ function openImgPicker({multi=false,cur="",onDone}){
 }
 
 /* ============ effects (per slide) ============ */
-const FX_TR=[["","Automatic"],["fade","Fade"],["zoom","Zoom in"],["slide","Slide from right"],["up","Rise up"],["wipe","Wipe"],["flip","Flip"],["blur","Blur in"],["none","Instant"]];
-const FX_IN=[["","Automatic"],["rise","Rise up"],["fade","Fade"],["pop","Pop"],["left","From the left"],["none","No animation"]];
+const FX_TR=[["","Automatic"],["fade","Fade"],["zoom","Zoom in"],["slide","Slide from right"],["up","Rise up"],["wipe","Wipe"],["flip","Flip"],["blur","Blur in"],["page","Page turn"],["cube","Cube"],["door","Door open"],["drop","Drop down"],["swing","Swing"],["zoomout","Zoom out"],["curtain","Curtain"],["none","Instant"]];
+const FX_IN=[["","Automatic"],["rise","Rise up"],["fade","Fade"],["pop","Pop"],["left","From the left"],["drop","Drop in"],["swing","Swing in"],["blur","Blur in"],["spin","Spin in"],["stretch","Stretch in"],["none","No animation"]];
 function replayPv(){quiet=Date.now()+900;if(frame.contentWindow)frame.contentWindow.postMessage({type:"deck",deck:D,at:curAt},"*")}
 function fxField(o){
   const fx=o.fx=(o.fx&&typeof o.fx==="object")?o.fx:{},set=(k,v)=>{if(v===""||v===0||v===false)delete fx[k];else fx[k]=v;changed();redraw()};
@@ -588,6 +669,24 @@ function form(o,schema,fk=""){
       case"pid":c=sel_([["","Choose a project"],...pids()],o[s.k],set);break;
       case"icon":c=iconBtn(o[s.k],set);break;
       case"img":c=imgField(o[s.k],set);break;
+      case"vfile":{const st=h("span",{class:"muted small"});
+        const paint=()=>{const v=o[s.k]||"";st.textContent=v?/^https?:/i.test(v)?"External link: "+v.slice(0,70):"Uploaded file: "+v:"No video yet"};
+        const up=h("input",{type:"file",accept:"video/*",style:"display:none",onchange:async e=>{
+          const f=e.target.files[0];if(!f)return;e.target.value="";
+          if(!online||!canWrite)return toast("Uploading needs the local server (node server.js).","bad");
+          const ext=(f.name.match(/\.([a-z0-9]+)$/i)||[])[1]?.toLowerCase()||"mp4";
+          if(!/^(mp4|webm|mov|m4v)$/.test(ext))return toast("Use .mp4, .webm, .mov or .m4v","bad");
+          try{const list=await api("vid/"+dept);let base=slug(f.name.replace(/\.[^.]+$/,""))||"video",name=base+"."+ext,n=2;
+            while(list.includes(name))name=base+"-"+(n++)+"."+ext;
+            toast("Uploading "+f.name+"…");
+            await api(`vid/${dept}/${name}`,{method:"POST",body:f});
+            set("/vid/"+dept+"/"+name);paint();toast("Video uploaded","ok");
+          }catch(err){toast("Upload failed: "+err.message,"bad")}}});
+        c=h("div",{style:"display:flex;flex-direction:column;gap:8px"},
+          h("input",{value:o[s.k]??"",placeholder:"https://… or paste a link",oninput:e=>{set(e.target.value);paint()}}),
+          h("div",{style:"display:flex;gap:8px;align-items:center"},h("button",{class:"btn sm",onclick:()=>up.click()},I("upload"),"Upload video file"),up,
+            o[s.k]?h("button",{class:"btn sm ghost",onclick:()=>{set("");paint()}},I("x"),"Clear"):null),
+          st);paint();break}
       case"bool":inline=true;c=h("label",{class:"sw"},h("input",{type:"checkbox",checked:o[s.k]?"":false,onchange:e=>set(e.target.checked?1:0)}),h("i"));break;
       case"cat":c=h("div",{class:"chips2",role:"radiogroup"},CATS.map(([k,n])=>h("button",{type:"button",class:"cc "+k+(o[s.k]===k?" on":""),role:"radio","aria-checked":o[s.k]===k?"true":"false",onclick:()=>set(k)},h("i"),h("span",{},(D.categories[k]||{}).title||n))));break;
       case"mode":c=h("div",{class:"cards"},MODES.map(([k,n,d])=>h("button",{type:"button",class:"oc"+(o[s.k]===k?" on":""),onclick:()=>set(k)},h("div",{html:wf(WFM[k])}),h("b",{},n,h("span",{class:"tk",html:ico("check",3)})),h("small",{},d))));break;
@@ -611,7 +710,7 @@ function placeProject(p){
   D.slides.splice(at,0,{type:"project",id:p.id})}
 const SAY=T("say","Voice text","area",{r:4,say:1,hint:"What the AI voice reads. Leave blank and it reads an automatic summary."});
 const hasPhotos=o=>o.cat==="fun"||(o.photos&&o.photos.length)||(o.groups&&o.groups.length);
-const needShots=o=>o.mode!=="orb"&&!((o.photos&&o.photos.length)||(o.groups&&o.groups.length))||(o.shots&&o.shots.length);
+const needShots=o=>!["orb","minimal"].includes(o.mode)&&!((o.photos&&o.photos.length)||(o.groups&&o.groups.length))||(o.shots&&o.shots.length);
 const PROJ=[
  G("Basics","The name, section and label of this project."),
  T("title","Full title","text",{hint:"The big headline on the project's first slide."}),
@@ -628,14 +727,15 @@ const PROJ=[
  T("chips","Highlight chips","tuples",{cols:["Value (e.g. 100%)","Label (e.g. Deployment complete)"],max:4,add:"Add chip",empty:"No chips yet. Chips are big numbers shown under the text, up to 4."}),
  G("Visuals","How this project looks on screen."),
  T("mode","Layout","mode",{after:()=>renderInsp(true)}),
- T("shots","Screenshots","tuples",{cols:["img:Screenshot","Caption"],show:o=>o.mode!=="orb"&&needShots(o),add:"Add screenshot",empty:"No screenshots yet. Each one gets its own slide with the caption as its title."}),
+ T("shots","Screenshots","tuples",{cols:["img:Screenshot","Caption"],show:o=>o.mode!=="orb"&&o.mode!=="minimal"&&needShots(o),add:"Add screenshot",empty:"No screenshots yet. Each one gets its own slide with the caption as its title."}),
+ T("compact","Compact gallery","bool",{show:o=>["fan","collage"].includes(o.mode||"fan"),hint:"Off = one slide per screenshot. On = screenshots grouped into compact gallery slides, 6 per slide."}),
  T("tagline","Taglines","lines",{show:o=>o.mode==="orb",hint:"Short lines shown beside the icon. One per line."}),
  T("photos","Photo pages","imgs",{show:hasPhotos,hint:"Photos shown four to a slide."}),
  T("photoTitle","Photo page title","text",{show:hasPhotos}),
  T("groups","Captioned photo groups","list",{show:o=>(o.groups&&o.groups.length)||o.cat==="fun",name:"Group",tk:"h",add:"Add group",mk:()=>({h:"",p:"",ids:[]}),s:[T("h","Heading"),T("p","Text","area"),T("ids","Images","imgs")]}),
  G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),
  G("Advanced","Rarely needed.",{closed:true}),
- T("fanIds","Intro images override","imgs",{max:3,show:o=>o.mode==="fan"||o.mode==="phone",hint:"By default the intro uses the first three screenshots."}),
+ T("fanIds","Intro images override","imgs",{max:5,show:o=>["fan","phone","grid","duo","collage"].includes(o.mode),hint:"By default the intro uses the first screenshots."}),
  T("galleryTitle","Phone gallery title","text",{show:o=>o.mode==="phone"}),T("gallerySay","Phone gallery voice text","area",{show:o=>o.mode==="phone"}),
  T("photoSay","Photo page voice text","lines",{show:hasPhotos,hint:"Up to three lines: first page, middle pages, last page."})
 ];
@@ -660,6 +760,17 @@ const BS={
    T("systems","Systems merging","tuples",{cols:["pid:Project","icon:Icon","Label"],add:"Add system"}),T("hub","Hub label"),T("hubSub","Hub sub-label"),T("noteK","Note label"),T("noteT","Note text"),
    G("Right cards","Up to four cards."),T("cards","Cards","list",{name:"Card",tk:"k",add:"Add card",mk:()=>({kind:"text",k:"New",h:"",p:""}),
      s:[T("kind","Type","sel",{o:[["pills","Pills"],["text","Heading and text"],["flow","Flow A to B"]]}),T("k","Label"),T("h","Heading"),T("p","Text","area"),T("items","Pills (one per line)","lines"),T("from","Flow from"),T("to","Flow to")]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ video:[G("Video"),T("src","Video","vfile",{hint:"Paste a YouTube/Vimeo link or a direct video URL — or upload an .mp4/.webm file."}),T("sub","Subtext","area"),T("autoplay","Autoplay muted","bool"),G("Heading"),...EY,T("h","Heading"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ quote:[G("Quote"),T("quote","Quote text","area",{r:4}),T("author","Name"),T("role","Role or company"),G("Heading (optional)"),...EY,T("h","Heading"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ stats:[G("Heading"),...EY,T("h","Heading"),G("Numbers","Each stat is a big number with a short label."),T("items","Stats","tuples",{cols:["Number or value","Label"],add:"Add stat"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ timeline:[G("Heading"),...EY,T("h","Heading"),G("Milestones"),T("items","Milestones","tuples",{cols:["When","Title","area:Details"],add:"Add milestone"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ beforeafter:[G("Heading"),...EY,T("h","Heading"),G("Two columns"),T("beforeLabel","Left label"),T("before","Left points","lines",{hint:"One per line."}),T("afterLabel","Right label"),T("after","Right points","lines",{hint:"One per line."}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ team:[G("Heading"),...EY,T("h","Heading"),G("People"),T("items","Members","tuples",{cols:["Name","Role","Note"],add:"Add member"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ faq:[G("Heading"),...EY,T("h","Heading"),G("Questions"),T("items","Questions","tuples",{cols:["Question","area:Answer"],add:"Add question"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ table:[G("Heading"),...EY,T("h","Heading"),G("Table","Up to four columns. Empty header names still show as columns."),T("headers","Column names","lines",{hint:"One column name per line, up to 4."}),T("rows","Rows","tuples",{cols:["Column 1","Column 2","Column 3","Column 4"],add:"Add row"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ cta:[G("Message"),...EY,T("h","Heading"),T("text","Text","area"),G("Button (optional)"),T("btn","Button label"),T("url","Link URL"),T("confetti","Confetti burst","bool"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ agenda:[G("Heading"),...EY,T("h","Heading"),G("Items"),T("items","Agenda items","tuples",{cols:["icon:Icon","Title","Note"],add:"Add item"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ split:[G("Text"),...EY,T("h","Heading"),T("text","Text","area"),T("points","Bullet points","lines",{hint:"One per line."}),G("Image"),T("img","Image","img"),T("side","Image side","sel",{o:[["right","Right"],["left","Left"]]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
  end:[G("Closing message"),T("eyebrow","Small label"),T("h","Heading"),T("text","Text","area"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")]};
 const NEW={
  title:()=>({type:"title",badge:"Department Achievements",l1:"Department",l2:"Wins",year:D.meta.year,sub:"",images:[],say:""}),
@@ -671,16 +782,27 @@ const NEW={
  challenges:()=>({type:"challenges",eyebrow:"Challenges",eyebrow2:"and lessons",h:"What we faced, what we learned",items:[],say:""}),
  lesson:()=>({type:"lesson",eyebrow:"Core lesson",eyebrow2:"",h:"Headline.",lead:"",items:[],say:""}),
  roadmap:()=>({type:"roadmap",eyebrow:"What's next",eyebrow2:"Roadmap",h:"Next year",lk:"Plan",lh:"",systems:[],hub:"Goal",hubSub:"",noteK:"",noteT:"",cards:[],say:""}),
+ video:()=>({type:"video",eyebrow:"",eyebrow2:"",h:"",src:"",sub:"",autoplay:0,say:""}),
+ quote:()=>({type:"quote",eyebrow:"",eyebrow2:"",quote:"A memorable line goes here.",author:"Name",role:"Role, Team",say:""}),
+ stats:()=>({type:"stats",eyebrow:"By the numbers",eyebrow2:"",h:"The impact",items:[["1,200","Hours saved"],["98%","Uptime"],["40+","Teams helped"]],say:""}),
+ timeline:()=>({type:"timeline",eyebrow:"",eyebrow2:"",h:"How we got here",items:[["Q1","Kickoff","Planning and setup."],["Q2","Build","Development sprints."],["Q4","Launch","Rolled out to all teams."]],say:""}),
+ beforeafter:()=>({type:"beforeafter",eyebrow:"",eyebrow2:"",h:"Before vs after",beforeLabel:"Before",before:["Slow manual work","Scattered files"],afterLabel:"After",after:["One click, done","Everything in one place"],say:""}),
+ team:()=>({type:"team",eyebrow:"The people",eyebrow2:"",h:"Meet the team",items:[["Name","Role","Short note"]],say:""}),
+ faq:()=>({type:"faq",eyebrow:"Questions",eyebrow2:"",h:"Frequently asked",items:[["Question?","Answer."]],say:""}),
+ table:()=>({type:"table",eyebrow:"",eyebrow2:"",h:"",headers:["Name","Value","Notes"],rows:[["","",""]],say:""}),
+ cta:()=>({type:"cta",eyebrow:"",eyebrow2:"",h:"What's next",text:"",btn:"Learn more",url:"",confetti:0,say:""}),
+ agenda:()=>({type:"agenda",eyebrow:"",eyebrow2:"",h:"Agenda",items:[["check","Opening","Welcome and intro"],["chart","Results","The numbers"],["smile","Q&A","Questions and answers"]],say:""}),
+ split:()=>({type:"split",eyebrow:"",eyebrow2:"",h:"",text:"",points:[],img:"",side:"right",say:""}),
  end:()=>({type:"end",eyebrow:"The end",h:"Thank You!",text:"",say:""})};
 
 /* ============ usage + checks ============ */
 function usage(){
   const u={},add=id=>{if(id)u[id]=(u[id]||0)+1};
-  D.slides.forEach(b=>{if(b.type==="title"||b.type==="photos")(b.images||[]).forEach(add)});
+  D.slides.forEach(b=>{const ids=b.type==="title"||b.type==="photos"?b.images:(b.type==="split"&&b.img?[b.img]:[]);(ids||[]).forEach(add)});
   D.projects.forEach(p=>{(p.shots||[]).forEach(s=>add(s[0]));(p.fanIds||[]).forEach(add);(p.photos||[]).forEach(add);(p.groups||[]).forEach(g=>(g.ids||[]).forEach(add))});
   return u}
 function whereUsed(id){
-  const r=[];D.slides.forEach(b=>{if(b.type==="title"&&(b.images||[]).includes(id))r.push("Title slide");if(b.type==="photos"&&(b.images||[]).includes(id))r.push("Images-only slide")});
+  const r=[];D.slides.forEach(b=>{if(b.type==="title"&&(b.images||[]).includes(id))r.push("Title slide");if(b.type==="photos"&&(b.images||[]).includes(id))r.push("Images-only slide");if(b.type==="split"&&b.img===id)r.push("Text + image slide")});
   D.projects.forEach(p=>{const n=p.short||p.id;
     if((p.shots||[]).some(s=>s[0]===id))r.push(n+" (screenshot)");if((p.fanIds||[]).includes(id))r.push(n+" (intro)");
     if((p.photos||[]).includes(id)||(p.groups||[]).some(g=>(g.ids||[]).includes(id)))r.push(n+" (photos)")});
@@ -694,12 +816,13 @@ function computeChecks(){
     if(!(p.title||"").trim())out.push({lv:"bad",t:nm+" has no title",btn:"Open",go:openP(i)});
     if(!(p.lead||"").trim())out.push({lv:"warn",t:nm+" has no description",d:"The first slide will look empty.",btn:"Open",go:openP(i)});
     const hasShots=(p.shots||[]).some(s=>s[0]),hasPh=(p.photos||[]).length||(p.groups||[]).length;
-    if(p.mode!=="orb"&&!hasShots&&!hasPh)out.push({lv:"warn",t:nm+" has no screenshots",d:"Its layout expects screenshots. Add some, or switch to “No screenshots”.",btn:"Open",go:openP(i)});
+    if(!["orb","minimal"].includes(p.mode)&&!hasShots&&!hasPh)out.push({lv:"warn",t:nm+" has no screenshots",d:"Its layout expects screenshots. Add some, or switch to “No screenshots”.",btn:"Open",go:openP(i)});
     const miss=new Set();[...(p.shots||[]).map(s=>s[0]),...(p.fanIds||[]),...(p.photos||[]),...(p.groups||[]).flatMap(g=>g.ids||[])].forEach(id=>{if(id&&!have.has(id))miss.add(id)});
     if(miss.size)out.push({lv:"bad",t:nm+": "+miss.size+" image"+(miss.size>1?"s":"")+" not found",d:[...miss].slice(0,3).join(", ")+(miss.size>3?"…":"")+" is not in the img folder.",btn:"Open",go:openP(i)});
     if((p.shots||[]).some(s=>!s[0]))out.push({lv:"warn",t:nm+" has a screenshot row without an image",btn:"Open",go:openP(i)});
   });
-  D.slides.forEach((t,ti)=>{if(t.type==="title"||t.type==="photos")(t.images||[]).forEach(id=>{if(id&&!have.has(id))out.push({lv:"bad",t:TL[t.type]+" slide uses a missing image",d:id,btn:"Show",go:()=>{tab="slides";sel=ti;renderAll();goto()}})})});
+  D.slides.forEach((t,ti)=>{const miss=id=>{if(id&&!have.has(id))out.push({lv:"bad",t:TL[t.type]+" slide uses a missing image",d:id,btn:"Show",go:()=>{tab="slides";sel=ti;renderAll();goto()}})};
+    if(t.type==="title"||t.type==="photos")(t.images||[]).forEach(miss);if(t.type==="split")miss(t.img)});
   if(!D.slides.some(b=>b.type==="title"))out.push({lv:"info",t:"There is no title slide",d:"Add one so the department has an opening."});
   if(!D.slides.some(b=>b.type==="end"))out.push({lv:"info",t:"There is no closing slide",d:"Add one so the presentation ends cleanly."});
   const un=IMGS.filter(id=>!U[id]);if(un.length)out.push({lv:"info",t:un.length+" uploaded image"+(un.length>1?"s aren't":" isn't")+" used anywhere",d:"Harmless, but you can delete them in the Images tab.",btn:"See images",go:()=>{tab="media";mfilter="unused";renderAll()}});
@@ -772,7 +895,7 @@ function renderList(){
     const F={...{display:"Bricolage Grotesque",body:"DM Sans",mono:"JetBrains Mono"},...D.theme.fonts},C={...baseCols(),...D.theme.colors};
     b.append(h("div",{class:"help"},"The look is saved per department. Layouts and animations stay the same; only colors, fonts and light or dark change. The preview updates as you click."),
       h("div",{class:"mini",style:"background:"+(D.theme.mode==="dark"?"#07101e":"#fff")+";color:"+(D.theme.mode==="dark"?"#eaf2fc":"#0b1424")},
-        h("div",{class:"h",style:"font-family:'"+F.display+"',sans-serif"},"Department Wins"),h("div",{class:"p",style:"font-family:'"+F.body+"',sans-serif;color:"+(D.theme.mode==="dark"?"#93a6c2":"#5a6b85")},"How your slides will read."),
+        h("div",{class:"h",style:"font-family:'"+F.display+"',sans-serif"},"StoriDeck"),h("div",{class:"p",style:"font-family:'"+F.body+"',sans-serif;color:"+(D.theme.mode==="dark"?"#93a6c2":"#5a6b85")},"How your slides will read."),
         h("div",{class:"dots"},["mint","amber","sky","rose"].map(k=>h("i",{style:"background:"+C[k]})))));
   }else if(tab==="details"){
     const by=c=>D.projects.filter(p=>p.cat===c).length,tot=SAYS.reduce((a,t)=>a+dwellSec(t),0);
@@ -868,6 +991,41 @@ function lookPanel(){
   const fonts=(key,label,list)=>h("div",{class:"fl"},h("span",{class:"lbl"},label),h("div",{class:"fonts"},list.map(f=>h("button",{class:"fc"+((th.fonts[key]||list[0])===f?" on":""),onclick:()=>{th.fonts[key]=f;apply()}},h("b",{style:"font-family:'"+f+"',sans-serif"},"Aa Wins 2026"),h("small",{},f)))));
   w.append(h("details",{class:"sec",open:""},h("summary",{},h("span",{class:"st"},"Fonts"),h("small",{},"Headings, body text and small labels.")),
     h("div",{class:"sb"},fonts("display","Headings",["Bricolage Grotesque","Poppins","Montserrat","Playfair Display","Space Grotesk","Sora","Outfit"]),fonts("body","Body text",["DM Sans","Inter","Nunito Sans","Source Sans 3","Work Sans"]),fonts("mono","Small labels",["JetBrains Mono","IBM Plex Mono","Space Mono"]))));
+  /* background */
+  const bgv=th.background||"",bgKind0=/^linear/.test(bgv)?"gradient":bgv?"solid":"";
+  let bgKind=bgKind0,c1v=/^#[0-9a-f]{6}$/i.test(bgv)?bgv:(bgKind0==="gradient"?(bgv.match(/#[0-9a-f]{6}/gi)||["#0b1424","#1a6cc4"])[0]:"#0b1424"),
+    c2v=(bgv.match(/#[0-9a-f]{6}/gi)||[])[1]||"#1a6cc4";
+  const colr=(label,get,set)=>{const hex=h("input",{value:get(),maxlength:7}),cp=h("input",{type:"color",value:/^#[0-9a-f]{6}$/i.test(get())?get():"#888888"});
+    cp.oninput=()=>{hex.value=cp.value;set(cp.value)};
+    hex.oninput=()=>{if(/^#[0-9a-f]{6}$/i.test(hex.value)){cp.value=hex.value;set(hex.value)}};
+    return h("div",{class:"fl"},h("span",{class:"lbl"},label),h("div",{class:"colr"},cp,hex))};
+  const bgBox=h("div",{});
+  const drawBg=()=>{
+    bgBox.innerHTML="";
+    const kind=h("select",{onchange:e=>{bgKind=e.target.value;drawBg();setBg()}},
+      [["","Default (white / dark)"],["solid","Solid color"],["gradient","Gradient"]].map(([v,n])=>h("option",{value:v,selected:v===bgKind?"":false},n)));
+    bgBox.append(h("div",{class:"fl"},h("span",{class:"lbl"},"Slide background"),kind));
+    if(bgKind==="solid")bgBox.append(colr("Color",()=>c1v,v=>{c1v=v;setBg()}));
+    if(bgKind==="gradient")bgBox.append(colr("Color 1",()=>c1v,v=>{c1v=v;setBg()}),colr("Color 2",()=>c2v,v=>{c2v=v;setBg()}));
+    bgBox.append(h("div",{class:"hint"},bgKind?"Shows behind every slide in this deck.":"Uses the standard white (light) or navy (dark) stage."))};
+  const setBg=()=>{if(!bgKind)delete th.background;else if(bgKind==="solid")th.background=c1v;else th.background=`linear-gradient(135deg,${c1v},${c2v})`;apply()};
+  drawBg();
+  w.append(h("details",{class:"sec",open:""},h("summary",{},h("span",{class:"st"},"Background"),h("small",{},"Custom slide background behind all slides.")),h("div",{class:"sb"},bgBox)));
+  /* watermark */
+  const wmCb=h("input",{type:"checkbox",checked:th.mark!==false?"":false,onchange:e=>{if(e.target.checked)delete th.mark;else th.mark=false;apply()}});
+  w.append(h("details",{class:"sec"},h("summary",{},h("span",{class:"st"},"Watermark"),h("small",{},"Company and department label at the bottom.")),
+    h("div",{class:"sb"},h("div",{class:"fl inline"},h("div",{},h("span",{class:"lbl"},"Show watermark"),h("div",{class:"hint"},"The “Company - Department” strip at the bottom of the viewer.")),h("label",{class:"sw"},wmCb,h("i"))))));
+  /* animation */
+  const ANIMS=[["","Fade (default)"],["zoom","Zoom in"],["zoomout","Zoom out"],["slide","Slide"],["wipe","Wipe"],["flip","Flip"],["blur","Blur"],["up","Rise up"],["drop","Drop"],["swing","Swing"],["door","Door"],["page","Page turn"],["cube","Cube"],["curtain","Curtain"],["none","None (instant)"]];
+  const animSel=h("select",{onchange:e=>{th.anim=e.target.value||undefined;if(!e.target.value)delete th.anim;apply()}},
+    ANIMS.map(([v,n])=>h("option",{value:v,selected:(th.anim||"")===v?"":false},n)));
+  w.append(h("details",{class:"sec"},h("summary",{},h("span",{class:"st"},"Slide transition"),h("small",{},"How slides animate when you navigate.")),
+    h("div",{class:"sb"},h("div",{class:"fl"},h("span",{class:"lbl"},"Transition style"),animSel,h("div",{class:"hint"},"Applies to every slide in this deck.")))));
+  /* text size */
+  const scRow=h("div",{class:"seg",style:"margin:0;align-self:flex-start"});
+  [[0.9,"Compact"],[1,"Normal"],[1.1,"Large"]].forEach(([v,n])=>scRow.append(h("button",{type:"button",class:(th.scale||1)===v?"on":"",onclick:()=>{if(v===1)delete th.scale;else th.scale=v;apply()}},n)));
+  w.append(h("details",{class:"sec"},h("summary",{},h("span",{class:"st"},"Text size"),h("small",{},"Scale all slide content.")),
+    h("div",{class:"sb"},h("div",{class:"fl"},h("span",{class:"lbl"},"Size"),scRow,h("div",{class:"hint"},"Compact fits more on screen; Large is easier to read from far away.")))));
   return w}
 
 /* ============ media actions ============ */
@@ -884,7 +1042,7 @@ async function upload(files){
       D.ar[id]=+(w/hh).toFixed(4);IMGS.push(id);dirty=true;ok++;
     }catch(e){toast(f.name+": "+e.message,"bad")}
   }
-  IMGS.sort();if(ok){toast(ok+" image"+(ok>1?"s":"")+" uploaded","ok");changed()}renderList();push();
+  if(ok){toast(ok+" image"+(ok>1?"s":"")+" uploaded","ok");changed()}renderList();push();
 }
 async function delImg(id){
   const w=whereUsed(id);
@@ -899,45 +1057,175 @@ function changed(){dirty=true;status();if(tab==="slides"||tab==="projects"||tab=
 /* ============ all-departments playlist ============ */
 async function loadStats(){
   await Promise.all(DEPTS.map(async d=>{
-    try{const k=d.id===dept?D:await (await fetch(`/data/${d.id}/deck.json`,{cache:"no-cache"})).json(),pr=k.projects||[],bl=(k.slides||[]);
+    try{const k=d.id===dept?D:await jfresh(`data/${d.id}/deck.json`),pr=k.projects||[],bl=(k.slides||[]);
       STAT[d.id]={wins:bl.filter(b=>b.type==="project"&&!b.hidden&&(pr.find(p=>p.id===b.id)||{}).cat!=="fun"&&pr.some(p=>p.id===b.id)).length,blocks:bl.length,color:((k.theme||{}).colors||{}).mint||"#08886b"}}
     catch(e){STAT[d.id]={wins:0,blocks:0,color:"#08886b"}}}));
 }
+function projectLink(p){const inc=(p?p.decks||[]:DEPTS).filter(d=>d.include!==false).map(d=>d.id);return inc.length?location.origin+"/?d="+inc.join(","):location.origin+"/"}
 function updateTop(){
-  $("#bPl").innerHTML=view==="playlist"?ico("left")+"Back to editor":ico("stack")+"All departments";
-  $("#view").innerHTML=ico("ext")+(view==="playlist"?"Open combined link":"View this department");
-  $("#view").href=view==="playlist"?"/":`/?d=${dept}`;
-  $("#bDl").innerHTML=ico("dl")+(view==="playlist"?"Download files":"Download JSON");
+  const dir=view==="directory";
+  $(".deptsel").style.display=dir?"none":"";
+  $("#bDir").innerHTML=ico("layers")+"Projects";$("#bDir").style.display=dir?"none":"";
+  $("#deptLbl").textContent=CUR&&CUR.id==="department-wins"?"Department":"Deck";
+  $("#bNew").innerHTML=ico("plus")+(dir?"New project":CUR&&CUR.id==="department-wins"?"New department":"New deck");
+  $("#bPl").innerHTML=view==="playlist"?ico("left")+"Back to editor":ico("stack")+"Deck order";
+  $("#bPl").style.display=dir?"none":"";
+  $("#view").innerHTML=ico("ext")+(view==="playlist"?"Open project link":"Open project");
+  $("#view").href=view==="directory"?"/admin":projectLink(CUR||{decks:DEPTS});
+  $("#bDl").innerHTML=ico("dl")+(view==="playlist"?"Download files":view==="directory"?"Download":"Download JSON");
   status();
 }
 async function openPlaylist(){
   if(view==="playlist")return closePlaylist();
-  view="playlist";$("#playlist").style.display="block";updateTop();renderPlaylist();await loadStats();if(view==="playlist")renderPlaylist();
+  if(view==="directory"||!CUR)return;
+  view="playlist";$("#playlist").style.display="block";$("#directory").style.display="none";updateTop();renderPlaylist();await loadStats();if(view==="playlist")renderPlaylist();
 }
 function closePlaylist(){view="edit";$("#playlist").style.display="none";updateTop()}
+async function openDirectory(){
+  if(view==="directory")return;
+  if(isDirty()&&!await ask("Leave without saving?","You have unsaved changes. They are kept as a local draft, but not saved to the server.","Leave without saving",true))return;
+  view="directory";$("#directory").style.display="block";$("#playlist").style.display="none";updateTop();renderDirectory();
+}
+async function openProject(p){
+  if(!p)return;
+  if(isDirty()&&CUR&&p.id!==CUR.id&&!await ask("Switch project?","You have unsaved changes in "+(D?D.meta.dept||dept:"")+". They are kept as a local draft, but not saved to the server.","Switch anyway",true))return;
+  CUR=p;DEPTS=(p.decks||[]).map(d=>({...d,include:d.include!==false}));
+  view="edit";$("#directory").style.display="none";$("#playlist").style.display="none";updateTop();
+  if(!DEPTS.length){view="playlist";$("#playlist").style.display="block";updateTop();renderPlaylist();return}
+  const first=DEPTS.find(d=>d.include!==false)||DEPTS[0];
+  fillDepts();await loadDept(first.id);
+}
+async function deleteProject(p){
+  if(!online||!canWrite)return toast("Deleting a project needs the local server.","bad");
+  const n=(p.decks||[]).length;
+  if(!await typeToConfirm("Delete “"+p.name+"”?","This permanently removes the project and its "+n+" deck"+(n===1?"":"s")+" (data, images and videos) from the server. It can't be undone.",p.id,"Delete project"))return;
+  try{await api("project/"+p.id,{method:"DELETE"});
+    PROJECTS=PROJECTS.filter(x=>x.id!==p.id);
+    if(CUR&&CUR.id===p.id){CUR=null;DEPTS=[];D=null;view="directory";$("#directory").style.display="block";$("#playlist").style.display="none";frame.removeAttribute("src")}
+    $("#toasts").innerHTML="";renderDirectory();updateTop();toast("Project deleted","ok")}catch(e){toast(e.message,"bad")}
+}
+async function manageProject(p){await openProject(p);openPlaylist()}
+function editProject(p){
+  const nm=h("input",{value:p.name}),co=h("input",{value:p.company||""});
+  const go=async()=>{
+    const name=nm.value.trim();if(!name){nm.focus();return}
+    const q=PROJECTS.find(x=>x.id===p.id);if(!q)return m.close();
+    q.name=name;q.company=co.value.trim();q.updated=new Date().toISOString().slice(0,10);
+    try{await saveProjects();if(CUR&&CUR.id===p.id){CUR.name=name;CUR.company=q.company;syncCurDecks()}}
+    catch(e){toast("Couldn't save: "+e.message,"bad");return}
+    m.close();renderDirectory();updateTop();toast("Project updated","ok")};
+  const m=modal({title:"Project settings",sub:p.id,body:h("div",{class:"f"},
+    h("div",{class:"fl"},h("span",{class:"lbl"},"Project name"),nm),h("div",{class:"fl"},h("span",{class:"lbl"},"Company"),co)),
+    actions:[h("button",{class:"btn",onclick:()=>m.close()},"Cancel"),h("button",{class:"btn pri",onclick:go},"Save")]});
+  nm.onkeydown=e=>{if(e.key==="Enter")go()};setTimeout(()=>nm.focus(),30);nm.select();
+}
+async function duplicateProject(p){
+  if(!online||!canWrite)return toast("Duplicating a project needs the local server.","bad");
+  const nm=h("input",{value:p.name+" copy"});
+  const go=async()=>{
+    const name=nm.value.trim();if(!name){nm.focus();return}
+    try{const r=await api("project/"+p.id+"/duplicate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name})});
+      if(r.project)PROJECTS.push(r.project);
+      m.close();renderDirectory();toast("Project duplicated as "+r.project.name,"ok")}catch(e){toast(e.message,"bad")}};
+  const m=modal({title:"Duplicate project",sub:"Copies "+p.name+" and all of its decks, images and videos as a new project.",body:h("div",{class:"f"},
+    h("div",{class:"fl"},h("span",{class:"lbl"},"New project name"),nm)),
+    actions:[h("button",{class:"btn",onclick:()=>m.close()},"Cancel"),h("button",{class:"btn pri",onclick:go},"Duplicate")]});
+  nm.onkeydown=e=>{if(e.key==="Enter")go()};setTimeout(()=>{nm.focus();nm.select()},30);
+}
+function renderDirectory(){
+  const el=$("#directory"),keep=el.scrollTop;el.innerHTML="";
+  const origin=location.origin;
+  const q=dirQ.trim().toLowerCase();
+  const rows=PROJECTS.filter(p=>!q||(p.name+" "+(p.company||"")+" "+(p.decks||[]).map(d=>d.name).join(" ")).toLowerCase().includes(q)).map(p=>{
+    const inc=(p.decks||[]).filter(d=>d.include!==false),base=inc.length?origin+"/?d="+inc.map(d=>d.id).join(","):origin+"/",
+      link=base,nd=(p.decks||[]).length,ninc=inc.length;
+    return {p,link,nd,ninc,play:link+(link.includes("?")?"&":"?")+"autoplay=1"}});
+  const acts=r=>h("span",{class:"actwrap"},
+    h("span",{class:"acts"},
+      h("button",{class:"btn pri",onclick:()=>openProject(r.p)},I("layers"),"Open"),
+      h("button",{class:"btn",onclick:()=>manageProject(r.p)},I("list"),"Decks"),
+      h("button",{class:"btn",onclick:()=>copyText(r.link)},I("link"),"Copy")),
+    h("span",{class:"acts"},
+      h("a",{class:"btn",href:r.play,target:"_blank",rel:"noopener",title:"Open with autoplay"},I("play"),"Play"),
+      h("a",{class:"btn",href:r.link,target:"_blank",rel:"noopener"},I("ext"),"View"),
+      h("button",{class:"ib",title:"Edit project",onclick:()=>editProject(r.p)},I("info")),
+      h("button",{class:"ib",title:"Duplicate project",onclick:()=>duplicateProject(r.p)},I("dup")),
+      h("button",{class:"ib danger",title:"Delete project",onclick:()=>deleteProject(r.p)},I("trash"))));
+  const search=h("input",{placeholder:"Search projects…",value:dirQ,style:"max-width:260px",oninput:e=>{dirQ=e.target.value;renderDirectory()}});
+  const head=h("div",{class:"dirhead"},
+    h("div",{},h("h2",{},"Projects"),h("p",{class:"lead"},"Each project is a separate presentation. Department Wins holds the department decks; create another project for anything else.")),
+    h("div",{style:"display:flex;gap:10px;align-items:center"},search,
+    h("div",{class:"seg"},
+      h("button",{class:dirView==="grid"?"on":"",title:"Grid view",onclick:()=>setDirView("grid")},I("stack")),
+      h("button",{class:dirView==="list"?"on":"",title:"Table view",onclick:()=>setDirView("list")},I("list")))));
+  let body;
+  if(dirView==="list"){
+    body=h("table",{class:"dirtbl"},
+      h("thead",{},h("tr",{},h("th",{},"Project"),h("th",{},"Decks"),h("th",{style:"text-align:right"},"Actions"))),
+      h("tbody",{},
+        ...rows.map(r=>h("tr",{},
+          h("td",{},h("div",{class:"nm"},h("span",{class:"ti"},I("folder")),h("div",{},h("div",{},r.p.name),h("small",{},((r.p.company||"")+(r.p.company&&r.p.updated?", ":"")+(r.p.updated?"edited "+r.p.updated:"")).trim()||" ")))),
+          h("td",{},h("small",{},r.ninc+" of "+r.nd+" shown")),
+          h("td",{},acts(r)))),
+        h("tr",{class:"newrow"},h("td",{colspan:"3"},h("button",{onclick:newTopProject},I("plus")," New project — something that isn't Department Wins")))));
+  }else{
+    const cards=rows.map(r=>{
+      const p=r.p;
+    return h("div",{class:"pc"},
+      h("div",{class:"ph"},h("span",{class:"ti"},I("folder")),h("div",{},h("b",{},p.name),h("small",{},(p.company||"")+(p.decks&&p.decks.length?" · "+p.decks.length+" deck"+(p.decks.length===1?"":"s"):"")+(p.updated?" · edited "+p.updated:"")))),
+        acts(r));
+    });
+    const nw=h("button",{class:"pc",style:"border-style:dashed;cursor:pointer;text-align:left",onclick:newTopProject},
+      h("div",{class:"ph"},h("span",{class:"ti"},I("plus")),h("div",{},h("b",{},"New project"),h("small",{},"Something that isn't Department Wins"))));
+    body=h("div",{class:"pgrid"},...cards,nw);
+  }
+  el.append(h("div",{style:"width:100%;padding:26px 24px 60px"},head,body));
+  el.scrollTop=keep;
+}
+function setDirView(v){dirView=v;try{localStorage.setItem("dwDirView",v)}catch(e){}renderDirectory()}
 function copyText(t){
   const done=()=>toast("Copied","ok");
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,()=>fallback());else fallback();
   function fallback(){const a=h("textarea",{style:"position:fixed;opacity:0"},t);document.body.append(a);a.select();try{document.execCommand("copy");done()}catch(e){toast("Copy failed. Select the link and press Ctrl+C.","bad")}a.remove()}
 }
 async function deleteDept(d){
-  if(!online||!canWrite)return toast("Deleting a department needs the local server.","bad");
-  if(DEPTS.length<2)return toast("You can't delete the only department.","bad");
-  if(!await typeToConfirm("Delete “"+d.name+"”?","This permanently removes data/"+d.id+" and img/"+d.id+" from the server, including all of its slides and images. It can't be undone.",d.id,"Delete department"))return;
-  try{await api("dept/"+d.id,{method:"DELETE"});DEPTS=DEPTS.filter(x=>x.id!==d.id);delete STAT[d.id];
+  if(!online||!canWrite)return toast("Deleting a deck needs the local server.","bad");
+  if(CUR&&CUR.id==="department-wins"&&DEPTS.length<2)return toast("Department Wins needs at least one deck.","bad");
+  if(!await typeToConfirm("Delete “"+d.name+"”?","This permanently removes data/"+d.id+", img/"+d.id+" and vid/"+d.id+" from the server, including all of its slides and images. It can't be undone.",d.id,"Delete deck"))return;
+  try{await api("deck/"+d.id,{method:"DELETE"});DEPTS=DEPTS.filter(x=>x.id!==d.id);delete STAT[d.id];
     try{localStorage.removeItem("dwDraft:"+d.id)}catch(e){}
-    if(d.id===dept){fillDepts();await loadDept(DEPTS[0].id)}else fillDepts();
-    renderPlaylist();toast("Department deleted","ok")}catch(e){toast(e.message,"bad")}
+    syncCurDecks();await saveProjects();
+    fillDepts();
+    if(!DEPTS.length){view="playlist";$("#playlist").style.display="block";updateTop()}
+    if(view==="playlist"){renderPlaylist();if(d.id===dept&&DEPTS[0])await loadDept(DEPTS[0].id)}
+    else if(d.id===dept&&DEPTS[0])await loadDept(DEPTS[0].id);
+    toast("Deck deleted","ok")}catch(e){toast(e.message,"bad")}
+}
+function moveDeckTo(d){
+  const targets=PROJECTS.filter(p=>p.id!==CUR.id);
+  if(!targets.length)return toast("Create another project first.","bad");
+  const opts=h("div",{class:"sb"},targets.map(p=>h("button",{class:"btn",style:"justify-content:flex-start",onclick:async()=>{m.close();await doMove(p)}},I("layers"),p.name)));
+  const doMove=async(p2)=>{
+    try{await api("deck/"+d.id+"/move",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({project:p2.id})});
+      PROJECTS=await jfresh("data/projects.json");
+      const np=PROJECTS.find(x=>x.id===CUR.id);if(np){CUR=np;DEPTS=(np.decks||[]).map(x=>({...x,include:x.include!==false}))}
+      if(DEPTS.length&&!DEPTS.some(x=>x.id===dept))await loadDept(DEPTS[0].id);
+      syncCurDecks();renderPlaylist();toast(d.name+" moved to "+p2.name,"ok")}catch(e){toast(e.message,"bad")}};
+  const m=modal({title:"Move deck",sub:"Move "+d.name+" out of "+CUR.name+" into another project. Its slides, images and videos stay the same.",body:opts,
+    actions:[h("button",{class:"btn",onclick:()=>m.close()},"Cancel")]});
 }
 async function savePlaylist(){
   if(!online||!canWrite){download();return}
-  if(!DEPTS.some(d=>d.include!==false)){toast("Turn on at least one department.","bad");return}
-  try{await putJson("departments",{list:DEPTS.map(d=>({id:d.id,include:d.include!==false})),options:PL});plDirty=false;status();toast("Playlist saved","ok")}
+  if(!DEPTS.some(d=>d.include!==false)){toast("Turn on at least one deck.","bad");return}
+  syncCurDecks();
+  try{await saveProjects();
+    if(CUR&&CUR.id==="department-wins")await putJson("departments",{list:DEPTS.map(d=>({id:d.id,include:d.include!==false})),options:PL});
+    plDirty=false;status();toast("Deck order saved","ok")}
   catch(e){toast("Couldn't save: "+e.message,"bad")}
 }
 function renderPlaylist(){
   const el=$("#playlist"),keep=el.scrollTop;el.innerHTML="";
-  const inc=DEPTS.filter(d=>d.include!==false),origin=location.origin;
+  const inc=DEPTS.filter(d=>d.include!==false),origin=location.origin,isDW=CUR&&CUR.id==="department-wins";
   const list=h("div",{});
   DEPTS.forEach((d,i)=>{
     const st=STAT[d.id]||{},on=d.include!==false,pos=on?String(inc.indexOf(d)+1):"–";
@@ -945,32 +1233,33 @@ function renderPlaylist(){
       h("span",{class:"gr",title:"Drag to reorder",html:ico("grip")}),h("span",{class:"no"},pos),
       h("div",{class:"dt"},h("b",{},d.name),h("small",{},(d.company||"")+(st.blocks!==undefined?(d.company?", ":"")+st.wins+" wins, "+st.blocks+" slide blocks":""))),
       h("div",{style:"display:flex;align-items:center;gap:6px"},
-        h("label",{class:"sw",title:on?"Included in the combined link":"Left out of the combined link"},h("input",{type:"checkbox","aria-label":"Include "+d.name,checked:on?"":false,onchange:e=>{d.include=e.target.checked;plDirty=true;status();renderPlaylist()}}),h("i")),
-        h("button",{class:"ib",title:"Edit this department",onclick:async()=>{closePlaylist();if(d.id!==dept)await loadDept(d.id)}},I("layers")),
-        h("a",{class:"ib",href:"/"+d.id,target:"_blank",rel:"noopener",title:"Open only this department"},I("ext")),
-        h("button",{class:"ib danger",title:"Delete department",onclick:()=>deleteDept(d)},I("trash"))));
+        h("label",{class:"sw",title:on?"Included in the project link":"Left out of the project link"},h("input",{type:"checkbox","aria-label":"Include "+d.name,checked:on?"":false,onchange:e=>{d.include=e.target.checked;plDirty=true;status();renderPlaylist()}}),h("i")),
+        h("button",{class:"ib",title:"Edit this deck",onclick:async()=>{closePlaylist();if(d.id!==dept)await loadDept(d.id)}},I("layers")),
+        h("a",{class:"ib",href:"/"+d.id,target:"_blank",rel:"noopener",title:"Open only this deck"},I("ext")),
+        PROJECTS.length>1?h("button",{class:"ib",title:"Move to another project",onclick:()=>moveDeckTo(d)},I("right")):null,
+        h("button",{class:"ib danger",title:"Delete deck",onclick:()=>deleteDept(d)},I("trash"))));
     row.ondragstart=e=>{e.dataTransfer.setData("text/plain",String(i));row.style.opacity=.5};row.ondragend=()=>{row.style.opacity=1};
     row.ondragover=e=>{e.preventDefault();row.classList.add("over")};row.ondragleave=()=>row.classList.remove("over");
     row.ondrop=e=>{e.preventDefault();const f=+e.dataTransfer.getData("text/plain");if(isNaN(f)||f===i)return;const[x]=DEPTS.splice(f,1);DEPTS.splice(i,0,x);plDirty=true;status();renderPlaylist()};
     list.append(row)});
-  const tl=inc.length?h("div",{},h("div",{class:"tl"},inc.map(d=>h("div",{style:"flex:"+Math.max(1,(STAT[d.id]||{}).blocks||1)+";background:"+((STAT[d.id]||{}).color||"#08886b"),title:d.name},d.name))),h("small",{class:"muted"},"Playing order of the combined link. Bar width follows the number of slide blocks.")):h("div",{class:"empty"},"Turn on at least one department.");
-  const left=h("div",{},h("h2",{},"All departments, one link"),
-    h("p",{class:"lead"},"Show every department as one presentation. People open a single link and it plays one department after another. Autoplay and the AI voice carry on across all of them, so you never have to switch links."),
-    h("div",{class:"card"},h("h3",{},"Playing order"),h("p",{},"Drag to reorder. Switch a department off to leave it out of the combined link; it keeps its own link."),list,
-      h("div",{style:"margin-top:12px"},tl),h("div",{style:"margin-top:12px"},h("button",{class:"btn",onclick:newDept},I("plus"),"New department"))));
+  const tl=inc.length?h("div",{},h("div",{class:"tl"},inc.map(d=>h("div",{style:"flex:"+Math.max(1,(STAT[d.id]||{}).blocks||1)+";background:"+((STAT[d.id]||{}).color||"#08886b"),title:d.name},d.name))),h("small",{class:"muted"},"Playing order of the project link. Bar width follows the number of slide blocks.")):h("div",{class:"empty"},"Turn on at least one deck.");
+  const left=h("div",{},h("h2",{},(CUR?CUR.name:"Project")+", one link"),
+    h("p",{class:"lead"},isDW?"Show every department as one presentation. People open a single link and it plays one department after another.":"Show every deck in this project as one presentation, in the order below."),
+    h("div",{class:"card"},h("h3",{},"Playing order"),h("p",{},"Drag to reorder. Switch a deck off to leave it out of the project link; it keeps its own link."),list,
+      h("div",{style:"margin-top:12px"},tl),h("div",{style:"margin-top:12px"},h("button",{class:"btn",onclick:newDeck},I("plus"),isDW?"New department":"New deck"))));
   const mk=(k,t,d)=>h("div",{class:"opt"},h("div",{},h("b",{},t),h("small",{},d)),h("label",{class:"sw"},h("input",{type:"checkbox","aria-label":t,checked:PL[k]?"":false,onchange:e=>{PL[k]=e.target.checked;plDirty=true;status()}}),h("i")));
-  const url=origin+"/",lb=h("input",{readonly:"",value:url,onfocus:e=>e.target.select(),"aria-label":"Combined link"});
+  const url=projectLink(CUR||{decks:DEPTS}),lb=h("input",{readonly:"",value:url,onfocus:e=>e.target.select(),"aria-label":"Project link"});
   const right=h("div",{},
-    h("div",{class:"card"},h("h3",{},"One link for everything"),h("p",{},"Share this. It plays the "+inc.length+" department"+(inc.length===1?"":"s")+" above, in that order."),
-      h("div",{class:"linkbox"},lb,h("button",{class:"btn",onclick:()=>copyText(url)},I("copy"),"Copy"),h("a",{class:"btn",href:"/",target:"_blank",rel:"noopener"},I("ext"),"Open")),
-      h("p",{class:"small muted",style:"margin:10px 0 0"},"While viewing: press ",h("b",{},"T")," for the table of contents grouped by department, ",h("b",{},"[ ]")," to jump between departments, ",h("b",{},"A")," for autoplay.")),
-    h("div",{class:"card"},h("h3",{},"Playback"),h("p",{},"How the combined link behaves."),
-      mk("skipEnds","Skip each “Thank you” slide except the last","Otherwise every department ends with confetti before the next one begins."),
+    h("div",{class:"card"},h("h3",{},"One link for the project"),h("p",{},"Share this. It plays the "+inc.length+" deck"+(inc.length===1?"":"s")+" above, in that order."),
+      h("div",{class:"linkbox"},lb,h("button",{class:"btn",onclick:()=>copyText(url)},I("copy"),"Copy"),h("a",{class:"btn",href:url,target:"_blank",rel:"noopener"},I("ext"),"Open")),
+      h("p",{class:"small muted",style:"margin:10px 0 0"},"While viewing: press ",h("b",{},"T")," for the table of contents, ",h("b",{},"[ ]")," to jump between decks, ",h("b",{},"A")," for autoplay.")),
+    h("div",{class:"card"},h("h3",{},"Playback"),h("p",{},"How the project link behaves."),
+      mk("skipEnds","Skip each “Thank you” slide except the last","Otherwise every deck ends with confetti before the next one begins."),
       mk("loop","Loop forever","After the last slide, start again from the first. Good for a TV or lobby screen."),
       mk("autoplay","Start autoplay by itself","Slides advance without anyone pressing play.")),
-    h("div",{class:"card"},h("h3",{},"Links for each department"),h("p",{},"Use these when you want just one department, or to start at one and keep going."),
-      ...DEPTS.map(d=>h("div",{class:"ll"},h("span",{},d.name),h("span",{style:"display:flex;gap:6px"},h("button",{class:"btn sm",title:origin+"/"+d.id,onclick:()=>copyText(origin+"/"+d.id)},"Only this"),h("button",{class:"btn sm",title:origin+"/#d-"+d.id,onclick:()=>copyText(origin+"/#d-"+d.id)},"Start here, keep going"))))),
-    h("div",{class:"help"},h("b",{},"Tip. "),"Need a company-wide opening or closing? Create a department called “Company” with just a title slide and a closing slide, then drag it to the top or bottom."));
+    h("div",{class:"card"},h("h3",{},"Links for each deck"),h("p",{},"Use these when you want just one deck, or to start at one and keep going."),
+      ...DEPTS.map(d=>h("div",{class:"ll"},h("span",{},d.name),h("span",{style:"display:flex;gap:6px"},h("button",{class:"btn sm",title:origin+"/"+d.id,onclick:()=>copyText(origin+"/"+d.id)},"Only this"),h("button",{class:"btn sm",title:origin+"/?d="+DEPTS.map(x=>x.id).join(",")+"#d-"+d.id,onclick:()=>copyText(origin+"/?d="+DEPTS.map(x=>x.id).join(",")+"#d-"+d.id)},"Start here, keep going"))))),
+    h("div",{class:"help"},h("b",{},"Tip. "),"Need a company-wide opening or closing? Add a deck called “Company” with just a title slide and a closing slide, then drag it to the top or bottom."));
   el.append(h("div",{class:"plw"},left,right));el.scrollTop=keep;
 }
 
@@ -979,11 +1268,11 @@ $("#logo").innerHTML=svg("chart",2);
 $("#bNew").innerHTML=ico("plus")+"New department";
 $("#bUndo").innerHTML=ico("undo");$("#bRedo").innerHTML=ico("redo");
 $("#pPrev").innerHTML=ico("left");$("#pNext").innerHTML=ico("right");$("#sayIc").innerHTML=ico("mic");$("#pOpen").innerHTML=ico("ext")+"Open this slide";
-$("#bSave").onclick=save;$("#bDl").onclick=download;$("#bNew").onclick=newDept;$("#bPl").onclick=openPlaylist;$("#bUndo").onclick=undo;$("#bRedo").onclick=redo;
+$("#bSave").onclick=save;$("#bDl").onclick=download;$("#bNew").onclick=()=>view==="directory"?newTopProject():newDeck();$("#bDir").onclick=openDirectory;$("#bPl").onclick=openPlaylist;$("#bUndo").onclick=undo;$("#bRedo").onclick=redo;
 $("#pPrev").onclick=()=>pvGo(pvAt-1);$("#pNext").onclick=()=>pvGo(pvAt+1);
 $("#dept").onchange=async e=>{
   const id=e.target.value;if(id===dept&&view==="edit")return;
-  if(dirty&&id!==dept&&!await ask("Switch department?","You have unsaved changes in "+(D.meta.dept||dept)+". They are kept as a local draft, but not saved to the server.","Switch anyway",true)){e.target.value=dept;return}
+  if(dirty&&id!==dept&&!await ask("Switch deck?","You have unsaved changes in "+(D.meta.dept||dept)+". They are kept as a local draft, but not saved to the server.","Switch anyway",true)){e.target.value=dept;return}
   if(view==="playlist")closePlaylist();if(id!==dept)await loadDept(id);else renderAll()};
 const typing=t=>/^(INPUT|TEXTAREA|SELECT)$/.test((t||{}).tagName||"");
 addEventListener("keydown",e=>{
@@ -994,16 +1283,26 @@ addEventListener("keydown",e=>{
 });
 addEventListener("beforeunload",e=>{if(dirty||plDirty){e.preventDefault();e.returnValue=""}});
 (async()=>{
-  try{DEPTS=await (await fetch("/data/departments.json",{cache:"no-cache"})).json()}catch{DEPTS=[]}
-  if(!DEPTS.length)DEPTS=[{id:"it",name:"IT Department",company:""}];
-  DEPTS=DEPTS.map(d=>({...d,include:d.include!==false}));
-  try{const r=await fetch("/data/playlist.json",{cache:"no-cache"});if(r.ok)PL={...PL,...await r.json()}}catch{}
+  try{PROJECTS=await jfresh("data/projects.json")}catch{PROJECTS=[]}
+  PROJECTS=(Array.isArray(PROJECTS)?PROJECTS:[]).map(p=>({...p,decks:(p.decks||[]).map(d=>({...d,include:d.include!==false}))}));
+  if(!PROJECTS.length){ // fallback: treat departments.json as the Department Wins project
+    let deps=[];try{deps=await jfresh("data/departments.json")}catch{}
+    deps=deps.map(d=>({...d,include:d.include!==false}));
+    if(!deps.length)deps=[{id:"it",name:"IT Department",company:"",include:true}];
+    PROJECTS=[{id:"department-wins",name:"Department Wins",company:deps[0].company||"",decks:deps}];
+  }
+  try{PL={...PL,...await jfresh("data/playlist.json")}}catch{}
   try{let p=await api("ping");online=true;
     if(p.key&&!p.canWrite){adminKey=prompt("Admin key:")||"";sessionStorage.setItem("dwKey",adminKey);p=await api("ping")}
     canWrite=p.canWrite}catch{online=false}
-  const q=new URLSearchParams(location.search).get("d"),first=DEPTS.some(d=>d.id===q)?q:DEPTS[0].id;
-  dept=first;fillDepts();updateTop();await loadDept(first);refreshBadge();status();
-  if(new URLSearchParams(location.search).get("view")==="playlist")openPlaylist();
+  const qs=new URLSearchParams(location.search),qp=qs.get("project"),qd=qs.get("d");
+  let target=null;
+  if(qp){target=PROJECTS.find(p=>p.id===qp)}
+  else if(qd){const did=qd.split(",")[0].trim();target=PROJECTS.find(p=>(p.decks||[]).some(d=>d.id===did))||PROJECTS[0]}
+  updateTop();
+  if(target)await openProject(target);else{view="directory";$("#directory").style.display="block";updateTop();renderDirectory()}
+  refreshBadge();status();
+  if(qs.get("view")==="playlist"&&CUR)openPlaylist();
 })();
 
 </script></body></html>

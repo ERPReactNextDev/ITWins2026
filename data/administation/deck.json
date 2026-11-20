@@ -113,7 +113,8 @@
    },
    "fanIds": [],
    "photos": [],
-   "groups": []
+   "groups": [],
+   "compact": 1
   },
   {
    "id": "project-2",
@@ -380,6 +381,10 @@
    "fx": {
     "speed": "fast"
    }
+  },
+  {
+   "type": "section",
+   "cat": "sys"
   }
  ]
 }
