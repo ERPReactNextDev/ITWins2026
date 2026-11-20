@@ -47,6 +47,11 @@
   }
  },
  "ar": {
+  "1": 1.8824,
+  "2": 2.0455,
+  "3": 1.8113,
+  "4": 1.6744,
+  "5": 1.7625,
   "img-3518": 1.7778,
   "viber-image-2026-01-31-11-54-21-647": 1.3333,
   "696226511-2420357885151478-363676563030854671-n": 1.3333,
@@ -194,7 +199,10 @@
   "630626600-1225785982999342-9018907559113271030-n": 1.7778,
   "630635930-1502643288071811-8361673652144161110-n": 1.7778,
   "630690313-1976211396636060-5621874885320145757-n": 1.3333,
-  "634412559-1483487470111744-7115413657677590636-n": 1.3333
+  "634412559-1483487470111744-7115413657677590636-n": 1.3333,
+  "screenshot-2026-11-20-164142": 0.7152,
+  "screenshot-2026-11-20-164142-2": 0.7152,
+  "screenshot-2026-11-20-164446": 0.8169
  },
  "projects": [
   {
@@ -456,18 +464,167 @@
   },
   {
    "id": "project-10",
-   "short": "COMPBEN ",
-   "title": "COMPBEN ",
+   "short": "BANCNET FOR DISRUPTIVE",
+   "title": "BANCNET FOR DISRUPTIVE",
    "cat": "sys",
-   "tag": "System",
+   "tag": "Compben",
    "icon": "cpu",
    "status": "Complete",
-   "lead": "",
+   "lead": "Disruptive Solutions Inc. is now officially set up on the BancNet eGov Online system, enabling smooth, electronic processing of payments and contributions to government agencies. Recent payment documents have been successfully uploaded and approved, ensuring timely, accurate, and transparent transactions.",
    "prob": "",
    "caps": [],
    "chips": [],
-   "mode": "fan",
-   "shots": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "3",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-11",
+   "short": "SSS ONLINE ACCOUNT — BUILDCHEM SOLUTIONS, INC.",
+   "title": "SSS ONLINE ACCOUNT — BUILDCHEM SOLUTIONS, INC.",
+   "cat": "sys",
+   "tag": "Compben",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Buildchem Solutions, Inc. has successfully established its official employer account on the Social Security System online portal. This platform enables efficient management of monthly contributions, loan certifications, benefit claims, and compliance reporting — all in one secure, centralized system.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "1",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-12",
+   "short": "PHILHEALTH ONLINE ACCOUNT — BUILDCHEM SOLUTIONS INC.",
+   "title": "PHILHEALTH ONLINE ACCOUNT — BUILDCHEM SOLUTIONS INC.",
+   "cat": "sys",
+   "tag": "Compben",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Buildchem Solutions Inc. is now fully registered on the PhilHealth Electronic Premium Remittance System (EPRS). Our employer profile is verified and active, enabling efficient digital management of employee records, premium remittances, and compliance reporting directly through the official portal.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "2",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-13",
+   "short": "VIRTUAL PAG-IBIG EMPLOYER PORTAL — DISRUPTIVE SOLUTIONS INC.",
+   "title": "VIRTUAL PAG-IBIG EMPLOYER PORTAL — DISRUPTIVE SOLUTIONS INC.",
+   "cat": "sys",
+   "tag": "Compben",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Disruptive Solutions Inc. is now officially set up on the Virtual Pag-IBIG for Employers portal. Our account is active and ready for use — enabling convenient digital management of monthly remittances, employee loan processing, billing generation, and all Pag-IBIG-related transactions anytime, anywhere.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "4",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-14",
+   "short": "VIRTUAL PAG-IBIG EMPLOYER PORTAL — ECOSHIFT CORPORATION",
+   "title": "VIRTUAL PAG-IBIG EMPLOYER PORTAL — ECOSHIFT CORPORATION",
+   "cat": "sys",
+   "tag": "Compben",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Ecoshift Corporation is now officially set up on the Virtual Pag-IBIG for Employers portal. Our account is active and ready for use — enabling convenient digital management of monthly remittances, employee loan processing, billing generation, and all Pag-IBIG-related transactions anytime, anywhere.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "5",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-15",
+   "short": "OFFICIAL DOLE CERTIFICATION",
+   "title": "OFFICIAL DOLE CERTIFICATION",
+   "cat": "sys",
+   "tag": "Certification",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Trust is built on transparency and adherence to standards. We are proud to have received this official certification from the Department of Labor and Employment, confirming that Ecoshift Corporation maintains a clean record with no pending labor cases. It’s more than just a document — it’s a testament to our commitment to fair practices, proper workplace management, and responsible operations.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "screenshot-2026-11-20-164142",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-16",
+   "short": "OCCUPATIONAL SAFETY AND HEALTH COMMITTEE",
+   "title": "OCCUPATIONAL SAFETY AND HEALTH COMMITTEE",
+   "cat": "sys",
+   "tag": "(OSH)",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Our OSH Committee convened to review the status of action items, assess the current safety and health conditions across all departments, discuss incident reports, and establish preventive measures. The meeting also covered updates to company OSH policies and scheduled the next review session to ensure continuous improvement in workplace safety standards.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "screenshot-2026-11-20-164446",
+     ""
+    ]
+   ],
    "fx": {
     "speed": "fast"
    },
@@ -687,6 +844,34 @@
    "fx": {
     "speed": "fast"
    }
+  },
+  {
+   "type": "project",
+   "id": "project-10"
+  },
+  {
+   "type": "project",
+   "id": "project-11"
+  },
+  {
+   "type": "project",
+   "id": "project-12"
+  },
+  {
+   "type": "project",
+   "id": "project-13"
+  },
+  {
+   "type": "project",
+   "id": "project-14"
+  },
+  {
+   "type": "project",
+   "id": "project-15"
+  },
+  {
+   "type": "project",
+   "id": "project-16"
   },
   {
    "type": "photos",
