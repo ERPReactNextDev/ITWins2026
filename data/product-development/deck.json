@@ -103,7 +103,7 @@
    "tag": "Wins",
    "icon": "cpu",
    "status": "Complete",
-   "lead": "e Product Department successfully standardized product manual templates for consistent documentation, established continuous performance monitoring for all 193 standard items, and improved 51 out of 196 products (26.02%) through evaluation and optimization. We developed the Wiring Devices category with full PS Mark certification and conducted comprehensive product training for the Engineering team. Collaborating with IT, we built a centralized Content Management System containing 761 product specifications to streamline information management and sales support. Additionally, we secured PS Licenses for regular bulbs under both LIT and Ecoshift brands, ensuring full regulatory compliance and market readiness across our product lines.",
+   "lead": "Product Department successfully standardized product manual templates for consistent documentation, established continuous performance monitoring for all 193 standard items, and improved 51 out of 196 products (26.02%) through evaluation and optimization. We developed the Wiring Devices category with full PS Mark certification and conducted comprehensive product training for the Engineering team. Collaborating with IT, we built a centralized Content Management System containing 761 product specifications to streamline information management and sales support. Additionally, we secured PS Licenses for regular bulbs under both LIT and Ecoshift brands, ensuring full regulatory compliance and market readiness across our product lines.",
    "prob": "",
    "caps": [],
    "chips": [],
@@ -240,11 +240,6 @@
    "fx": {
     "speed": "fast"
    }
-  },
-  {
-   "type": "section",
-   "cat": "sys",
-   "fx": {}
   },
   {
    "type": "project",

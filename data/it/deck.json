@@ -7,8 +7,13 @@
   "year": "2026"
  },
  "theme": {
-  "mode": "light",
-  "colors": {},
+  "mode": "dark",
+  "colors": {
+   "mint": "#75b382",
+   "amber": "#d1b060",
+   "sky": "#699ac8",
+   "rose": "#c56d8b"
+  },
   "fonts": {
    "display": "Bricolage Grotesque",
    "body": "DM Sans",
