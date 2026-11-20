@@ -1,0 +1,17 @@
+[
+ {
+  "id": "it",
+  "name": "IT Department",
+  "company": "Disruptive Solutions Inc"
+ },
+ {
+  "id": "hr",
+  "name": "HR Department",
+  "company": "Disruptive Solutions Inc"
+ },
+ {
+  "id": "product-development",
+  "name": "Product Development",
+  "company": "Disruptive Solutions Inc"
+ }
+]

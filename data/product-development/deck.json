@@ -1,0 +1,366 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "Product Development",
+  "company": "Disruptive Solutions Inc",
+  "title": "Department Wins",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {
+   "mint": "#2b8a3e",
+   "amber": "#b8860b",
+   "sky": "#1864ab",
+   "rose": "#a61e4d"
+  },
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {
+  "0": 1.4146,
+  "cms": 2.0397,
+  "screenshot-2026-11-19-142635": 1.8374,
+  "screenshot-2026-11-19-142609": 1.8519,
+  "product-launching": 1.1929,
+  "b-epi-lit-tamplate-previous-improved": 1.4146,
+  "b-epi-lit-tamplate-previous-improved-4": 1.4146,
+  "b-epi-lit-tamplate-previous-improved-2": 1.4146,
+  "switches-and-sockets": 1.7701,
+  "switches-and-sockets-ps-mark": 1.779,
+  "switches-and-sockets-ps-mark-core": 1.792,
+  "switches-and-sockets-1": 1.7652,
+  "bulb": 0.5673
+ },
+ "projects": [
+  {
+   "id": "project-1",
+   "short": "Content Management System (CMS) Development",
+   "title": "Content Management System (CMS) Development",
+   "cat": "sys",
+   "tag": "System",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Collaborated with the IT Department to develop a\ncentralized Content Management System (CMS),\nincorporating 761 product specifications to streamline\nproduct information management, simplify editing,\nfacilitate TDS generation, and support the Sales\nDepartment's Taskflow",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "cms",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-2",
+   "short": "Product Department — Key Achievements",
+   "title": "Product Department — Key Achievements",
+   "cat": "sys",
+   "tag": "Wins",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "e Product Department successfully standardized product manual templates for consistent documentation, established continuous performance monitoring for all 193 standard items, and improved 51 out of 196 products (26.02%) through evaluation and optimization. We developed the Wiring Devices category with full PS Mark certification and conducted comprehensive product training for the Engineering team. Collaborating with IT, we built a centralized Content Management System containing 761 product specifications to streamline information management and sales support. Additionally, we secured PS Licenses for regular bulbs under both LIT and Ecoshift brands, ensuring full regulatory compliance and market readiness across our product lines.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "orb",
+   "shots": [],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-3",
+   "short": "Product Launching of EPI",
+   "title": "Product Launching of EPI",
+   "cat": "sys",
+   "tag": "Improvements",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "product-launching",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-4",
+   "short": "Product Launching of Wiring Devices",
+   "title": "Product Launching of Wiring Devices",
+   "cat": "sys",
+   "tag": "Improvements",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Developed the Wiring Devices product category, including switches, sockets, and utility boxes, with the necessary PS Mark certification to support product compliance and market readiness",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "switches-and-sockets",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  },
+  {
+   "id": "project-5",
+   "short": "PS License Regular Bulbs",
+   "title": "PS License Regular Bulbs",
+   "cat": "sys",
+   "tag": "Improvements",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "Facilitated the acquisition of PS Licenses for regular\nbulbs under both LIT and Ecoshift brands, supporting\nproduct regulatory compliance and market readiness.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "bulb",
+     ""
+    ]
+   ],
+   "fx": {},
+   "fanIds": []
+  }
+ ],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "Product Development highlights for **Disruptive Solutions Inc**.",
+   "images": [
+    "cms",
+    "screenshot-2026-11-19-142609",
+    "screenshot-2026-11-19-142635"
+   ],
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "section",
+   "cat": "sys",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-1"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "screenshot-2026-11-19-142609",
+    "screenshot-2026-11-19-142635"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-2"
+  },
+  {
+   "type": "challenges",
+   "eyebrow": "Outcome",
+   "eyebrow2": "",
+   "h": "Standardization, Improvement, Development",
+   "items": [
+    {
+     "k": "Standardization of Product Manual Format",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Successfully developed a standardized Product\nManual template to improve documentation\nconsistency, streamline manual preparation, and\nenhance the accessibility of product information.\n"
+      ]
+     ]
+    },
+    {
+     "k": "Standard Product Performance Monitoring",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Established continuous monitoring and evaluation of all\n193 standard items to assess product performance,\nidentify improvement opportunities, and maintain\nproduct competitiveness.\n"
+      ]
+     ]
+    },
+    {
+     "k": "Product Improvement & Optimization",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Successfully improved 51 out of 196 identified products,\nrepresenting a 26.02% completion rate, through product\nevaluation, specification enhancement, and\nperformance optimization.\n"
+      ]
+     ]
+    },
+    {
+     "k": "Wiring Devices Product Development & PS Mark Certification",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Developed the Wiring Devices product category,\nincluding switches, sockets, and utility boxes, with the\nnecessary PS Mark certification to support product\ncompliance and market readiness"
+      ]
+     ]
+    }
+   ],
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "challenges",
+   "eyebrow": "Outcome",
+   "eyebrow2": "",
+   "h": "Standardization, Improvement, Development",
+   "items": [
+    {
+     "k": "Product Manual Standardization",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Developed a standardized Product Manual format to\nensure consistency in technical documentation, improve\npreparation efficiency, and establish uniform\npresentation across product categories"
+      ]
+     ]
+    },
+    {
+     "k": "Wiring Devices Product Training",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Successfully conducted comprehensive Wiring Devices\nProduct Training for the Engineering Department to\nstrengthen product knowledge, technical understanding,\nand familiarity with product specifications and\napplications.\n"
+      ]
+     ]
+    },
+    {
+     "k": "Content Management System (CMS) Development",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Collaborated with the IT Department to develop a\ncentralized Content Management System (CMS),\nincorporating 761 product specifications to streamline\nproduct information management, simplify editing,\nfacilitate TDS generation, and support the Sales\nDepartment's Taskflow"
+      ]
+     ]
+    },
+    {
+     "k": "PS License Acquisition for Regular Bulbs",
+     "t": "",
+     "rows": [
+      [
+       "o",
+       "Outcome",
+       "Facilitated the acquisition of PS Licenses for regular\nbulbs under both LIT and Ecoshift brands, supporting\nproduct regulatory compliance and market readiness"
+      ]
+     ]
+    }
+   ],
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-3"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "0",
+    "b-epi-lit-tamplate-previous-improved",
+    "b-epi-lit-tamplate-previous-improved-2",
+    "b-epi-lit-tamplate-previous-improved-4"
+   ],
+   "per": "2",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-4"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "switches-and-sockets",
+    "switches-and-sockets-1",
+    "switches-and-sockets-ps-mark-core",
+    "switches-and-sockets-ps-mark"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "project",
+   "id": "project-5"
+  }
+ ]
+}

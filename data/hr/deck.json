@@ -1,0 +1,793 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "HR Department",
+  "company": "Disruptive Solutions Inc",
+  "title": "Department Wins",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {
+   "mint": "#c92a2a",
+   "amber": "#d9730d",
+   "sky": "#364fc7",
+   "rose": "#862e9c"
+  },
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {
+  "img-3518": 1.7778,
+  "viber-image-2026-01-31-11-54-21-647": 1.3333,
+  "696226511-2420357885151478-363676563030854671-n": 1.3333,
+  "viber-image-2026-11-12-11-25-41-430": 1.3323,
+  "viber-image-2026-11-12-11-22-43-439": 1.3323,
+  "viber-image-2026-11-12-11-22-16-860": 1.3323,
+  "viber-image-2026-11-12-11-21-45-771": 1.3323,
+  "viber-image-2026-11-12-11-21-22-661": 1.3323,
+  "img20260227091925": 2.2222,
+  "img20260227091944": 2.2222,
+  "img20260227093913": 2.2222,
+  "img20260227105336": 2.2222,
+  "img20260401121513": 2.2222,
+  "img20260401085750": 2.2222,
+  "img20260401092707": 2.2222,
+  "img20260401092714": 2.2222,
+  "img20260401093125": 2.2222,
+  "img20260401094457": 2.2222,
+  "img20260401095320": 2.2222,
+  "img20260401103143": 2.2222,
+  "img20260401103559": 2.2222,
+  "img20260401121511": 2.2222,
+  "img20260401121513-2": 2.2222,
+  "699395623-1278753287801546-2004733792521130332-n": 0.75,
+  "700142609-1594716431629486-402786122979884489-n": 1.3333,
+  "699096113-2190778985107689-2533128122205525159-n": 1.3333,
+  "699063628-991052800239584-1238874513178970028-n": 1.3333,
+  "699020571-921072130985040-3656255249858370244-n": 0.75,
+  "698899439-2465661053881818-1517012764223429278-n": 1.3333,
+  "696511019-1177609025425350-2804866464860456006-n": 1.3333,
+  "696249472-1495202598681345-1948301848030572784-n": 1.3333,
+  "696226511-2420357885151478-363676563030854671-n-2": 1.3333,
+  "695348600-2228315644674684-7075578478306079127-n": 1.3333,
+  "img-2310": 1.7778,
+  "img-2315": 1.7778,
+  "img-2374": 1.3333,
+  "img-2375": 1.3333,
+  "img-2378": 1.3333,
+  "img20260509094726": 2.2222,
+  "img20260509094748": 2.2222,
+  "img20260509102155": 2.2222,
+  "img20260509102203": 2.2222,
+  "viber-image-2026-01-31-11-54-21-647-2": 1.3333,
+  "viber-image-2026-01-31-11-53-59-014": 1.333,
+  "viber-image-2026-01-31-11-53-57-394": 1.3333,
+  "viber-image-2026-01-31-11-53-48-943": 1.3333,
+  "img-3500": 1.7778,
+  "img-3505": 1.7778,
+  "img-3516": 1.7778,
+  "img-3518-2": 1.7778,
+  "img-3536": 1.3333,
+  "img-3537": 1.3333,
+  "img20260502135141-1": 2.2222,
+  "img20260502135141-1-2": 2.2222,
+  "img20260502144859": 2.2222,
+  "img20260502144902": 2.2222,
+  "img20260502145731": 2.2222,
+  "img20260502145739": 2.2222,
+  "img-3500-2": 1.7778,
+  "peso-qc-accreditation": 1.3219,
+  "screenshot-2026-11-19-135551": 1.8571,
+  "screenshot-2026-11-19-135911": 1.8571,
+  "screenshot-2026-11-19-135847": 1.8662,
+  "screenshot-2026-11-19-135820": 1.8571,
+  "screenshot-2026-11-19-135551-2": 1.8571,
+  "viber-image-2026-11-12-14-52-32-452": 1.7778,
+  "viber-image-2026-10-31-08-58-20-268": 1.3333,
+  "viber-image-2026-10-31-08-58-19-450": 0.75,
+  "viber-image-2026-10-30-18-08-48-340": 1.3333,
+  "viber-image-2026-10-30-17-47-49-491": 1.7778,
+  "viber-image-2026-10-30-17-47-48-236": 1.7778,
+  "viber-image-2026-10-30-17-47-39-138": 1.7778,
+  "viber-image-2026-10-30-17-47-36-863": 1.7778,
+  "viber-image-2026-10-30-17-47-36-450": 1.7778,
+  "viber-image-2026-10-30-17-47-35-862": 1.7778,
+  "viber-image-2026-10-30-17-47-32-046": 1.7778,
+  "viber-image-2026-10-30-17-45-49-522": 1.7778,
+  "viber-image-2026-10-30-12-39-03-854": 0.5625,
+  "viber-image-2026-10-30-09-51-16-511": 0.5625,
+  "685978248-994474753098398-7155125077855632988-n": 1.3333,
+  "viber-image-2026-09-01-15-20-54-846": 0.9906,
+  "viber-image-2026-09-01-15-27-01-882": 0.75,
+  "629946588-721535797561328-2091457270914272179-n": 1.3333,
+  "645247303-1236908725213526-6749194335335641905-n": 1.3333,
+  "684097409-1269679095147479-577331767345169698-n": 1.3342,
+  "686056259-1342179727820076-361334219625544457-n": 1.3333,
+  "736260521-847937011503634-5479522241081361805-n": 1.3333,
+  "736524740-4690001314569253-1116638192689570356-n": 1.3333,
+  "789443626-1302135838520378-1516848421463625522-n": 1.3342,
+  "789706201-1606528867847029-3089375983014067662-n": 1.3333,
+  "790806071-1781679872830727-566892773780300324-n": 1.3333,
+  "883438238-1431270139198117-8829913322334246188-n": 0.5625,
+  "886703753-2176827589882688-8580931468014157553-n": 1.3333,
+  "viber-image-2026-07-07-09-30-17-303": 1.5326,
+  "viber-image-2026-07-07-13-23-52-527": 1.3333,
+  "viber-image-2026-07-07-13-23-53-006": 1.3333,
+  "viber-image-2026-07-07-13-23-53-814": 1.3333,
+  "viber-image-2026-07-07-15-49-18-643": 0.75,
+  "viber-image-2026-07-07-16-27-50-485": 1.3323,
+  "viber-image-2026-07-14-16-15-06-366": 1.7778,
+  "viber-image-2026-08-04-10-41-34-900": 0.75,
+  "viber-image-2026-08-04-10-42-00-410": 0.7498,
+  "viber-image-2026-08-04-11-43-43-984": 0.5625,
+  "viber-image-2026-08-04-15-10-30-254": 1.4467,
+  "viber-image-2026-08-04-15-38-44-787": 1.3333,
+  "viber-image-2026-08-04-15-39-36-323": 1.3333,
+  "viber-image-2026-08-04-15-46-08-489": 1.3323,
+  "viber-image-2026-08-04-15-49-58-027": 1.3333,
+  "viber-image-2026-08-04-15-51-25-110": 1.3333,
+  "viber-image-2026-08-04-15-57-28-668": 1.3333,
+  "viber-image-2026-08-04-16-01-07-517": 1.4809,
+  "viber-image-2026-08-04-16-03-02-042": 0.75,
+  "viber-image-2026-08-04-16-03-56-983": 1.3333,
+  "viber-image-2026-09-01-13-37-44-426": 0.75,
+  "viber-image-2026-09-01-13-54-23-762": 0.6527,
+  "viber-image-2026-09-01-14-03-49-071": 1.4837,
+  "viber-image-2026-09-01-14-07-14-833": 0.75,
+  "viber-image-2026-09-01-14-07-15-647": 0.75,
+  "viber-image-2026-09-01-14-15-20-514": 1.3333,
+  "viber-image-2026-09-01-14-27-07-482": 0.75,
+  "viber-image-2026-09-01-14-27-24-309": 0.7,
+  "viber-image-2026-09-01-15-19-09-191": 1.3333,
+  "viber-image-2026-09-01-15-25-16-295": 1.0194,
+  "viber-image-2026-09-01-15-28-44-832": 0.75,
+  "viber-image-2026-10-06-09-29-26-416": 1.0167,
+  "viber-image-2026-10-06-13-22-07-173": 0.75,
+  "viber-image-2026-10-06-13-29-36-731": 0.9325,
+  "viber-image-2026-10-06-13-58-15-259": 1.3333,
+  "viber-image-2026-10-06-14-39-15-337": 0.75,
+  "627482719-3069592726559998-2476523323123550861-n": 0.75,
+  "629275310-1610075123640604-8067305338541291113-n": 0.75,
+  "631189222-908471542113012-6324156441291853165-n": 1.7778,
+  "633373879-904006785569754-8009487701978908974-n": 0.75,
+  "625965744-26945169091749586-8227062651031541497-n": 1.3333,
+  "626775803-2495205414227906-1743044958290627141-n": 1.3333,
+  "627795984-926898866576754-559575187225726463-n": 1.3333,
+  "627977416-834254799657127-1719364148164658841-n": 2.2237,
+  "628005735-1631583428261357-8405974749194053770-n": 1.3333,
+  "628196730-1342419817691010-3968587643719540120-n": 1.3333,
+  "629503474-2644722592572811-8239617994363801634-n": 0.75,
+  "630001752-952374657746016-9158616534684386987-n": 1.7778,
+  "630077627-4238999716318753-203634853711868784-n": 1.3333,
+  "630190096-920726667561953-8389573706656383705-n": 1.3333,
+  "630439040-751859477656575-6879706338850263320-n": 1.7778,
+  "630626600-1225785982999342-9018907559113271030-n": 1.7778,
+  "630635930-1502643288071811-8361673652144161110-n": 1.7778,
+  "630690313-1976211396636060-5621874885320145757-n": 1.3333,
+  "634412559-1483487470111744-7115413657677590636-n": 1.3333
+ },
+ "projects": [
+  {
+   "id": "project-1",
+   "short": "EFFECTIVE CONFLICT MANAGEMENT TRAINING - FOR DEPARTMENT HEADS",
+   "title": "EFFECTIVE CONFLICT MANAGEMENT TRAINING - FOR DEPARTMENT HEADS",
+   "cat": "sys",
+   "tag": "TRAINING'S",
+   "icon": "users",
+   "status": "Complete",
+   "lead": "Strengthening leadership through better understanding, communication, and collaboration. Our Department Heads gathered for a productive session on Conflict Management — equipping ourselves with practical strategies to handle challenges, resolve issues constructively, and foster a harmonious, high-performing workplace.",
+   "prob": "",
+   "caps": [
+    "Open Dialogue",
+    "Fair & Balanced Solutions",
+    "Positive Work Environment"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "viber-image-2026-11-12-11-21-22-661",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": [],
+   "photos": [],
+   "groups": []
+  },
+  {
+   "id": "project-2",
+   "short": "EFFECTIVE SELLING TRAINING",
+   "title": "EFFECTIVE SELLING TRAINING",
+   "cat": "sys",
+   "tag": "TRAINING'S",
+   "icon": "users",
+   "status": "Complete",
+   "lead": "Effective selling begins with understanding — who we serve, what they truly need, and how we can help. Our team learned a clear, practical framework to identify real opportunities, engage professionally, and approach every conversation with purpose and confidence.",
+   "prob": "",
+   "caps": [
+    "Professional Etiquette & Approach",
+    "Qualified Prospecting Checklist",
+    "Ready, Skilled, & Growing Together",
+    "Build Trust & Value"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "img20260227105336",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-3",
+   "short": "KEY ACCOUNT MANAGEMENT TRAINING",
+   "title": "KEY ACCOUNT MANAGEMENT TRAINING",
+   "cat": "sys",
+   "tag": "TRAINING's",
+   "icon": "users",
+   "status": "Complete",
+   "lead": "Our key accounts are the foundation of our success — and managing them well requires strategy, care, and commitment. In this training, our team explored the role of an effective Key Account Manager: how to analyze business opportunities, develop winning strategies, navigate challenges, and truly become a trusted partner our clients can count on.",
+   "prob": "",
+   "caps": [
+    "Understand & Value Your Client",
+    "Plan & Execute with Purpose",
+    "Grow Together Through Trust & Excellence",
+    "Long-Term Partnership Growth"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "img20260401121513",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-4",
+   "short": "FOUNDATIONS OF LEADERSHIP & MANAGEMENT",
+   "title": "FOUNDATIONS OF LEADERSHIP & MANAGEMENT",
+   "cat": "sys",
+   "tag": "TRAINING'S",
+   "icon": "users",
+   "status": "Complete",
+   "lead": "Every great team needs leaders who care, plan well, and lead by example. Our management team completed this training to sharpen our skills — learning how to balance day-to-day management with visionary leadership, create clarity for our teams, and foster an environment where everyone can do their best work.",
+   "prob": "",
+   "caps": [
+    "Organize for Success",
+    "Grow Together, Lead Forward",
+    "Strong Foundations of Leadership",
+    "Grow Together as One Team"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "696226511-2420357885151478-363676563030854671-n",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-5",
+   "short": "PROFESSIONAL PRESENCE",
+   "title": "PROFESSIONAL PRESENCE",
+   "cat": "sys",
+   "tag": "TRAINING'S",
+   "icon": "users",
+   "status": "Complete",
+   "lead": "True professionalism shows in every detail — from how we carry ourselves to how we engage with others. This training focused on building a strong professional presence: mastering grooming standards, maintaining confident posture, and using gestures that build trust and respect in every interaction.",
+   "prob": "",
+   "caps": [
+    "Positive Posture & Gestures",
+    "Professional Standards & Habits",
+    "Look & Feel Your Professional Best",
+    "Great Presence Builds Trust"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "viber-image-2026-01-31-11-54-21-647-2",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-6",
+   "short": "PSYCHOLOGY OF SELLING",
+   "title": "PSYCHOLOGY OF SELLING",
+   "cat": "sys",
+   "tag": "TRAINING'S",
+   "icon": "users",
+   "status": "Complete",
+   "lead": "Every client has unique needs, concerns, and goals — and when we understand the psychology behind their decisions, we can serve them better. This training helped our team move beyond transactions: to read between the lines, anticipate needs, and create meaningful experiences that make clients feel valued and understood.",
+   "prob": "",
+   "caps": [
+    "Empathy Creates Confidence",
+    "Understand Needs Before Solutions",
+    "Turn Interactions into Trust",
+    "Know What Drives Your Clients"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "img-3500",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-7",
+   "short": "SCIENCE BEHIND LED & SOLAR LIGHTING",
+   "title": "SCIENCE BEHIND LED & SOLAR LIGHTING",
+   "cat": "sys",
+   "tag": "TRAINING'S",
+   "icon": "users",
+   "status": "Complete",
+   "lead": "Our team deepened our technical foundation: the principles behind LED lighting and dimming, the essential parts of a solar lighting system, and how each component works together to deliver reliable, sustainable lighting solutions.",
+   "prob": "",
+   "caps": [
+    "Knowledge Builds Quality",
+    "Understand Every Component",
+    "Expertise You Can Trust",
+    "LED Technology & Dimming Methods"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "img20260502135141-1",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-8",
+   "short": "QC PESO ACCREDITATION & LABOR DAY JOB FAIR 2025",
+   "title": "QC PESO ACCREDITATION & LABOR DAY JOB FAIR 2025",
+   "cat": "sys",
+   "tag": "PESO ACCREDITATION",
+   "icon": "check",
+   "status": "Complete",
+   "lead": "Partnering with Quezon City PESO for meaningful employment. Our company completed the accreditation process to join the May 1, 2025 Labor Day Job Fair at the QC M.I.C.E. Center — connecting qualified job seekers with opportunities at EcoShift Corporation.",
+   "prob": "",
+   "caps": [
+    "Official QC-PESO Accredited Employer",
+    "Participated in Labor Day Job Fair (May 1, 2025)",
+    "Building Our Team & Supporting the Community",
+    "Creating Opportunities, Growing Together"
+   ],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "peso-qc-accreditation",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-9",
+   "short": "Strengthening HR Digitalization Through HRIS",
+   "title": "Strengthening HR Digitalization Through HRIS",
+   "cat": "sys",
+   "tag": "System",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "In collaboration with the IT Department, HR is currently working on encoding and consolidating employee information into our HRIS, while integrating essential HR resources such as the Code of Conduct (COC), company memorandums, leave credits, policies, forms, and other employee-related information. This initiative aims to provide employees with a centralized and convenient platform to access important HR information while improving data management, accuracy, transparency, and efficiency in HR operations.",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "screenshot-2026-11-19-135551",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  }
+ ],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "HR Department highlights for **Disruptive Solutions Inc**.",
+   "images": [
+    "696226511-2420357885151478-363676563030854671-n",
+    "img-3518",
+    "viber-image-2026-01-31-11-54-21-647"
+   ],
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-1"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "TRAINING'S",
+   "h": "Building a culture of respect, open communication, and unity.",
+   "images": [
+    "viber-image-2026-11-12-11-21-45-771",
+    "viber-image-2026-11-12-11-22-16-860",
+    "viber-image-2026-11-12-11-22-43-439",
+    "viber-image-2026-11-12-11-25-41-430"
+   ],
+   "per": 4,
+   "tilt": 1,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-2"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "TRAINING'S",
+   "h": "Equipping Our Team for Better Results",
+   "images": [
+    "img20260227091925",
+    "img20260227091944",
+    "img20260227093913",
+    "img20260227105336"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-3"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "img20260401085750",
+    "img20260401092707",
+    "img20260401092714",
+    "img20260401093125",
+    "img20260401094457",
+    "img20260401095320",
+    "img20260401103143",
+    "img20260401103559",
+    "img20260401121511",
+    "img20260401121513"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-4"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "699395623-1278753287801546-2004733792521130332-n",
+    "700142609-1594716431629486-402786122979884489-n",
+    "699096113-2190778985107689-2533128122205525159-n",
+    "699063628-991052800239584-1238874513178970028-n",
+    "699020571-921072130985040-3656255249858370244-n",
+    "698899439-2465661053881818-1517012764223429278-n",
+    "696511019-1177609025425350-2804866464860456006-n",
+    "696249472-1495202598681345-1948301848030572784-n",
+    "696226511-2420357885151478-363676563030854671-n-2",
+    "695348600-2228315644674684-7075578478306079127-n",
+    "img20260509102203",
+    "img20260509102155",
+    "img20260509094748",
+    "img20260509094726",
+    "img-2378",
+    "img-2375",
+    "img-2374",
+    "img-2315",
+    "img-2310"
+   ],
+   "per": "2",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-5"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "viber-image-2026-01-31-11-53-59-014",
+    "viber-image-2026-01-31-11-54-21-647",
+    "viber-image-2026-01-31-11-53-48-943",
+    "viber-image-2026-01-31-11-53-57-394"
+   ],
+   "per": "2",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-6"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "img-3500",
+    "img-3505",
+    "img-3516",
+    "img-3518",
+    "img-3536",
+    "img-3537"
+   ],
+   "per": "6",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-7"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "img20260502135141-1-2",
+    "img20260502144859",
+    "img20260502144902",
+    "img20260502145731",
+    "img20260502145739"
+   ],
+   "per": "6",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-8"
+  },
+  {
+   "type": "project",
+   "id": "project-9"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "screenshot-2026-11-19-135551-2",
+    "screenshot-2026-11-19-135820",
+    "screenshot-2026-11-19-135847",
+    "screenshot-2026-11-19-135911"
+   ],
+   "per": "2",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "photos",
+   "eyebrow": "EVENTS AND ENGAGEMENT",
+   "h": "HALLOWEEN",
+   "images": [
+    "viber-image-2026-11-12-14-52-32-452",
+    "viber-image-2026-10-30-18-08-48-340",
+    "viber-image-2026-10-31-08-58-19-450",
+    "viber-image-2026-10-31-08-58-20-268",
+    "viber-image-2026-10-30-17-47-48-236",
+    "viber-image-2026-10-30-17-47-49-491",
+    "viber-image-2026-10-30-17-47-39-138",
+    "viber-image-2026-10-30-17-47-36-863",
+    "viber-image-2026-10-30-17-47-32-046",
+    "viber-image-2026-10-30-17-47-35-862",
+    "viber-image-2026-10-30-17-45-49-522",
+    "viber-image-2026-10-30-12-39-03-854",
+    "viber-image-2026-10-30-09-51-16-511",
+    "viber-image-2026-10-30-17-47-36-450"
+   ],
+   "per": "6",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "photos",
+   "eyebrow": "EVENTS AND ENGAGEMENT",
+   "h": "MONTHLY COLOR CODING",
+   "images": [
+    "629946588-721535797561328-2091457270914272179-n",
+    "645247303-1236908725213526-6749194335335641905-n",
+    "684097409-1269679095147479-577331767345169698-n",
+    "685978248-994474753098398-7155125077855632988-n",
+    "686056259-1342179727820076-361334219625544457-n",
+    "736260521-847937011503634-5479522241081361805-n",
+    "736524740-4690001314569253-1116638192689570356-n",
+    "789443626-1302135838520378-1516848421463625522-n",
+    "789706201-1606528867847029-3089375983014067662-n",
+    "790806071-1781679872830727-566892773780300324-n",
+    "883438238-1431270139198117-8829913322334246188-n",
+    "886703753-2176827589882688-8580931468014157553-n",
+    "viber-image-2026-07-07-09-30-17-303",
+    "viber-image-2026-07-07-13-23-52-527",
+    "viber-image-2026-07-07-13-23-53-006",
+    "viber-image-2026-07-07-13-23-53-814",
+    "viber-image-2026-07-07-15-49-18-643",
+    "viber-image-2026-07-07-16-27-50-485",
+    "viber-image-2026-07-14-16-15-06-366",
+    "viber-image-2026-08-04-10-41-34-900",
+    "viber-image-2026-08-04-10-42-00-410",
+    "viber-image-2026-08-04-11-43-43-984",
+    "viber-image-2026-08-04-15-10-30-254",
+    "viber-image-2026-08-04-15-38-44-787",
+    "viber-image-2026-08-04-15-39-36-323",
+    "viber-image-2026-08-04-15-46-08-489",
+    "viber-image-2026-08-04-15-49-58-027",
+    "viber-image-2026-08-04-15-57-28-668",
+    "viber-image-2026-08-04-16-01-07-517",
+    "viber-image-2026-08-04-16-03-02-042",
+    "viber-image-2026-08-04-16-03-56-983",
+    "viber-image-2026-09-01-13-37-44-426",
+    "viber-image-2026-09-01-13-54-23-762",
+    "viber-image-2026-09-01-14-03-49-071",
+    "viber-image-2026-09-01-14-07-14-833",
+    "viber-image-2026-09-01-14-07-15-647",
+    "viber-image-2026-09-01-14-15-20-514",
+    "viber-image-2026-09-01-14-27-07-482",
+    "viber-image-2026-09-01-14-27-24-309",
+    "viber-image-2026-09-01-15-19-09-191",
+    "viber-image-2026-10-06-09-29-26-416",
+    "viber-image-2026-10-06-13-22-07-173",
+    "viber-image-2026-09-01-15-20-54-846",
+    "viber-image-2026-09-01-15-25-16-295",
+    "viber-image-2026-10-06-13-29-36-731",
+    "viber-image-2026-10-06-13-58-15-259",
+    "viber-image-2026-09-01-15-27-01-882",
+    "viber-image-2026-09-01-15-28-44-832",
+    "viber-image-2026-10-06-14-39-15-337"
+   ],
+   "per": "8",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "photos",
+   "eyebrow": "EVENTS AND ENGAGEMENT",
+   "h": "VALENTINES & CHINESE NEW YEAR",
+   "images": [
+    "625965744-26945169091749586-8227062651031541497-n",
+    "626775803-2495205414227906-1743044958290627141-n",
+    "627482719-3069592726559998-2476523323123550861-n",
+    "627795984-926898866576754-559575187225726463-n",
+    "627977416-834254799657127-1719364148164658841-n",
+    "628005735-1631583428261357-8405974749194053770-n",
+    "628196730-1342419817691010-3968587643719540120-n",
+    "629275310-1610075123640604-8067305338541291113-n",
+    "629503474-2644722592572811-8239617994363801634-n",
+    "629946588-721535797561328-2091457270914272179-n",
+    "630001752-952374657746016-9158616534684386987-n",
+    "630077627-4238999716318753-203634853711868784-n",
+    "630190096-920726667561953-8389573706656383705-n",
+    "630439040-751859477656575-6879706338850263320-n",
+    "630626600-1225785982999342-9018907559113271030-n",
+    "630635930-1502643288071811-8361673652144161110-n",
+    "630690313-1976211396636060-5621874885320145757-n",
+    "631189222-908471542113012-6324156441291853165-n",
+    "633373879-904006785569754-8009487701978908974-n",
+    "634412559-1483487470111744-7115413657677590636-n"
+   ],
+   "per": "8",
+   "tilt": 0,
+   "say": "",
+   "fx": {}
+  }
+ ]
+}
