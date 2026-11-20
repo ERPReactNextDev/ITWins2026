@@ -1,5 +1,11 @@
 [
  {
+  "id": "administation",
+  "name": "Admin",
+  "company": "Disruptive Solutions Inc",
+  "include": true
+ },
+ {
   "id": "hr",
   "name": "HR Department",
   "company": "Disruptive Solutions Inc",
@@ -22,10 +28,5 @@
   "name": "Product Development",
   "company": "Disruptive Solutions Inc",
   "include": true
- },
- {
-  "id": "administation",
-  "name": "Admin",
-  "company": "Disruptive Solutions Inc"
  }
 ]
