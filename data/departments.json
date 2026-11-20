@@ -1,22 +1,26 @@
 [
  {
-  "id": "it",
-  "name": "IT Department",
-  "company": "Disruptive Solutions Inc"
- },
- {
   "id": "hr",
   "name": "HR Department",
-  "company": "Disruptive Solutions Inc"
- },
- {
-  "id": "product-development",
-  "name": "Product Development",
-  "company": "Disruptive Solutions Inc"
+  "company": "Disruptive Solutions Inc",
+  "include": true
  },
  {
   "id": "customer-service",
   "name": "Customer Service",
-  "company": "Disruptive Solutions Inc"
+  "company": "Disruptive Solutions Inc",
+  "include": true
+ },
+ {
+  "id": "it",
+  "name": "IT Department",
+  "company": "Disruptive Solutions Inc",
+  "include": true
+ },
+ {
+  "id": "product-development",
+  "name": "Product Development",
+  "company": "Disruptive Solutions Inc",
+  "include": true
  }
 ]
