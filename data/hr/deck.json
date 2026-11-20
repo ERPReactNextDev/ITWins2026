@@ -805,10 +805,6 @@
    "tilt": 0,
    "say": "",
    "fx": {}
-  },
-  {
-   "type": "section",
-   "cat": "sys"
   }
  ]
 }
