@@ -75,9 +75,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-2",
@@ -103,10 +104,9 @@
      ""
     ]
    ],
-   "fx": {
-    "speed": "fast"
-   },
-   "fanIds": []
+   "fx": {},
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-3",
@@ -133,9 +133,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-4",
@@ -162,9 +163,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1,
+    "kb": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   }
  ],
  "slides": [
@@ -181,9 +184,7 @@
     "03-process-roll-out-and-implementation"
    ],
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {}
   },
   {
    "type": "project",

@@ -182,8 +182,9 @@
    ],
    "prob": "Employee records lived in separate files, with no single source of truth.",
    "fx": {
-    "speed": "fast"
-   }
+    "confetti": 1
+   },
+   "music": []
   },
   {
    "id": "taskflow",
@@ -235,9 +236,9 @@
     ]
    ],
    "prob": "Quotations and sales reports were prepared by hand, with no standard KPI tracking.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "jaries",
@@ -289,8 +290,10 @@
    ],
    "prob": "Product details and branded datasheets were rebuilt manually for every request.",
    "fx": {
-    "speed": "fast"
-   }
+    "confetti": 1
+   },
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "ecodesk",
@@ -342,9 +345,9 @@
     ]
    ],
    "prob": "Ticket creation was slow and the Customer Service team lacked a clear overview.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "espiron",
@@ -397,8 +400,10 @@
    ],
    "prob": "SPF item requests and costing passed between Technical and Procurement by hand.",
    "fx": {
-    "speed": "fast"
-   }
+    "confetti": 1
+   },
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "engi",
@@ -460,8 +465,10 @@
    ],
    "prob": "Site visits, job orders and shop drawings were requested and tracked separately.",
    "fx": {
-    "speed": "fast"
-   }
+    "confetti": 1
+   },
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "stash",
@@ -513,9 +520,9 @@
     ]
    ],
    "prob": "IT assets, licenses and subscriptions had no single, reliable record.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "helpdesk",
@@ -567,9 +574,9 @@
     ]
    ],
    "prob": "IT requests and repairs had no central ticket trail.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "bc-taskflow",
@@ -625,9 +632,9 @@
     ]
    ],
    "prob": "Buildchem's solution and chemical sales relied on hand-made forms and quotes.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "biolog",
@@ -689,9 +696,9 @@
    "prob": "Attendance and client-site visits could not be verified or tied to KPI reports.",
    "galleryTitle": "Mobile app screens",
    "gallerySay": "Biolog is a mobile app. Here are its dashboard, calendar, camera, camera view, and reports screens.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "bc-web",
@@ -742,9 +749,9 @@
     ]
    ],
    "prob": "Buildchem Solutions needed an online presence that fit Marketing's requirements.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "ecoshift",
@@ -795,9 +802,9 @@
     ]
    ],
    "prob": "The website lacked features, pages and up-to-date forms.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "dsi",
@@ -848,9 +855,9 @@
     ]
    ],
    "prob": "The company website needed an update to meet Marketing's specifications.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "vah",
@@ -901,9 +908,9 @@
     ]
    ],
    "prob": "Value Acquisition Holdings needed a website built to Marketing's requirements.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": [],
+   "fanIds": []
   },
   {
    "id": "3cx",
@@ -947,9 +954,8 @@
     ]
    ],
    "prob": "Calls were not routed by department or connected to tickets and sales records.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": []
   },
   {
    "id": "email-server",
@@ -992,9 +998,8 @@
     "Secured"
    ],
    "prob": "The email server was open to unauthorized access attempts.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": []
   },
   {
    "id": "email-storage",
@@ -1037,9 +1042,8 @@
     "Streamlined"
    ],
    "prob": "Mailbox storage kept growing with no monitoring or limits.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": []
   },
   {
    "id": "email-accounts",
@@ -1082,9 +1086,8 @@
     "Compliant"
    ],
    "prob": "Former employees' mailboxes lingered without backup or secure removal.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": []
   },
   {
    "id": "carmona",
@@ -1163,9 +1166,9 @@
     }
    ],
    "prob": "The Carmona site needed surveillance and a reliable, site-wide network.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "photos": [],
+   "music": []
   },
   {
    "id": "primex",
@@ -1208,9 +1211,8 @@
     "Defended"
    ],
    "prob": "The Primex site needed a secured network perimeter and access control.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": []
   },
   {
    "id": "reconfig",
@@ -1253,9 +1255,8 @@
     "Reliable"
    ],
    "prob": "Network and system changes risked downtime and unstable services.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": []
   },
   {
    "id": "failover",
@@ -1298,9 +1299,8 @@
     "Seamless Switch"
    ],
    "prob": "One internet link meant any outage could stop the whole company.",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "music": []
   },
   {
    "id": "bloopers",
@@ -1381,7 +1381,10 @@
    ],
    "fx": {
     "speed": "fast"
-   }
+   },
+   "groups": [],
+   "music": [],
+   "dur": 3
   }
  ],
  "slides": [
@@ -1407,7 +1410,8 @@
    "h": "Wins at a glance",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "dur": 3
   },
   {
    "type": "summary",
@@ -1432,14 +1436,16 @@
    ],
    "fx": {
     "speed": "fast"
-   }
+   },
+   "dur": 8
   },
   {
    "type": "section",
    "cat": "sys",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "dur": 3
   },
   {
    "type": "project",

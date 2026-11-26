@@ -110,9 +110,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-2",
@@ -140,9 +141,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-3",
@@ -163,10 +165,10 @@
      ""
     ]
    ],
-   "fx": {
-    "speed": "fast"
-   },
-   "fanIds": []
+   "fx": {},
+   "fanIds": [],
+   "music": [],
+   "dur": 4
   },
   {
    "id": "project-4",
@@ -191,10 +193,9 @@
      ""
     ]
    ],
-   "fx": {
-    "speed": "fast"
-   },
-   "fanIds": []
+   "fx": {},
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-5",
@@ -226,9 +227,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   }
  ],
  "slides": [
@@ -264,14 +266,16 @@
    "per": 4,
    "tilt": 0,
    "say": "",
-   "fx": {
-    "speed": "fast"
-   },
+   "fx": {},
    "desc": "By transitioning to these printing formats, the department can improve the handling, filing, and safekeeping of receipt documents. It also helps establish a more structured documentation process, allowing receipts to be printed, compiled, and retrieved more efficiently whenever needed. This improvement supports better record management and contributes to a smoother workflow for the team. Although it may seem like a simple operational improvement, it is another step toward achieving a more organized, systematic, and reliable accounting process.",
    "descPos": "right",
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 15
   },
   {
    "type": "project",
@@ -293,12 +297,14 @@
    "per": "6",
    "tilt": 0,
    "say": "",
-   "fx": {
-    "speed": "fast"
-   },
+   "fx": {},
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 1
   },
   {
    "type": "project",
@@ -324,6 +330,9 @@
    },
    "descs": [
     ""
+   ],
+   "durs": [
+    0
    ]
   },
   {
@@ -346,13 +355,16 @@
    "per": "3",
    "tilt": 0,
    "say": "",
-   "fx": {
-    "speed": "fast"
-   },
+   "fx": {},
    "descs": [
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0
+   ],
+   "dur": 2
   },
   {
    "type": "project",
@@ -373,12 +385,14 @@
    "per": 4,
    "tilt": 0,
    "say": "",
-   "fx": {
-    "speed": "fast"
-   },
+   "fx": {},
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 1
   },
   {
    "type": "photos",
@@ -402,9 +416,13 @@
    "per": "3",
    "tilt": 0,
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "durs": [
+    0,
+    0,
+    0
+   ],
+   "dur": 10
   },
   {
    "type": "photos",
@@ -434,9 +452,14 @@
    "per": "3",
    "tilt": 0,
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "durs": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "dur": 10
   }
  ]
 }

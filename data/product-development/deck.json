@@ -93,9 +93,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-2",
@@ -112,9 +113,10 @@
    "mode": "orb",
    "shots": [],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-3",
@@ -136,9 +138,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-4",
@@ -160,9 +163,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-5",
@@ -184,9 +188,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-6",
@@ -208,9 +213,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-7",
@@ -232,9 +238,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   }
  ],
  "slides": [
@@ -251,9 +258,7 @@
     "screenshot-2026-11-19-142635"
    ],
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {}
   },
   {
    "type": "project",
@@ -272,7 +277,14 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "durs": [
+    0
+   ],
+   "descs": [
+    ""
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -330,9 +342,8 @@
     }
    ],
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "dur": 20
   },
   {
    "type": "challenges",
@@ -386,9 +397,8 @@
     }
    ],
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {},
+   "dur": 20
   },
   {
    "type": "project",
@@ -409,7 +419,16 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "durs": [
+    0,
+    0
+   ],
+   "descs": [
+    "",
+    ""
+   ],
+   "dur": 4
   },
   {
    "type": "project",
@@ -430,7 +449,14 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "durs": [
+    0
+   ],
+   "descs": [
+    ""
+   ],
+   "dur": 4
   },
   {
    "type": "project",
@@ -460,7 +486,18 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "durs": [
+    0,
+    0,
+    0
+   ],
+   "descs": [
+    "",
+    "",
+    ""
+   ],
+   "dur": 4
   },
   {
    "type": "project",

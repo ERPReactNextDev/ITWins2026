@@ -109,12 +109,13 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
    "fanIds": [],
    "photos": [],
    "groups": [],
-   "compact": 1
+   "compact": 1,
+   "music": []
   },
   {
    "id": "project-2",
@@ -144,9 +145,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-3",
@@ -168,9 +170,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-4",
@@ -209,9 +212,10 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   }
  ],
  "slides": [
@@ -227,9 +231,7 @@
     "candid-pictures"
    ],
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {}
   },
   {
    "type": "project",
@@ -245,14 +247,18 @@
     "energy-label-progressive-dynamics-inc"
    ],
    "per": 4,
-   "tilt": 0,
+   "tilt": 1,
    "say": "",
    "fx": {
     "speed": "fast"
    },
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -273,7 +279,7 @@
     "ps-safety-license-certificate-page-2-pdi-switches"
    ],
    "per": "3",
-   "tilt": 0,
+   "tilt": 1,
    "say": "",
    "fx": {
     "speed": "fast"
@@ -282,7 +288,13 @@
     "",
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0,
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -299,11 +311,16 @@
    "tilt": 0,
    "say": "",
    "fx": {
-    "speed": "fast"
+    "speed": "fast",
+    "in": "spin"
    },
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -322,11 +339,17 @@
    "tilt": 0,
    "say": "",
    "fx": {
-    "speed": "fast"
+    "speed": "fast",
+    "tr": "door",
+    "in": "stretch"
    },
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "photos",
@@ -345,13 +368,19 @@
    "tilt": 0,
    "say": "",
    "fx": {
-    "speed": "fast"
+    "speed": "fast",
+    "in": "left"
    },
    "descs": [
     "Successfully completed the transfer of Ecoshift Corporation’s Cebu and Cagayan de Oro operations from the previous warehouses to new warehouse facilities.",
     ""
    ],
-   "descPos": "left"
+   "descPos": "left",
+   "durs": [
+    0,
+    0
+   ],
+   "dur": 8
   },
   {
    "type": "photos",
@@ -368,12 +397,18 @@
    "tilt": 0,
    "say": "",
    "fx": {
-    "speed": "fast"
+    "speed": "fast",
+    "tr": "slide",
+    "in": "rise"
    },
    "descs": [
     "Successfully established and opened DSI branches in Davao, Cagayan de Oro, and Cebu, including the corresponding office and warehouse facilities."
    ],
-   "descPos": "right"
+   "descPos": "right",
+   "durs": [
+    0
+   ],
+   "dur": 8
   },
   {
    "type": "photos",
@@ -383,7 +418,7 @@
     "penthouse-office"
    ],
    "per": 4,
-   "tilt": 0,
+   "tilt": 1,
    "say": "",
    "fx": {
     "speed": "fast"
@@ -391,7 +426,11 @@
    "descs": [
     "Successfully relocated all Sales personnel from Room 405 to the Penthouse (5th Floor) to optimize office space utilization and improve team coordination."
    ],
-   "descPos": "left"
+   "descPos": "left",
+   "durs": [
+    0
+   ],
+   "dur": 8
   },
   {
    "type": "photos",
@@ -403,7 +442,7 @@
     "viber-image-2026-11-03-15-59-58-027"
    ],
    "per": "4",
-   "tilt": 0,
+   "tilt": 1,
    "say": "",
    "fx": {
     "speed": "fast"
@@ -411,7 +450,11 @@
    "descs": [
     "Successfully relocated the Engineering Team from Warehouse Pasig and Granville Carmona to Room 211 and transferred the IT Team from Room 213 to Primex, ensuring better utilization and allocation of office facilities."
    ],
-   "descPos": "left"
+   "descPos": "left",
+   "durs": [
+    0
+   ],
+   "dur": 8
   }
  ]
 }

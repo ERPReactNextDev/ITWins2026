@@ -229,11 +229,14 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "tr": "zoom",
+    "confetti": 1
    },
    "fanIds": [],
    "photos": [],
-   "groups": []
+   "groups": [],
+   "music": []
   },
   {
    "id": "project-2",
@@ -260,9 +263,12 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "tr": "page",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-3",
@@ -289,9 +295,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-4",
@@ -318,9 +326,12 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "in": "swing",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-5",
@@ -347,9 +358,12 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "tr": "curtain",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-6",
@@ -376,9 +390,12 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "tr": "up",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-7",
@@ -405,9 +422,12 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "tr": "cube",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-8",
@@ -434,9 +454,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-9",
@@ -458,9 +480,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-10",
@@ -482,9 +506,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-11",
@@ -506,9 +532,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-12",
@@ -530,9 +558,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "confetti": 1,
+    "speed": "slow"
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-13",
@@ -554,9 +584,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-14",
@@ -578,9 +610,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-15",
@@ -602,9 +636,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   },
   {
    "id": "project-16",
@@ -626,9 +662,11 @@
     ]
    ],
    "fx": {
-    "speed": "fast"
+    "speed": "slow",
+    "confetti": 1
    },
-   "fanIds": []
+   "fanIds": [],
+   "music": []
   }
  ],
  "slides": [
@@ -645,9 +683,7 @@
     "viber-image-2026-01-31-11-54-21-647"
    ],
    "say": "",
-   "fx": {
-    "speed": "fast"
-   }
+   "fx": {}
   },
   {
    "type": "project",
@@ -672,7 +708,11 @@
    "descs": [
     "Building a culture of respect, open communication, and unity."
    ],
-   "descPos": "left"
+   "descPos": "left",
+   "durs": [
+    0
+   ],
+   "dur": 5
   },
   {
    "type": "project",
@@ -689,7 +729,7 @@
     "img20260227105336"
    ],
    "per": 4,
-   "tilt": 0,
+   "tilt": 1,
    "say": "",
    "fx": {
     "speed": "fast"
@@ -697,7 +737,11 @@
    "descs": [
     "Equipping Our Team for Better Results"
    ],
-   "descPos": "left"
+   "descPos": "left",
+   "durs": [
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -729,7 +773,13 @@
     "",
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0,
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -777,7 +827,20 @@
     "",
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -802,7 +865,12 @@
    "descs": [
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -828,7 +896,11 @@
    },
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -853,7 +925,11 @@
    },
    "descs": [
     ""
-   ]
+   ],
+   "durs": [
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "project",
@@ -882,7 +958,12 @@
    "descs": [
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0
+   ],
+   "dur": 4
   },
   {
    "type": "project",
@@ -942,7 +1023,13 @@
     "",
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0,
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "photos",
@@ -1013,7 +1100,17 @@
     "",
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "dur": 3
   },
   {
    "type": "photos",
@@ -1051,7 +1148,13 @@
     "",
     "",
     ""
-   ]
+   ],
+   "durs": [
+    0,
+    0,
+    0
+   ],
+   "dur": 3
   }
  ]
 }
