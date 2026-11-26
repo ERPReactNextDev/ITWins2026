@@ -489,9 +489,11 @@ html,body{background:#ffffff!important}
     <label for="vPace">Autoplay pace</label><select id="vPace"><option value="0.7">Fast</option><option value="1" selected>Normal</option><option value="1.5">Slow</option></select>
     <label for="vDur">Seconds per slide</label><select id="vDur"><option value="0" selected>Auto</option><option value="3">3s</option><option value="5">5s</option><option value="8">8s</option><option value="10">10s</option><option value="15">15s</option><option value="20">20s</option><option value="30">30s</option></select>
     <div class="vnote" id="vDurEst"></div>
+    <label class="chk"><input id="vVoice" type="checkbox"> AI voice narration</label>
     <label class="chk"><input id="vAuto" type="checkbox" checked> Auto-advance after speaking</label>
     <label class="chk"><input id="vLoop" type="checkbox"> Loop: start over after the last slide</label>
     <label class="chk"><input id="vMus" type="checkbox" checked> Background music</label>
+    <label for="vVol">Music volume <b id="vVolV">40%</b></label><input id="vVol" type="range" min="0" max="100" step="5" value="40">
     <div class="vnote" id="vMusNow"></div>
     <div class="vnote">Voices come from this device or browser. Pick a natural or online voice for the best sound.</div>
   </div>
@@ -1259,7 +1261,7 @@ addEventListener("wheel",e=>{const n=Date.now();if(n-wheelT<900||Math.abs(e.delt
 
 /* ---------- AI voice narration (Web Speech API) ---------- */
 const synth=window.speechSynthesis;
-const bVoice=document.getElementById("bVoice"),vSel=document.getElementById("vSel"),vRate=document.getElementById("vRate"),vAuto=document.getElementById("vAuto"),vPanel=document.getElementById("vpanel"),badge=document.getElementById("sayBadge");
+const bVoice=document.getElementById("bVoice"),vSel=document.getElementById("vSel"),vRate=document.getElementById("vRate"),vAuto=document.getElementById("vAuto"),vVoice=document.getElementById("vVoice"),vPanel=document.getElementById("vpanel"),badge=document.getElementById("sayBadge");
 let voiceOn=false,voices=[],speakTimer=null,advTimer=null,token=0;
 function loadVoices(){
   if(!synth)return;
@@ -1291,7 +1293,7 @@ function speakSlide(){
       u.rate=parseFloat(vRate.value)||1;u.pitch=1;
       if(k===parts.length-1){
         const done=()=>{if(my!==token)return;badge.classList.remove("on");
-          if(vAuto.checked&&(cur<slides.length-1||LOOP.on))advTimer=setTimeout(()=>{if(my===token)cur<slides.length-1?next():go(0,1)},1400)};
+          if(vAuto.checked&&!auto&&(cur<slides.length-1||LOOP.on))advTimer=setTimeout(()=>{if(my===token)cur<slides.length-1?next():go(0,1)},1400)};
         u.onend=done;u.onerror=done;
       }
       synth.speak(u);
@@ -1299,9 +1301,10 @@ function speakSlide(){
   },1100);
 }
 function setVoice(on){
-  voiceOn=on;bVoice.classList.toggle("on",on);
-  if(on){if(auto)stopAuto();speakSlide()}else stopSpeak();
+  voiceOn=on;bVoice.classList.toggle("on",on);if(vVoice)vVoice.checked=on;
+  if(on)speakSlide();else stopSpeak();
 }
+if(vVoice)vVoice.onchange=()=>setVoice(vVoice.checked);
 function voiceToggle(){
   if(voiceOn&&!vPanel.hidden){setVoice(false);if(!auto)vPanel.hidden=true;return}
   if(voiceOn){vPanel.hidden=false;return}
@@ -1423,7 +1426,6 @@ function schedAuto(){
 function stopAuto(){auto=false;clearTimeout(autoT);resetBar();bPlay.classList.remove("on");bPlay.innerHTML=ICON_PLAY;bPlay.title="Autoplay (A)";if(!voiceOn)vPanel.hidden=true}
 function toggleAuto(){
   if(auto){stopAuto();return}
-  if(voiceOn)setVoice(false);
   auto=true;bPlay.classList.add("on");bPlay.innerHTML=ICON_PAUSE;bPlay.title="Pause autoplay (A)";vPanel.hidden=false;
   if(cur>=slides.length-1)go(0,1);else schedAuto();
 }
@@ -1433,7 +1435,7 @@ document.addEventListener("visibilitychange",()=>{if(auto)schedAuto()});
 bPlay.onclick=e=>{e.stopPropagation();toggleAuto()};
 /* background music: ordered playlist per project, loops while its slides show */
 let musQ=null,AU=null,musOff=false;
-const bMus=document.getElementById("bMus"),vMus=document.getElementById("vMus"),vMusNow=document.getElementById("vMusNow");
+const bMus=document.getElementById("bMus"),vMus=document.getElementById("vMus"),vMusNow=document.getElementById("vMusNow"),vVol=document.getElementById("vVol"),vVolV=document.getElementById("vVolV");
 function musicFor(i){
   const s=slides[i]||{},d=parts[s.dept];
   let pid=null,list=null,key=null;
@@ -1448,13 +1450,14 @@ function musicFor(i){
   if(!list){if(AU){AU.pause();AU=null}musQ=null;if(vMusNow)vMusNow.textContent="";return}
   if(musQ&&musQ.key===key){if(AU&&AU.paused)AU.play().catch(()=>{});return}
   musQ={key,list,idx:0};
-  if(!AU){AU=new Audio();AU.volume=.4;AU.muted=musOff;
+  if(!AU){AU=new Audio();AU.volume=+vVol.value/100;AU.muted=musOff;
     AU.onended=()=>{if(!musQ)return;musQ.idx=(musQ.idx+1)%musQ.list.length;AU.src=musQ.list[musQ.idx];if(vMusNow)vMusNow.textContent=musQ.list[musQ.idx].split("/").pop();AU.play().catch(()=>{})};
   }
   AU.src=list[0];if(vMusNow)vMusNow.textContent=list[0].split("/").pop();AU.play().catch(()=>{});
 }
 bMus.onclick=e=>{e.stopPropagation();musOff=!musOff;bMus.classList.toggle("on",!musOff);if(vMus)vMus.checked=!musOff;if(AU)AU.muted=musOff};
 if(vMus)vMus.onchange=()=>{musOff=!vMus.checked;bMus.classList.toggle("on",!musOff);if(AU)AU.muted=musOff};
+if(vVol){vVol.oninput=()=>{vVolV.textContent=vVol.value+"%";if(AU)AU.volume=+vVol.value/100;try{localStorage.setItem("dwMusVol",vVol.value)}catch(e){}};try{const sv=localStorage.getItem("dwMusVol");if(sv!==null){vVol.value=sv;vVolV.textContent=sv+"%"}}catch(e){}}
 ["pointerdown","keydown"].forEach(ev=>addEventListener(ev,()=>{if(cur>=0&&typeof musicFor==="function")musicFor(cur)},{once:true}));
 let idleT;
 function wake(){document.body.classList.remove("idle");clearTimeout(idleT);idleT=setTimeout(()=>document.body.classList.add("idle"),3500)}
