@@ -315,7 +315,7 @@ const I=(n,w)=>{const t=document.createElement("span");t.innerHTML=ico(n,w);retu
 
 /* ============ state ============ */
 let D=null,dept="it",DEPTS=[],PROJECTS=[],CUR=null,PL={skipEnds:true,loop:false,autoplay:false},online=false,canWrite=false,adminKey=sessionStorage.getItem("dwKey")||"";
-let view="edit",tab="slides",sel=0,psel=0,IMGS=[],dirty=false,plDirty=false,starts=[],jumpMap={},SAYS=[],PROJS=[],curAt=0,pvAt=0,pt=null;
+let view="edit",tab="slides",sel=0,psel=0,IMGS=[],MUS=[],dirty=false,plDirty=false,starts=[],jumpMap={},SAYS=[],PROJS=[],curAt=0,pvAt=0,pt=null;
 let filterQ="",secState={},STAT={},quiet=0;
 let dirView="grid",dirQ="";try{dirView=localStorage.getItem("dwDirView")||"grid"}catch(e){}
 const frame=$("#frame");
@@ -347,6 +347,8 @@ async function api(p,o={}){const hd={...(o.headers||{})};if(adminKey)hd["x-admin
   const r=await fetch("/api/"+p,{...o,headers:hd});if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.error||r.status)}return r.json()}
 const jfresh=p=>fetch(`/api/file/${p}`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}).catch(()=>fetch(`/${p}`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}));
 const imgUrl=id=>`/img/${dept}/${/\.[a-z0-9]{3,4}$/i.test(id)?id:id+".webp"}`;
+const musUrl=(f,sc)=>`/music/${sc||dept}/${f}`;
+const MUSLIB={};
 const putJson=(p,body)=>api(p,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
 
 /* ============ status ============ */
@@ -410,7 +412,7 @@ function normalize(){
   D.categories=D.categories||{};for(const c in def)D.categories[c]=D.categories[c]||{title:def[c][0],desc:"",icon:def[c][1],unit:def[c][2]};
 }
 async function loadImgs(){
-  if(online){try{IMGS=(await api("img/"+dept)).map(idOf)}catch{IMGS=[]}}else IMGS=Object.keys(D.ar);
+  if(online){try{IMGS=(await api("img/"+dept)).map(idOf)}catch{IMGS=[]};try{MUS=await api("music/"+dept)}catch{MUS=[]}}else{IMGS=Object.keys(D.ar);MUS=[]}
   if(!online)IMGS.sort(); // online list comes pre-sorted by upload date (oldest first)
   await Promise.all(IMGS.filter(id=>!D.ar[id]).map(id=>new Promise(r=>{const i=new Image();i.onload=()=>{D.ar[id]=+(i.naturalWidth/i.naturalHeight).toFixed(4);dirty=true;r()};i.onerror=r;i.src=imgUrl(id)})));
 }
@@ -649,6 +651,39 @@ function thumbs(a,max){
     if(!max||a.length<max)w.append(h("div",{class:"tn add",onclick:()=>openImgPicker({multi:true,onDone:ids=>{ids.forEach(x=>{if(!max||a.length<max)a.push(x)});changed();draw()}})},"+ Add")) };
   draw();return w}
 const secKey=(k,g)=>k+"/"+g;
+function musicEd(a,cb,scope){
+  scope=scope||dept;
+  const w=h("div",{class:"le"});
+  const lib=()=>scope===dept?MUS:(MUSLIB[scope]||[]);
+  const file=h("input",{type:"file",accept:"audio/*",multiple:"",style:"display:none"});
+  const mut=()=>{cb&&cb()};
+  file.onchange=async e=>{
+    if(!online||!canWrite)return toast("Uploading needs the local server (node server.js).","bad");
+    let ok=0;
+    for(const f of[...e.target.files]){const ext=(f.name.match(/\.([a-z0-9]+)$/i)||[])[1]?.toLowerCase()||"mp3";
+      if(!/^(mp3|wav|ogg|m4a|aac|flac)$/.test(ext)){toast("Use .mp3, .wav, .ogg, .m4a, .aac or .flac","bad");continue}
+      try{let base=slug(f.name.replace(/\.[^.]+$/,""))||"track",name=base+"."+ext,n=2,cur=lib();
+        while(cur.includes(name))name=base+"-"+(n++)+"."+ext;
+        await api(`music/${scope}/${name}`,{method:"POST",body:f});
+        if(scope===dept)MUS.push(name);else MUSLIB[scope]=[...(MUSLIB[scope]||[]),name];
+        if(!a.includes(name))a.push(name);ok++;
+      }catch(err){toast("Upload failed: "+err.message,"bad")}}
+    e.target.value="";if(ok){mut();draw();toast(ok+" track"+(ok>1?"s":"")+" uploaded","ok")}};
+  const draw=()=>{w.innerHTML="";
+    a.forEach((t,i)=>w.append(h("div",{class:"lr"},h("div",{class:"lc"},h("b",{style:"font-weight:600;font-size:13px"},t),h("div",{class:"hint"},"/music/"+scope+"/"+t)),h("div",{class:"lb"},
+      h("button",{class:"ib",title:"Play preview",onclick:()=>{const au=new Audio(musUrl(t,scope));au.play().catch(()=>toast("Press play again — the browser blocked audio.","bad"))}},I("play")),
+      h("button",{class:"ib",title:"Move up",disabled:i?false:"",onclick:()=>{if(i){[a[i-1],a[i]]=[a[i],a[i-1]];mut();draw()}}},I("up")),
+      h("button",{class:"ib",title:"Move down",disabled:i<a.length-1?false:"",onclick:()=>{if(i<a.length-1){[a[i+1],a[i]]=[a[i],a[i+1]];mut();draw()}}},I("down")),
+      h("button",{class:"ib danger",title:"Remove from playlist",onclick:()=>{a.splice(i,1);mut();draw()}},I("x"))))));
+    const rest=lib().filter(t=>!a.includes(t));
+    if(rest.length)w.append(h("details",{},h("summary",{style:"cursor:pointer;font-weight:600"},"Add from library ("+rest.length+")"),
+      h("div",{class:"le",style:"margin-top:8px"},rest.map(t=>h("button",{class:"btn sm",style:"justify-content:flex-start",onclick:()=>{a.push(t);mut();draw()}},I("plus"),t)))));
+    const all=lib();
+    w.append(h("div",{style:"display:flex;gap:8px;flex-wrap:wrap"},
+      h("button",{class:"btn sm addb",onclick:()=>file.click()},I("upload"),"Upload music"),file,
+      all.length&&!a.length?h("button",{class:"btn sm",onclick:()=>{a.push(...all.slice());mut();draw()}},I("plus"),"Add all uploaded"):null))};
+  if(scope!==dept&&!MUSLIB[scope]){MUSLIB[scope]=null;api("music/"+scope).then(l=>{MUSLIB[scope]=l;draw()}).catch(()=>{MUSLIB[scope]=[]})}
+  draw();return w}
 function form(o,schema,fk=""){
   const root=h("div",{class:"f"});let cur=root;
   for(const s of schema){
@@ -701,6 +736,15 @@ function form(o,schema,fk=""){
           w2.append(h("div",{class:"fl"},h("span",{class:"lbl"},"Slide "+(i+1)+(tot?` · images ${from}–${to}`:"")),
             h("textarea",{rows:2,placeholder:"Description for this slide…",oninput:e=>{a[i]=e.target.value;changed()}}),d))}
         c=w2;break}
+      case"durs":{const a=o[s.k]=o[s.k]||[];o[s.k]=a;
+        const per=Math.max(1,Math.min(8,+o.per||4)),tot=((o.images||[]).filter(Boolean)).length,n=Math.max(1,Math.ceil(tot/per));
+        while(a.length<n)a.push(0);
+        const w3=h("div",{class:"le"});
+        for(let i=0;i<n;i++){const from=i*per+1,to=Math.min((i+1)*per,tot);
+          w3.append(h("div",{class:"fl"},h("span",{class:"lbl"},"Slide "+(i+1)+(tot?` · images ${from}–${to}`:"")),
+            h("input",{type:"number",min:0,step:1,placeholder:"Auto",value:a[i]||"",oninput:e=>{a[i]=Math.max(0,+e.target.value||0);changed()}})))}
+        c=w3;break}
+      case"music":{const a=o[s.k]=o[s.k]||[];o[s.k]=a;c=musicEd(a,()=>changed());break}
       case"tuples":{const a=o[s.k]=o[s.k]||[],img0=s.cols[0].startsWith("img");
         c=listEd(a,it=>img0?h("div",{class:"tup withimg"},cell(s.cols[0],it,0),h("div",{class:"col"},s.cols.slice(1).map((col,j)=>cell(col,it,j+1)))):h("div",{class:"tup"},s.cols.map((col,j)=>cell(col,it,j))),()=>s.cols.map(()=>""),{max:s.max,empty:s.empty,add:s.add});break}
       case"list":{const a=o[s.k]=o[s.k]||[];c=listEd(a,(it,i)=>h("details",{open:""},h("summary",{},(s.name||"Item")+" "+(i+1)+(it[s.tk]?": "+it[s.tk]:"")),form(it,s.s,fk+"/"+s.k)),()=>s.mk(),{add:s.add||("Add "+(s.name||"item").toLowerCase()),empty:s.empty});break}
@@ -742,6 +786,7 @@ const PROJ=[
  T("photos","Photo pages","imgs",{show:hasPhotos,hint:"Photos shown four to a slide."}),
  T("photoTitle","Photo page title","text",{show:hasPhotos}),
  T("groups","Captioned photo groups","list",{show:o=>(o.groups&&o.groups.length)||o.cat==="fun",name:"Group",tk:"h",add:"Add group",mk:()=>({h:"",p:"",ids:[]}),s:[T("h","Heading"),T("p","Text","area"),T("ids","Images","imgs")]}),
+ G("Music","Background music while this project's slides play. Upload tracks and arrange their order — leave empty for no music."),T("music","Tracks","music"),
  G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING,
  G("Advanced","Rarely needed.",{closed:true}),
  T("fanIds","Intro images override","imgs",{max:5,show:o=>["fan","phone","grid","duo","collage"].includes(o.mode),hint:"By default the intro uses the first screenshots."}),
@@ -756,7 +801,7 @@ const BS={
  summary:[G("Heading"),T("h","Heading"),G("Lists","Counts are calculated for you. These two lists are typed."),T("departments","Departments supported","lines",{hint:"One per line."}),T("highlights","Highlights","lines",{hint:"One per line."}),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
  section:[G("Section","Lists every project in the chosen section."),T("cat","Section","cat"),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
  project:[G("Project","The words and screenshots are edited in the Projects tab."),T("id","Project shown here","pid")],
- photos:[G("Images","Pick as many as you want. They fill the whole slide with no other text.",{}),T("images","Images","imgs",{hint:"Order matters: they appear left to right, top to bottom."}),T("per","Images per slide","sel",{o:[["1","1 (full size)"],["2","2"],["3","3"],["4","4"],["6","6"],["8","8"]],hint:"More images than this continue on the next slide automatically."}),T("tilt","Slight tilt","bool"),G("Heading & description (optional)","Leave blank for pictures only.",{closed:true}),T("eyebrow","Small label"),T("h","Heading"),T("descs","Slide descriptions","descs",{hint:"Isang description bawat slide,ayon sa images na nasa page na iyon."}),T("descPos","Description position","sel",{o:[["bottom","Below the images"],["left","Left of the images"],["right","Right of the images"]],hint:"Where the description appears. Only used when a description is filled in."}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ photos:[G("Images","Pick as many as you want. They fill the whole slide with no other text.",{}),T("images","Images","imgs",{hint:"Order matters: they appear left to right, top to bottom."}),T("per","Images per slide","sel",{o:[["1","1 (full size)"],["2","2"],["3","3"],["4","4"],["6","6"],["8","8"]],hint:"More images than this continue on the next slide automatically."}),T("durs","Autoplay seconds per slide","durs",{hint:"Ilan ang seconds bawat slide page. 0 o blank = automatic."}),T("tilt","Slight tilt","bool"),G("Heading & description (optional)","Leave blank for pictures only.",{closed:true}),T("eyebrow","Small label"),T("h","Heading"),T("descs","Slide descriptions","descs",{hint:"Isang description bawat slide,ayon sa images na nasa page na iyon."}),T("descPos","Description position","sel",{o:[["bottom","Below the images"],["left","Left of the images"],["right","Right of the images"]],hint:"Where the description appears. Only used when a description is filled in."}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
  map:[G("Heading"),...EY,T("h","Heading"),G("Center hub"),T("hubId","Hub project","pid"),T("hubT","Hub title"),T("hubS","Hub subtitle"),T("hubIc","Hub icon","icon"),
    G("Connected systems","Place each node on the map: x from 190 to 1550, y from 60 to 640."),
    T("nodes","Nodes","list",{name:"Node",tk:"t",add:"Add node",mk:()=>({id:"",ic:"box",t:"New node",d:"",s:"",x:870,y:350}),
@@ -973,6 +1018,7 @@ function renderInsp(soft){
   }else if(tab==="details"){
     hd.append(ihead("check","","Details","Names, year and section texts",[]));
     body.append(form(D.meta,[G("Deck details","Shown in the footer of every slide and in the browser tab."),T("dept","Department name"),T("company","Company"),T("title","Deck title"),T("year","Year")],"meta"),
+      form(D.meta,[G("Music","Background music for the whole deck. Upload tracks and arrange their order — leave empty for no music. A project's own music overrides this while its slides play."),T("music","Tracks","music")],"meta"),
       ...["sys","web","infra","fun"].map(c=>form(D.categories[c],[G((D.categories[c].title||c)+" section","Text on the section divider slide.",{closed:true}),T("title","Title"),T("desc","Description","area"),T("icon","Icon","icon"),T("unit","Count label","text",{hint:"The word after the number, such as wins or photos."}),...(c==="fun"?[T("say","Voice text","area",{say:1})]:[])],"cat:"+c)));
   }else{
     hd.append(ihead("checkc","","Checks","Problems found in this deck",[]));
@@ -1266,6 +1312,8 @@ function renderPlaylist(){
       mk("skipEnds","Skip each “Thank you” slide except the last","Otherwise every deck ends with confetti before the next one begins."),
       mk("loop","Loop forever","After the last slide, start again from the first. Good for a TV or lobby screen."),
       mk("autoplay","Start autoplay by itself","Slides advance without anyone pressing play.")),
+    h("div",{class:"card"},h("h3",{},"Music"),h("p",{},"Background music for the whole project link. Plays across every deck, top to bottom, and loops. Leave empty for no music."),
+      musicEd((CUR.music=CUR.music||[]),()=>{plDirty=true;status()},CUR.id)),
     h("div",{class:"card"},h("h3",{},"Links for each deck"),h("p",{},"Use these when you want just one deck, or to start at one and keep going."),
       ...DEPTS.map(d=>h("div",{class:"ll"},h("span",{},d.name),h("span",{style:"display:flex;gap:6px"},h("button",{class:"btn sm",title:origin+"/"+d.id,onclick:()=>copyText(origin+"/"+d.id)},"Only this"),h("button",{class:"btn sm",title:origin+"/?d="+DEPTS.map(x=>x.id).join(",")+"#d-"+d.id,onclick:()=>copyText(origin+"/?d="+DEPTS.map(x=>x.id).join(",")+"#d-"+d.id)},"Start here, keep going"))))),
     h("div",{class:"help"},h("b",{},"Tip. "),"Need a company-wide opening or closing? Add a deck called “Company” with just a title slide and a closing slide, then drag it to the top or bottom."));

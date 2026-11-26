@@ -4,6 +4,9 @@
   "name": "Department Wins",
   "company": "Disruptive Solutions Inc",
   "updated": "2026-11-26",
+  "music": [
+   "upbeat-instrumental-music-energetic-happy-upbeat-background-music-to-work-study-workout.mp3"
+  ],
   "decks": [
    {
     "id": "administation",
@@ -51,6 +54,21 @@
     "id": "it",
     "name": "IT Department",
     "company": "Disruptive Solutions Inc",
+    "include": true
+   }
+  ]
+ },
+ {
+  "id": "slideshow",
+  "name": "Slideshow",
+  "company": "",
+  "updated": "2026-11-26",
+  "music": [],
+  "decks": [
+   {
+    "id": "slideshow",
+    "name": "Slideshow",
+    "company": "",
     "include": true
    }
   ]

@@ -491,6 +491,8 @@ html,body{background:#ffffff!important}
     <div class="vnote" id="vDurEst"></div>
     <label class="chk"><input id="vAuto" type="checkbox" checked> Auto-advance after speaking</label>
     <label class="chk"><input id="vLoop" type="checkbox"> Loop: start over after the last slide</label>
+    <label class="chk"><input id="vMus" type="checkbox" checked> Background music</label>
+    <div class="vnote" id="vMusNow"></div>
     <div class="vnote">Voices come from this device or browser. Pick a natural or online voice for the best sound.</div>
   </div>
   <div class="hud">
@@ -502,6 +504,7 @@ html,body{background:#ffffff!important}
       <button id="bNext" aria-label="Next slide" title="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
       <button id="bVoice" aria-label="Toggle AI voice narration" title="AI voice (V)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.0 0 010 12"/></svg></button>
       <button id="bPlay" aria-label="Toggle autoplay" title="Autoplay (A)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+      <button id="bMus" class="on" aria-label="Toggle music" title="Music on/off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></button>
       <button id="bFull" aria-label="Toggle fullscreen" title="Fullscreen (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
     </div>
   </div>
@@ -871,7 +874,7 @@ function projectSlides(p){
 /* images-only slides: any number of pictures, split over slides ("per" images each) */
 function photosSlides(b){
   const ids=(b.images||[]).filter(Boolean),per=Math.max(1,Math.min(8,+b.per||4)),pages=Math.max(1,Math.ceil(ids.length/per)),key="photos-"+blockStart.length;
-  const dlist=(b.descs||[]).map(x=>(x||"").trim());
+  const dlist=(b.descs||[]).map(x=>(x||"").trim()),durList=(b.durs||[]).map(x=>+x||0);
   for(let k=0;k<pages;k++){
     const ch=ids.slice(k*per,k*per+per),rows=ch.length>3?[ch.slice(0,Math.ceil(ch.length/2)),ch.slice(Math.ceil(ch.length/2))]:[ch];
     const desc=(dlist[k]||b.desc||"").trim(),pos=desc?(b.descPos==="left"||b.descPos==="right"?b.descPos:"bottom"):"";
@@ -890,7 +893,7 @@ function photosSlides(b){
       const pics=ch.length?rows.map(r=>`<div class="gal-row">${layoutRow(r,mh,{rot:b.tilt?2:0})}</div>`).join(""):'<div class="gal-row"><p class="lead">No images added yet.</p></div>';
       html=`<div class="gal">${head}${pics}${pos==="bottom"?dsc:""}</div>`;
     }
-    slides.push({tr:k%2?"slide":"zoom",say:k===0?((b.say||"")||desc):"",proj:key,ptitle:b.h||"Photos",html});
+    slides.push({tr:k%2?"slide":"zoom",say:k===0?((b.say||"")||desc):"",proj:key,ptitle:b.h||"Photos",dur:durList[k]||0,html});
   }
 }
 
@@ -1121,7 +1124,7 @@ function build(o={}){
     const fx=(T==="project"&&by[b.id])?by[b.id].fx:b.fx;
     if(fx&&typeof fx==="object")for(let q=s0;q<slides.length;q++)slides[q].fx=fx;
     const dur=(T==="project"&&by[b.id])?(+by[b.id].dur||0):(+b.dur||0);
-    if(dur)for(let q=s0;q<slides.length;q++)slides[q].dur=dur;
+    if(dur)for(let q=s0;q<slides.length;q++)if(!slides[q].dur)slides[q].dur=dur;
   }
   if(!slides.length)slides.push({tr:"zoom",say:"",toc:{t:"Empty deck",g:"Overview"},html:'<div class="end"><h2><span>Empty deck</span></h2></div>'});
 }
@@ -1134,7 +1137,7 @@ function mount(){
 const host=document.getElementById("slides");
 
 /* ---------- playlist: build every department, then join them into one continuous deck ---------- */
-let parts=[],MULTI=false,themeDept=-2,curAnim="";
+let parts=[],MULTI=false,themeDept=-2,curAnim="",SHOW={};
 function buildParts(list,opts){
   opts=opts||{};parts=[];const all=[],J={},ns=list.length>1;
   list.forEach((it,k)=>{
@@ -1144,7 +1147,8 @@ function buildParts(list,opts){
     st.forEach(sl=>{sl.dept=k;if(ns)sl.html=sl.html.replace(/data-go="/g,`data-go="${it.id}:`)});
     Object.keys(jump).forEach(pid=>J[(ns?it.id+":":"")+pid]=off+jump[pid]);
     const m=it.deck.meta||{};
-    parts.push({id:it.id,name:m.dept||it.name||it.id,company:m.company||"",deck:it.deck,byId:by,off,n:st.length,wins:winsCount()});
+    const sh=SHOW[it.id]&&SHOW[it.id].music.length?{pid:SHOW[it.id].pid,list:SHOW[it.id].music.map(f=>"/music/"+SHOW[it.id].pid+"/"+f)}:null;
+    parts.push({id:it.id,name:m.dept||it.name||it.id,company:m.company||"",deck:it.deck,byId:by,off,n:st.length,wins:winsCount(),show:sh});
     all.push(...st);
   });
   slides.length=0;all.forEach(x=>slides.push(x));
@@ -1224,6 +1228,7 @@ function go(i,dir){
   if(slides[i].confetti||(slides[i].fx&&slides[i].fx.confetti))confetti();
   if(typeof speakSlide==="function")speakSlide();
   if(typeof schedAuto==="function")schedAuto();
+  if(typeof musicFor==="function")musicFor(i);
   if(typeof updateTocActive==="function")updateTocActive();
   try{history.replaceState(null,"","#s"+(i+1))}catch(e){}
 }
@@ -1426,6 +1431,31 @@ vPace.onchange=()=>{if(auto)schedAuto()};
 const vLoop=document.getElementById("vLoop");vLoop.onchange=()=>{LOOP.on=vLoop.checked;if(auto)schedAuto()};
 document.addEventListener("visibilitychange",()=>{if(auto)schedAuto()});
 bPlay.onclick=e=>{e.stopPropagation();toggleAuto()};
+/* background music: ordered playlist per project, loops while its slides show */
+let musQ=null,AU=null,musOff=false;
+const bMus=document.getElementById("bMus"),vMus=document.getElementById("vMus"),vMusNow=document.getElementById("vMusNow");
+function musicFor(i){
+  const s=slides[i]||{},d=parts[s.dept];
+  let pid=null,list=null,key=null;
+  if(d&&d.show&&d.show.list.length){pid=d.show.pid;list=d.show.list;key=pid+"|@show"}
+  else{
+    const pt=(s.proj!=null&&d&&d.byId[s.proj])||null;
+    const pm=(pt&&Array.isArray(pt.music)?pt.music:[]).filter(Boolean);
+    const dm=(d&&d.deck&&d.deck.meta&&Array.isArray(d.deck.meta.music)?d.deck.meta.music:[]).filter(Boolean);
+    const use=pm.length?pm:dm;
+    if(use.length){pid=d.id;list=use.map(f=>"/music/"+pid+"/"+f);key=pid+"|"+(pm.length?s.proj:"@deck")}
+  }
+  if(!list){if(AU){AU.pause();AU=null}musQ=null;if(vMusNow)vMusNow.textContent="";return}
+  if(musQ&&musQ.key===key){if(AU&&AU.paused)AU.play().catch(()=>{});return}
+  musQ={key,list,idx:0};
+  if(!AU){AU=new Audio();AU.volume=.4;AU.muted=musOff;
+    AU.onended=()=>{if(!musQ)return;musQ.idx=(musQ.idx+1)%musQ.list.length;AU.src=musQ.list[musQ.idx];if(vMusNow)vMusNow.textContent=musQ.list[musQ.idx].split("/").pop();AU.play().catch(()=>{})};
+  }
+  AU.src=list[0];if(vMusNow)vMusNow.textContent=list[0].split("/").pop();AU.play().catch(()=>{});
+}
+bMus.onclick=e=>{e.stopPropagation();musOff=!musOff;bMus.classList.toggle("on",!musOff);if(vMus)vMus.checked=!musOff;if(AU)AU.muted=musOff};
+if(vMus)vMus.onchange=()=>{musOff=!vMus.checked;bMus.classList.toggle("on",!musOff);if(AU)AU.muted=musOff};
+["pointerdown","keydown"].forEach(ev=>addEventListener(ev,()=>{if(cur>=0&&typeof musicFor==="function")musicFor(cur)},{once:true}));
 let idleT;
 function wake(){document.body.classList.remove("idle");clearTimeout(idleT);idleT=setTimeout(()=>document.body.classList.add("idle"),3500)}
 addEventListener("mousemove",wake);wake();
@@ -1490,9 +1520,11 @@ if(PREVIEW){
   const JD=p=>fetch(`/api/file/${p}`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}).catch(()=>J(`/${p}`));
   (async()=>{
     try{
-      let list=[],opts={};
+      let list=[],opts={},PJ=[];
       try{list=await JD("data/departments.json")}catch(e){}
       try{opts=await JD("data/playlist.json")}catch(e){}
+      try{PJ=await JD("data/projects.json")}catch(e){}
+      SHOW={};(Array.isArray(PJ)?PJ:[]).forEach(pr=>{(pr.decks||[]).forEach(d=>{if(d.include!==false)SHOW[d.id]={pid:pr.id,music:Array.isArray(pr.music)?pr.music.filter(Boolean):[]}})});
       const pick=SPEC&&SPEC!=="all"?SPEC.split(",").map(x=>x.trim()).filter(x=>/^[a-z0-9-]+$/.test(x)):[];
       let ids=pick.length?pick:list.filter(d=>d.include!==false).map(d=>d.id);
       if(!ids.length)ids=["it"];

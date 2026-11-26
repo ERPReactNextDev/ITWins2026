@@ -1,0 +1,76 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "Slideshow",
+  "company": "",
+  "title": "Slideshow",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {},
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {},
+ "projects": [],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Project Highlights",
+   "l1": "Slideshow",
+   "l2": "2026",
+   "year": "2026",
+   "sub": "Slideshow highlights for **our company**.",
+   "images": [],
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "overview",
+   "h": "Wins at a glance"
+  },
+  {
+   "type": "summary",
+   "h": "The year in numbers",
+   "departments": [],
+   "highlights": []
+  },
+  {
+   "type": "end",
+   "eyebrow": "The end",
+   "h": "Thank You!",
+   "text": "Thank you for being part of our success!",
+   "say": ""
+  }
+ ]
+}

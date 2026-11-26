@@ -3,9 +3,9 @@
    Writes are allowed from localhost, or from anywhere if ADMIN_KEY is set (sent as x-admin-key). */
 const http=require("http"),fs=require("fs"),path=require("path");
 const ROOT=__dirname,PORT=process.env.PORT||3000,KEY=process.env.ADMIN_KEY||"";
-const MIME={".html":"text/html;charset=utf-8",".js":"text/javascript;charset=utf-8",".json":"application/json;charset=utf-8",".webp":"image/webp",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".gif":"image/gif",".svg":"image/svg+xml",".mp4":"video/mp4",".webm":"video/webm",".mov":"video/quicktime",".m4v":"video/x-m4v"};
-const idRe=/^[a-z0-9][a-z0-9-]{0,40}$/,fileRe=/^[a-z0-9][a-z0-9._-]{0,100}\.(webp|png|jpe?g|gif|svg)$/i,vidRe=/^[a-z0-9][a-z0-9._-]{0,100}\.(mp4|webm|mov|m4v)$/i;
-const PUBLIC=new Set(["data","img","vid","index.html","admin.html","icons.js"]);
+const MIME={".html":"text/html;charset=utf-8",".js":"text/javascript;charset=utf-8",".json":"application/json;charset=utf-8",".webp":"image/webp",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".gif":"image/gif",".svg":"image/svg+xml",".mp4":"video/mp4",".webm":"video/webm",".mov":"video/quicktime",".m4v":"video/x-m4v",".mp3":"audio/mpeg",".wav":"audio/wav",".ogg":"audio/ogg",".m4a":"audio/mp4",".aac":"audio/aac",".flac":"audio/flac"};
+const idRe=/^[a-z0-9][a-z0-9-]{0,40}$/,fileRe=/^[a-z0-9][a-z0-9._-]{0,100}\.(webp|png|jpe?g|gif|svg)$/i,vidRe=/^[a-z0-9][a-z0-9._-]{0,100}\.(mp4|webm|mov|m4v)$/i,musRe=/^[a-z0-9][a-z0-9._-]{0,100}\.(mp3|wav|ogg|m4a|aac|flac)$/i;
+const PUBLIC=new Set(["data","img","vid","music","index.html","admin.html","icons.js"]);
 const send=(res,code,obj)=>{res.writeHead(code,{"Content-Type":"application/json","Cache-Control":"no-store"});res.end(JSON.stringify(obj))};
 const authed=req=>{if(KEY)return req.headers["x-admin-key"]===KEY;const a=req.socket.remoteAddress||"";return a==="127.0.0.1"||a==="::1"||a==="::ffff:127.0.0.1"};
 const readBody=(req,max)=>new Promise((ok,no)=>{const c=[];let n=0;req.on("data",d=>{n+=d.length;if(n>max){no(new Error("too large"));req.destroy()}else c.push(d)});req.on("end",()=>ok(Buffer.concat(c)));req.on("error",no)});
@@ -30,6 +30,10 @@ async function api(req,res,u){
   if(p[0]==="vid"&&m==="GET"&&idRe.test(p[1]||"")){
     const dir=path.join(ROOT,"vid",p[1]);
     return send(res,200,fs.existsSync(dir)?fs.readdirSync(dir).filter(f=>vidRe.test(f)).sort():[]);
+  }
+  if(p[0]==="music"&&m==="GET"&&idRe.test(p[1]||"")){
+    const dir=path.join(ROOT,"music",p[1]);
+    return send(res,200,fs.existsSync(dir)?fs.readdirSync(dir).filter(f=>musRe.test(f)).sort():[]);
   }
   if(m==="GET")return send(res,404,{error:"not found"});
   if(!authed(req))return send(res,401,{error:"unauthorized"});
@@ -60,6 +64,7 @@ async function api(req,res,u){
       const list=Array.isArray(b)?b:b.projects;
       if(!Array.isArray(list))return send(res,400,{error:"invalid"});
       const out=list.filter(pr=>pr&&idRe.test(pr.id||"")).map(pr=>({id:pr.id,name:String(pr.name||pr.id),company:String(pr.company||""),updated:pr.updated||"",
+        music:(Array.isArray(pr.music)?pr.music:[]).filter(f=>musRe.test(f)),
         decks:(Array.isArray(pr.decks)?pr.decks:[]).filter(d=>d&&idRe.test(d.id||"")).map(d=>({id:d.id,name:String(d.name||d.id),company:String(d.company||""),include:d.include!==false}))}));
       writeProjects(out);
       if(!Array.isArray(b)&&b.options)wjson(path.join(ROOT,"data","playlist.json"),b.options);
@@ -77,10 +82,11 @@ async function api(req,res,u){
       for(const d of src.decks||[]){
         let did=d.id+"-copy";k=2;
         while(fs.existsSync(path.join(ROOT,"data",did,"deck.json")))did=d.id+"-copy-"+k++;
-        for(const base of ["data","img","vid"]){const from=path.join(ROOT,base,d.id),to=path.join(ROOT,base,did);if(from.startsWith(path.join(ROOT,base)+path.sep))copyDir(from,to)}
+        for(const base of ["data","img","vid","music"]){const from=path.join(ROOT,base,d.id),to=path.join(ROOT,base,did);if(from.startsWith(path.join(ROOT,base)+path.sep))copyDir(from,to)}
         newDecks.push({id:did,name:d.name,company:d.company,include:d.include!==false});
       }
-      const np={id:nid,name:String(b.name||src.name+" copy"),company:src.company,updated:new Date().toISOString().slice(0,10),decks:newDecks};
+      {const from=path.join(ROOT,"music",src.id),to=path.join(ROOT,"music",nid);if(from.startsWith(path.join(ROOT,"music")+path.sep))copyDir(from,to)}
+      const np={id:nid,name:String(b.name||src.name+" copy"),company:src.company,updated:new Date().toISOString().slice(0,10),music:Array.isArray(src.music)?src.music:[],decks:newDecks};
       l.push(np);writeProjects(l);return send(res,200,{ok:true,project:np});
     }
     if(p[0]==="project"&&m==="POST"&&p[1]===undefined){
@@ -88,7 +94,7 @@ async function api(req,res,u){
       if(!idRe.test(b.id||"")||!validDeck(b.deck))return send(res,400,{error:"invalid"});
       if(fs.existsSync(path.join(ROOT,"data",b.id,"deck.json")))return send(res,409,{error:"project exists"});
       const l=readProjects();if(l.some(x=>x.id===b.id))return send(res,409,{error:"project exists"});
-      for(const base of ["img","vid"])fs.mkdirSync(path.join(ROOT,base,b.id),{recursive:true});
+      for(const base of ["img","vid","music"])fs.mkdirSync(path.join(ROOT,base,b.id),{recursive:true});
       wjson(path.join(ROOT,"data",b.id,"deck.json"),b.deck);
       l.push({id:b.id,name:b.name||b.deck.meta.dept||b.id,company:b.company||b.deck.meta.company||"",
         decks:[{id:b.id,name:b.deck.meta.dept||b.name||b.id,company:b.deck.meta.company||b.company||"",include:true}]});
@@ -97,7 +103,8 @@ async function api(req,res,u){
     if(p[0]==="project"&&m==="DELETE"&&idRe.test(p[1]||"")){
       const l=readProjects(),pr=l.find(x=>x.id===p[1]);
       if(!pr)return send(res,404,{error:"unknown project"});
-      for(const d of pr.decks||[])for(const base of ["data","img","vid"]){const dir=path.join(ROOT,base,d.id);if(dir.startsWith(path.join(ROOT,base)+path.sep)&&fs.existsSync(dir))fs.rmSync(dir,{recursive:true,force:true})}
+      for(const d of pr.decks||[])for(const base of ["data","img","vid","music"]){const dir=path.join(ROOT,base,d.id);if(dir.startsWith(path.join(ROOT,base)+path.sep)&&fs.existsSync(dir))fs.rmSync(dir,{recursive:true,force:true})}
+      {const dir=path.join(ROOT,"music",pr.id);if(dir.startsWith(path.join(ROOT,"music")+path.sep)&&fs.existsSync(dir))fs.rmSync(dir,{recursive:true,force:true})}
       writeProjects(l.filter(x=>x.id!==p[1]));
       for(const d of pr.decks||[])scrubDeck(d.id);
       return send(res,200,{ok:true});
@@ -106,7 +113,7 @@ async function api(req,res,u){
       const b=JSON.parse((await readBody(req,5e6)).toString());
       if(!idRe.test(b.id||"")||!validDeck(b.deck))return send(res,400,{error:"invalid"});
       if(fs.existsSync(path.join(ROOT,"data",b.id,"deck.json")))return send(res,409,{error:"deck exists"});
-      fs.mkdirSync(path.join(ROOT,"img",b.id),{recursive:true});fs.mkdirSync(path.join(ROOT,"vid",b.id),{recursive:true});
+      for(const base of ["img","vid","music"])fs.mkdirSync(path.join(ROOT,base,b.id),{recursive:true});
       wjson(path.join(ROOT,"data",b.id,"deck.json"),b.deck);return send(res,200,{ok:true});
     }
     if(p[0]==="deck"&&m==="POST"&&p[2]==="move"&&idRe.test(p[1]||"")){
@@ -126,14 +133,14 @@ async function api(req,res,u){
       return send(res,200,{ok:true});
     }
     if(p[0]==="deck"&&m==="DELETE"&&idRe.test(p[1]||"")){
-      for(const base of ["data","img","vid"]){const dir=path.join(ROOT,base,p[1]);if(dir.startsWith(path.join(ROOT,base)+path.sep)&&fs.existsSync(dir))fs.rmSync(dir,{recursive:true,force:true})}
+      for(const base of ["data","img","vid","music"]){const dir=path.join(ROOT,base,p[1]);if(dir.startsWith(path.join(ROOT,base)+path.sep)&&fs.existsSync(dir))fs.rmSync(dir,{recursive:true,force:true})}
       scrubDeck(p[1]);return send(res,200,{ok:true});
     }
     if(p[0]==="dept"&&m==="DELETE"&&idRe.test(p[1]||"")){
       const df=path.join(ROOT,"data","departments.json"),list=fs.existsSync(df)?JSON.parse(fs.readFileSync(df)):[];
       if(!list.some(x=>x.id===p[1]))return send(res,404,{error:"unknown department"});
       if(list.length<2)return send(res,400,{error:"Hindi pwedeng burahin ang huling department."});
-      for(const base of ["data","img","vid"]){const dir=path.join(ROOT,base,p[1]);if(dir.startsWith(path.join(ROOT,base)+path.sep)&&fs.existsSync(dir))fs.rmSync(dir,{recursive:true,force:true})}
+      for(const base of ["data","img","vid","music"]){const dir=path.join(ROOT,base,p[1]);if(dir.startsWith(path.join(ROOT,base)+path.sep)&&fs.existsSync(dir))fs.rmSync(dir,{recursive:true,force:true})}
       wjson(df,list.filter(x=>x.id!==p[1]));return send(res,200,{ok:true});
     }
     if(p[0]==="dept"&&m==="POST"){
@@ -142,7 +149,7 @@ async function api(req,res,u){
       const df=path.join(ROOT,"data","departments.json"),list=fs.existsSync(df)?JSON.parse(fs.readFileSync(df)):[];
       if(list.some(x=>x.id===b.id))return send(res,409,{error:"department exists"});
       list.push({id:b.id,name:b.deck.meta.dept||b.id,company:b.deck.meta.company||""});
-      fs.mkdirSync(path.join(ROOT,"img",b.id),{recursive:true});
+      for(const base of ["img","vid","music"])fs.mkdirSync(path.join(ROOT,base,b.id),{recursive:true});
       wjson(path.join(ROOT,"data",b.id,"deck.json"),b.deck);wjson(df,list);return send(res,200,{ok:true});
     }
     if(p[0]==="img"&&idRe.test(p[1]||"")&&fileRe.test(p[2]||"")){
@@ -152,6 +159,11 @@ async function api(req,res,u){
     }
     if(p[0]==="vid"&&idRe.test(p[1]||"")&&vidRe.test(p[2]||"")){
       const f=path.join(ROOT,"vid",p[1],p[2]);
+      if(m==="POST"){fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,await readBody(req,200e6));return send(res,200,{ok:true})}
+      if(m==="DELETE"){if(fs.existsSync(f))fs.unlinkSync(f);return send(res,200,{ok:true})}
+    }
+    if(p[0]==="music"&&idRe.test(p[1]||"")&&musRe.test(p[2]||"")){
+      const f=path.join(ROOT,"music",p[1],p[2]);
       if(m==="POST"){fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,await readBody(req,200e6));return send(res,200,{ok:true})}
       if(m==="DELETE"){if(fs.existsSync(f))fs.unlinkSync(f);return send(res,200,{ok:true})}
     }
