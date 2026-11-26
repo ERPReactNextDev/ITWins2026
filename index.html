@@ -1283,7 +1283,8 @@ function stopSpeak(){token++;clearTimeout(speakTimer);clearTimeout(advTimer);if(
 function speakSlide(){
   if(!voiceOn||!synth)return;
   stopSpeak();const my=token;
-  const text=slides[cur]&&slides[cur].say;if(!text)return;
+  const text=slides[cur]&&slides[cur].say;
+  if(!text){if(vAuto.checked&&!auto&&(cur<slides.length-1||LOOP.on))advTimer=setTimeout(()=>{if(my===token)cur<slides.length-1?next():go(0,1)},4500);return}
   speakTimer=setTimeout(()=>{
     const parts=chunk(text),v=pickVoice();
     badge.classList.add("on");
@@ -1428,6 +1429,7 @@ function toggleAuto(){
   if(auto){stopAuto();return}
   auto=true;bPlay.classList.add("on");bPlay.innerHTML=ICON_PAUSE;bPlay.title="Pause autoplay (A)";vPanel.hidden=false;
   if(cur>=slides.length-1)go(0,1);else schedAuto();
+  if(voiceOn)speakSlide();
 }
 vPace.onchange=()=>{if(auto)schedAuto()};
 const vLoop=document.getElementById("vLoop");vLoop.onchange=()=>{LOOP.on=vLoop.checked;if(auto)schedAuto()};
