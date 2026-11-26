@@ -1,0 +1,119 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "Engineering",
+  "company": "Disruptive Solutions Inc",
+  "title": "StoriDeck",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {},
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {
+  "disruptive-engineering-testing-center-achievements": 1.7768,
+  "engineering-project-management-achievements": 1.7768,
+  "product-support-team-achievements": 1.7768,
+  "project-management-1": 0.75,
+  "project-management-2": 0.5625,
+  "project-management-3": 1.7778,
+  "project-management-4": 0.5699,
+  "ps1": 0.75,
+  "ps2": 1.3333,
+  "ps3": 1.3333,
+  "ps4": 1.3333,
+  "ps5": 1.7778,
+  "carmona-testing-ageing": 0.75,
+  "carmona-testing-testers": 1.3333
+ },
+ "projects": [],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "Engineering highlights for **Disruptive Solutions Inc**.",
+   "images": [
+    "ps3",
+    "ps1"
+   ],
+   "say": "",
+   "fx": {}
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "descs": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descPos": "bottom",
+   "images": [
+    "product-support-team-achievements",
+    "engineering-project-management-achievements",
+    "disruptive-engineering-testing-center-achievements",
+    "project-management-1",
+    "project-management-2",
+    "project-management-3",
+    "project-management-4",
+    "ps1",
+    "ps2",
+    "ps3",
+    "ps4",
+    "ps5",
+    "carmona-testing-ageing",
+    "carmona-testing-testers"
+   ],
+   "per": "1",
+   "tilt": 1,
+   "say": "",
+   "fx": {}
+  }
+ ]
+}

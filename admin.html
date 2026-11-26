@@ -693,6 +693,14 @@ function form(o,schema,fk=""){
       case"fx":c=fxField(o);break;
       case"lines":c=h("textarea",{rows:s.r||4,placeholder:s.ph||"",oninput:e=>set(e.target.value.split("\n").map(x=>x.trim()).filter(Boolean))},(o[s.k]||[]).join("\n"));break;
       case"imgs":{const a=o[s.k]=o[s.k]||[];c=thumbs(a,s.max);break}
+      case"descs":{const a=o[s.k]=o[s.k]||[];o[s.k]=a;
+        const per=Math.max(1,Math.min(8,+o.per||4)),tot=((o.images||[]).filter(Boolean)).length,n=Math.max(1,Math.ceil(tot/per));
+        while(a.length<n)a.push("");
+        const w2=h("div",{class:"le"});
+        for(let i=0;i<n;i++){const d=a[i]||"",from=i*per+1,to=Math.min((i+1)*per,tot);
+          w2.append(h("div",{class:"fl"},h("span",{class:"lbl"},"Slide "+(i+1)+(tot?` · images ${from}–${to}`:"")),
+            h("textarea",{rows:2,placeholder:"Description for this slide…",oninput:e=>{a[i]=e.target.value;changed()}}),d))}
+        c=w2;break}
       case"tuples":{const a=o[s.k]=o[s.k]||[],img0=s.cols[0].startsWith("img");
         c=listEd(a,it=>img0?h("div",{class:"tup withimg"},cell(s.cols[0],it,0),h("div",{class:"col"},s.cols.slice(1).map((col,j)=>cell(col,it,j+1)))):h("div",{class:"tup"},s.cols.map((col,j)=>cell(col,it,j))),()=>s.cols.map(()=>""),{max:s.max,empty:s.empty,add:s.add});break}
       case"list":{const a=o[s.k]=o[s.k]||[];c=listEd(a,(it,i)=>h("details",{open:""},h("summary",{},(s.name||"Item")+" "+(i+1)+(it[s.tk]?": "+it[s.tk]:"")),form(it,s.s,fk+"/"+s.k)),()=>s.mk(),{add:s.add||("Add "+(s.name||"item").toLowerCase()),empty:s.empty});break}
@@ -709,6 +717,7 @@ function placeProject(p){
   let at=si+1;while(at<D.slides.length&&D.slides[at].type==="project")at++;
   D.slides.splice(at,0,{type:"project",id:p.id})}
 const SAY=T("say","Voice text","area",{r:4,say:1,hint:"What the AI voice reads. Leave blank and it reads an automatic summary."});
+const TIMING=T("dur","Autoplay seconds","num",{hint:"How long this slide stays up during autoplay. Leave 0 for automatic timing."});
 const hasPhotos=o=>o.cat==="fun"||(o.photos&&o.photos.length)||(o.groups&&o.groups.length);
 const needShots=o=>!["orb","minimal"].includes(o.mode)&&!((o.photos&&o.photos.length)||(o.groups&&o.groups.length))||(o.shots&&o.shots.length);
 const PROJ=[
@@ -733,7 +742,7 @@ const PROJ=[
  T("photos","Photo pages","imgs",{show:hasPhotos,hint:"Photos shown four to a slide."}),
  T("photoTitle","Photo page title","text",{show:hasPhotos}),
  T("groups","Captioned photo groups","list",{show:o=>(o.groups&&o.groups.length)||o.cat==="fun",name:"Group",tk:"h",add:"Add group",mk:()=>({h:"",p:"",ids:[]}),s:[T("h","Heading"),T("p","Text","area"),T("ids","Images","imgs")]}),
- G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),
+ G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING,
  G("Advanced","Rarely needed.",{closed:true}),
  T("fanIds","Intro images override","imgs",{max:5,show:o=>["fan","phone","grid","duo","collage"].includes(o.mode),hint:"By default the intro uses the first screenshots."}),
  T("galleryTitle","Phone gallery title","text",{show:o=>o.mode==="phone"}),T("gallerySay","Phone gallery voice text","area",{show:o=>o.mode==="phone"}),
@@ -742,42 +751,42 @@ const PROJ=[
 const EY=[T("eyebrow","Small label"),T("eyebrow2","Second label")];
 const BS={
  title:[G("Headline"),T("badge","Badge","text",{hint:"The small pill above the title."}),T("l1","Title line 1"),T("l2","Title line 2 (accent color)"),T("year","Year"),T("sub","Subtitle","area",{hint:"Wrap words in **double asterisks** to make them bold."}),
-   G("Floating screenshots","Three images drift beside the title."),T("images","Screenshots","imgs",{max:3}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- overview:[G("Heading","Tiles and counts are built from your projects automatically."),T("h","Heading"),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- summary:[G("Heading"),T("h","Heading"),G("Lists","Counts are calculated for you. These two lists are typed."),T("departments","Departments supported","lines",{hint:"One per line."}),T("highlights","Highlights","lines",{hint:"One per line."}),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- section:[G("Section","Lists every project in the chosen section."),T("cat","Section","cat"),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+   G("Floating screenshots","Three images drift beside the title."),T("images","Screenshots","imgs",{max:3}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ overview:[G("Heading","Tiles and counts are built from your projects automatically."),T("h","Heading"),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ summary:[G("Heading"),T("h","Heading"),G("Lists","Counts are calculated for you. These two lists are typed."),T("departments","Departments supported","lines",{hint:"One per line."}),T("highlights","Highlights","lines",{hint:"One per line."}),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ section:[G("Section","Lists every project in the chosen section."),T("cat","Section","cat"),G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
  project:[G("Project","The words and screenshots are edited in the Projects tab."),T("id","Project shown here","pid")],
- photos:[G("Images","Pick as many as you want. They fill the whole slide with no other text.",{}),T("images","Images","imgs",{hint:"Order matters: they appear left to right, top to bottom."}),T("per","Images per slide","sel",{o:[["1","1 (full size)"],["2","2"],["3","3"],["4","4"],["6","6"],["8","8"]],hint:"More images than this continue on the next slide automatically."}),T("tilt","Slight tilt","bool"),G("Heading (optional)","Leave blank for pictures only.",{closed:true}),T("eyebrow","Small label"),T("h","Heading"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+ photos:[G("Images","Pick as many as you want. They fill the whole slide with no other text.",{}),T("images","Images","imgs",{hint:"Order matters: they appear left to right, top to bottom."}),T("per","Images per slide","sel",{o:[["1","1 (full size)"],["2","2"],["3","3"],["4","4"],["6","6"],["8","8"]],hint:"More images than this continue on the next slide automatically."}),T("tilt","Slight tilt","bool"),G("Heading & description (optional)","Leave blank for pictures only.",{closed:true}),T("eyebrow","Small label"),T("h","Heading"),T("descs","Slide descriptions","descs",{hint:"Isang description bawat slide,ayon sa images na nasa page na iyon."}),T("descPos","Description position","sel",{o:[["bottom","Below the images"],["left","Left of the images"],["right","Right of the images"]],hint:"Where the description appears. Only used when a description is filled in."}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
  map:[G("Heading"),...EY,T("h","Heading"),G("Center hub"),T("hubId","Hub project","pid"),T("hubT","Hub title"),T("hubS","Hub subtitle"),T("hubIc","Hub icon","icon"),
    G("Connected systems","Place each node on the map: x from 190 to 1550, y from 60 to 640."),
    T("nodes","Nodes","list",{name:"Node",tk:"t",add:"Add node",mk:()=>({id:"",ic:"box",t:"New node",d:"",s:"",x:870,y:350}),
-     s:[T("id","Project","pid"),T("t","Title"),T("d","Department"),T("s","Short note"),T("ic","Icon","icon"),T("x","X","num"),T("y","Y","num"),T("infra","Use infrastructure color","bool"),T("via","Connect via (optional)","pid")]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+     s:[T("id","Project","pid"),T("t","Title"),T("d","Department"),T("s","Short note"),T("ic","Icon","icon"),T("x","X","num"),T("y","Y","num"),T("infra","Use infrastructure color","bool"),T("via","Connect via (optional)","pid")]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
  challenges:[G("Heading"),...EY,T("h","Heading"),G("Cards","Each card pairs a challenge with a solution and outcome."),
    T("items","Cards","list",{name:"Card",tk:"t",add:"Add card",mk:()=>({k:"Challenge",t:"",rows:[["c","Challenge",""],["s","Solution",""],["o","Outcome",""]]}),
-     s:[T("k","Label"),T("t","Title"),T("rows","Rows","tuples",{cols:["cso:Type","Heading","area:Text"]})]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- lesson:[G("Headline"),...EY,T("h","Big headline"),T("lead","Lead text","area"),G("Supporting points"),T("items","Points","tuples",{cols:["icon:Icon","Title","area:Text"],add:"Add point"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
+     s:[T("k","Label"),T("t","Title"),T("rows","Rows","tuples",{cols:["cso:Type","Heading","area:Text"]})]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ lesson:[G("Headline"),...EY,T("h","Big headline"),T("lead","Lead text","area"),G("Supporting points"),T("items","Points","tuples",{cols:["icon:Icon","Title","area:Text"],add:"Add point"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
  roadmap:[G("Heading"),...EY,T("h","Heading"),G("Left side","Systems that merge into one hub."),T("lk","Left label"),T("lh","Left heading"),
    T("systems","Systems merging","tuples",{cols:["pid:Project","icon:Icon","Label"],add:"Add system"}),T("hub","Hub label"),T("hubSub","Hub sub-label"),T("noteK","Note label"),T("noteT","Note text"),
    G("Right cards","Up to four cards."),T("cards","Cards","list",{name:"Card",tk:"k",add:"Add card",mk:()=>({kind:"text",k:"New",h:"",p:""}),
-     s:[T("kind","Type","sel",{o:[["pills","Pills"],["text","Heading and text"],["flow","Flow A to B"]]}),T("k","Label"),T("h","Heading"),T("p","Text","area"),T("items","Pills (one per line)","lines"),T("from","Flow from"),T("to","Flow to")]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- video:[G("Video"),T("src","Video","vfile",{hint:"Paste a YouTube/Vimeo link or a direct video URL — or upload an .mp4/.webm file."}),T("sub","Subtext","area"),T("autoplay","Autoplay muted","bool"),G("Heading"),...EY,T("h","Heading"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- quote:[G("Quote"),T("quote","Quote text","area",{r:4}),T("author","Name"),T("role","Role or company"),G("Heading (optional)"),...EY,T("h","Heading"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- stats:[G("Heading"),...EY,T("h","Heading"),G("Numbers","Each stat is a big number with a short label."),T("items","Stats","tuples",{cols:["Number or value","Label"],add:"Add stat"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- timeline:[G("Heading"),...EY,T("h","Heading"),G("Milestones"),T("items","Milestones","tuples",{cols:["When","Title","area:Details"],add:"Add milestone"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- beforeafter:[G("Heading"),...EY,T("h","Heading"),G("Two columns"),T("beforeLabel","Left label"),T("before","Left points","lines",{hint:"One per line."}),T("afterLabel","Right label"),T("after","Right points","lines",{hint:"One per line."}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- team:[G("Heading"),...EY,T("h","Heading"),G("People"),T("items","Members","tuples",{cols:["Name","Role","Note"],add:"Add member"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- faq:[G("Heading"),...EY,T("h","Heading"),G("Questions"),T("items","Questions","tuples",{cols:["Question","area:Answer"],add:"Add question"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- table:[G("Heading"),...EY,T("h","Heading"),G("Table","Up to four columns. Empty header names still show as columns."),T("headers","Column names","lines",{hint:"One column name per line, up to 4."}),T("rows","Rows","tuples",{cols:["Column 1","Column 2","Column 3","Column 4"],add:"Add row"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- cta:[G("Message"),...EY,T("h","Heading"),T("text","Text","area"),G("Button (optional)"),T("btn","Button label"),T("url","Link URL"),T("confetti","Confetti burst","bool"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- agenda:[G("Heading"),...EY,T("h","Heading"),G("Items"),T("items","Agenda items","tuples",{cols:["icon:Icon","Title","Note"],add:"Add item"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- split:[G("Text"),...EY,T("h","Heading"),T("text","Text","area"),T("points","Bullet points","lines",{hint:"One per line."}),G("Image"),T("img","Image","img"),T("side","Image side","sel",{o:[["right","Right"],["left","Left"]]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")],
- end:[G("Closing message"),T("eyebrow","Small label"),T("h","Heading"),T("text","Text","area"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx")]};
+     s:[T("kind","Type","sel",{o:[["pills","Pills"],["text","Heading and text"],["flow","Flow A to B"]]}),T("k","Label"),T("h","Heading"),T("p","Text","area"),T("items","Pills (one per line)","lines"),T("from","Flow from"),T("to","Flow to")]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ video:[G("Video"),T("src","Video","vfile",{hint:"Paste a YouTube/Vimeo link or a direct video URL — or upload an .mp4/.webm file."}),T("sub","Subtext","area"),T("autoplay","Autoplay muted","bool"),G("Heading"),...EY,T("h","Heading"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ quote:[G("Quote"),T("quote","Quote text","area",{r:4}),T("author","Name"),T("role","Role or company"),G("Heading (optional)"),...EY,T("h","Heading"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ stats:[G("Heading"),...EY,T("h","Heading"),G("Numbers","Each stat is a big number with a short label."),T("items","Stats","tuples",{cols:["Number or value","Label"],add:"Add stat"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ timeline:[G("Heading"),...EY,T("h","Heading"),G("Milestones"),T("items","Milestones","tuples",{cols:["When","Title","area:Details"],add:"Add milestone"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ beforeafter:[G("Heading"),...EY,T("h","Heading"),G("Two columns"),T("beforeLabel","Left label"),T("before","Left points","lines",{hint:"One per line."}),T("afterLabel","Right label"),T("after","Right points","lines",{hint:"One per line."}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ team:[G("Heading"),...EY,T("h","Heading"),G("People"),T("items","Members","tuples",{cols:["Name","Role","Note"],add:"Add member"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ faq:[G("Heading"),...EY,T("h","Heading"),G("Questions"),T("items","Questions","tuples",{cols:["Question","area:Answer"],add:"Add question"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ table:[G("Heading"),...EY,T("h","Heading"),G("Table","Up to four columns. Empty header names still show as columns."),T("headers","Column names","lines",{hint:"One column name per line, up to 4."}),T("rows","Rows","tuples",{cols:["Column 1","Column 2","Column 3","Column 4"],add:"Add row"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ cta:[G("Message"),...EY,T("h","Heading"),T("text","Text","area"),G("Button (optional)"),T("btn","Button label"),T("url","Link URL"),T("confetti","Confetti burst","bool"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ agenda:[G("Heading"),...EY,T("h","Heading"),G("Items"),T("items","Agenda items","tuples",{cols:["icon:Icon","Title","Note"],add:"Add item"}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ split:[G("Text"),...EY,T("h","Heading"),T("text","Text","area"),T("points","Bullet points","lines",{hint:"One per line."}),G("Image"),T("img","Image","img"),T("side","Image side","sel",{o:[["right","Right"],["left","Left"]]}),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING],
+ end:[G("Closing message"),T("eyebrow","Small label"),T("h","Heading"),T("text","Text","area"),G("Narration"),SAY,G("Effects","How this slide arrives and animates.",{closed:true}),T("fx","Effects","fx"),TIMING]};
 const NEW={
  title:()=>({type:"title",badge:"Department Achievements",l1:"Department",l2:"Wins",year:D.meta.year,sub:"",images:[],say:""}),
  overview:()=>({type:"overview",h:"Wins at a glance"}),summary:()=>({type:"summary",h:"The year in numbers",departments:[],highlights:[]}),
  section:()=>({type:"section",cat:"sys"}),
  project:()=>{const used=new Set(D.slides.filter(b=>b.type==="project").map(b=>b.id));const p=D.projects.find(p=>!used.has(p.id));return{type:"project",id:p?p.id:""}},
- photos:()=>({type:"photos",eyebrow:"",h:"",images:[],per:4,tilt:0,say:""}),
+ photos:()=>({type:"photos",eyebrow:"",h:"",descs:[],descPos:"bottom",images:[],per:4,tilt:0,say:""}),
  map:()=>({type:"map",eyebrow:"Ecosystem",eyebrow2:"Integration map",h:"How it all connects",hubId:"",hubT:"Core",hubS:"Main system",hubIc:"chart",nodes:[],say:""}),
  challenges:()=>({type:"challenges",eyebrow:"Challenges",eyebrow2:"and lessons",h:"What we faced, what we learned",items:[],say:""}),
  lesson:()=>({type:"lesson",eyebrow:"Core lesson",eyebrow2:"",h:"Headline.",lead:"",items:[],say:""}),

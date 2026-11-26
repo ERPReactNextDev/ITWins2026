@@ -584,8 +584,8 @@
   },
   {
    "id": "project-15",
-   "short": "OFFICIAL DOLE CERTIFICATION",
-   "title": "OFFICIAL DOLE CERTIFICATION",
+   "short": "OFFICIAL DOLE CERTIFICATION NO PENDING CASE",
+   "title": "OFFICIAL DOLE CERTIFICATION NO PENDING CASE",
    "cat": "sys",
    "tag": "Certification",
    "icon": "cpu",
@@ -656,7 +656,7 @@
   {
    "type": "photos",
    "eyebrow": "TRAINING'S",
-   "h": "Building a culture of respect, open communication, and unity.",
+   "h": "",
    "images": [
     "viber-image-2026-11-12-11-21-45-771",
     "viber-image-2026-11-12-11-22-16-860",
@@ -668,7 +668,11 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "Building a culture of respect, open communication, and unity."
+   ],
+   "descPos": "left"
   },
   {
    "type": "project",
@@ -677,7 +681,7 @@
   {
    "type": "photos",
    "eyebrow": "TRAINING'S",
-   "h": "Equipping Our Team for Better Results",
+   "h": "",
    "images": [
     "img20260227091925",
     "img20260227091944",
@@ -689,7 +693,11 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "Equipping Our Team for Better Results"
+   ],
+   "descPos": "left"
   },
   {
    "type": "project",
@@ -716,7 +724,12 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    "",
+    ""
+   ]
   },
   {
    "type": "project",
@@ -752,7 +765,19 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
   },
   {
    "type": "project",
@@ -773,7 +798,11 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    ""
+   ]
   },
   {
    "type": "project",
@@ -796,7 +825,10 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    ""
+   ]
   },
   {
    "type": "project",
@@ -818,7 +850,10 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    ""
+   ]
   },
   {
    "type": "project",
@@ -843,7 +878,11 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    ""
+   ]
   },
   {
    "type": "project",
@@ -898,7 +937,12 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    "",
+    ""
+   ]
   },
   {
    "type": "photos",
@@ -960,7 +1004,16 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
   },
   {
    "type": "photos",
@@ -993,7 +1046,12 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    "",
+    ""
+   ]
   }
  ]
 }

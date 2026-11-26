@@ -1,0 +1,121 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "Marketing",
+  "company": "Disruptive Solutions Inc",
+  "title": "StoriDeck",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {},
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {
+  "ads-dsi-3": 1.7778,
+  "ads-dsi-4": 1.7778,
+  "ads-dsi": 1.7778,
+  "ads-es-2": 1.7778,
+  "ads-es-3": 1.7778,
+  "ads-es": 1.7778,
+  "creatives-2": 1.7778,
+  "creatives": 1.7778,
+  "distribution": 1.7778,
+  "ecom-2": 1.7778,
+  "ecom": 1.7778,
+  "partners-2": 1.7778,
+  "partners": 1.7778,
+  "ads-dsi-2": 1.7778
+ },
+ "projects": [],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "Marketing highlights for **Disruptive Solutions Inc**.",
+   "images": [
+    "ads-dsi-4",
+    "ads-es"
+   ],
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "descs": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descPos": "bottom",
+   "images": [
+    "ads-dsi",
+    "ads-dsi-2",
+    "ads-dsi-3",
+    "ads-dsi-4",
+    "ads-es",
+    "ads-es-2",
+    "ads-es-3",
+    "creatives",
+    "creatives-2",
+    "ecom",
+    "ecom-2",
+    "distribution",
+    "partners",
+    "partners-2"
+   ],
+   "per": "1",
+   "tilt": 1,
+   "say": "",
+   "fx": {}
+  }
+ ]
+}

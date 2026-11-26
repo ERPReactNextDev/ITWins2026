@@ -221,6 +221,13 @@ h1,h2{font-family:var(--f-display);margin:0;line-height:1.02;letter-spacing:-.02
 .gi.phone::before{content:"";position:absolute;top:10px;left:50%;width:70px;height:7px;margin-left:-35px;border-radius:9px;background:#000;z-index:2;opacity:.7}
 .gwrap{display:flex;flex-direction:column;align-items:center;gap:16px}
 .gcap{font-family:var(--f-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.gal-split{flex:1;display:flex;gap:48px;min-height:0;align-items:stretch}
+.gal-txt{flex:0 0 540px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.gal-txt .eyebrow{margin-bottom:14px}
+.gal-txt h2{font-size:64px;font-weight:800;margin-top:12px}
+.gal-pics{flex:1;display:flex;flex-direction:column;gap:26px;min-height:0;justify-content:center}
+.gal-desc{margin:0;font-size:26px;line-height:1.45;color:#c3d1e6;max-width:900px}
+.gal-txt .gal-desc{max-width:none}
 .slide.active .gi{animation:pop .8s cubic-bezier(.2,.9,.25,1.1) both;animation-delay:calc(var(--d,0) * 110ms + 250ms)}
 @keyframes pop{from{opacity:0;transform:translateY(60px) scale(.9) rotate(var(--r,0deg))}}
 
@@ -430,7 +437,7 @@ html,body{background:#ffffff!important}
 #loader{background:#fff}
 
 /* text that was hard-coded light */
-.lead,.sec-desc,.gal-head p,.end p{color:#3a4b66}
+.lead,.sec-desc,.gal-head p,.gal-desc,.end p{color:#3a4b66}
 .lx-item span,.mx-node span,.rx-card p,.rx-note{color:#4a5b76}
 .cx-b p{color:#26364f}
 .prob span{color:#1b2a42}
@@ -480,6 +487,8 @@ html,body{background:#ffffff!important}
     <label for="vSel">Voice</label><select id="vSel"></select>
     <label for="vRate">Speed <b id="vRateV">1.0x</b></label><input id="vRate" type="range" min="0.7" max="1.3" step="0.05" value="1">
     <label for="vPace">Autoplay pace</label><select id="vPace"><option value="0.7">Fast</option><option value="1" selected>Normal</option><option value="1.5">Slow</option></select>
+    <label for="vDur">Seconds per slide</label><select id="vDur"><option value="0" selected>Auto</option><option value="3">3s</option><option value="5">5s</option><option value="8">8s</option><option value="10">10s</option><option value="15">15s</option><option value="20">20s</option><option value="30">30s</option></select>
+    <div class="vnote" id="vDurEst"></div>
     <label class="chk"><input id="vAuto" type="checkbox" checked> Auto-advance after speaking</label>
     <label class="chk"><input id="vLoop" type="checkbox"> Loop: start over after the last slide</label>
     <div class="vnote">Voices come from this device or browser. Pick a natural or online voice for the best sound.</div>
@@ -797,7 +806,7 @@ function shotSlide(p,i,k,tr){
 }
 
 function layoutRow(ids,maxH,opts={}){
-  const gap=opts.gap||22,b=opts.b||0,W=1740,ar=id=>AR[id]||1.5;
+  const gap=opts.gap||22,b=opts.b||0,W=opts.W||1740,ar=id=>AR[id]||1.5;
   const sum=ids.reduce((a,id)=>a+ar(id),0);
   const h=Math.min(maxH,(W-gap*(ids.length-1)-2*b*ids.length)/sum);
   return ids.map((id,k)=>{
@@ -862,11 +871,26 @@ function projectSlides(p){
 /* images-only slides: any number of pictures, split over slides ("per" images each) */
 function photosSlides(b){
   const ids=(b.images||[]).filter(Boolean),per=Math.max(1,Math.min(8,+b.per||4)),pages=Math.max(1,Math.ceil(ids.length/per)),key="photos-"+blockStart.length;
+  const dlist=(b.descs||[]).map(x=>(x||"").trim());
   for(let k=0;k<pages;k++){
     const ch=ids.slice(k*per,k*per+per),rows=ch.length>3?[ch.slice(0,Math.ceil(ch.length/2)),ch.slice(Math.ceil(ch.length/2))]:[ch];
-    const head=b.h?`<div class="gal-head"><div>${b.eyebrow?`<div class="eyebrow a l"><span class="pn">${E(b.eyebrow)}</span></div>`:""}<h2 class="a" style="--d:1">${E(b.h)}</h2></div>${pages>1?`<div class="shot-head"><div class="cnt a" style="--d:1"><b>${k+1}</b> / ${pages}</div></div>`:""}</div>`:"";
-    const mh=rows.length>1?(b.h?300:380):(b.h?600:760);
-    slides.push({tr:k%2?"slide":"zoom",say:k===0?(b.say||""):"",proj:key,ptitle:b.h||"Photos",html:`<div class="gal">${head}${ch.length?rows.map(r=>`<div class="gal-row">${layoutRow(r,mh,{rot:b.tilt?2:0})}</div>`).join(""):'<div class="gal-row"><p class="lead">No images added yet.</p></div>'}</div>`});
+    const desc=(dlist[k]||b.desc||"").trim(),pos=desc?(b.descPos==="left"||b.descPos==="right"?b.descPos:"bottom"):"";
+    const cnt=pages>1?`<div class="shot-head"><div class="cnt a" style="--d:1"><b>${k+1}</b> / ${pages}</div></div>`:"";
+    const eb=b.eyebrow?`<div class="eyebrow a l"><span class="pn">${E(b.eyebrow)}</span></div>`:"";
+    const ttl=b.h?`<h2 class="a" style="--d:1">${E(b.h)}</h2>`:"";
+    const dsc=desc?`<p class="gal-desc a" style="--d:2">${E(desc)}</p>`:"";
+    let html;
+    if(pos==="left"||pos==="right"){
+      const pics=ch.length?rows.map(r=>`<div class="gal-row">${layoutRow(r,560,{rot:b.tilt?2:0,W:1080})}</div>`).join(""):'<div class="gal-row"><p class="lead">No images added yet.</p></div>';
+      const txt=`<div class="gal-txt">${eb}${ttl}${dsc}${cnt}</div>`;
+      html=`<div class="gal"><div class="gal-split">${pos==="left"?txt+`<div class="gal-pics">${pics}</div>`:`<div class="gal-pics">${pics}</div>`+txt}</div></div>`;
+    }else{
+      const head=(eb||ttl)?`<div class="gal-head"><div>${eb}${ttl}</div>${cnt}</div>`:"";
+      const mh=rows.length>1?(b.h?300:380):(b.h?600:760);
+      const pics=ch.length?rows.map(r=>`<div class="gal-row">${layoutRow(r,mh,{rot:b.tilt?2:0})}</div>`).join(""):'<div class="gal-row"><p class="lead">No images added yet.</p></div>';
+      html=`<div class="gal">${head}${pics}${pos==="bottom"?dsc:""}</div>`;
+    }
+    slides.push({tr:k%2?"slide":"zoom",say:k===0?((b.say||"")||desc):"",proj:key,ptitle:b.h||"Photos",html});
   }
 }
 
@@ -1096,6 +1120,8 @@ function build(o={}){
     if(hid)for(let q=s0;q<slides.length;q++)slides[q].hid=true;
     const fx=(T==="project"&&by[b.id])?by[b.id].fx:b.fx;
     if(fx&&typeof fx==="object")for(let q=s0;q<slides.length;q++)slides[q].fx=fx;
+    const dur=(T==="project"&&by[b.id])?(+by[b.id].dur||0):(+b.dur||0);
+    if(dur)for(let q=s0;q<slides.length;q++)slides[q].dur=dur;
   }
   if(!slides.length)slides.push({tr:"zoom",say:"",toc:{t:"Empty deck",g:"Overview"},html:'<div class="end"><h2><span>Empty deck</span></h2></div>'});
 }
@@ -1374,8 +1400,12 @@ addEventListener("keydown",e=>{
 });
 let auto=false,autoT=null;
 const bPlay=document.getElementById("bPlay"),apBar=document.getElementById("ap"),vPace=document.getElementById("vPace");
+const vDur=document.getElementById("vDur"),vDurEst=document.getElementById("vDurEst");
 const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',ICON_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
-function dwell(i){const w=((slides[i]&&slides[i].say)||"").split(/\s+/).length;return Math.min(22,Math.max(6,4+w/3))*parseFloat(vPace.value)*1000}
+function fmtSecs(t){t=Math.round(t);if(t<60)return t+"s";const m=Math.floor(t/60);if(m<60)return m+"m "+(t%60?t%60+"s":"");return Math.floor(m/60)+"h "+(m%60)+"m"}
+function estTotal(){const v=+vDur.value;if(!v||!slides.length){vDurEst.textContent="";return}vDurEst.textContent=`≈ ${slides.length} slides × ${v}s = ${fmtSecs(slides.length*v)} for the whole deck`}
+vDur.onchange=()=>{estTotal();if(auto)schedAuto()};
+function dwell(i){const fx=+vDur.value;if(fx)return fx*1000;const s=slides[i]||{};if(+s.dur)return Math.min(120,Math.max(2,+s.dur))*parseFloat(vPace.value)*1000;const w=((s.say)||"").split(/\s+/).length;return Math.min(22,Math.max(6,4+w/3))*parseFloat(vPace.value)*1000}
 function resetBar(){apBar.style.transition="none";apBar.style.width="0"}
 function schedAuto(){
   clearTimeout(autoT);resetBar();
@@ -1447,7 +1477,7 @@ const loader=document.getElementById("loader");
 function showDeck(list,opts,at){
   buildParts(list,opts);mount();themeDept=-2;
   tocBuilt=false;tocContent.innerHTML="";if(tocOpen)buildToc();
-  cur=-1;go(Math.max(0,Math.min(at||0,slides.length-1)),1);
+  cur=-1;go(Math.max(0,Math.min(at||0,slides.length-1)),1);estTotal();
   if(PREVIEW)parent.postMessage({type:"built",starts:blockStart,jump,count:slides.length,says:slides.map(x=>x.say||""),projs:slides.map(x=>x.proj||"")},"*");
 }
 function applyDeck(deck,at){showDeck([{id:curDept,deck}],{},at)}

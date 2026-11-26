@@ -1,0 +1,442 @@
+{
+ "version": 1,
+ "meta": {
+  "dept": "Accounting",
+  "company": "Disruptive Solutions Inc",
+  "title": "StoriDeck",
+  "year": "2026"
+ },
+ "theme": {
+  "mode": "light",
+  "colors": {},
+  "fonts": {
+   "display": "Bricolage Grotesque",
+   "body": "DM Sans",
+   "mono": "JetBrains Mono"
+  }
+ },
+ "categories": {
+  "sys": {
+   "title": "Systems",
+   "desc": "Internal platforms and tools we delivered.",
+   "icon": "cpu",
+   "unit": "wins"
+  },
+  "web": {
+   "title": "Websites",
+   "desc": "Websites designed and launched.",
+   "icon": "globe",
+   "unit": "wins"
+  },
+  "infra": {
+   "title": "Infrastructure",
+   "desc": "Networks, security and on-site rollouts.",
+   "icon": "shield",
+   "unit": "wins"
+  },
+  "fun": {
+   "title": "Bloopers",
+   "desc": "Behind the scenes.",
+   "icon": "smile",
+   "unit": "photos"
+  }
+ },
+ "ar": {
+  "viber-image-2026-11-20-18-49-23-084": 0.75,
+  "viber-image-2026-11-20-18-47-07-401": 0.75,
+  "viber-image-2026-11-20-17-59-20-106": 0.5625,
+  "viber-image-2026-11-20-18-00-07-049": 0.5625,
+  "viber-image-2026-11-20-18-01-07-008": 0.75,
+  "viber-image-2026-11-20-18-01-07-434": 1.3333,
+  "dot-matrix-1": 1,
+  "dot-matrix-2": 1,
+  "dot-matrix-3": 1,
+  "handwritten": 1.0332,
+  "printed": 1.0248,
+  "screenshot-2026-11-21-081256": 2.091,
+  "screenshot-2026-11-21-081642": 1.1381,
+  "viber-image-2026-11-21-08-19-41-752": 1.1413,
+  "viber-image-2026-11-21-08-19-45-111": 1.2696,
+  "viber-image-2026-11-20-18-26-39-002": 0.5625,
+  "viber-image-2026-11-20-18-26-42-825": 0.5625,
+  "viber-image-2026-11-20-18-47-07-401-2": 0.75,
+  "viber-image-2026-11-20-18-49-21-617": 0.75,
+  "viber-image-2026-11-20-18-49-23-084-2": 0.75,
+  "bcs-mbd-check-payment-pooling": 1.4038,
+  "buildchem-solutions-inc-online-metrobank-disbursemnet-account": 2.2245,
+  "checkbook-1": 1,
+  "checkbook-2": 1,
+  "schedule-of-bcs-check-release-1": 1.7973,
+  "schedule-of-bcs-check-release-2": 1.8056,
+  "schedule-of-bcs-check-release-3": 1.794,
+  "viber-image-2026-11-20-17-59-12-624": 0.5625,
+  "viber-image-2026-11-20-18-00-09-431": 0.75,
+  "viber-image-2026-11-20-18-00-14-235": 1.3333,
+  "viber-image-2026-11-20-18-00-23-428": 1.3333,
+  "viber-image-2026-11-20-18-00-29-393": 1.3333,
+  "viber-image-2026-11-20-18-00-57-384": 0.75,
+  "viber-image-2026-11-20-18-00-58-962": 1.3333,
+  "0-02-06-05dbf6871e453629b935f6a371b87bf24a3cef33b4a35ae01a370dda6a9822aa-20c04c9c6ec50231-copy": 0.75,
+  "0-02-06-32f4b2a0defe1f9d0238d42c3a513351037df1592b0dcb2f1cb89417b5e3747d-82473cfa6357af6a": 0.75,
+  "0-02-06-2170b552b2d4835c1e7dad1a65120c1cd6fb9b0f6e385ac630d53f1f95f553f0-902a2c34ae646fe0": 1.3333,
+  "viber-image-2026-04-07-16-27-38-342": 0.75,
+  "viber-image-2026-07-07-16-10-38-388": 1.3333,
+  "viber-image-2026-08-04-16-50-15-693": 1,
+  "viber-image-2026-08-04-17-03-51-557": 1.7778,
+  "viber-image-2026-09-01-17-35-57-442": 1,
+  "viber-image-2026-09-01-17-40-57-556": 1.7778,
+  "viber-image-2026-10-06-13-47-47-103": 0.9325,
+  "viber-image-2026-11-03-17-07-24-966": 1,
+  "viber-image-2026-11-03-17-13-54-740": 1.7778
+ },
+ "projects": [
+  {
+   "id": "project-1",
+   "short": "LOOSE LEAF",
+   "title": "LOOSE LEAF",
+   "cat": "sys",
+   "tag": "PROCESS IMPROVEMENT",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "The Accounting Department has started implementing the printing of official receipts using loose-leaf and continuous paper formats as part of its efforts to improve documentation and streamline receipt processing. This initiative provides a more systematic approach to generating and maintaining receipt records, making the process more organized and consistent.\n",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "hero",
+   "shots": [
+    [
+     "viber-image-2026-11-20-18-01-07-008",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-2",
+   "short": "MANUAL TO DOT MATRIX PRINTING: TELEX FORMS & DEPOSIT SLIPS",
+   "title": "MANUAL TO DOT MATRIX PRINTING: TELEX FORMS & DEPOSIT SLIPS",
+   "cat": "sys",
+   "tag": "PROCESS IMPROVEMENT",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "The Accounting Department successfully transitioned the preparation of Telegraphic\nTransfer (TELEX) Forms and Bank Deposit Slips from manual handwriting to automated\nprinting using the Epson Dot Matrix Printer.",
+   "prob": "",
+   "caps": [
+    "From Manual to Automated: Less Writing, Fewer Errors, Greater Efficiency."
+   ],
+   "chips": [],
+   "mode": "fan",
+   "shots": [
+    [
+     "dot-matrix-1",
+     ""
+    ],
+    [
+     "dot-matrix-2",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-3",
+   "short": "Payment Verification",
+   "title": "Payment Verification",
+   "cat": "sys",
+   "tag": "PROCESS IMPROVEMENT",
+   "icon": "cpu",
+   "status": "PROCESS IMPROVEMENT",
+   "lead": "",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "fan",
+   "shots": [
+    [
+     "screenshot-2026-11-21-081642",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-4",
+   "short": "SAP TRAINING",
+   "title": "SAP TRAINING",
+   "cat": "sys",
+   "tag": "PROCESS IMPROVEMENT",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "The Accounting Department, together with the Procurement Department, is currently conducting ongoing SAP Business One and Basic Accounting training under the leadership and guidance of the Finance Manager. This initiative aims to strengthen employees' knowledge, enhance their technical and accounting skills, and develop a better understanding of the company's financial and operational processes.\n",
+   "prob": "",
+   "caps": [],
+   "chips": [],
+   "mode": "grid",
+   "shots": [
+    [
+     "viber-image-2026-11-20-18-47-07-401-2",
+     ""
+    ],
+    [
+     "viber-image-2026-11-20-18-49-21-617",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  },
+  {
+   "id": "project-5",
+   "short": "SEPARATE BANK ACCOUNT FOR  BUILDCHEM SOLUTIONS INC. DISBURSEMENTS",
+   "title": "SEPARATE BANK ACCOUNT FOR  BUILDCHEM SOLUTIONS INC. DISBURSEMENTS",
+   "cat": "sys",
+   "tag": "FINANCIAL CONTROL & TRANSPARENCY",
+   "icon": "cpu",
+   "status": "Complete",
+   "lead": "The Accounting Department successfully implemented a separate bank account dedicated\nto handling Buildchem Solutions Inc. disbursements, transitioning from the previous\npractice of processing all disbursements through Ecoshift Corporation's bank account.",
+   "prob": "",
+   "caps": [
+    "Separate Accounts, Clearer Visibility, Better Financial Management."
+   ],
+   "chips": [],
+   "mode": "fan",
+   "shots": [
+    [
+     "schedule-of-bcs-check-release-1",
+     ""
+    ],
+    [
+     "schedule-of-bcs-check-release-2",
+     ""
+    ],
+    [
+     "",
+     ""
+    ]
+   ],
+   "fx": {
+    "speed": "fast"
+   },
+   "fanIds": []
+  }
+ ],
+ "slides": [
+  {
+   "type": "title",
+   "badge": "Department Achievements",
+   "l1": "Department",
+   "l2": "Wins",
+   "year": "2026",
+   "sub": "Accounting highlights for **Disruptive Solutions Inc**.",
+   "images": [
+    "viber-image-2026-11-20-18-47-07-401",
+    "viber-image-2026-11-20-18-49-23-084"
+   ],
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "project",
+   "id": "project-1"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "images": [
+    "viber-image-2026-11-20-17-59-20-106",
+    "viber-image-2026-11-20-18-00-07-049",
+    "viber-image-2026-11-20-18-01-07-434"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   },
+   "desc": "By transitioning to these printing formats, the department can improve the handling, filing, and safekeeping of receipt documents. It also helps establish a more structured documentation process, allowing receipts to be printed, compiled, and retrieved more efficiently whenever needed. This improvement supports better record management and contributes to a smoother workflow for the team. Although it may seem like a simple operational improvement, it is another step toward achieving a more organized, systematic, and reliable accounting process.",
+   "descPos": "right",
+   "descs": [
+    ""
+   ]
+  },
+  {
+   "type": "project",
+   "id": "project-2"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "desc": "This improvement significantly streamlined the preparation process, reduced manual\nencoding and handwriting errors, and ensured better accuracy, consistency, and\nreadability of bank documents. It also improved processing efficiency, allowing the\nAccounting Department to accomplish banking transactions faster while maintaining more\nstandardized documentation.",
+   "descPos": "left",
+   "images": [
+    "dot-matrix-1",
+    "dot-matrix-2",
+    "dot-matrix-3",
+    "handwritten",
+    "printed"
+   ],
+   "per": "6",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   },
+   "descs": [
+    ""
+   ]
+  },
+  {
+   "type": "project",
+   "id": "project-3"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "desc": "",
+   "descPos": "bottom",
+   "images": [
+    "screenshot-2026-11-21-081256",
+    "screenshot-2026-11-21-081642",
+    "viber-image-2026-11-21-08-19-41-752",
+    "viber-image-2026-11-21-08-19-45-111"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   },
+   "descs": [
+    ""
+   ]
+  },
+  {
+   "type": "project",
+   "id": "project-4"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "desc": "Through these training sessions, participants are given the opportunity to learn more about SAP Business One, become familiar with its features and functionalities, and understand how the system supports daily business operations. Alongside the system training, the Basic Accounting sessions help reinforce fundamental accounting principles, improve financial awareness, and provide a better understanding of accounting processes that are essential to their respective responsibilities.\n\nThis activity demonstrates the Accounting Department's commitment to continuous learning, professional development, and knowledge sharing. It also reflects the department's initiative to empower employees, strengthen cross-departmental collaboration, and equip team members with the necessary skills and knowledge to perform their responsibilities more effectively.\n",
+   "descPos": "left",
+   "images": [
+    "viber-image-2026-11-20-18-26-39-002",
+    "viber-image-2026-11-20-18-26-42-825",
+    "viber-image-2026-11-20-18-47-07-401-2",
+    "viber-image-2026-11-20-18-49-21-617",
+    "viber-image-2026-11-20-18-49-23-084-2"
+   ],
+   "per": "3",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   },
+   "descs": [
+    "",
+    ""
+   ]
+  },
+  {
+   "type": "project",
+   "id": "project-5"
+  },
+  {
+   "type": "photos",
+   "eyebrow": "",
+   "h": "",
+   "desc": "This improvement strengthens financial control by enabling more accurate tracking and\nmonitoring of Buildchem's payments and expenses. It also provides clearer visibility of the\ncompany's cash inflows and outflows, allowing the Accounting Department to improve\ncash flow monitoring, budgeting, and funding allocation.\nThrough this initiative, financial transactions are now more organized, transparent, and\neasier to reconcile, supporting better financial management and decision-making for\nBuildchem Solutions Inc.",
+   "descPos": "right",
+   "images": [
+    "bcs-mbd-check-payment-pooling",
+    "buildchem-solutions-inc-online-metrobank-disbursemnet-account",
+    "checkbook-1",
+    "checkbook-2"
+   ],
+   "per": 4,
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   },
+   "descs": [
+    ""
+   ]
+  },
+  {
+   "type": "photos",
+   "eyebrow": "TEAM BUILDING",
+   "h": "TEAM BUILDING",
+   "descs": [
+    "The Accounting Department's Team Building Party was more than just a day of fun and games; it was an opportunity for team members to connect, strengthen relationships, and build a stronger sense of unity within the department. The team participated in a series of fun and challenging games prepared by the manager, allowing members to showcase teamwork, communication, cooperation, creativity, and friendly competition.\n",
+    "The activity provided everyone with an opportunity to step away from their usual work responsibilities and get to know their colleagues beyond their professional roles. It encouraged active participation, mutual support, collaboration toward a common goal, and appreciation of each member's individual strengths and contributions.\n",
+    "Overall, it strengthened not only the relationships among team members but also the foundation of the Accounting Department as one united team. It reinforced the importance of working together despite having different roles and responsibilities, highlighting how mutual support, collaboration, and camaraderie contribute to the department's overall success.\n"
+   ],
+   "descPos": "left",
+   "images": [
+    "viber-image-2026-11-20-17-59-12-624",
+    "viber-image-2026-11-20-18-00-09-431",
+    "viber-image-2026-11-20-18-00-14-235",
+    "viber-image-2026-11-20-18-00-58-962",
+    "viber-image-2026-11-20-18-00-57-384",
+    "viber-image-2026-11-20-18-00-29-393",
+    "viber-image-2026-11-20-18-00-23-428"
+   ],
+   "per": "3",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  },
+  {
+   "type": "photos",
+   "eyebrow": "MONTHLY COLOR CODING",
+   "h": "MONTHLY COLOR CODING",
+   "descs": [
+    "The Accounting Department consistently demonstrates enthusiasm, cooperation, and team spirit through its active participation in HR's monthly Color Coding initiative. Almost every month, the department ranks among the most cooperative departments, with its team members enthusiastically joining in by wearing outfits that feature the designated color of the month.\n",
+    "Although it may seem like a simple activity, the department's participation reflects its unity, willingness to engage in company-wide initiatives, and positive attitude toward fostering a fun and inclusive workplace. Wearing the same color creates a sense of belonging, strengthens connections among colleagues, and reinforces the department's identity as one team. It also adds fun and excitement to monthly routines, helping create a more engaging and enjoyable work environment.\n",
+    "This highlights how the Accounting Department's teamwork and cooperation extend beyond daily responsibilities. Its consistent participation demonstrates not only its commitment to work but also its enthusiasm for contributing to a positive workplace culture and being an active part of the bigger organization.\n",
+    ""
+   ],
+   "descPos": "right",
+   "images": [
+    "0-02-06-05dbf6871e453629b935f6a371b87bf24a3cef33b4a35ae01a370dda6a9822aa-20c04c9c6ec50231-copy",
+    "0-02-06-32f4b2a0defe1f9d0238d42c3a513351037df1592b0dcb2f1cb89417b5e3747d-82473cfa6357af6a",
+    "0-02-06-2170b552b2d4835c1e7dad1a65120c1cd6fb9b0f6e385ac630d53f1f95f553f0-902a2c34ae646fe0",
+    "viber-image-2026-04-07-16-27-38-342",
+    "viber-image-2026-07-07-16-10-38-388",
+    "viber-image-2026-08-04-16-50-15-693",
+    "viber-image-2026-11-03-17-07-24-966",
+    "viber-image-2026-10-06-13-47-47-103",
+    "viber-image-2026-09-01-17-40-57-556",
+    "viber-image-2026-09-01-17-35-57-442",
+    "viber-image-2026-08-04-17-03-51-557",
+    "viber-image-2026-11-03-17-13-54-740"
+   ],
+   "per": "3",
+   "tilt": 0,
+   "say": "",
+   "fx": {
+    "speed": "fast"
+   }
+  }
+ ]
+}

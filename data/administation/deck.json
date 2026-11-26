@@ -249,7 +249,10 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    ""
+   ]
   },
   {
    "type": "project",
@@ -274,7 +277,12 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "",
+    "",
+    ""
+   ]
   },
   {
    "type": "project",
@@ -292,7 +300,10 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    ""
+   ]
   },
   {
    "type": "project",
@@ -312,12 +323,15 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    ""
+   ]
   },
   {
    "type": "photos",
    "eyebrow": "ACCOMPLISHMENTS ",
-   "h": "Successfully completed the transfer of Ecoshift Corporation’s Cebu and Cagayan de Oro operations from the previous warehouses to new warehouse facilities.",
+   "h": "",
    "images": [
     "back-office-cebu",
     "back-office-cdo",
@@ -327,17 +341,22 @@
     "warehouse-area-davao",
     "warehouse-cebu"
    ],
-   "per": "8",
+   "per": "4",
    "tilt": 0,
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "Successfully completed the transfer of Ecoshift Corporation’s Cebu and Cagayan de Oro operations from the previous warehouses to new warehouse facilities.",
+    ""
+   ],
+   "descPos": "left"
   },
   {
    "type": "photos",
    "eyebrow": "ACCOMPLISHMENTS ",
-   "h": "Successfully established and opened DSI branches in Davao, Cagayan de Oro, and Cebu, including the corresponding office and warehouse facilities.",
+   "h": "",
    "images": [
     "office-area-davao-2",
     "warehouse-area-davao-2",
@@ -350,12 +369,16 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "Successfully established and opened DSI branches in Davao, Cagayan de Oro, and Cebu, including the corresponding office and warehouse facilities."
+   ],
+   "descPos": "right"
   },
   {
    "type": "photos",
    "eyebrow": "ACCOMPLISHMENTS ",
-   "h": "Successfully relocated all Sales personnel from Room 405 to the Penthouse (5th Floor) to optimize office space utilization and improve team coordination.",
+   "h": "",
    "images": [
     "penthouse-office"
    ],
@@ -364,12 +387,16 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
+   },
+   "descs": [
+    "Successfully relocated all Sales personnel from Room 405 to the Penthouse (5th Floor) to optimize office space utilization and improve team coordination."
+   ],
+   "descPos": "left"
   },
   {
    "type": "photos",
    "eyebrow": "ACCOMPLISHMENTS ",
-   "h": "Successfully relocated the Engineering Team from Warehouse Pasig and Granville Carmona to Room 211 and transferred the IT Team from Room 213 to Primex, ensuring better utilization and allocation of office facilities.",
+   "h": "",
    "images": [
     "engineering-area-room-211",
     "it-primex-area",
@@ -380,11 +407,11 @@
    "say": "",
    "fx": {
     "speed": "fast"
-   }
-  },
-  {
-   "type": "section",
-   "cat": "sys"
+   },
+   "descs": [
+    "Successfully relocated the Engineering Team from Warehouse Pasig and Granville Carmona to Room 211 and transferred the IT Team from Room 213 to Primex, ensuring better utilization and allocation of office facilities."
+   ],
+   "descPos": "left"
   }
  ]
 }
